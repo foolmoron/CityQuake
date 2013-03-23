@@ -104,5 +104,27 @@
                 </action>
             </actions>
         </event-block>
+        <event-block>
+            <conditions>
+                <condition id="1" name="Is overlapping another object" type="Box">
+                    <param id="0" name="Object">Player</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" type="Box">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-22" name="Else" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" type="Box">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

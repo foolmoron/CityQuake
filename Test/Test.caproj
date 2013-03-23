@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Test</name>
+    <description></description>
+    <version>1.0</version>
+    <author></author>
+    <unique-id>1it6a3ss8vrqo</unique-id>
+    <saved-with-version>11900</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+    </used-plugins>
+    <used-behaviors />
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>3300</width>
+        <height>2500</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Enable WebGL">Off</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Hide address bar">No</prop>
+        <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Preview browser">Chrome</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use iOS retina display">iPhone only</prop>
+    </configuration-settings>
+    <object-folder expanded="1">
+        <object-type name="Dirt">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.5" y="0" />
+                            <point x="1" y="0.5" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="BG">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0" hotspotY="0" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="House">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.994898" y="0.75" />
+                            <point x="0.5" y="1" />
+                            <point x="0.00510204" y="0.75" />
+                            <point x="0.5" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Office">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="0.916666" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="0.914966" />
+                            <point x="0.489796" y="0.833334" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Touch">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="Debug">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Mouse">
+            <plugin id="Mouse" />
+        </object-type>
+        <object-type name="Function">
+            <plugin id="Function" />
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder expanded="1">
+        <layout>Main.xml</layout>
+    </layout-folder>
+    <event-folder expanded="1">
+        <event-sheet>Main.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Touch">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="Mouse" />
+        <global-instance type="Function" />
+    </global-instances>
+    <sounds-folder expanded="1" />
+    <music-folder expanded="1" />
+    <files-folder expanded="1" />
+</c2project>
