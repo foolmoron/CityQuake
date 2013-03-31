@@ -3,47 +3,13 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Main</name>
     <events>
-        <variable constant="0" name="Mult" static="0" type="number">1</variable>
-        <variable constant="0" name="Window" static="0" type="number">0</variable>
         <event-block>
             <conditions>
                 <condition id="0" name="On any touch start" type="Touch" />
             </conditions>
             <actions>
-                <action id="-28" name="Set canvas size" type="System">
-                    <param id="0" name="Width">WindowWidth * (1 + (Mult * 0.1))</param>
-                    <param id="1" name="Height">WindowHeight * (1 + (Mult * 0.1))</param>
-                </action>
-                <action id="-10" name="Add to" type="System">
-                    <param id="0" name="Variable">Window</param>
-                    <param id="1" name="Value">Mult</param>
-                </action>
-                <action id="0" name="Call function" type="Function">
-                    <param id="0" name="Name">&quot;CheckBounds&quot;</param>
-                    <param id="1" name="Parameter {n}">Window</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block>
-            <conditions>
-                <condition id="-1" name="Every tick" type="System" />
-            </conditions>
-            <actions>
-                <action id="0" name="Set text" type="Debug">
-                    <param id="0" name="Text">WindowWidth &amp; &quot;, &quot; &amp; WindowHeight &amp; &quot; --- &quot; &amp; Window</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block>
-            <conditions>
-                <condition id="0" name="On function" type="Function">
-                    <param id="0" name="Name">&quot;CheckBounds&quot;</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-9" name="Set value" type="System">
-                    <param id="0" name="Variable">Mult</param>
-                    <param id="1" name="Value">(Window &lt; 0 | Window &gt;= 5) ? -Mult : Mult</param>
+                <action id="-25" name="Go to layout (by name)" type="System">
+                    <param id="0" name="Layout">&quot;Blank&quot;</param>
                 </action>
             </actions>
         </event-block>

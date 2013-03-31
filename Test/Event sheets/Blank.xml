@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Blank</name>
+    <events>
+        <variable constant="0" name="MAX_RADIUS2" static="0" type="number">800</variable>
+        <variable constant="0" name="RADIUS_PER_SECOND2" static="0" type="number">400</variable>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On any touch start" type="Touch" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" type="System">
+                    <param id="0" name="Object to create">Earthquake</param>
+                    <param id="1" name="Layer">&quot;Middle&quot;</param>
+                    <param id="2" name="X">Touch.X</param>
+                    <param id="3" name="Y">Touch.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-1" name="Every tick" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" type="Debug">
+                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-10" name="Compare opacity" type="Earthquake">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="Opacity">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" type="Earthquake" />
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On collision with another object" type="Earthquake">
+                    <param id="0" name="Object">House</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" type="House">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-7" name="Compare instance variable" type="House">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" type="House" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

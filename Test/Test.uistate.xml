@@ -11,7 +11,9 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     </configurations>
     <open-tabs>
         <layout>Main</layout>
+        <layout>Blank</layout>
         <event-sheet active="1">Main</event-sheet>
+        <event-sheet>Blank</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="Project settings" />

@@ -7,8 +7,8 @@
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
+        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
-        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
@@ -23,6 +23,7 @@
         <height>2500</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
+    <first-layout>Main</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -39,7 +40,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
                         <collision-poly>
                             <point x="0.5" y="0" />
                             <point x="1" y="0.5" />
@@ -60,6 +61,9 @@
         </object-type>
         <object-type name="House">
             <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Health" type="number" />
+            </instance-variables>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="1">
@@ -91,22 +95,157 @@
         <object-type name="Touch">
             <plugin id="Touch" />
         </object-type>
-        <object-type name="Debug">
+        <object-type global="1" name="Debug">
             <plugin id="Text" />
-        </object-type>
-        <object-type name="Mouse">
-            <plugin id="Mouse" />
         </object-type>
         <object-type name="Function">
             <plugin id="Function" />
+        </object-type>
+        <object-type name="Earthquake">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.504505" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.135135" y="0.192308" />
+                            <point x="0.495495" y="0.0128205" />
+                            <point x="0.873874" y="0.179487" />
+                            <point x="1" y="0.5" />
+                            <point x="0.873874" y="0.820513" />
+                            <point x="0.495495" y="0.987179" />
+                            <point x="0.126126" y="0.820513" />
+                            <point x="0.018018" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Water">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="15" loop="1" name="Default" pingpong="1" repeatcount="0" repeatto="0" speed="7">
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.33" y="0.33" />
+                            <point x="0.5" y="0.25" />
+                            <point x="0.67" y="0.33" />
+                            <point x="0.975" y="0.5" />
+                            <point x="0.5" y="0.74" />
+                            <point x="0.025" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.33" y="0.33" />
+                            <point x="0.5" y="0.25" />
+                            <point x="0.67" y="0.33" />
+                            <point x="0.975" y="0.5" />
+                            <point x="0.5" y="0.74" />
+                            <point x="0.025" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.33" y="0.33" />
+                            <point x="0.5" y="0.25" />
+                            <point x="0.67" y="0.33" />
+                            <point x="0.975" y="0.5" />
+                            <point x="0.5" y="0.74" />
+                            <point x="0.025" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.33" y="0.33" />
+                            <point x="0.5" y="0.25" />
+                            <point x="0.67" y="0.33" />
+                            <point x="0.975" y="0.5" />
+                            <point x="0.5" y="0.74" />
+                            <point x="0.025" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.33" y="0.33" />
+                            <point x="0.5" y="0.25" />
+                            <point x="0.67" y="0.33" />
+                            <point x="0.975" y="0.5" />
+                            <point x="0.5" y="0.74" />
+                            <point x="0.025" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Grass">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="12" loop="1" name="Default" pingpong="1" repeatcount="1" repeatto="0" speed="7">
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.5" y="0" />
+                            <point x="1" y="0.5" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.5" y="0" />
+                            <point x="1" y="0.5" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.5" y="0" />
+                            <point x="1" y="0.5" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.5" y="0" />
+                            <point x="1" y="0.5" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="CityQuakeLevels">
+            <plugin id="CQLevels" />
         </object-type>
     </object-folder>
     <families />
     <layout-folder expanded="1">
         <layout>Main.xml</layout>
+        <layout>Blank.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
         <event-sheet>Main.xml</event-sheet>
+        <event-sheet>Blank.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Touch">
@@ -114,8 +253,15 @@
                 <use-mouse-input>Yes</use-mouse-input>
             </properties>
         </global-instance>
-        <global-instance type="Mouse" />
         <global-instance type="Function" />
+        <global-instance type="CityQuakeLevels">
+            <properties>
+                <isometric-tile-height>98</isometric-tile-height>
+                <grid-size>16</grid-size>
+                <top-tile-x>1670</top-tile-x>
+                <top-tile-y>880</top-tile-y>
+            </properties>
+        </global-instance>
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1" />
