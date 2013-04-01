@@ -1,10 +1,10 @@
 ﻿function GetBehaviorSettings()
 {
 	return {
-		"name":			"CQ House",			// as appears in 'add behavior' dialog, can be changed as long as "id" stays the same
-		"id":			"CQhouse",			// this is used to identify this behavior and is saved to the project; never change it
+		"name":			"CQ Destroyable",			// as appears in 'add behavior' dialog, can be changed as long as "id" stays the same
+		"id":			"CQdestroyable",			// this is used to identify this behavior and is saved to the project; never change it
 		"version":		"1.0",					// (float in x.y format) Behavior version - C2 shows compatibility warnings based on this
-		"description":	"City Quake house tile",
+		"description":	"City Quake destroyable object",
 		"author":		"foolmoron",
 		"help url":		"https://www.github.com/foolmoron",
 		"category":		"City Quake",				// Prefer to re-use existing categories, but you can set anything here
@@ -87,7 +87,7 @@ ACESDone();
 // new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
 
 var property_list = [
-	//new cr.Property(ept_float, 	"Initial health",		3.0,		"Initial health value for houses.")
+	new cr.Property(ept_float, 	"Initial health",		3.0,		"Initial health value for destroyable.")
 	];
 	
 // Called by IDE when a new behavior type is to be created

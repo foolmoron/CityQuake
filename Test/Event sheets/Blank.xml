@@ -42,31 +42,6 @@
         <event-block>
             <conditions>
                 <condition id="0" name="On collision with another object" type="Earthquake">
-                    <param id="0" name="Object">House</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-12" name="Subtract from" type="House">
-                    <param id="0" name="Instance variable">Health</param>
-                    <param id="1" name="Value">1</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block>
-            <conditions>
-                <condition id="-7" name="Compare instance variable" type="House">
-                    <param id="0" name="Instance variable">Health</param>
-                    <param id="1" name="Comparison">3</param>
-                    <param id="2" name="Value">0</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-9" name="Destroy" type="House" />
-            </actions>
-        </event-block>
-        <event-block>
-            <conditions>
-                <condition id="0" name="On collision with another object" type="Earthquake">
                     <param id="0" name="Object">Office</param>
                 </condition>
             </conditions>

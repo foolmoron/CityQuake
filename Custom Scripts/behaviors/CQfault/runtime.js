@@ -49,7 +49,6 @@ cr.behaviors.CQfault = function(runtime)
 	behinstProto.onCreate = function()
 	{
 		// Load properties
-		this.myProperty = this.properties[0];
 		
 		// object is sealed after this call, so make sure any properties you'll ever need are created, e.g.
 		// this.myValue = 0;

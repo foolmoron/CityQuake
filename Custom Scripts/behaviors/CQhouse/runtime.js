@@ -49,27 +49,16 @@ cr.behaviors.CQhouse = function(runtime)
 	behinstProto.onCreate = function()
 	{
 		// Load properties
-		this.behavior.health = this.properties[0];
 	};
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
-		
-		var ret = this.runtime.testOverlapSolid(this.inst);
-		if (ret){
-			if (typeHasBehavior(ret.type, "CQEarthquake"))
-			var earthquake = ret;
-		}
 	};
-	
-	function typeHasBehavior(type, behaviorName){
-	}
 	
 	behinstProto.onDestroy = function ()
 	{
-		this.lastFloorObject = null;
-		this.runtime.removeDestroyCallback(this.myDestroyCallback);
+	
 	};
 
 

@@ -8,7 +8,7 @@ assert2(cr.behaviors, "cr.behaviors not created");
 // Behavior class
 // *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 //           vvvvvvvvvv
-cr.behaviors.CQearthquake = function(runtime)
+cr.behaviors.CQdamaging = function(runtime)
 {
 	this.runtime = runtime;
 };
@@ -17,7 +17,7 @@ cr.behaviors.CQearthquake = function(runtime)
 {
 	// *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 	//                               vvvvvvvvvv
-	var behaviorProto = cr.behaviors.CQearthquake.prototype;
+	var behaviorProto = cr.behaviors.CQdamaging.prototype;
 		
 	/////////////////////////////////////
 	// Behavior type class
@@ -49,6 +49,8 @@ cr.behaviors.CQearthquake = function(runtime)
 	behinstProto.onCreate = function()
 	{
 		// Load properties
+		this.inst.damage = this.properties[0];
+		this.inst.alreadyHit = [];
 	};
 
 	behinstProto.tick = function ()

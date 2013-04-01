@@ -8,7 +8,7 @@ assert2(cr.behaviors, "cr.behaviors not created");
 // Behavior class
 // *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 //           vvvvvvvvvv
-cr.behaviors.CQearthquake = function(runtime)
+cr.behaviors.CQdestroyable = function(runtime)
 {
 	this.runtime = runtime;
 };
@@ -17,7 +17,7 @@ cr.behaviors.CQearthquake = function(runtime)
 {
 	// *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 	//                               vvvvvvvvvv
-	var behaviorProto = cr.behaviors.CQearthquake.prototype;
+	var behaviorProto = cr.behaviors.CQdestroyable.prototype;
 		
 	/////////////////////////////////////
 	// Behavior type class
@@ -49,15 +49,46 @@ cr.behaviors.CQearthquake = function(runtime)
 	behinstProto.onCreate = function()
 	{
 		// Load properties
+		this.inst.health = this.properties[0];
 	};
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
 		
-		// called every tick for you to update this.inst as necessary
-		// dt is the amount of time passed since the last tick, in case it's a movement
+		var types = this.runtime.types_by_index;
+		for(var i = 0; i < types.length; i++){
+			if (typeHasBehavior(types[i], "CQDamaging")){
+				for(var j = 0; j < types[i].instances.length; j++){
+					if (this.runtime.testOverlap(this.inst, types[i].instances[j])){
+						var damaging = types[i].instances[j];
+						if (damaging.alreadyHit.indexOf(this.inst) < 0){
+							this.inst.health -= damaging.damage;
+							damaging.alreadyHit.push(this.inst);
+						}
+					}
+				}
+			}
+		}
+		
+		if (this.inst.health <= 0){
+			this.runtime.DestroyInstance(this.inst);
+		}
 	};
+	
+	function typeHasBehavior(type, behaviorName){
+		for(var b = 0; b < type.behaviors.length; b++){
+			if (type.behaviors[b].name === behaviorName)
+				return true;
+		}
+		return false;
+	}
+	
+	behinstProto.onDestroy = function ()
+	{
+	
+	};
+
 
 	//////////////////////////////////////
 	// Conditions

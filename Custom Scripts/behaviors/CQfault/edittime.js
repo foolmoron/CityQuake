@@ -4,7 +4,7 @@
 		"name":			"CQ Fault",			// as appears in 'add behavior' dialog, can be changed as long as "id" stays the same
 		"id":			"CQfault",			// this is used to identify this behavior and is saved to the project; never change it
 		"version":		"1.0",					// (float in x.y format) Behavior version - C2 shows compatibility warnings based on this
-		"description":	"City Quake fault object (NEEDS SOLID)",
+		"description":	"City Quake fault object",
 		"author":		"foolmoron",
 		"help url":		"https://www.github.com/foolmoron",
 		"category":		"City Quake",				// Prefer to re-use existing categories, but you can set anything here
@@ -40,7 +40,9 @@
 //				script_name);		// corresponding runtime function name
 				
 // example				
+/*
 AddCondition(0, cf_none, "Is moving", "My category", "{my} is moving", "Description for my condition!", "IsMoving");
+*/
 
 ////////////////////////////////////////
 // Actions
@@ -54,8 +56,10 @@ AddCondition(0, cf_none, "Is moving", "My category", "{my} is moving", "Descript
 //			 script_name);		// corresponding runtime function name
 
 // example
+/* 
 AddAction(0, af_none, "Stop", "My category", "Stop {my}", "Description for my action!", "Stop");
-
+ */
+ 
 ////////////////////////////////////////
 // Expressions
 
@@ -68,8 +72,10 @@ AddAction(0, af_none, "Stop", "My category", "Stop {my}", "Description for my ac
 //				 description);	// description in expressions panel
 
 // example
+/* 
 AddExpression(0, ef_return_number, "Leet expression", "My category", "MyExpression", "Return the number 1337.");
-
+ */
+ 
 ////////////////////////////////////////
 ACESDone();
 
@@ -81,7 +87,7 @@ ACESDone();
 // new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
 
 var property_list = [
-	new cr.Property(ept_integer, 	"My property",		77,		"An example property.")
+	//new cr.Property(ept_integer, 	"My property",		77,		"An example property.")
 	];
 	
 // Called by IDE when a new behavior type is to be created
