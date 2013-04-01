@@ -1,15 +1,15 @@
 ﻿function GetBehaviorSettings()
 {
 	return {
-		"name":			"MyBehavior",			// as appears in 'add behavior' dialog, can be changed as long as "id" stays the same
-		"id":			"MyBehavior",			// this is used to identify this behavior and is saved to the project; never change it
+		"name":			"CQ Water",			// as appears in 'add behavior' dialog, can be changed as long as "id" stays the same
+		"id":			"CQwater",			// this is used to identify this behavior and is saved to the project; never change it
 		"version":		"1.0",					// (float in x.y format) Behavior version - C2 shows compatibility warnings based on this
-		"description":	"<appears at the bottom of the add behavior dialog>",
-		"author":		"<your name/organisation>",
-		"help url":		"<your website or a manual entry on Scirra.com>",
-		"category":		"General",				// Prefer to re-use existing categories, but you can set anything here
+		"description":	"City Quake water tile",
+		"author":		"foolmoron",
+		"help url":		"https://www.github.com/foolmoron",
+		"category":		"City Quake",				// Prefer to re-use existing categories, but you can set anything here
 		"flags":		0						// uncomment lines to enable flags...
-					//	| bf_onlyone			// can only be added once to an object, e.g. solid
+						| bf_onlyone			// can only be added once to an object, e.g. solid
 	};
 };
 

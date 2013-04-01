@@ -8,7 +8,7 @@ assert2(cr.behaviors, "cr.behaviors not created");
 // Behavior class
 // *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 //           vvvvvvvvvv
-cr.behaviors.MyBehavior = function(runtime)
+cr.behaviors.CQhouse = function(runtime)
 {
 	this.runtime = runtime;
 };
@@ -17,7 +17,7 @@ cr.behaviors.MyBehavior = function(runtime)
 {
 	// *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 	//                               vvvvvvvvvv
-	var behaviorProto = cr.behaviors.MyBehavior.prototype;
+	var behaviorProto = cr.behaviors.CQhouse.prototype;
 		
 	/////////////////////////////////////
 	// Behavior type class
@@ -49,19 +49,29 @@ cr.behaviors.MyBehavior = function(runtime)
 	behinstProto.onCreate = function()
 	{
 		// Load properties
-		this.myProperty = this.properties[0];
-		
-		// object is sealed after this call, so make sure any properties you'll ever need are created, e.g.
-		// this.myValue = 0;
+		this.behavior.health = this.properties[0];
 	};
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
 		
-		// called every tick for you to update this.inst as necessary
-		// dt is the amount of time passed since the last tick, in case it's a movement
+		var ret = this.runtime.testOverlapSolid(this.inst);
+		if (ret){
+			if (typeHasBehavior(ret.type, "CQEarthquake"))
+			var earthquake = ret;
+		}
 	};
+	
+	function typeHasBehavior(type, behaviorName){
+	}
+	
+	behinstProto.onDestroy = function ()
+	{
+		this.lastFloorObject = null;
+		this.runtime.removeDestroyCallback(this.myDestroyCallback);
+	};
+
 
 	//////////////////////////////////////
 	// Conditions
