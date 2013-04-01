@@ -8,10 +8,10 @@
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
         <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
-        <plugin author="Scirra" id="Function" version="1">Function</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="foolmoron" id="CQdamaging" version="1">CQ Damaging</behavior>
@@ -23,6 +23,7 @@
         <behavior author="foolmoron" id="CQoffice" version="1">CQ Office</behavior>
         <behavior author="foolmoron" id="CQwater" version="1">CQ Water</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
         <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
     <used-effects />
@@ -62,9 +63,14 @@
         </object-type>
         <object-type name="BG">
             <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="ScrollTo">
+                    <behavior id="scrollto" />
+                </behavior-type>
+            </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0" hotspotY="0" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -299,8 +305,8 @@
             <properties>
                 <isometric-tile-height>98</isometric-tile-height>
                 <grid-size>16</grid-size>
-                <top-tile-x>1670</top-tile-x>
-                <top-tile-y>880</top-tile-y>
+                <top-tile-x>1720</top-tile-x>
+                <top-tile-y>900</top-tile-y>
             </properties>
         </global-instance>
     </global-instances>

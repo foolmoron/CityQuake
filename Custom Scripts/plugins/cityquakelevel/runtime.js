@@ -111,14 +111,16 @@ cr.plugins_.CQLevels = function(runtime)
 			//"Airport", // 9 
 			//"Runway", // 10 */
 		];
+		var BOTTOM = 1;
+		var TOP = 3;
 		this.tileTypeLayers = 
 		[
 			-1, // 0
-			0, // 1 ground
-			0, // 2 ground
-			0, // 3 ground
-			2, // 4 building
-			2, // 5 building
+			BOTTOM, // 1 ground
+			BOTTOM, // 2 ground
+			BOTTOM, // 3 ground
+			TOP, // 4 building
+			TOP, // 5 building
 			/*"FireStation" // 5 
 			"Hospital" // 6 
 			"Factory" // 7 
