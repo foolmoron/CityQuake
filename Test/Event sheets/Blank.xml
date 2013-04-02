@@ -26,8 +26,8 @@
                 <action id="-3" name="Create object" type="System">
                     <param id="0" name="Object to create">Earthquake</param>
                     <param id="1" name="Layer">&quot;Bottom&quot;</param>
-                    <param id="2" name="X">Touch.X</param>
-                    <param id="3" name="Y">Touch.Y</param>
+                    <param id="2" name="X">CanvasToLayerX(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                    <param id="3" name="Y">CanvasToLayerY(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
                 </action>
                 <action behavior="ScrollTo" id="0" name="Shake" type="BG">
                     <param id="0" name="Magnitude">50</param>

@@ -41,7 +41,7 @@
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
-        <prop name="Enable WebGL">Off</prop>
+        <prop name="Enable WebGL">On</prop>
         <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Hide address bar">No</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
@@ -91,7 +91,18 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="1" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="1">
+                        <collision-poly>
+                            <point x="0.306122" y="0.30303" />
+                            <point x="0.5" y="0.207071" />
+                            <point x="0.72449" y="0.272727" />
+                            <point x="0.755102" y="0.5" />
+                            <point x="0.714286" y="0.717172" />
+                            <point x="0.5" y="0.823232" />
+                            <point x="0.209184" y="0.792929" />
+                            <point x="0.122449" y="0.5" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
