@@ -53,11 +53,13 @@ cr.plugins_.CQLevels = function(runtime)
 	{
 		this.runtime.tickMe(this);
 		
-		var TYPE_INDEX_DIRT;
-		var TYPE_INDEX_WATER;
-		var TYPE_INDEX_GRASS;
-		var TYPE_INDEX_HOUSE;
-		var TYPE_INDEX_OFFICE;
+		this.TYPE_INDEX_DIRT;
+		this.TYPE_INDEX_WATER;
+		this.TYPE_INDEX_GRASS;
+		this.TYPE_INDEX_HOUSE;
+		this.TYPE_INDEX_OFFICE;
+		
+		this.typeIndexMap = {};
 		
 		var types = this.runtime.types_by_index;
 		for(var i = 0; i < types.length; i++){
@@ -65,19 +67,30 @@ cr.plugins_.CQLevels = function(runtime)
 			for(var b = 0; b < types[i].behaviors.length; b++){
 				var behav = behavs[b];
 				if (types[i].behaviors[b].name === "CQDirt"){
-					TYPE_INDEX_DIRT = i;
+					this.TYPE_INDEX_DIRT = i;
+					this.typeIndexMap["CQDirt"] = i;
 					break;
 				} else if (types[i].behaviors[b].name === "CQWater"){
-					TYPE_INDEX_WATER = i;
+					this.TYPE_INDEX_WATER = i;
+					this.typeIndexMap["CQWater"] = i;
 					break;
 				} else if (types[i].behaviors[b].name === "CQGrass"){
-					TYPE_INDEX_GRASS = i;
+					this.TYPE_INDEX_GRASS = i;
+					this.typeIndexMap["CQGrass"] = i;
 					break;
 				} else if (types[i].behaviors[b].name === "CQHouse"){
-					TYPE_INDEX_HOUSE = i;
+					this.TYPE_INDEX_HOUSE = i;
+					this.typeIndexMap["CQHouse"] = i;
 					break;
 				} else if (types[i].behaviors[b].name === "CQOffice"){
-					TYPE_INDEX_OFFICE = i;
+					this.TYPE_INDEX_OFFICE = i;
+					this.typeIndexMap["CQOffice"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQEarthquake"){
+					this.typeIndexMap["CQEarthquake"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQFault"){
+					this.typeIndexMap["CQFault"] = i;
 					break;
 				}
 			}
@@ -100,19 +113,19 @@ cr.plugins_.CQLevels = function(runtime)
 		this.tileTypeIndices = 
 		[
 			-1, //"None", // 0 - unintialized
-			TYPE_INDEX_DIRT, //"Dirt", // 1
-			TYPE_INDEX_WATER, //"Water", // 2 
-			TYPE_INDEX_GRASS, //"Grass", // 3 
-			TYPE_INDEX_HOUSE, //"House", // 4 
-			TYPE_INDEX_OFFICE, //Office", // 5
+			this.TYPE_INDEX_DIRT, //"Dirt", // 1
+			this.TYPE_INDEX_WATER, //"Water", // 2 
+			this.TYPE_INDEX_GRASS, //"Grass", // 3 
+			this.TYPE_INDEX_HOUSE, //"House", // 4 
+			this.TYPE_INDEX_OFFICE, //Office", // 5
 			//"FireStation", // 6 
 			//"Hospital", // 7 
 			//"Factory", // 8 
 			//"Airport", // 9 
 			//"Runway", // 10 */
 		];
-		var BOTTOM = 1;
-		var TOP = 3;
+		var BOTTOM = this.getBottomLayer();
+		var TOP = this.getTopLayer();
 		this.tileTypeLayers = 
 		[
 			-1, // 0
@@ -209,6 +222,21 @@ cr.plugins_.CQLevels = function(runtime)
 			})(this)
 		);
 	};
+	
+	instanceProto.getBottomLayer = function ()
+	{
+		return 1;
+	}
+	
+	instanceProto.getTopLayer = function ()
+	{
+		return 3;
+	}
+	
+	instanceProto.getTypeIndex = function (typeName)
+	{
+		return this.typeIndexMap[typeName];
+	}
 	
 	instanceProto.tick = function ()
 	{

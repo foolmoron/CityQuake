@@ -59,6 +59,8 @@ AddCondition(0, cf_none, "Is moving", "My category", "{my} is moving", "Descript
 /*
 AddAction(0, af_none, "Stop", "My category", "Stop {my}", "Description for my action!", "Stop");
 */
+AddObjectParam("Type", "Object to create between earthquakes")
+AddAction(0, af_none, "Create Object Between", "Collision", "Create {0} between two earthquakes", "Creates an object at the tangent line between two earthquakes.", "CreateTangentObject");
 
 ////////////////////////////////////////
 // Expressions

@@ -79,9 +79,32 @@ cr.behaviors.CQearthquake = function(runtime)
 	function Acts() {};
 
 	// the example action
-	Acts.prototype.Stop = function ()
+	Acts.prototype.CreateTangentObject = function (obj)
 	{
-		// ... see other behaviors for example implementations ...
+		var CQ = cr.plugins_.CQLevels.prototype.Instance.prototype;
+		
+		var sol = this.type.objtype.getCurrentSol();
+		var quake1 = sol.instances[0];
+		var quake2 = sol.instances[1];
+		
+		var dy = quake2.y - quake1.y;
+		var dx = quake2.x - quake1.x;
+		var dist = Math.sqrt(dx * dx + dy * dy);
+		var unitVectorY = dy/dist;
+		var unitVectorX = dx/dist;
+		var collisionY = quake1.y + (unitVectorY * (quake1.height / 2));
+		var collisionX = quake1.x + (unitVectorX * (quake1.width / 2));
+		var dToCollisionY = collisionY - quake1.y;
+		var dToCollisionX = collisionX - quake1.x;
+		var distToCollision = Math.sqrt(dToCollisionX * dToCollisionX + dToCollisionY * dToCollisionY);
+		if (distToCollision >= dist){ //one circle within another
+			return;
+		}
+		
+		var fault = this.runtime.createInstance(obj, this.runtime.running_layout.layers[CQ.getBottomLayer()], collisionX, collisionY);
+		var angle = Math.atan2(dy, dx);
+		var degs = angle * (180 / Math.PI);
+		fault.angle = angle;
 	};
 	
 	// ... other actions here ...

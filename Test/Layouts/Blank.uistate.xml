@@ -20,11 +20,11 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="0" name="Margins" />
         <property expanded="1" name="Effects" />
     </properties>
-    <active-layer name="Top" />
+    <active-layer name="Bottom" />
     <layers>
         <layer locked="0" name="Shakeable" parallax-in-editor="0" visible="1" />
         <layer locked="0" name="Bottom" parallax-in-editor="0" visible="1" />
-        <layer locked="0" name="Middle" parallax-in-editor="0" visible="1" />
+        <layer locked="0" name="HUD" parallax-in-editor="0" visible="1" />
         <layer locked="0" name="Top" parallax-in-editor="0" visible="1" />
     </layers>
 </c2uistate>

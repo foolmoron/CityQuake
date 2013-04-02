@@ -87,7 +87,7 @@ ACESDone();
 // new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
 
 var property_list = [
-	new cr.Property(ept_float, 	"Initial Damage",		1.0,		"Damage earthquake does before decrease.")
+	new cr.Property(ept_float, 	"Initial Damage",		1.0,		"Damage object does before modifications.")
 	];
 	
 // Called by IDE when a new behavior type is to be created

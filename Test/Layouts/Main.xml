@@ -8488,6 +8488,35 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="Fault">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <hotspot>Center</hotspot>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Solid" />
+                        <behavior-instance type="CQDamaging">
+                            <properties>
+                                <initial-damage>10</initial-damage>
+                            </properties>
+                        </behavior-instance>
+                        <behavior-instance type="CQFault" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>2325.336425781</x>
+                        <y>1095.383300781</y>
+                        <z>0</z>
+                        <width>17</width>
+                        <height>3465</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0.653501689</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
@@ -8637,8 +8666,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>1856</x>
-                        <y>1714</y>
+                        <x>1841</x>
+                        <y>1752</y>
                         <z>0</z>
                         <width>196</width>
                         <height>198</height>

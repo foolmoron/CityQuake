@@ -11,6 +11,7 @@
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
     <used-behaviors>
@@ -18,6 +19,7 @@
         <behavior author="foolmoron" id="CQdestroyable" version="1">CQ Destroyable</behavior>
         <behavior author="foolmoron" id="CQdirt" version="1">CQ Dirt</behavior>
         <behavior author="foolmoron" id="CQearthquake" version="1">CQ Earthquake</behavior>
+        <behavior author="foolmoron" id="CQfault" version="1">CQ Fault</behavior>
         <behavior author="foolmoron" id="CQgrass" version="1">CQ Grass</behavior>
         <behavior author="foolmoron" id="CQhouse" version="1">CQ House</behavior>
         <behavior author="foolmoron" id="CQoffice" version="1">CQ Office</behavior>
@@ -31,8 +33,8 @@
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
     <window-size>
-        <width>3300</width>
-        <height>2500</height>
+        <width>3400</width>
+        <height>2600</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <first-layout>Main</first-layout>
@@ -61,7 +63,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="BG">
+        <object-type global="1" name="BG">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="ScrollTo">
@@ -283,6 +285,34 @@
         </object-type>
         <object-type name="Text">
             <plugin id="Text" />
+        </object-type>
+        <object-type name="Fault">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Solid">
+                    <behavior id="solid" />
+                </behavior-type>
+                <behavior-type name="CQDamaging">
+                    <behavior id="CQdamaging" />
+                </behavior-type>
+                <behavior-type name="CQFault">
+                    <behavior id="CQfault" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type global="1" name="HUD">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="ScrollTo">
+                    <behavior id="scrollto" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />

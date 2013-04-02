@@ -42,10 +42,22 @@
             </conditions>
             <actions>
                 <action id="0" name="Set text" type="Debug">
-                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps</param>
+                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot;</param>
                 </action>
                 <action id="9" name="Set scale" type="Earthquake">
                     <param id="0" name="Scale">(((100 - Earthquake.Opacity)/100) * (MAX_SCALE - 1)) + 1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On collision with another object" type="Earthquake">
+                    <param id="0" name="Object">Earthquake</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="CQEarthquake" id="0" name="Create Object Between" type="Earthquake">
+                    <param id="0" name="Type">Fault</param>
                 </action>
             </actions>
         </event-block>
