@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-#1364944422
+#1365143280
 index.html
 c2runtime.js
 jquery-1.7.1.min.js
@@ -19,5 +19,7 @@ images\grass-sheet0.png
 images\grass-sheet1.png
 images\fault.png
 images\hud-sheet0.png
+images\earthquakeindicator-sheet0.png
+images\60fpsforcer-sheet0.png
 NETWORK:
 *
