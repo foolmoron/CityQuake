@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Blank</name>
     <events>
+        <variable constant="0" name="x" static="0" type="number">0</variable>
         <variable constant="0" name="MAX_SCALE" static="0" type="number">5</variable>
         <variable constant="0" name="RADIUS_PER_SECOND" static="0" type="number">400</variable>
         <event-block>
@@ -10,29 +11,39 @@
                 <condition id="-2" name="On start of layout" type="System" />
             </conditions>
             <actions>
+                <action id="4" name="Initialize" type="CityQuakeLevels" />
                 <action id="1" name="Load randomized level" type="CityQuakeLevels" />
-                <action disabled="1" id="-33" name="Set layer parallax" type="System">
-                    <param id="0" name="Layer">2</param>
-                    <param id="1" name="Parallax X">0</param>
-                    <param id="2" name="Parallax Y">0</param>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition disabled="1" id="10" name="On Nth touch start" type="Touch">
+                    <param id="0" name="Touch number">0</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="2" name="Is in touch" type="Touch" />
+            </conditions>
+            <actions>
+                <action id="3" name="Update indicators" type="CityQuakeLevels">
+                    <param id="0" name="X">CanvasToLayerX(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                    <param id="1" name="Y">CanvasToLayerY(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
                 </action>
             </actions>
         </event-block>
         <event-block>
             <conditions>
-                <condition id="0" name="On any touch start" type="Touch" />
+                <condition id="11" name="On Nth touch end" type="Touch">
+                    <param id="0" name="Touch number">0</param>
+                </condition>
             </conditions>
             <actions>
-                <action id="-3" name="Create object" type="System">
-                    <param id="0" name="Object to create">Earthquake</param>
-                    <param id="1" name="Layer">&quot;Bottom&quot;</param>
-                    <param id="2" name="X">CanvasToLayerX(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
-                    <param id="3" name="Y">CanvasToLayerY(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
-                </action>
-                <action behavior="ScrollTo" id="0" name="Shake" type="BG">
-                    <param id="0" name="Magnitude">50</param>
-                    <param id="1" name="Duration">1</param>
-                    <param id="2" name="Mode">0</param>
+                <action id="2" name="Spawn earthquake" type="CityQuakeLevels">
+                    <param id="0" name="X">CanvasToLayerX(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                    <param id="1" name="Y">CanvasToLayerY(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
                 </action>
             </actions>
         </event-block>

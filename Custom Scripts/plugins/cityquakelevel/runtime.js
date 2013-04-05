@@ -53,93 +53,23 @@ cr.plugins_.CQLevels = function(runtime)
 	{
 		this.runtime.tickMe(this);
 		
+		//proto declarations
 		this.TYPE_INDEX_DIRT;
 		this.TYPE_INDEX_WATER;
 		this.TYPE_INDEX_GRASS;
 		this.TYPE_INDEX_HOUSE;
-		this.TYPE_INDEX_OFFICE;
+		this.TYPE_INDEX_OFFICE;	
 		
+		this.globalVarMap = {};
 		this.typeIndexMap = {};
+		this.tileTypeNames = [];
+		this.tileTypeIndices = [];
+		this.tileTypeLayers = [];
 		
-		var types = this.runtime.types_by_index;
-		for(var i = 0; i < types.length; i++){
-			var behavs = types[i].behaviors;
-			for(var b = 0; b < types[i].behaviors.length; b++){
-				var behav = behavs[b];
-				if (types[i].behaviors[b].name === "CQDirt"){
-					this.TYPE_INDEX_DIRT = i;
-					this.typeIndexMap["CQDirt"] = i;
-					break;
-				} else if (types[i].behaviors[b].name === "CQWater"){
-					this.TYPE_INDEX_WATER = i;
-					this.typeIndexMap["CQWater"] = i;
-					break;
-				} else if (types[i].behaviors[b].name === "CQGrass"){
-					this.TYPE_INDEX_GRASS = i;
-					this.typeIndexMap["CQGrass"] = i;
-					break;
-				} else if (types[i].behaviors[b].name === "CQHouse"){
-					this.TYPE_INDEX_HOUSE = i;
-					this.typeIndexMap["CQHouse"] = i;
-					break;
-				} else if (types[i].behaviors[b].name === "CQOffice"){
-					this.TYPE_INDEX_OFFICE = i;
-					this.typeIndexMap["CQOffice"] = i;
-					break;
-				} else if (types[i].behaviors[b].name === "CQEarthquake"){
-					this.typeIndexMap["CQEarthquake"] = i;
-					break;
-				} else if (types[i].behaviors[b].name === "CQFault"){
-					this.typeIndexMap["CQFault"] = i;
-					break;
-				}
-			}
-		}
+		this.background;
 		
-		this.tileTypeNames = 
-		[
-			"None", // 0 - unintialized
-			"Dirt", // 1
-			"Water", // 2 
-			"Grass", // 3
-			"House", // 4 
-			"Office", // 5
-			/*"FireStation", // 6 
-			"Hospital", // 7
-			"Factory", // 8 
-			"Airport", // 9 
-			"Runway", // 10 */
-		];
-		this.tileTypeIndices = 
-		[
-			-1, //"None", // 0 - unintialized
-			this.TYPE_INDEX_DIRT, //"Dirt", // 1
-			this.TYPE_INDEX_WATER, //"Water", // 2 
-			this.TYPE_INDEX_GRASS, //"Grass", // 3 
-			this.TYPE_INDEX_HOUSE, //"House", // 4 
-			this.TYPE_INDEX_OFFICE, //Office", // 5
-			//"FireStation", // 6 
-			//"Hospital", // 7 
-			//"Factory", // 8 
-			//"Airport", // 9 
-			//"Runway", // 10 */
-		];
-		var BOTTOM = this.getBottomLayer();
-		var TOP = this.getTopLayer();
-		this.tileTypeLayers = 
-		[
-			-1, // 0
-			BOTTOM, // 1 ground
-			BOTTOM, // 2 ground
-			BOTTOM, // 3 ground
-			TOP, // 4 building
-			TOP, // 5 building
-			/*"FireStation" // 5 
-			"Hospital" // 6 
-			"Factory" // 7 
-			"Airport" // 8 
-			"Runway" // 9 */
-		];
+		var tlm = 0, tlb = 0, trm = 0, trb = 0;
+		var blm = 0, blb = 0, brm = 0, brb = 0;
 		
 		var D = 1;
 		var W = 2;
@@ -221,6 +151,10 @@ cr.plugins_.CQLevels = function(runtime)
 				};
 			})(this)
 		);
+		
+		this.indicatorOffscreenX = -500;
+		this.indicatorOffscreenY = -500;
+		this.earthquakeIndicator = null;
 	};
 	
 	instanceProto.getBottomLayer = function ()
@@ -240,7 +174,6 @@ cr.plugins_.CQLevels = function(runtime)
 	
 	instanceProto.tick = function ()
 	{
-		//check for level stuff
 	};
 	
 	instanceProto.onKeyDown = function (info)
@@ -288,7 +221,104 @@ cr.plugins_.CQLevels = function(runtime)
 	//////////////////////////////////////
 	// Actions
 	function Acts() {};
-
+	
+	Acts.prototype.Initialize = function ()
+	{				
+		var types = this.runtime.types_by_index;
+		for(var i = 0; i < types.length; i++){
+			var behavs = types[i].behaviors;
+			for(var b = 0; b < types[i].behaviors.length; b++){
+				var behav = behavs[b];
+				if (types[i].behaviors[b].name === "CQDirt"){
+					this.TYPE_INDEX_DIRT = i;
+					this.typeIndexMap["CQDirt"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQWater"){
+					this.TYPE_INDEX_WATER = i;
+					this.typeIndexMap["CQWater"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQGrass"){
+					this.TYPE_INDEX_GRASS = i;
+					this.typeIndexMap["CQGrass"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQHouse"){
+					this.TYPE_INDEX_HOUSE = i;
+					this.typeIndexMap["CQHouse"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQOffice"){
+					this.TYPE_INDEX_OFFICE = i;
+					this.typeIndexMap["CQOffice"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQEarthquake"){
+					this.typeIndexMap["CQEarthquake"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQEarthquakeIndicator"){
+					this.typeIndexMap["CQEarthquakeIndicator"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQFault"){
+					this.typeIndexMap["CQFault"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQBackground"){
+					this.typeIndexMap["CQBackground"] = i;
+					break;
+				}
+			}
+		}
+		
+		this.tileTypeNames = 
+		[
+			"None", // 0 - unintialized
+			"Dirt", // 1
+			"Water", // 2 
+			"Grass", // 3
+			"House", // 4 
+			"Office", // 5
+			/*"FireStation", // 6 
+			"Hospital", // 7
+			"Factory", // 8 
+			"Airport", // 9 
+			"Runway", // 10 */
+		];
+		this.tileTypeIndices = 
+		[
+			-1, //"None", // 0 - unintialized
+			this.TYPE_INDEX_DIRT, //"Dirt", // 1
+			this.TYPE_INDEX_WATER, //"Water", // 2 
+			this.TYPE_INDEX_GRASS, //"Grass", // 3 
+			this.TYPE_INDEX_HOUSE, //"House", // 4 
+			this.TYPE_INDEX_OFFICE, //Office", // 5
+			//"FireStation", // 6 
+			//"Hospital", // 7 
+			//"Factory", // 8 
+			//"Airport", // 9 
+			//"Runway", // 10 */
+		];
+		var BOTTOM = this.getBottomLayer();
+		var TOP = this.getTopLayer();
+		this.tileTypeLayers = 
+		[
+			-1, // 0
+			BOTTOM, // 1 ground
+			BOTTOM, // 2 ground
+			BOTTOM, // 3 ground
+			TOP, // 4 building
+			TOP, // 5 building
+			/*"FireStation" // 5 
+			"Hospital" // 6 
+			"Factory" // 7 
+			"Airport" // 8 
+			"Runway" // 9 */
+		];
+		
+		this.background = this.runtime.types_by_index[this.typeIndexMap["CQBackground"]].instances[0];
+		
+		//get all global constants from Construst		
+		var globals = this.runtime.all_global_vars;
+		for(var i = 0; i < globals.length; i++){
+			this.globalVarMap[globals[i].name] = globals[i];
+		}	
+	};
+	
 	Acts.prototype.LoadLevelWithID = function (levelid)
 	{
 		this.tileGrid = this.premadeLevels[levelid];
@@ -297,7 +327,7 @@ cr.plugins_.CQLevels = function(runtime)
 	
 	Acts.prototype.LoadLevelRandom = function ()
 	{
-		this.GRID_SIZE = this.properties[1];	
+		this.GRID_SIZE = this.properties[1];
 		this.tileGrid = new Array(this.GRID_SIZE);
 		for(var i = 0; i < this.GRID_SIZE; i++){
 			this.tileGrid[i] = [];
@@ -363,6 +393,85 @@ cr.plugins_.CQLevels = function(runtime)
 			xPos = baseX;
 			yPos = baseY;
 		}
+		
+		this.calculateGameplayAreaBounds();	
+	};
+	
+	instanceProto.calculateGameplayAreaBounds = function()
+	{	
+		var GS = this.GRID_SIZE;
+		var TH = this.TILE_HEIGHT;
+		var baseX = this.properties[2];
+		var baseY = this.properties[3] - TH;
+		var p1x, p1y, p2x, p2y;
+		p1x = baseX, p1y = baseY;
+		p2x = -GS * TH + baseX, p2y = GS * TH/2 + baseY;
+		this.tlm = (p2y - p1y) / (p2x - p1x);
+		this.tlb = p1y - (this.tlm * p1x);
+		p1x = baseX, p1y = baseY;
+		p2x = GS * TH + baseX, p2y = GS * TH/2 + baseY;
+		this.trm = (p2y - p1y) / (p2x - p1x);
+		this.trb = p1y - (this.trm * p1x);
+		p1x = baseX, p1y = GS * TH + baseY;
+		p2x = -GS * TH + baseX, p2y = GS * TH/2 + baseY;
+		this.blm = (p2y - p1y) / (p2x - p1x);
+		this.blb = p1y - (this.blm * p1x);
+		p1x = baseX, p1y = GS * TH + baseY;
+		p2x = GS * TH + baseX, p2y = GS * TH/2 + baseY;
+		this.brm = (p2y - p1y) / (p2x - p1x);
+		this.brb = p1y - (this.brm * p1x);
+	}
+	
+	instanceProto.inGameplayArea = function(x, y)
+	{
+		var ret = (y >= this.tlm*x + this.tlb) && (y >= this.trm*x + this.trb) &&
+					(y <= this.blm*x + this.blb) && (y <= this.brm*x + this.brb);
+		return ret;
+	}
+	
+	Acts.prototype.SpawnEarthquake = function (x, y)
+	{
+		if (this.inGameplayArea(x,y)){
+			this.runtime.createInstance(
+				this.runtime.types_by_index[this.typeIndexMap["CQEarthquake"]],
+				this.runtime.running_layout.layers[this.getBottomLayer()],
+				x,
+				y);
+			var BG = this.background.behavior_insts[1];
+			BG.shake(50, 1);
+		}
+		if (this.earthquakeIndicator != null){
+			this.runtime.DestroyInstance(this.earthquakeIndicator);
+			this.earthquakeIndicator = null;
+		}
+	};
+	
+	Acts.prototype.UpdateIndicators = function (x, y)
+	{
+		if (this.earthquakeIndicator == null){
+			this.earthquakeIndicator = this.runtime.createInstance(
+										this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]],
+										this.runtime.running_layout.layers[this.getTopLayer()],
+										x,
+										y);
+			//stolen from Sprite.SetScale()
+			var s = this.globalVarMap['MAX_SCALE'].data;
+			var cur_frame = this.earthquakeIndicator.curFrame;
+			var mirror_factor = (this.earthquakeIndicator.width < 0 ? -1 : 1);
+			var flip_factor = (this.earthquakeIndicator.height < 0 ? -1 : 1);
+			var new_width = cur_frame.width * s * mirror_factor;
+			var new_height = cur_frame.height * s * flip_factor;		
+			if (this.earthquakeIndicator.width !== new_width || this.earthquakeIndicator.height !== new_height)
+			{
+				this.earthquakeIndicator.width = new_width;
+				this.earthquakeIndicator.height = new_height;
+				this.earthquakeIndicator.set_bbox_changed();
+			}
+			
+		}
+		this.earthquakeIndicator.x = x;
+		this.earthquakeIndicator.y = y;
+		this.earthquakeIndicator.opacity = this.inGameplayArea(x,y) ? 0.5: 0.0;
 	};
 	
 	pluginProto.acts = new Acts();

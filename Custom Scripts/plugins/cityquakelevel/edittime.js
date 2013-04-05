@@ -74,8 +74,14 @@
 // AddAction(0, af_none, "Alert", "My category", "Alert {0}", "Description for my action!", "MyAction");
 AddNumberParam("LevelID", "The level to load (0-indexed)");
 AddAction(0, af_none, "Load premade level", "Loading", "Load premade level #{0}", "Load the specified premade level", "LoadLevelWithID")
-
 AddAction(1, af_none, "Load randomized level", "Loading", "Load random level", "Load a level with completely random tiles", "LoadLevelRandom")
+AddNumberParam("X", "X position of earthquake");
+AddNumberParam("Y", "Y position of earthquake");
+AddAction(2, af_none, "Spawn earthquake", "Gameplay", "Spawn earthquake at ({0}, {1})", "Spawn an earthquake at a position", "SpawnEarthquake")
+AddNumberParam("X", "X position of indicators");
+AddNumberParam("Y", "Y position of indicators");
+AddAction(3, af_none, "Update indicators", "Gameplay", "Update indicators using touch coordinates ({0}, {1})", "Update indicators at current touch position", "UpdateIndicators")
+AddAction(4, af_none, "Initialize", "Initialization", "Initialize level", "Initialize level", "Initialize")
 
 ////////////////////////////////////////
 // Expressions

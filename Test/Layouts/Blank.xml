@@ -34,6 +34,7 @@
                     </properties>
                     <behavior-instances>
                         <behavior-instance type="ScrollTo" />
+                        <behavior-instance type="CQBackground" />
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -66,7 +67,36 @@
             <force-own-texture>0</force-own-texture>
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
-            <instances />
+            <instances>
+                <instance type="60FPSForcer">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="CQGrass">
+                            <properties>
+                                <my-property>77</my-property>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>-260</x>
+                        <y>-317</y>
+                        <z>0</z>
+                        <width>196</width>
+                        <height>98</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>1</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+            </instances>
             <effects />
         </layer>
         <layer name="HUD">
@@ -176,8 +206,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>121</x>
-                        <y>386</y>
+                        <x>197</x>
+                        <y>432</y>
                         <z>0</z>
                         <width>846</width>
                         <height>235</height>
