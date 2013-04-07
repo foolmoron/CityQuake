@@ -8498,7 +8498,12 @@
                         <behavior-instance type="Solid" />
                         <behavior-instance type="CQDamaging">
                             <properties>
-                                <initial-damage>10</initial-damage>
+                                <initial-damage>100</initial-damage>
+                            </properties>
+                        </behavior-instance>
+                        <behavior-instance type="CQFault">
+                            <properties>
+                                <collision-frames>3</collision-frames>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>

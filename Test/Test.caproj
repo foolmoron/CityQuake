@@ -7,25 +7,26 @@
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
-        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
     </used-plugins>
     <used-behaviors>
-        <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
-        <behavior author="foolmoron" id="CQdamaging" version="1">CQ Damaging</behavior>
         <behavior author="foolmoron" id="CQdestroyable" version="1">CQ Destroyable</behavior>
         <behavior author="foolmoron" id="CQdirt" version="1">CQ Dirt</behavior>
         <behavior author="foolmoron" id="CQearthquake" version="1">CQ Earthquake</behavior>
         <behavior author="foolmoron" id="CQearthquakeind" version="1">CQ Earthquake Indicator</behavior>
+        <behavior author="foolmoron" id="CQfault" version="1">CQ Fault</behavior>
         <behavior author="foolmoron" id="CQgrass" version="1">CQ Grass</behavior>
         <behavior author="foolmoron" id="CQhouse" version="1">CQ House</behavior>
         <behavior author="foolmoron" id="CQoffice" version="1">CQ Office</behavior>
         <behavior author="foolmoron" id="CQwater" version="1">CQ Water</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
+        <behavior author="foolmoron" id="CQdamaging" version="1">CQ Damaging</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
         <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
@@ -312,6 +313,9 @@
                 </behavior-type>
                 <behavior-type name="CQDamaging">
                     <behavior id="CQdamaging" />
+                </behavior-type>
+                <behavior-type name="CQFault">
+                    <behavior id="CQfault" />
                 </behavior-type>
             </behaviors>
             <texture />
