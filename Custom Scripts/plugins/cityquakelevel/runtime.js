@@ -438,7 +438,7 @@ cr.plugins_.CQLevels = function(runtime)
 				x,
 				y);
 			var BG = this.background.behavior_insts[1];
-			BG.shake(50, 1);
+			BG.shake(this.TILE_HEIGHT/2, 1);
 		}
 		if (this.earthquakeIndicator != null){
 			this.runtime.DestroyInstance(this.earthquakeIndicator);

@@ -87,7 +87,7 @@ ACESDone();
 // new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
 
 var property_list = [
-	//new cr.Property(ept_integer, 	"My property",		77,		"An example property.")
+	new cr.Property(ept_integer, 	"Collision frames",		3,		"Number of frames that the fault will have collisions enabled after being created.")
 	];
 	
 // Called by IDE when a new behavior type is to be created

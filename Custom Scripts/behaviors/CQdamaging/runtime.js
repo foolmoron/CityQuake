@@ -51,15 +51,40 @@ cr.behaviors.CQdamaging = function(runtime)
 		// Load properties
 		this.inst.damage = this.properties[0];
 		this.inst.alreadyHit = [];
+		this.inst.collisionActive = true;
 	};
+
 
 	behinstProto.tick = function ()
 	{
-		var dt = this.runtime.getDt(this.inst);
+		var inst = this.inst;
+		var dt = this.runtime.getDt(inst);
 		
-		// called every tick for you to update this.inst as necessary
-		// dt is the amount of time passed since the last tick, in case it's a movement
+		if (inst.collisionActive){
+			var types = this.runtime.types_by_index;
+			for(var i = 0; i < types.length; i++){
+				if (typeHasBehavior(types[i], "CQDestroyable")){
+					for(var j = 0; j < types[i].instances.length; j++){
+						if (this.runtime.testOverlap(inst, types[i].instances[j])){
+							var destroyable = types[i].instances[j];
+							if (inst.alreadyHit.indexOf(destroyable) < 0){
+								destroyable.health -= inst.damage;
+								inst.alreadyHit.push(destroyable);
+							}
+						}
+					}
+				}
+			}
+		}
 	};
+	
+	function typeHasBehavior(type, behaviorName){
+		for(var b = 0; b < type.behaviors.length; b++){
+			if (type.behaviors[b].name === behaviorName)
+				return true;
+		}
+		return false;
+	}
 
 	//////////////////////////////////////
 	// Conditions

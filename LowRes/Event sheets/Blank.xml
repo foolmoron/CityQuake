@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Blank</name>
+    <events>
+        <variable constant="0" name="x" static="0" type="number">0</variable>
+        <variable constant="0" name="MAX_SCALE" static="0" type="number">5</variable>
+        <variable constant="0" name="RADIUS_PER_SECOND" static="0" type="number">400</variable>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="On start of layout" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Initialize" type="CityQuakeLevels" />
+                <action id="1" name="Load randomized level" type="CityQuakeLevels" />
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition disabled="1" id="10" name="On Nth touch start" type="Touch">
+                    <param id="0" name="Touch number">0</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="2" name="Is in touch" type="Touch" />
+            </conditions>
+            <actions>
+                <action id="3" name="Update indicators" type="CityQuakeLevels">
+                    <param id="0" name="X">CanvasToLayerX(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                    <param id="1" name="Y">CanvasToLayerY(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="11" name="On Nth touch end" type="Touch">
+                    <param id="0" name="Touch number">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="2" name="Spawn earthquake" type="CityQuakeLevels">
+                    <param id="0" name="X">CanvasToLayerX(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                    <param id="1" name="Y">CanvasToLayerY(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-1" name="Every tick" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" type="Debug">
+                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot;</param>
+                </action>
+                <action id="9" name="Set scale" type="Earthquake">
+                    <param id="0" name="Scale">(((100 - Earthquake.Opacity)/100) * (MAX_SCALE - 1)) + 1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On collision with another object" type="Earthquake">
+                    <param id="0" name="Object">Earthquake</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="CQEarthquake" id="0" name="Create Object Between" type="Earthquake">
+                    <param id="0" name="Type">Fault</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

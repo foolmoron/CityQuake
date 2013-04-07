@@ -49,17 +49,16 @@ cr.behaviors.CQfault = function(runtime)
 	behinstProto.onCreate = function()
 	{
 		// Load properties
-		
-		// object is sealed after this call, so make sure any properties you'll ever need are created, e.g.
-		// this.myValue = 0;
+		this.inst.NUM_COLLISION_FRAMES = this.properties[0];
+		this.inst.framesSinceCreation = 0;
 	};
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
-		
-		// called every tick for you to update this.inst as necessary
-		// dt is the amount of time passed since the last tick, in case it's a movement
+		if (this.inst.framesSinceCreation >= this.inst.NUM_COLLISION_FRAMES)
+			this.inst.collisionActive = false;
+		this.inst.framesSinceCreation++;
 	};
 
 	//////////////////////////////////////

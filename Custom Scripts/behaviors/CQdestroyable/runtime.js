@@ -55,22 +55,6 @@ cr.behaviors.CQdestroyable = function(runtime)
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
-		
-		var types = this.runtime.types_by_index;
-		for(var i = 0; i < types.length; i++){
-			if (typeHasBehavior(types[i], "CQDamaging")){
-				for(var j = 0; j < types[i].instances.length; j++){
-					if (this.runtime.testOverlap(this.inst, types[i].instances[j])){
-						var damaging = types[i].instances[j];
-						if (damaging.alreadyHit.indexOf(this.inst) < 0){
-							this.inst.health -= damaging.damage;
-							damaging.alreadyHit.push(this.inst);
-						}
-					}
-				}
-			}
-		}
-		
 		if (this.inst.health <= 0){
 			this.runtime.DestroyInstance(this.inst);
 		}
