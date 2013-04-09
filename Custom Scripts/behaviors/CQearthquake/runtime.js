@@ -48,7 +48,7 @@ cr.behaviors.CQearthquake = function(runtime)
 
 	behinstProto.onCreate = function()
 	{
-		// Load properties
+		this.inst.alreadyCollidedWith = [];
 	};
 
 	behinstProto.tick = function ()
@@ -80,12 +80,18 @@ cr.behaviors.CQearthquake = function(runtime)
 
 	// the example action
 	Acts.prototype.CreateTangentObject = function (obj)
-	{
+	{		
 		var CQ = cr.plugins_.CQLevels.prototype.Instance.prototype;
-		
+	
 		var sol = this.type.objtype.getCurrentSol();
 		var quake1 = sol.instances[0];
 		var quake2 = sol.instances[1];
+		
+		var otherQuake = (quake1 === this.inst) ? quake2 : quake1;
+		if (this.inst.alreadyCollidedWith.indexOf(otherQuake) >= 0)
+			return; //already created fault with this one		
+		this.inst.alreadyCollidedWith.push(otherQuake);
+		otherQuake.alreadyCollidedWith.push(this.inst);
 		
 		var dy = quake2.y - quake1.y;
 		var dx = quake2.x - quake1.x;
@@ -105,6 +111,7 @@ cr.behaviors.CQearthquake = function(runtime)
 		var angle = Math.atan2(dy, dx);
 		var degs = angle * (180 / Math.PI);
 		fault.angle = angle;
+		this.runtime.all_global_vars[1].data += 1;
 	};
 	
 	// ... other actions here ...

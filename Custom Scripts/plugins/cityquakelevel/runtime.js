@@ -59,12 +59,17 @@ cr.plugins_.CQLevels = function(runtime)
 		this.TYPE_INDEX_GRASS;
 		this.TYPE_INDEX_HOUSE;
 		this.TYPE_INDEX_OFFICE;	
+		this.TYPE_INDEX_FIRESTATION;	
+		this.TYPE_INDEX_HOSPITAL;	
+		this.TYPE_INDEX_FACTORY;	
 		
 		this.globalVarMap = {};
 		this.typeIndexMap = {};
 		this.tileTypeNames = [];
 		this.tileTypeIndices = [];
 		this.tileTypeLayers = [];
+		this.tileTypeSizes = [];
+		this.tileTypeFrames = [];
 		
 		this.background;
 		
@@ -87,9 +92,9 @@ cr.plugins_.CQLevels = function(runtime)
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G],
+			 [H, 0, 0, 0, S, 0, V, 0, 0, 0, 0, 0, 0, 0, 0, G],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0, 0],
+			 [H, 0, 0, 0, F, 0, F, 0, 0, 0, 0, 0, 0, G, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0, 0, 0],
@@ -165,6 +170,11 @@ cr.plugins_.CQLevels = function(runtime)
 	instanceProto.getTopLayer = function ()
 	{
 		return 3;
+	}
+	
+	instanceProto.getGlobals = function ()
+	{
+		return this.globalVarMap;
 	}
 	
 	instanceProto.getTypeIndex = function (typeName)
@@ -249,6 +259,18 @@ cr.plugins_.CQLevels = function(runtime)
 					this.TYPE_INDEX_OFFICE = i;
 					this.typeIndexMap["CQOffice"] = i;
 					break;
+				} else if (types[i].behaviors[b].name === "CQFireStation"){
+					this.TYPE_INDEX_FIRESTATION = i;
+					this.typeIndexMap["CQFireStation"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQHospital"){
+					this.TYPE_INDEX_HOSPITAL = i;
+					this.typeIndexMap["CQHospital"] = i;
+					break;
+				} else if (types[i].behaviors[b].name === "CQFactory"){
+					this.TYPE_INDEX_FACTORY = i;
+					this.typeIndexMap["CQFactory"] = i;
+					break;
 				} else if (types[i].behaviors[b].name === "CQEarthquake"){
 					this.typeIndexMap["CQEarthquake"] = i;
 					break;
@@ -273,10 +295,10 @@ cr.plugins_.CQLevels = function(runtime)
 			"Grass", // 3
 			"House", // 4 
 			"Office", // 5
-			/*"FireStation", // 6 
+			"FireStation", // 6 
 			"Hospital", // 7
 			"Factory", // 8 
-			"Airport", // 9 
+			/*"Airport", // 9 
 			"Runway", // 10 */
 		];
 		this.tileTypeIndices = 
@@ -287,11 +309,39 @@ cr.plugins_.CQLevels = function(runtime)
 			this.TYPE_INDEX_GRASS, //"Grass", // 3 
 			this.TYPE_INDEX_HOUSE, //"House", // 4 
 			this.TYPE_INDEX_OFFICE, //Office", // 5
-			//"FireStation", // 6 
-			//"Hospital", // 7 
-			//"Factory", // 8 
+			this.TYPE_INDEX_FIRESTATION, // 6 
+			this.TYPE_INDEX_HOSPITAL, // 7 
+			this.TYPE_INDEX_FACTORY, // 8 
 			//"Airport", // 9 
 			//"Runway", // 10 */
+		];
+		this.tileTypeSizes = //base tile sizes {x, y} => x tiles wide, y tiles long, null => 1x1
+		[
+			null, //"None" - unintialized
+			null, //"Dirt", // 1
+			null, //"Water", // 2 
+			null, //"Grass", // 3 
+			null, //"House", // 4 
+			null, //"Office", // 5
+			[2, 2], //FireStation", // 5
+			[2, 2], //"Hospital", // 5
+			[2, 1], //"Factory", // 5
+			/*"Airport" // 8 
+			"Runway" // 9 */
+		];
+		this.tileTypeFrames = //how many alt-versions each tile has
+		[
+			0, //"None" - unintialized
+			0, //"Dirt", // 1
+			0, //"Water", // 2 
+			0, //"Grass", // 3 
+			0, //"House", // 4 
+			0, //"Office", // 5
+			2, //FireStation", // 5
+			0, //"Hospital", // 5
+			2, //"Factory", // 5
+			/*"Airport" // 8 
+			"Runway" // 9 */
 		];
 		var BOTTOM = this.getBottomLayer();
 		var TOP = this.getTopLayer();
@@ -303,10 +353,10 @@ cr.plugins_.CQLevels = function(runtime)
 			BOTTOM, // 3 ground
 			TOP, // 4 building
 			TOP, // 5 building
-			/*"FireStation" // 5 
-			"Hospital" // 6 
-			"Factory" // 7 
-			"Airport" // 8 
+			TOP, // 5 
+			TOP, // 6 
+			TOP // 7 
+			/*"Airport" // 8 
 			"Runway" // 9 */
 		];
 		
@@ -375,16 +425,49 @@ cr.plugins_.CQLevels = function(runtime)
 				}
 				--xIndex;
 				
-				// create sprite at i, j
-				var tile = this.tileGrid[i][j];
-				if (substitubeBlanksWithDirt && tile == 0) tile = 1;
-				if (tile > 0){
-					var newInstance = this.runtime.createInstance(
-											this.runtime.types_by_index[this.tileTypeIndices[tile]],
-											this.runtime.running_layout.layers[this.tileTypeLayers[tile]],
-											xPos,
-											yPos);
-					this.objGrid[i][j] = newInstance;
+				// create sprite at i, j if one isn't already there
+				if (this.objGrid[i][j] == null){
+					var tile = this.tileGrid[i][j];
+					if (substitubeBlanksWithDirt && tile == 0) tile = 1;
+					if (tile > 0){
+						var size = this.tileTypeSizes[tile];
+						var canBuild = true;
+						if (size){
+							for(var ii = 0; ii < size[0]; ii++){
+								for(var jj = 0; jj < size[1]; jj++){
+									if (i + ii >= this.GRID_SIZE || j + jj >= this.GRID_SIZE ||
+											this.objGrid[i + ii][j + jj] != null)
+										canBuild = false;
+								}
+							}
+						}
+						if (!canBuild){
+							tile = 1;
+							size = null;
+						}
+						var newInstance = this.runtime.createInstance(
+												this.runtime.types_by_index[this.tileTypeIndices[tile]],
+												this.runtime.running_layout.layers[this.tileTypeLayers[tile]],
+												xPos,
+												yPos);
+						if (this.tileTypeFrames[tile] > 0){
+							var rand = Math.floor((Math.random()*this.tileTypeFrames[tile]));
+							newInstance.changeAnimFrame = rand;
+							newInstance.doChangeAnimFrame();
+						}
+						if (size){
+							for(var ii = 0; ii < size[0]; ii++){
+								for(var jj = 0; jj < size[1]; jj++){
+									if (i + ii < this.GRID_SIZE && j + jj < this.GRID_SIZE)
+										this.objGrid[i + ii][j + jj] = newInstance;
+								}
+							}
+						} else {
+							this.objGrid[i][j] = newInstance;
+						}
+					}
+				} else {
+					this.moveInstToTop(this.objGrid[i][j]);
 				}
 				xPos += this.TILE_HEIGHT * 2; //shift tile length to the right
 			}
@@ -396,6 +479,24 @@ cr.plugins_.CQLevels = function(runtime)
 		
 		this.calculateGameplayAreaBounds();	
 	};
+	
+	instanceProto.moveInstToTop = function(inst)
+	{
+		//stolen from commonace.moveToTop
+		var zindex = inst.get_zindex();
+	
+		// is already at top: don't do anything
+		if (zindex === inst.layer.instances.length - 1)
+			return;
+			
+		// remove and re-insert at top
+		cr.arrayRemove(inst.layer.instances, zindex);
+		inst.layer.instances.push(inst);
+		inst.runtime.redraw = true;
+		
+		// all objects on this layer need their z index updating - lazy assign
+		inst.layer.zindices_stale = true;
+	}
 	
 	instanceProto.calculateGameplayAreaBounds = function()
 	{	

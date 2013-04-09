@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Blank</name>
     <events>
+        <variable comment="Debug text that can be set via javascript" constant="0" name="DEBUG" static="0" type="text">&quot;//&quot;</variable>
         <variable constant="0" name="x" static="0" type="number">0</variable>
         <variable constant="0" name="MAX_SCALE" static="0" type="number">5</variable>
         <variable constant="0" name="RADIUS_PER_SECOND" static="0" type="number">400</variable>
@@ -53,7 +54,7 @@
             </conditions>
             <actions>
                 <action id="0" name="Set text" type="Debug">
-                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot;</param>
+                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot; &amp; newline &amp; &quot;Faults=&quot;  &amp; x &amp; newline &amp; DEBUG</param>
                 </action>
                 <action id="9" name="Set scale" type="Earthquake">
                     <param id="0" name="Scale">(((100 - Earthquake.Opacity)/100) * (MAX_SCALE - 1)) + 1</param>

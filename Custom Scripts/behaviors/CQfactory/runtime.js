@@ -8,7 +8,7 @@ assert2(cr.behaviors, "cr.behaviors not created");
 // Behavior class
 // *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 //           vvvvvvvvvv
-cr.behaviors.CQfault = function(runtime)
+cr.behaviors.CQfactory = function(runtime)
 {
 	this.runtime = runtime;
 };
@@ -17,7 +17,7 @@ cr.behaviors.CQfault = function(runtime)
 {
 	// *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 	//                               vvvvvvvvvv
-	var behaviorProto = cr.behaviors.CQfault.prototype;
+	var behaviorProto = cr.behaviors.CQfactory.prototype;
 		
 	/////////////////////////////////////
 	// Behavior type class
@@ -49,18 +49,18 @@ cr.behaviors.CQfault = function(runtime)
 	behinstProto.onCreate = function()
 	{
 		// Load properties
-		this.inst.NUM_COLLISION_FRAMES = this.properties[0];
-		this.inst.framesSinceCreation = 0;
+		this.myProperty = this.properties[0];
+		
+		// object is sealed after this call, so make sure any properties you'll ever need are created, e.g.
+		// this.myValue = 0;
 	};
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
-		if (this.inst.collisionsEnabled){
-			if (this.inst.framesSinceCreation >= this.inst.NUM_COLLISION_FRAMES)
-				this.inst.collisionsEnabled = false;
-			this.inst.framesSinceCreation++;
-		}
+		
+		// called every tick for you to update this.inst as necessary
+		// dt is the amount of time passed since the last tick, in case it's a movement
 	};
 
 	//////////////////////////////////////
@@ -68,11 +68,11 @@ cr.behaviors.CQfault = function(runtime)
 	function Cnds() {};
 
 	// the example condition
-	Cnds.prototype.IsMoving = function ()
+/* 	Cnds.prototype.IsMoving = function ()
 	{
 		// ... see other behaviors for example implementations ...
 		return false;
-	};
+	}; */
 	
 	// ... other conditions here ...
 	
@@ -83,10 +83,10 @@ cr.behaviors.CQfault = function(runtime)
 	function Acts() {};
 
 	// the example action
-	Acts.prototype.Stop = function ()
+/* 	Acts.prototype.Stop = function ()
 	{
 		// ... see other behaviors for example implementations ...
-	};
+	}; */
 	
 	// ... other actions here ...
 	
@@ -97,13 +97,13 @@ cr.behaviors.CQfault = function(runtime)
 	function Exps() {};
 
 	// the example expression
-	Exps.prototype.MyExpression = function (ret)	// 'ret' must always be the first parameter - always return the expression's result through it!
+/* 	Exps.prototype.MyExpression = function (ret)	// 'ret' must always be the first parameter - always return the expression's result through it!
 	{
 		ret.set_int(1337);				// return our value
 		// ret.set_float(0.5);			// for returning floats
 		// ret.set_string("Hello");		// for ef_return_string
 		// ret.set_any("woo");			// for ef_return_any, accepts either a number or string
-	};
+	}; */
 	
 	// ... other expressions here ...
 	

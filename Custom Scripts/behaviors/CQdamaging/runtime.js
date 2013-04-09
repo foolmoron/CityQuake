@@ -51,7 +51,6 @@ cr.behaviors.CQdamaging = function(runtime)
 		// Load properties
 		this.inst.damage = this.properties[0];
 		this.inst.alreadyHit = [];
-		this.inst.collisionActive = true;
 	};
 
 
@@ -60,7 +59,9 @@ cr.behaviors.CQdamaging = function(runtime)
 		var inst = this.inst;
 		var dt = this.runtime.getDt(inst);
 		
-		if (inst.collisionActive){
+		var debug = this.runtime.all_global_vars[0];
+		var killed = 0;
+		if (inst.collisionsEnabled){
 			var types = this.runtime.types_by_index;
 			for(var i = 0; i < types.length; i++){
 				if (typeHasBehavior(types[i], "CQDestroyable")){
@@ -70,12 +71,19 @@ cr.behaviors.CQdamaging = function(runtime)
 							if (inst.alreadyHit.indexOf(destroyable) < 0){
 								destroyable.health -= inst.damage;
 								inst.alreadyHit.push(destroyable);
+								
+								if (destroyable.health <= 0)
+									killed++;
 							}
 						}
 					}
 				}
 			}
 		}
+		if (inst.damage > 10 && killed > 0)
+			debug.data = "Fault #" + inst.uid + " killed " + killed + "\npos=(" + inst.x + ", " + inst.y + ")";
+		if (killed > 20)
+			debug.data += "!!!";
 	};
 	
 	function typeHasBehavior(type, behaviorName){

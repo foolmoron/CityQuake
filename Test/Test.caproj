@@ -7,28 +7,29 @@
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
+        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
-        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
-        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
+        <behavior author="foolmoron" id="CQdamaging" version="1">CQ Damaging</behavior>
         <behavior author="foolmoron" id="CQdestroyable" version="1">CQ Destroyable</behavior>
         <behavior author="foolmoron" id="CQdirt" version="1">CQ Dirt</behavior>
         <behavior author="foolmoron" id="CQearthquake" version="1">CQ Earthquake</behavior>
         <behavior author="foolmoron" id="CQearthquakeind" version="1">CQ Earthquake Indicator</behavior>
+        <behavior author="foolmoron" id="CQfactory" version="1">CQ Factory</behavior>
         <behavior author="foolmoron" id="CQfault" version="1">CQ Fault</behavior>
+        <behavior author="foolmoron" id="CQfirestation" version="1">CQ Fire Station</behavior>
         <behavior author="foolmoron" id="CQgrass" version="1">CQ Grass</behavior>
+        <behavior author="foolmoron" id="CQhospital" version="1">CQ Hospital</behavior>
         <behavior author="foolmoron" id="CQhouse" version="1">CQ House</behavior>
         <behavior author="foolmoron" id="CQoffice" version="1">CQ Office</behavior>
         <behavior author="foolmoron" id="CQwater" version="1">CQ Water</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
-        <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
-        <behavior author="foolmoron" id="CQdamaging" version="1">CQ Damaging</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
-        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -147,9 +148,6 @@
             <behaviors>
                 <behavior-type name="Fade">
                     <behavior id="Fade" />
-                </behavior-type>
-                <behavior-type name="Solid">
-                    <behavior id="solid" />
                 </behavior-type>
                 <behavior-type name="CQEarthquake">
                     <behavior id="CQearthquake" />
@@ -305,21 +303,6 @@
         <object-type name="Text">
             <plugin id="Text" />
         </object-type>
-        <object-type name="Fault">
-            <plugin id="TiledBg" />
-            <behaviors>
-                <behavior-type name="Solid">
-                    <behavior id="solid" />
-                </behavior-type>
-                <behavior-type name="CQDamaging">
-                    <behavior id="CQdamaging" />
-                </behavior-type>
-                <behavior-type name="CQFault">
-                    <behavior id="CQfault" />
-                </behavior-type>
-            </behaviors>
-            <texture />
-        </object-type>
         <object-type global="1" name="HUD">
             <plugin id="Sprite" />
             <behaviors>
@@ -380,6 +363,107 @@
                             <point x="1" y="0.5" />
                             <point x="0.5" y="1" />
                             <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Fault">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="CQDamaging">
+                    <behavior id="CQdamaging" />
+                </behavior-type>
+                <behavior-type name="CQFault">
+                    <behavior id="CQfault" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.502392" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Factory">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="CQFactory">
+                    <behavior id="CQfactory" />
+                </behavior-type>
+                <behavior-type name="CQDestroyable">
+                    <behavior id="CQdestroyable" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="0">
+                    <frame duration="1" hotspotX="0.662162" hotspotY="0.856725">
+                        <collision-poly>
+                            <point x="0.662162" y="0.570175" />
+                            <point x="1" y="0.713451" />
+                            <point x="0.331081" y="1" />
+                            <point x="0" y="0.856725" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.662162" hotspotY="0.856725">
+                        <collision-poly>
+                            <point x="0.662162" y="0.570175" />
+                            <point x="1" y="0.713451" />
+                            <point x="0.331081" y="1" />
+                            <point x="0" y="0.856725" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="FireStation">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="CQFireStation">
+                    <behavior id="CQfirestation" />
+                </behavior-type>
+                <behavior-type name="CQDestroyable">
+                    <behavior id="CQdestroyable" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.666667">
+                        <collision-poly>
+                            <point x="0.5" y="0.329932" />
+                            <point x="0.997462" y="0.663265" />
+                            <point x="0.5" y="0.996599" />
+                            <point x="0.00253807" y="0.663265" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.666667">
+                        <collision-poly>
+                            <point x="0.5" y="0.329932" />
+                            <point x="0.997462" y="0.663265" />
+                            <point x="0.5" y="0.996599" />
+                            <point x="0.00253807" y="0.663265" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Hospital">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="CQHospital">
+                    <behavior id="CQhospital" />
+                </behavior-type>
+                <behavior-type name="CQDestroyable">
+                    <behavior id="CQdestroyable" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.668919">
+                        <collision-poly>
+                            <point x="0.5" y="0.332215" />
+                            <point x="0.997462" y="0.661074" />
+                            <point x="0.5" y="0.996644" />
+                            <point x="0.00253807" y="0.661074" />
                         </collision-poly>
                     </frame>
                 </animation>

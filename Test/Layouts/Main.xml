@@ -42,7 +42,6 @@
                                 <destroy>After fade out</destroy>
                             </properties>
                         </behavior-instance>
-                        <behavior-instance type="Solid" />
                         <behavior-instance type="CQEarthquake" />
                         <behavior-instance type="CQDamaging">
                             <properties>
@@ -8489,39 +8488,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Fault">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <hotspot>Center</hotspot>
-                    </properties>
-                    <behavior-instances>
-                        <behavior-instance type="Solid" />
-                        <behavior-instance type="CQDamaging">
-                            <properties>
-                                <initial-damage>100</initial-damage>
-                            </properties>
-                        </behavior-instance>
-                        <behavior-instance type="CQFault">
-                            <properties>
-                                <collision-frames>3</collision-frames>
-                            </properties>
-                        </behavior-instance>
-                    </behavior-instances>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>2325.336425781</x>
-                        <y>1095.383300781</y>
-                        <z>0</z>
-                        <width>17</width>
-                        <height>3465</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0.653501689</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
             </instances>
             <effects />
         </layer>
@@ -8966,6 +8932,126 @@
                         <depth>0</depth>
                         <hotspotX>0.504504502</hotspotX>
                         <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Fault">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="CQDamaging">
+                            <properties>
+                                <initial-damage>100</initial-damage>
+                            </properties>
+                        </behavior-instance>
+                        <behavior-instance type="CQFault">
+                            <properties>
+                                <collision-frames>10</collision-frames>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>2912</x>
+                        <y>1111</y>
+                        <z>0</z>
+                        <width>16</width>
+                        <height>3500</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.502392352</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Factory">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="CQFactory" />
+                        <behavior-instance type="CQDestroyable">
+                            <properties>
+                                <initial-health>4</initial-health>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>2165</x>
+                        <y>1319</y>
+                        <z>0</z>
+                        <width>296</width>
+                        <height>342</height>
+                        <depth>0</depth>
+                        <hotspotX>0.662162185</hotspotX>
+                        <hotspotY>0.856725156</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="FireStation">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="CQFireStation" />
+                        <behavior-instance type="CQDestroyable">
+                            <properties>
+                                <initial-health>4</initial-health>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>780</x>
+                        <y>1712</y>
+                        <z>0</z>
+                        <width>394</width>
+                        <height>294</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.666666687</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Hospital">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="CQHospital" />
+                        <behavior-instance type="CQDestroyable">
+                            <properties>
+                                <initial-health>4</initial-health>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>2359</x>
+                        <y>1518</y>
+                        <z>0</z>
+                        <width>392</width>
+                        <height>296</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.668918908</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
