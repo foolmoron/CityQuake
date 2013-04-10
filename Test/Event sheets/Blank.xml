@@ -62,7 +62,7 @@
             </conditions>
             <actions>
                 <action behavior="CQEarthquake" id="0" name="Create Object Between" type="Earthquake">
-                    <param id="0" name="Type">Fault</param>
+                    <param id="0" name="Type">FaultIndicator</param>
                 </action>
             </actions>
         </event-block>
