@@ -13,6 +13,8 @@ cr.plugins_.CQLevels = function(runtime)
 	this.runtime = runtime;
 };
 
+var CQ;
+
 (function ()
 {
 	/////////////////////////////////////
@@ -52,6 +54,7 @@ cr.plugins_.CQLevels = function(runtime)
 	instanceProto.onCreate = function()
 	{
 		this.runtime.tickMe(this);
+		CQ = this;
 		
 		//proto declarations
 		this.TYPE_INDEX_DIRT;
@@ -172,14 +175,14 @@ cr.plugins_.CQLevels = function(runtime)
 		return 3;
 	}
 	
-	instanceProto.getGlobals = function ()
-	{
-		return this.globalVarMap;
-	}
-	
 	instanceProto.getTypeIndex = function (typeName)
 	{
 		return this.typeIndexMap[typeName];
+	}
+	
+	instanceProto.getType = function (typeName)
+	{
+		return this.runtime.types_by_index[this.typeIndexMap[typeName]];
 	}
 	
 	instanceProto.tick = function ()
@@ -549,6 +552,8 @@ cr.plugins_.CQLevels = function(runtime)
 	
 	Acts.prototype.UpdateIndicators = function (x, y)
 	{
+		if (this.runtime.timescale < 1) // no earthquakes when slowmo
+			return;
 		if (this.earthquakeIndicator == null){
 			this.earthquakeIndicator = this.runtime.createInstance(
 										this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]],

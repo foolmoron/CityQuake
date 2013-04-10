@@ -6,7 +6,6 @@
         <variable comment="Debug text that can be set via javascript" constant="0" name="DEBUG" static="0" type="text">&quot;//&quot;</variable>
         <variable constant="0" name="x" static="0" type="number">0</variable>
         <variable constant="0" name="MAX_SCALE" static="0" type="number">5</variable>
-        <variable constant="0" name="RADIUS_PER_SECOND" static="0" type="number">400</variable>
         <event-block>
             <conditions>
                 <condition id="-2" name="On start of layout" type="System" />
@@ -18,15 +17,9 @@
         </event-block>
         <event-block>
             <conditions>
-                <condition disabled="1" id="10" name="On Nth touch start" type="Touch">
+                <condition id="12" name="Has Nth touch" type="Touch">
                     <param id="0" name="Touch number">0</param>
                 </condition>
-            </conditions>
-            <actions />
-        </event-block>
-        <event-block>
-            <conditions>
-                <condition id="2" name="Is in touch" type="Touch" />
             </conditions>
             <actions>
                 <action id="3" name="Update indicators" type="CityQuakeLevels">

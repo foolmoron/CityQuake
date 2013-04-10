@@ -80,16 +80,14 @@ cr.behaviors.CQearthquake = function(runtime)
 
 	// the example action
 	Acts.prototype.CreateTangentObject = function (obj)
-	{		
-		var CQ = cr.plugins_.CQLevels.prototype.Instance.prototype;
-	
+	{			
 		var sol = this.type.objtype.getCurrentSol();
 		var quake1 = sol.instances[0];
 		var quake2 = sol.instances[1];
 		
 		var otherQuake = (quake1 === this.inst) ? quake2 : quake1;
 		if (this.inst.alreadyCollidedWith.indexOf(otherQuake) >= 0)
-			return; //already created fault with this one		
+			return; //already created obj with this earthquake
 		this.inst.alreadyCollidedWith.push(otherQuake);
 		otherQuake.alreadyCollidedWith.push(this.inst);
 		
@@ -107,11 +105,12 @@ cr.behaviors.CQearthquake = function(runtime)
 			return;
 		}
 		
-		var fault = this.runtime.createInstance(obj, this.runtime.running_layout.layers[CQ.getBottomLayer()], collisionX, collisionY);
+		var tangentObj = this.runtime.createInstance(obj, this.runtime.running_layout.layers[CQ.getBottomLayer()], collisionX, collisionY);
 		var angle = Math.atan2(dy, dx);
-		var degs = angle * (180 / Math.PI);
-		fault.angle = angle;
-		this.runtime.all_global_vars[1].data += 1;
+		tangentObj.angle = angle;
+		
+		this.runtime.timescale = 0;
+		tangentObj.my_timescale = 1;
 	};
 	
 	// ... other actions here ...

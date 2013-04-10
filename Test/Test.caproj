@@ -7,11 +7,11 @@
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
-        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
-        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
@@ -22,6 +22,7 @@
         <behavior author="foolmoron" id="CQearthquakeind" version="1">CQ Earthquake Indicator</behavior>
         <behavior author="foolmoron" id="CQfactory" version="1">CQ Factory</behavior>
         <behavior author="foolmoron" id="CQfault" version="1">CQ Fault</behavior>
+        <behavior author="foolmoron" id="CQfaultind" version="1">CQ Fault Indicator</behavior>
         <behavior author="foolmoron" id="CQfirestation" version="1">CQ Fire Station</behavior>
         <behavior author="foolmoron" id="CQgrass" version="1">CQ Grass</behavior>
         <behavior author="foolmoron" id="CQhospital" version="1">CQ Hospital</behavior>
@@ -466,6 +467,19 @@
                             <point x="0.00253807" y="0.661074" />
                         </collision-poly>
                     </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="FaultIndicator">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="CQFaultIndicator">
+                    <behavior id="CQfaultind" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.502392" />
                 </animation>
             </animation-folder>
         </object-type>
