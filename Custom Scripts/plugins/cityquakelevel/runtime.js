@@ -56,7 +56,11 @@ var CQ;
 		this.runtime.tickMe(this);
 		CQ = this;
 		
-		//proto declarations
+		//constants
+		this.TILE_HEIGHT = this.properties[0];	
+		this.EARTHQUAKE_FINAL_HEIGHT_IN_TILES = 5;
+		
+		//proto declarations		
 		this.TYPE_INDEX_DIRT;
 		this.TYPE_INDEX_WATER;
 		this.TYPE_INDEX_GRASS;
@@ -237,6 +241,7 @@ var CQ;
 	
 	Acts.prototype.Initialize = function ()
 	{				
+		this.TILE_HEIGHT = this.properties[0];	
 		var types = this.runtime.types_by_index;
 		for(var i = 0; i < types.length; i++){
 			var behavs = types[i].behaviors;
@@ -396,7 +401,6 @@ var CQ;
 	
 	instanceProto.loadLevel = function(substitubeBlanksWithDirt)
 	{
-		this.TILE_HEIGHT = this.properties[0];	
 		this.GRID_SIZE = this.tileGrid.length;
 		var baseX = this.properties[2];
 		var baseY = this.properties[3];
@@ -453,6 +457,10 @@ var CQ;
 												this.runtime.running_layout.layers[this.tileTypeLayers[tile]],
 												xPos,
 												yPos);
+						//set extra instance vars					
+						newInstance.tileSize = size ? size : [1,1];
+						newInstance.tileX = i;
+						newInstance.tileY = j;
 						if (this.tileTypeFrames[tile] > 0){
 							var rand = Math.floor((Math.random()*this.tileTypeFrames[tile]));
 							newInstance.changeAnimFrame = rand;
@@ -470,7 +478,9 @@ var CQ;
 						}
 					}
 				} else {
-					this.moveInstToTop(this.objGrid[i][j]);
+					var obj = this.objGrid[i][j];					
+					if (i == obj.tileX && j == (obj.tileY + (obj.tileSize[1] - 1))) //detect bottom-leftmost tile of object
+						this.moveInstToTop(obj);
 				}
 				xPos += this.TILE_HEIGHT * 2; //shift tile length to the right
 			}
@@ -561,7 +571,8 @@ var CQ;
 										x,
 										y);
 			//stolen from Sprite.SetScale()
-			var s = this.globalVarMap['MAX_SCALE'].data;
+			var desiredHeight = this.EARTHQUAKE_FINAL_HEIGHT_IN_TILES * this.TILE_HEIGHT;
+			var s = desiredHeight / this.earthquakeIndicator.curFrame.height;
 			var cur_frame = this.earthquakeIndicator.curFrame;
 			var mirror_factor = (this.earthquakeIndicator.width < 0 ? -1 : 1);
 			var flip_factor = (this.earthquakeIndicator.height < 0 ? -1 : 1);
@@ -572,8 +583,7 @@ var CQ;
 				this.earthquakeIndicator.width = new_width;
 				this.earthquakeIndicator.height = new_height;
 				this.earthquakeIndicator.set_bbox_changed();
-			}
-			
+			}			
 		}
 		this.earthquakeIndicator.x = x;
 		this.earthquakeIndicator.y = y;

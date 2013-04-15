@@ -5,7 +5,6 @@
     <events>
         <variable comment="Debug text that can be set via javascript" constant="0" name="DEBUG" static="0" type="text">&quot;//&quot;</variable>
         <variable constant="0" name="x" static="0" type="number">0</variable>
-        <variable constant="0" name="MAX_SCALE" static="0" type="number">5</variable>
         <event-block>
             <conditions>
                 <condition id="-2" name="On start of layout" type="System" />
@@ -48,9 +47,6 @@
             <actions>
                 <action id="0" name="Set text" type="Debug">
                     <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot; &amp; newline &amp; &quot;Faults=&quot;  &amp; x &amp; newline &amp; DEBUG</param>
-                </action>
-                <action id="9" name="Set scale" type="Earthquake">
-                    <param id="0" name="Scale">(((100 - Earthquake.Opacity)/100) * (MAX_SCALE - 1)) + 1</param>
                 </action>
             </actions>
         </event-block>

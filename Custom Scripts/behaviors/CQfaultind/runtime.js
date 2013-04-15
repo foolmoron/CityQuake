@@ -66,6 +66,8 @@ cr.behaviors.CQfaultind = function(runtime)
 	
 	behinstProto.unfreeze = function ()
 	{
+		if (!CQ.getType("CQFault"))
+			return;
 		this.runtime.timescale = 1;
 		var x = CQ.getTopLayer();
 		

@@ -48,15 +48,51 @@ cr.behaviors.CQearthquake = function(runtime)
 
 	behinstProto.onCreate = function()
 	{
+		//constants
+		this.EXPANSION_TIME = 1; //secs		
+		this.INITIAL_HEIGHT = CQ.TILE_HEIGHT/4;
+		this.FINAL_HEIGHT = CQ.EARTHQUAKE_FINAL_HEIGHT_IN_TILES * CQ.TILE_HEIGHT;
+		this.SECONDS_PER_FRAME = this.EXPANSION_TIME / this.inst.type.animations[0].frames.length;
+	
+		//declarations
 		this.inst.alreadyCollidedWith = [];
+		this.expansionTime = 0;
 	};
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
 		
-		// called every tick for you to update this.inst as necessary
-		// dt is the amount of time passed since the last tick, in case it's a movement
+		this.expansionTime += dt;
+		if (this.expansionTime >= this.EXPANSION_TIME){
+			this.runtime.DestroyInstance(this.inst);
+			return;
+		}
+		
+		var currentFrame = Math.floor(this.expansionTime / this.SECONDS_PER_FRAME);
+		this.inst.changeAnimFrame = currentFrame;
+		this.inst.doChangeAnimFrame();
+		
+		var ratio = this.expansionTime / this.EXPANSION_TIME;
+		var desiredHeight = this.INITIAL_HEIGHT * (1-ratio) + this.FINAL_HEIGHT * ratio; //linear interp
+		var desiredScale = desiredHeight / this.inst.cur_animation.frames[currentFrame].height;
+		this.setScale(this.inst, desiredScale);
+	};
+	
+	behinstProto.setScale = function (inst, scale)
+	{			
+		//stolen from Sprite.SetScale()
+		var cur_frame = this.inst.curFrame;
+		var mirror_factor = (this.inst.width < 0 ? -1 : 1);
+		var flip_factor = (this.inst.height < 0 ? -1 : 1);
+		var new_width = cur_frame.width * scale * mirror_factor;
+		var new_height = cur_frame.height * scale * flip_factor;		
+		if (this.inst.width !== new_width || this.inst.height !== new_height)
+		{
+			this.inst.width = new_width;
+			this.inst.height = new_height;
+			this.inst.set_bbox_changed();
+		}		
 	};
 
 	//////////////////////////////////////
