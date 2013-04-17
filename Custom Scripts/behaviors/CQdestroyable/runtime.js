@@ -50,23 +50,53 @@ cr.behaviors.CQdestroyable = function(runtime)
 	{
 		// Load properties
 		this.inst.health = this.properties[0];
+		this.DESTROY_TIME = this.properties[1];
+		this.destroyTime = 0;
+		this.destroyPhase = false;
 	};
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
-		if (this.inst.health <= 0){
-			this.runtime.DestroyInstance(this.inst);
+		if (this.destroyPhase){
+			this.destroyTime += dt;
+			var ratio = this.destroyTime / this.DESTROY_TIME;
+			this.inst.opacity = 1 - ratio;
+			if (ratio >= 1){
+				this.runtime.DestroyInstance(this.inst);
+			}
+		}
+		else if(this.inst.health <= 0){
+			this.inst.collisionsEnabled = false;
+			this.destroyPhase = true;
+			var sizeX = this.inst.tileSize[0];
+			var sizeY = this.inst.tileSize[1];
+			var baseX = this.inst.x - (CQ.TILE_HEIGHT * (sizeX - 1)) + (CQ.TILE_HEIGHT * (sizeY - 1));
+			var baseY = this.inst.y + (CQ.TILE_HEIGHT/2 * (sizeX - 1)) + (CQ.TILE_HEIGHT/2 * (sizeY - 1));
+			for (var x = 1; x <= sizeX; x++){ // crawl up X side
+				var dust = this.runtime.createInstance(
+										this.runtime.types_by_index[CQ.typeIndexMap["CQDust"]],
+										this.runtime.running_layout.layers[CQ.LAYER_TOP],
+										baseX - (CQ.TILE_HEIGHT * x),
+										baseY - (CQ.TILE_HEIGHT/2 * x));		
+				CQ.moveInstToBottom(dust);
+			}
+			for (var y = 1; y <= sizeY; y++){ // crawl up X side
+				var dust = this.runtime.createInstance(
+										this.runtime.types_by_index[CQ.typeIndexMap["CQDust"]],
+										this.runtime.running_layout.layers[CQ.LAYER_TOP],
+										baseX + (CQ.TILE_HEIGHT * y),
+										baseY - (CQ.TILE_HEIGHT/2 * y));		
+				CQ.moveInstToBottom(dust);			
+			}
+			var dust = this.runtime.createInstance( // base dust
+									this.runtime.types_by_index[CQ.typeIndexMap["CQDust"]],
+									this.runtime.running_layout.layers[CQ.LAYER_TOP],
+									baseX,
+									baseY);	
+			CQ.moveInstToBottom(dust);
 		}
 	};
-	
-	function typeHasBehavior(type, behaviorName){
-		for(var b = 0; b < type.behaviors.length; b++){
-			if (type.behaviors[b].name === behaviorName)
-				return true;
-		}
-		return false;
-	}
 	
 	behinstProto.onDestroy = function ()
 	{

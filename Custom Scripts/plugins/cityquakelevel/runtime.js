@@ -79,6 +79,9 @@ var CQ;
 		this.tileTypeFrames = [];
 		
 		this.background;
+		this.LAYER_BOTTOM = 1;
+		this.LAYER_HUD = 2;
+		this.LAYER_TOP = 3;
 		
 		var tlm = 0, tlb = 0, trm = 0, trb = 0;
 		var blm = 0, blb = 0, brm = 0, brb = 0;
@@ -168,16 +171,6 @@ var CQ;
 		this.indicatorOffscreenY = -500;
 		this.earthquakeIndicator = null;
 	};
-	
-	instanceProto.getBottomLayer = function ()
-	{
-		return 1;
-	}
-	
-	instanceProto.getTopLayer = function ()
-	{
-		return 3;
-	}
 	
 	instanceProto.getTypeIndex = function (typeName)
 	{
@@ -279,22 +272,11 @@ var CQ;
 					this.TYPE_INDEX_FACTORY = i;
 					this.typeIndexMap["CQFactory"] = i;
 					break;
-				} else if (types[i].behaviors[b].name === "CQEarthquake"){
-					this.typeIndexMap["CQEarthquake"] = i;
-					break;
-				} else if (types[i].behaviors[b].name === "CQEarthquakeIndicator"){
-					this.typeIndexMap["CQEarthquakeIndicator"] = i;
-					break;
-				} else if (types[i].behaviors[b].name === "CQFault"){
-					this.typeIndexMap["CQFault"] = i;
-					break;
-				} else if (types[i].behaviors[b].name === "CQBackground"){
-					this.typeIndexMap["CQBackground"] = i;
-					break;
+				} else {
+					this.typeIndexMap[types[i].behaviors[b].name] = i;
 				}
 			}
-		}
-		
+		}		
 		this.tileTypeNames = 
 		[
 			"None", // 0 - unintialized
@@ -351,8 +333,8 @@ var CQ;
 			/*"Airport" // 8 
 			"Runway" // 9 */
 		];
-		var BOTTOM = this.getBottomLayer();
-		var TOP = this.getTopLayer();
+		var BOTTOM = this.LAYER_BOTTOM;
+		var TOP = this.LAYER_TOP;
 		this.tileTypeLayers = 
 		[
 			-1, // 0
@@ -457,6 +439,8 @@ var CQ;
 												this.runtime.running_layout.layers[this.tileTypeLayers[tile]],
 												xPos,
 												yPos);
+						if (!this.hasBehavior(newInstance, "CQDestroyable"))
+							newInstance.collisionsEnabled = false;
 						//set extra instance vars					
 						newInstance.tileSize = size ? size : [1,1];
 						newInstance.tileX = i;
@@ -493,6 +477,15 @@ var CQ;
 		this.calculateGameplayAreaBounds();	
 	};
 	
+	instanceProto.hasBehavior = function(inst, behaviorName)
+	{
+		for(var i = 0; i < inst.behavior_insts.length; i++){
+			if (inst.behavior_insts[i].type.name === behaviorName)
+				return true;
+		}	
+		return false;
+	}
+	
 	instanceProto.moveInstToTop = function(inst)
 	{
 		//stolen from commonace.moveToTop
@@ -505,6 +498,24 @@ var CQ;
 		// remove and re-insert at top
 		cr.arrayRemove(inst.layer.instances, zindex);
 		inst.layer.instances.push(inst);
+		inst.runtime.redraw = true;
+		
+		// all objects on this layer need their z index updating - lazy assign
+		inst.layer.zindices_stale = true;
+	}	
+	
+	instanceProto.moveInstToBottom = function(inst)
+	{
+		//stolen from commonace.moveToBottom
+		var zindex = inst.get_zindex();
+	
+		// is already at bottom: don't do anything
+		if (zindex === 0)
+			return;
+			
+		// remove and re-insert at bottom
+		cr.arrayRemove(inst.layer.instances, zindex);
+		inst.layer.instances.unshift(inst);
 		inst.runtime.redraw = true;
 		
 		// all objects on this layer need their z index updating - lazy assign
@@ -548,7 +559,7 @@ var CQ;
 		if (this.inGameplayArea(x,y)){
 			this.runtime.createInstance(
 				this.runtime.types_by_index[this.typeIndexMap["CQEarthquake"]],
-				this.runtime.running_layout.layers[this.getBottomLayer()],
+				this.runtime.running_layout.layers[this.LAYER_BOTTOM],
 				x,
 				y);
 			var BG = this.background.behavior_insts[1];
@@ -567,7 +578,7 @@ var CQ;
 		if (this.earthquakeIndicator == null){
 			this.earthquakeIndicator = this.runtime.createInstance(
 										this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]],
-										this.runtime.running_layout.layers[this.getTopLayer()],
+										this.runtime.running_layout.layers[this.LAYER_TOP],
 										x,
 										y);
 			//stolen from Sprite.SetScale()

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
     <name>Blank</name>
+    <sid>59</sid>
     <event-sheet>Blank</event-sheet>
     <size>
         <width>3400</width>
@@ -12,7 +13,7 @@
     </margins>
     <unbounded-scrolling>1</unbounded-scrolling>
     <layers>
-        <layer name="Shakeable">
+        <layer name="Shakeable" sid="60">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -26,7 +27,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="BG">
+                <instance type="BG" uid="0">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -54,7 +55,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="Bottom">
+        <layer name="Bottom" sid="61">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -68,7 +69,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="60FPSForcer">
+                <instance type="60FPSForcer" uid="1">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -99,7 +100,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="HUD">
+        <layer name="HUD" sid="62">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -113,7 +114,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="HUD">
+                <instance type="HUD" uid="2">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -137,7 +138,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Text">
+                <instance type="Text" uid="3">
                     <properties>
                         <text>PRESS ENTER TO RESET HOLD IT FOR LULZ</text>
                         <initial-visibility>Visible</initial-visibility>
@@ -164,7 +165,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Text">
+                <instance type="Text" uid="4">
                     <properties>
                         <text>CLICK TO DESTROY THINGS</text>
                         <initial-visibility>Visible</initial-visibility>
@@ -194,7 +195,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="Top">
+        <layer name="Top" sid="63">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -208,7 +209,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="Debug">
+                <instance type="Debug" uid="5">
                     <properties>
                         <text>Text</text>
                         <initial-visibility>Visible</initial-visibility>

@@ -5,31 +5,35 @@
     <version>1.0</version>
     <author></author>
     <unique-id>1it6a3ss8vrqo</unique-id>
-    <saved-with-version>11900</saved-with-version>
+    <saved-with-version>12600</saved-with-version>
+    <next-sid>95</next-sid>
     <used-plugins>
         <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
+        <behavior author="foolmoron" id="CQdamaging" version="1">CQ Damaging</behavior>
+        <behavior author="foolmoron" id="CQdestroyable" version="1">CQ Destroyable</behavior>
+        <behavior author="foolmoron" id="CQdirt" version="1">CQ Dirt</behavior>
+        <behavior author="foolmoron" id="CQdust" version="1">CQ Dust</behavior>
+        <behavior author="foolmoron" id="CQearthquake" version="1">CQ Earthquake</behavior>
+        <behavior author="foolmoron" id="CQearthquakeind" version="1">CQ Earthquake Indicator</behavior>
+        <behavior author="foolmoron" id="CQfactory" version="1">CQ Factory</behavior>
+        <behavior author="foolmoron" id="CQfault" version="1">CQ Fault</behavior>
+        <behavior author="foolmoron" id="CQfaultind" version="1">CQ Fault Indicator</behavior>
         <behavior author="foolmoron" id="CQfirestation" version="1">CQ Fire Station</behavior>
         <behavior author="foolmoron" id="CQgrass" version="1">CQ Grass</behavior>
         <behavior author="foolmoron" id="CQhospital" version="1">CQ Hospital</behavior>
         <behavior author="foolmoron" id="CQhouse" version="1">CQ House</behavior>
         <behavior author="foolmoron" id="CQoffice" version="1">CQ Office</behavior>
         <behavior author="foolmoron" id="CQwater" version="1">CQ Water</behavior>
-        <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
-        <behavior author="foolmoron" id="CQdamaging" version="1">CQ Damaging</behavior>
-        <behavior author="foolmoron" id="CQdestroyable" version="1">CQ Destroyable</behavior>
-        <behavior author="foolmoron" id="CQdirt" version="1">CQ Dirt</behavior>
-        <behavior author="foolmoron" id="CQearthquake" version="1">CQ Earthquake</behavior>
-        <behavior author="foolmoron" id="CQearthquakeind" version="1">CQ Earthquake Indicator</behavior>
-        <behavior author="foolmoron" id="CQfactory" version="1">CQ Factory</behavior>
-        <behavior author="foolmoron" id="CQfault" version="1">CQ Fault</behavior>
-        <behavior author="foolmoron" id="CQfaultind" version="1">CQ Fault Indicator</behavior>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
     </used-behaviors>
     <used-effects />
@@ -54,50 +58,53 @@
         <prop name="Use iOS retina display">iPhone only</prop>
     </configuration-settings>
     <object-folder expanded="1">
-        <object-type name="Dirt">
+        <object-type name="Dirt" sid="0">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQDirt">
+                <behavior-type name="CQDirt" sid="1">
                     <behavior id="CQdirt" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="1" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type global="1" name="BG">
+        <object-type global="1" name="BG" sid="3">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="ScrollTo">
+                <behavior-type name="ScrollTo" sid="4">
                     <behavior id="scrollto" />
                 </behavior-type>
-                <behavior-type name="CQBackground">
+                <behavior-type name="CQBackground" sid="5">
                     <behavior id="CQbackground" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="House">
+        <object-type name="House" sid="7">
             <plugin id="Sprite" />
             <instance-variables>
-                <instance-variable name="Health" type="number" />
+                <instance-variable name="Health" sid="8" type="number" />
             </instance-variables>
             <behaviors>
-                <behavior-type name="CQHouse">
+                <behavior-type name="CQHouse" sid="9">
                     <behavior id="CQhouse" />
                 </behavior-type>
-                <behavior-type name="CQDestroyable">
+                <behavior-type name="CQDestroyable" sid="10">
                     <behavior id="CQdestroyable" />
+                </behavior-type>
+                <behavior-type name="Fade" sid="92">
+                    <behavior id="Fade" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="11" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="1">
                         <collision-poly>
                             <point x="0.5" y="0.49495" />
@@ -109,21 +116,21 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Office">
+        <object-type name="Office" sid="12">
             <plugin id="Sprite" />
             <instance-variables>
-                <instance-variable name="Health" type="number" />
+                <instance-variable name="Health" sid="13" type="number" />
             </instance-variables>
             <behaviors>
-                <behavior-type name="CQOffice">
+                <behavior-type name="CQOffice" sid="93">
                     <behavior id="CQoffice" />
                 </behavior-type>
-                <behavior-type name="CQDestroyable">
+                <behavior-type name="CQDestroyable" sid="15">
                     <behavior id="CQdestroyable" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="16" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="1">
                         <collision-poly>
                             <point x="0" y="0.873418" />
@@ -135,27 +142,27 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Touch">
+        <object-type name="Touch" sid="17">
             <plugin id="Touch" />
         </object-type>
-        <object-type name="Debug">
+        <object-type name="Debug" sid="18">
             <plugin id="Text" />
         </object-type>
-        <object-type name="Function">
+        <object-type name="Function" sid="19">
             <plugin id="Function" />
         </object-type>
-        <object-type name="Earthquake">
+        <object-type name="Earthquake" sid="20">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQEarthquake">
+                <behavior-type name="CQEarthquake" sid="21">
                     <behavior id="CQearthquake" />
                 </behavior-type>
-                <behavior-type name="CQDamaging">
+                <behavior-type name="CQDamaging" sid="22">
                     <behavior id="CQdamaging" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="5" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="0">
+                <animation framecount="5" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="23" speed="0">
                     <frame duration="1" hotspotX="0.565789" hotspotY="0.5">
                         <collision-poly>
                             <point x="0.539474" y="0.25" />
@@ -216,15 +223,15 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Water">
+        <object-type name="Water" sid="24">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQWater">
+                <behavior-type name="CQWater" sid="25">
                     <behavior id="CQwater" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="15" loop="1" name="Default" pingpong="1" repeatcount="0" repeatto="0" speed="7">
+                <animation framecount="15" loop="1" name="Default" pingpong="1" repeatcount="0" repeatto="0" sid="26" speed="7">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.74">
                         <collision-poly>
                             <point x="0.33" y="0.33" />
@@ -288,15 +295,15 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Grass">
+        <object-type name="Grass" sid="27">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQGrass">
+                <behavior-type name="CQGrass" sid="28">
                     <behavior id="CQgrass" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="12" loop="1" name="Default" pingpong="1" repeatcount="1" repeatto="0" speed="7">
+                <animation framecount="12" loop="1" name="Default" pingpong="1" repeatcount="1" repeatto="0" sid="29" speed="7">
                     <frame duration="1" hotspotX="0.5" hotspotY="1">
                         <collision-poly>
                             <point x="0.5" y="0" />
@@ -340,34 +347,34 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="CityQuakeLevels">
+        <object-type name="CityQuakeLevels" sid="30">
             <plugin id="CQLevels" />
         </object-type>
-        <object-type name="Text">
+        <object-type name="Text" sid="31">
             <plugin id="Text" />
         </object-type>
-        <object-type global="1" name="HUD">
+        <object-type global="1" name="HUD" sid="32">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="ScrollTo">
+                <behavior-type name="ScrollTo" sid="33">
                     <behavior id="scrollto" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="34" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="EarthquakeIndicator">
+        <object-type name="EarthquakeIndicator" sid="35">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQEarthquakeIndicator">
+                <behavior-type name="CQEarthquakeIndicator" sid="36">
                     <behavior id="CQearthquakeind" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="37" speed="5">
                     <frame duration="1" hotspotX="0.504505" hotspotY="0.5">
                         <collision-poly>
                             <point x="0.135135" y="0.192308" />
@@ -383,15 +390,15 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="60FPSForcer">
+        <object-type name="60FPSForcer" sid="38">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQGrass">
+                <behavior-type name="CQGrass" sid="39">
                     <behavior id="CQgrass" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="2" loop="1" name="Default" pingpong="1" repeatcount="1" repeatto="0" speed="60">
+                <animation framecount="2" loop="1" name="Default" pingpong="1" repeatcount="1" repeatto="0" sid="40" speed="60">
                     <frame duration="1" hotspotX="0.5" hotspotY="1">
                         <collision-poly>
                             <point x="0.5" y="0" />
@@ -411,18 +418,18 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Factory">
+        <object-type name="Factory" sid="41">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQFactory">
+                <behavior-type name="CQFactory" sid="42">
                     <behavior id="CQfactory" />
                 </behavior-type>
-                <behavior-type name="CQDestroyable">
+                <behavior-type name="CQDestroyable" sid="43">
                     <behavior id="CQdestroyable" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="0">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="44" speed="0">
                     <frame duration="1" hotspotX="0.662162" hotspotY="0.856725">
                         <collision-poly>
                             <point x="0.662162" y="0.570175" />
@@ -442,18 +449,18 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="FireStation">
+        <object-type name="FireStation" sid="45">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQFireStation">
+                <behavior-type name="CQFireStation" sid="46">
                     <behavior id="CQfirestation" />
                 </behavior-type>
-                <behavior-type name="CQDestroyable">
+                <behavior-type name="CQDestroyable" sid="47">
                     <behavior id="CQdestroyable" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="0">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="48" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.666667">
                         <collision-poly>
                             <point x="0.5" y="0.329932" />
@@ -473,18 +480,18 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Hospital">
+        <object-type name="Hospital" sid="49">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQHospital">
+                <behavior-type name="CQHospital" sid="50">
                     <behavior id="CQhospital" />
                 </behavior-type>
-                <behavior-type name="CQDestroyable">
+                <behavior-type name="CQDestroyable" sid="51">
                     <behavior id="CQdestroyable" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="0">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="52" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.668919">
                         <collision-poly>
                             <point x="0.5" y="0.332215" />
@@ -496,27 +503,36 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="FaultIndicator">
+        <object-type name="FaultIndicator" sid="53">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="CQFaultIndicator">
+                <behavior-type name="CQFaultIndicator" sid="54">
                     <behavior id="CQfaultind" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="55" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.502392" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Fault">
+        <object-type name="Fault" sid="56">
             <plugin id="TiledBg" />
             <behaviors>
-                <behavior-type name="CQDamaging">
+                <behavior-type name="CQDamaging" sid="57">
                     <behavior id="CQdamaging" />
                 </behavior-type>
-                <behavior-type name="CQFault">
+                <behavior-type name="CQFault" sid="58">
                     <behavior id="CQfault" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="Dust" sid="91">
+            <plugin id="Particles" />
+            <behaviors>
+                <behavior-type name="CQDust" sid="94">
+                    <behavior id="CQdust" />
                 </behavior-type>
             </behaviors>
             <texture />
@@ -532,13 +548,13 @@
         <event-sheet>Blank.xml</event-sheet>
     </event-folder>
     <global-instances>
-        <global-instance type="Touch">
+        <global-instance type="Touch" uid="326">
             <properties>
                 <use-mouse-input>Yes</use-mouse-input>
             </properties>
         </global-instance>
-        <global-instance type="Function" />
-        <global-instance type="CityQuakeLevels">
+        <global-instance type="Function" uid="327" />
+        <global-instance type="CityQuakeLevels" uid="328">
             <properties>
                 <isometric-tile-height>98</isometric-tile-height>
                 <grid-size>16</grid-size>

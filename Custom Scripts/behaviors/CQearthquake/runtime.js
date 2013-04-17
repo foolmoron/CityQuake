@@ -50,7 +50,7 @@ cr.behaviors.CQearthquake = function(runtime)
 	{
 		//constants
 		this.EXPANSION_TIME = 1; //secs		
-		this.INITIAL_HEIGHT = CQ.TILE_HEIGHT/4;
+		this.INITIAL_HEIGHT = CQ.TILE_HEIGHT/2;
 		this.FINAL_HEIGHT = CQ.EARTHQUAKE_FINAL_HEIGHT_IN_TILES * CQ.TILE_HEIGHT;
 		this.SECONDS_PER_FRAME = this.EXPANSION_TIME / this.inst.type.animations[0].frames.length;
 	
@@ -141,7 +141,7 @@ cr.behaviors.CQearthquake = function(runtime)
 			return;
 		}
 		
-		var tangentObj = this.runtime.createInstance(obj, this.runtime.running_layout.layers[CQ.getBottomLayer()], collisionX, collisionY);
+		var tangentObj = this.runtime.createInstance(obj, this.runtime.running_layout.layers[CQ.LAYER_BOTTOM], collisionX, collisionY);
 		var angle = Math.atan2(dy, dx);
 		tangentObj.angle = angle;
 		

@@ -69,9 +69,8 @@ cr.behaviors.CQfaultind = function(runtime)
 		if (!CQ.getType("CQFault"))
 			return;
 		this.runtime.timescale = 1;
-		var x = CQ.getTopLayer();
 		
-		var tangentObj = this.runtime.createInstance(CQ.getType("CQFault"), this.runtime.running_layout.layers[CQ.getBottomLayer()], this.inst.x, this.inst.y);
+		var tangentObj = this.runtime.createInstance(CQ.getType("CQFault"), this.runtime.running_layout.layers[CQ.LAYER_BOTTOM], this.inst.x, this.inst.y);
 		tangentObj.angle = this.inst.angle;
 		this.runtime.all_global_vars[1].data += 1;		
 		

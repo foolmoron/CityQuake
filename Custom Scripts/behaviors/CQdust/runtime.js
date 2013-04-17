@@ -8,7 +8,7 @@ assert2(cr.behaviors, "cr.behaviors not created");
 // Behavior class
 // *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 //           vvvvvvvvvv
-cr.behaviors.CQoffice = function(runtime)
+cr.behaviors.CQdust = function(runtime)
 {
 	this.runtime = runtime;
 };
@@ -17,7 +17,7 @@ cr.behaviors.CQoffice = function(runtime)
 {
 	// *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 	//                               vvvvvvvvvv
-	var behaviorProto = cr.behaviors.CQoffice.prototype;
+	var behaviorProto = cr.behaviors.CQdust.prototype;
 		
 	/////////////////////////////////////
 	// Behavior type class
@@ -49,7 +49,6 @@ cr.behaviors.CQoffice = function(runtime)
 	behinstProto.onCreate = function()
 	{
 		// Load properties
-		this.myProperty = this.properties[0];
 		
 		// object is sealed after this call, so make sure any properties you'll ever need are created, e.g.
 		// this.myValue = 0;
@@ -75,7 +74,6 @@ cr.behaviors.CQoffice = function(runtime)
 	//////////////////////////////////////
 	// Actions
 	function Acts() {};
-
 	
 	// ... other actions here ...
 	
@@ -84,7 +82,6 @@ cr.behaviors.CQoffice = function(runtime)
 	//////////////////////////////////////
 	// Expressions
 	function Exps() {};
-
 	
 	// ... other expressions here ...
 	
