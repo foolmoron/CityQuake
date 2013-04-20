@@ -69,6 +69,8 @@ cr.behaviors.CQdestroyable = function(runtime)
 		else if(this.inst.health <= 0){
 			this.inst.collisionsEnabled = false;
 			this.destroyPhase = true;
+			if (this.inst.onDestroyPhase)
+				this.inst.onDestroyPhase();
 			var sizeX = this.inst.tileSize[0];
 			var sizeY = this.inst.tileSize[1];
 			var baseX = this.inst.x - (CQ.TILE_HEIGHT * (sizeX - 1)) + (CQ.TILE_HEIGHT * (sizeY - 1));

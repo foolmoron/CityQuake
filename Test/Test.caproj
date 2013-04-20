@@ -6,7 +6,7 @@
     <author></author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>95</next-sid>
+    <next-sid>98</next-sid>
     <used-plugins>
         <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
@@ -36,7 +36,9 @@
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
     </used-behaviors>
-    <used-effects />
+    <used-effects>
+        <effect author="Scirra" id="tint">Tint</effect>
+    </used-effects>
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
@@ -49,7 +51,7 @@
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
-        <prop name="Enable WebGL">Off</prop>
+        <prop name="Enable WebGL">On</prop>
         <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Hide address bar">No</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
@@ -93,7 +95,7 @@
                 <instance-variable name="Health" sid="8" type="number" />
             </instance-variables>
             <behaviors>
-                <behavior-type name="CQHouse" sid="9">
+                <behavior-type name="CQHouse" sid="95">
                     <behavior id="CQhouse" />
                 </behavior-type>
                 <behavior-type name="CQDestroyable" sid="10">
@@ -103,6 +105,11 @@
                     <behavior id="Fade" />
                 </behavior-type>
             </behaviors>
+            <effects>
+                <effect-type name="Tint">
+                    <effect id="tint" />
+                </effect-type>
+            </effects>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="11" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="1">
@@ -536,6 +543,21 @@
                 </behavior-type>
             </behaviors>
             <texture />
+        </object-type>
+        <object-type name="DirtBG" sid="96">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="97" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0">
+                        <collision-poly>
+                            <point x="0.5" y="0" />
+                            <point x="0.999043" y="0.5" />
+                            <point x="0.5" y="1" />
+                            <point x="0.000956633" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />

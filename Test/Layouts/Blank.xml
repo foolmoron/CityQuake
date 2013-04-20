@@ -78,7 +78,7 @@
                     <behavior-instances>
                         <behavior-instance type="CQGrass">
                             <properties>
-                                <my-property>77</my-property>
+                                <fire-spread-time>0</fire-spread-time>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -93,6 +93,27 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>1</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="DirtBG" uid="337">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>1720</x>
+                        <y>802</y>
+                        <z>0</z>
+                        <width>3136</width>
+                        <height>1568</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -140,7 +161,7 @@
                 </instance>
                 <instance type="Text" uid="3">
                     <properties>
-                        <text>PRESS ENTER TO RESET HOLD IT FOR LULZ</text>
+                        <text>PRESS ENTER FOR RANDOM LEFT/RIGHT FOR PREMADE TEST LEVELS</text>
                         <initial-visibility>Visible</initial-visibility>
                         <font>Arial,-96,700,0</font>
                         <color>0,0,0</color>
@@ -153,10 +174,10 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>2051</x>
+                        <x>1891</x>
                         <y>40</y>
                         <z>0</z>
-                        <width>1218</width>
+                        <width>1378</width>
                         <height>395</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>

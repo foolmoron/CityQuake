@@ -96,7 +96,7 @@ var CQ;
 		var F = 8;
 		var A = 9;
 		var R = 10;
-		this.premadeLevels = 
+		this.PREMADE_LEVELS = 
 		[
 			[[D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -115,40 +115,26 @@ var CQ;
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W]],
 			 
-			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
-			 
-			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, 0, G],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, 0, 0, G],
+			 [H, 0, H, H, 0, 0, H, H, H, H, 0, 0, 0, G, G, G],
+			 [H, H, H, H, H, H, H, V, 0, G, G, G, 0, 0, G, 0],
+			 [H, 0, H, H, 0, 0, H, 0, 0, G, 0, G, 0, 0, G, 0],
+			 [0, 0, H, 0, 0, 0, H, H, H, H, 0, G, G, G, G, 0],
+			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, H, H, H, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
+			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0]],
 		];
+		this.LEVEL_COUNT = this.PREMADE_LEVELS.length;
+		this.currentLevelID = 0;
+		this.levelToLoad = -1;
 		
 		//bind keys to this plugin
 		jQuery(document).keydown(
@@ -190,6 +176,17 @@ var CQ;
 	{	
 		switch (info.which) {
 			case 13:
+				this.levelToLoad = -1;
+				this.runtime.changelayout = this.runtime.layouts_by_index[0];
+				break;
+			case 37:
+				this.currentLevelID = (this.currentLevelID == 0) ? this.LEVEL_COUNT - 1 : this.currentLevelID - 1;
+				this.levelToLoad = this.currentLevelID;
+				this.runtime.changelayout = this.runtime.layouts_by_index[0];
+				break;
+			case 39:
+				this.currentLevelID = (this.currentLevelID + 1) % this.LEVEL_COUNT;
+				this.levelToLoad = this.currentLevelID;
 				this.runtime.changelayout = this.runtime.layouts_by_index[0];
 				break;
 		}
@@ -357,15 +354,30 @@ var CQ;
 		for(var i = 0; i < globals.length; i++){
 			this.globalVarMap[globals[i].name] = globals[i];
 		}	
+		
+		if (this.levelToLoad < 0 || this.levelToLoad >= this.LEVEL_COUNT)
+			this.loadLevelRandom();
+		else
+			this.loadLevelWithID(this.levelToLoad);
 	};
 	
 	Acts.prototype.LoadLevelWithID = function (levelid)
 	{
-		this.tileGrid = this.premadeLevels[levelid];
-		this.loadLevel(false);
+		this.loadLevelWithID(levelid);
+	};
+	
+	instanceProto.loadLevelWithID = function(levelid)
+	{
+		this.tileGrid = this.PREMADE_LEVELS[levelid];
+		this.loadLevel(false);	
 	};
 	
 	Acts.prototype.LoadLevelRandom = function ()
+	{
+		this.loadLevelRandom();
+	};
+	
+	instanceProto.loadLevelRandom = function()
 	{
 		this.GRID_SIZE = this.properties[1];
 		this.tileGrid = new Array(this.GRID_SIZE);
@@ -479,11 +491,13 @@ var CQ;
 	
 	instanceProto.hasBehavior = function(inst, behaviorName)
 	{
+		if (!inst)
+			return null;
 		for(var i = 0; i < inst.behavior_insts.length; i++){
 			if (inst.behavior_insts[i].type.name === behaviorName)
-				return true;
+				return inst.behavior_insts[i];
 		}	
-		return false;
+		return null;
 	}
 	
 	instanceProto.moveInstToTop = function(inst)
@@ -618,7 +632,7 @@ var CQ;
 	
 	Exps.prototype.NumLevels = function (ret)
 	{
-		ret.set_int(this.premadeLevels.length);
+		ret.set_int(this.PREMADE_LEVELS.length);
 	};
 	
 	Exps.prototype.NumTileTypes = function (ret)

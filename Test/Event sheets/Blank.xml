@@ -11,7 +11,6 @@
             </conditions>
             <actions>
                 <action id="4" name="Initialize" sid="75" type="CityQuakeLevels" />
-                <action id="1" name="Load randomized level" sid="76" type="CityQuakeLevels" />
             </actions>
         </event-block>
         <event-block sid="77">
