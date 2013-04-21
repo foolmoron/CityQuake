@@ -8,7 +8,7 @@ assert2(cr.behaviors, "cr.behaviors not created");
 // Behavior class
 // *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 //           vvvvvvvvvv
-cr.behaviors.CQhouse = function(runtime)
+cr.behaviors.CQvirus = function(runtime)
 {
 	this.runtime = runtime;
 };
@@ -17,7 +17,7 @@ cr.behaviors.CQhouse = function(runtime)
 {
 	// *** CHANGE THE BEHAVIOR ID HERE *** - must match the "id" property in edittime.js
 	//                               vvvvvvvvvv
-	var behaviorProto = cr.behaviors.CQhouse.prototype;
+	var behaviorProto = cr.behaviors.CQvirus.prototype;
 		
 	/////////////////////////////////////
 	// Behavior type class
@@ -47,66 +47,20 @@ cr.behaviors.CQhouse = function(runtime)
 	var behinstProto = behaviorProto.Instance.prototype;
 
 	behinstProto.onCreate = function()
-	{	
-		this.inst.SURROUNDING_TILES = [ 
-		[-1,-1], [0,-1], [1,-1],
-		[-1, 0], 		 [1, 0],
-		[-1, 1], [0, 1], [1, 1]
-		];
-		
-		this.R = 0;
-		this.G = 1;
-		this.B = 2;
-		
-		this.VIRUS_SPREAD_TIME = this.properties[0];
-		this.VIRUS_DEATH_TIME = this.properties[1];
-		this.virusTime = 0;
-		
-		this.infected = false;		
-	};
-	
-	behinstProto.infect = function ()
 	{
-		if (!this.infected){
-			this.infected = true;
-			var virus = this.runtime.createInstance(
-											this.runtime.types_by_index[CQ.typeIndexMap["CQVirus"]],
-											this.runtime.running_layout.layers[CQ.LAYER_TOP],
-											this.inst.x,
-											this.inst.y - CQ.TILE_HEIGHT / 2);		
-					CQ.moveInstToZIndex(virus, this.inst.zindex + 1);	
-		}
-	}
+		// Load properties
+		
+		// object is sealed after this call, so make sure any properties you'll ever need are created, e.g.
+		// this.myValue = 0;
+	};
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
-		if (this.infected){
-			this.virusTime += dt;
-			if (this.virusTime >= this.VIRUS_SPREAD_TIME){
-				for (var i = 0; i < this.inst.SURROUNDING_TILES.length; i++){
-					var xOffset = this.inst.SURROUNDING_TILES[i][0];
-					var yOffset = this.inst.SURROUNDING_TILES[i][1];
-					if (this.inst.tileX + xOffset >= 0 && this.inst.tileX + xOffset < CQ.GRID_SIZE &&
-					  this.inst.tileY + yOffset >= 0 && this.inst.tileY + yOffset < CQ.GRID_SIZE){
-						var houseBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQHouse");
-						if (houseBehavior){
-							houseBehavior.infect();
-						}
-					}
-				}
-			}
-			if (this.virusTime >= this.VIRUS_DEATH_TIME){
-				this.inst.health = 0;
-			}
-		}
+		
+		// called every tick for you to update this.inst as necessary
+		// dt is the amount of time passed since the last tick, in case it's a movement
 	};
-	
-	behinstProto.onDestroy = function ()
-	{
-	
-	};
-
 
 	//////////////////////////////////////
 	// Conditions
@@ -120,7 +74,6 @@ cr.behaviors.CQhouse = function(runtime)
 	//////////////////////////////////////
 	// Actions
 	function Acts() {};
-
 	
 	// ... other actions here ...
 	
@@ -129,7 +82,6 @@ cr.behaviors.CQhouse = function(runtime)
 	//////////////////////////////////////
 	// Expressions
 	function Exps() {};
-
 	
 	// ... other expressions here ...
 	

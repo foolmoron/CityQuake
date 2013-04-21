@@ -534,6 +534,24 @@ var CQ;
 		
 		// all objects on this layer need their z index updating - lazy assign
 		inst.layer.zindices_stale = true;
+	}	
+	
+	instanceProto.moveInstToZIndex = function(inst, zindex)
+	{
+		//stolen from commonace.moveToBottom
+		var zi = inst.get_zindex();
+	
+		// is already at bottom: don't do anything
+		if (zi === 0)
+			return;
+			
+		// remove and re-insert at bottom
+		cr.arrayRemove(inst.layer.instances, zi);
+		inst.layer.instances.splice(zindex, 0, inst);
+		inst.runtime.redraw = true;
+		
+		// all objects on this layer need their z index updating - lazy assign
+		inst.layer.zindices_stale = true;
 	}
 	
 	instanceProto.calculateGameplayAreaBounds = function()

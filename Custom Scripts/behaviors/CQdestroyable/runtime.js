@@ -81,7 +81,7 @@ cr.behaviors.CQdestroyable = function(runtime)
 										this.runtime.running_layout.layers[CQ.LAYER_TOP],
 										baseX - (CQ.TILE_HEIGHT * x),
 										baseY - (CQ.TILE_HEIGHT/2 * x));		
-				CQ.moveInstToBottom(dust);
+				CQ.moveInstToZIndex(dust, this.inst.zindex);
 			}
 			for (var y = 1; y <= sizeY; y++){ // crawl up X side
 				var dust = this.runtime.createInstance(
@@ -89,14 +89,14 @@ cr.behaviors.CQdestroyable = function(runtime)
 										this.runtime.running_layout.layers[CQ.LAYER_TOP],
 										baseX + (CQ.TILE_HEIGHT * y),
 										baseY - (CQ.TILE_HEIGHT/2 * y));		
-				CQ.moveInstToBottom(dust);			
+				CQ.moveInstToZIndex(dust, this.inst.zindex);			
 			}
 			var dust = this.runtime.createInstance( // base dust
 									this.runtime.types_by_index[CQ.typeIndexMap["CQDust"]],
 									this.runtime.running_layout.layers[CQ.LAYER_TOP],
 									baseX,
 									baseY);	
-			CQ.moveInstToBottom(dust);
+			CQ.moveInstToZIndex(dust, this.inst.zindex);
 		}
 	};
 	

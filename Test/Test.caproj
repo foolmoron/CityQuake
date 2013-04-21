@@ -6,7 +6,7 @@
     <author></author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>98</next-sid>
+    <next-sid>105</next-sid>
     <used-plugins>
         <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
@@ -32,13 +32,12 @@
         <behavior author="foolmoron" id="CQhospital" version="1">CQ Hospital</behavior>
         <behavior author="foolmoron" id="CQhouse" version="1">CQ House</behavior>
         <behavior author="foolmoron" id="CQoffice" version="1">CQ Office</behavior>
+        <behavior author="foolmoron" id="CQvirus" version="1">CQ Virus</behavior>
         <behavior author="foolmoron" id="CQwater" version="1">CQ Water</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
     </used-behaviors>
-    <used-effects>
-        <effect author="Scirra" id="tint">Tint</effect>
-    </used-effects>
+    <used-effects />
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
@@ -105,11 +104,6 @@
                     <behavior id="Fade" />
                 </behavior-type>
             </behaviors>
-            <effects>
-                <effect-type name="Tint">
-                    <effect id="tint" />
-                </effect-type>
-            </effects>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="11" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="1">
@@ -558,6 +552,23 @@
                     </frame>
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="Waste" sid="98">
+            <plugin id="Particles" />
+            <texture />
+        </object-type>
+        <object-type name="Fire" sid="100">
+            <plugin id="Particles" />
+            <texture />
+        </object-type>
+        <object-type name="Virus" sid="102">
+            <plugin id="Particles" />
+            <behaviors>
+                <behavior-type name="CQVirus" sid="104">
+                    <behavior id="CQvirus" />
+                </behavior-type>
+            </behaviors>
+            <texture />
         </object-type>
     </object-folder>
     <families />
