@@ -62,11 +62,14 @@ cr.behaviors.CQhouse = function(runtime)
 		this.VIRUS_DEATH_TIME = this.properties[1];
 		this.virusTime = 0;
 		
-		this.infected = false;		
+		this.infected = false;	
+		this.alreadyInfected = false;
 	};
 	
 	behinstProto.infect = function ()
 	{
+		if (this.inst.health <= 0)
+			return;
 		if (!this.infected){
 			this.infected = true;
 			var virus = this.runtime.createInstance(
@@ -83,17 +86,20 @@ cr.behaviors.CQhouse = function(runtime)
 		var dt = this.runtime.getDt(this.inst);
 		if (this.infected){
 			this.virusTime += dt;
-			if (this.virusTime >= this.VIRUS_SPREAD_TIME){
-				for (var i = 0; i < this.inst.SURROUNDING_TILES.length; i++){
-					var xOffset = this.inst.SURROUNDING_TILES[i][0];
-					var yOffset = this.inst.SURROUNDING_TILES[i][1];
-					if (this.inst.tileX + xOffset >= 0 && this.inst.tileX + xOffset < CQ.GRID_SIZE &&
-					  this.inst.tileY + yOffset >= 0 && this.inst.tileY + yOffset < CQ.GRID_SIZE){
-						var houseBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQHouse");
-						if (houseBehavior){
-							houseBehavior.infect();
+			if (!this.alreadyInfected){
+				if (this.virusTime >= this.VIRUS_SPREAD_TIME){
+					for (var i = 0; i < this.inst.SURROUNDING_TILES.length; i++){
+						var xOffset = this.inst.SURROUNDING_TILES[i][0];
+						var yOffset = this.inst.SURROUNDING_TILES[i][1];
+						if (this.inst.tileX + xOffset >= 0 && this.inst.tileX + xOffset < CQ.GRID_SIZE &&
+						  this.inst.tileY + yOffset >= 0 && this.inst.tileY + yOffset < CQ.GRID_SIZE){
+							var houseBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQHouse");
+							if (houseBehavior){
+								houseBehavior.infect();
+							}
 						}
 					}
+					this.alreadyInfected = true;
 				}
 			}
 			if (this.virusTime >= this.VIRUS_DEATH_TIME){

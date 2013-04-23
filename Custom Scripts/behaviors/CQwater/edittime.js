@@ -81,7 +81,8 @@ ACESDone();
 // new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
 
 var property_list = [
-	new cr.Property(ept_float, 		"Waste Spread Time",		1.0,		"Seconds it takes to spread toxic waste.")
+	new cr.Property(ept_float, 		"Waste Spread Time",		1.0,		"Seconds it takes to spread toxic waste."),
+	new cr.Property(ept_float, 		"Waste Death Time",			3.0,		"Seconds it takes to kill things with waste."),
 	];
 	
 // Called by IDE when a new behavior type is to be created

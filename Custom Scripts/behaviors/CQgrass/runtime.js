@@ -59,18 +59,19 @@ cr.behaviors.CQgrass = function(runtime)
 		this.fireTime = 0;
 		
 		this.ignited = false;	
+		this.alreadyIgnited = false;
 	};
 	
 	behinstProto.ignite = function ()
 	{
-		if (!this.infected){
+		if (!this.ignited){
 			this.ignited = true;
 			var fire = this.runtime.createInstance(
 											this.runtime.types_by_index[CQ.typeIndexMap["CQFire"]],
 											this.runtime.running_layout.layers[CQ.LAYER_TOP],
 											this.inst.x,
 											this.inst.y - CQ.TILE_HEIGHT / 2);		
-					CQ.moveInstToZIndex(fire, this.inst.zindex + 1);	
+			CQ.moveInstToZIndex(fire, this.inst.zindex + 1);	
 		}
 	}
 
@@ -79,22 +80,25 @@ cr.behaviors.CQgrass = function(runtime)
 		var dt = this.runtime.getDt(this.inst);
 		if (this.ignited){
 			this.fireTime += dt;
-			if (this.fireTime >= this.FIRE_SPREAD_TIME){
-				for (var i = 0; i < this.inst.SURROUNDING_TILES.length; i++){
-					var xOffset = this.inst.SURROUNDING_TILES[i][0];
-					var yOffset = this.inst.SURROUNDING_TILES[i][1];
-					if (this.inst.tileX + xOffset >= 0 && this.inst.tileX + xOffset < CQ.GRID_SIZE &&
-					  this.inst.tileY + yOffset >= 0 && this.inst.tileY + yOffset < CQ.GRID_SIZE){
-						var grassBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQGrass");
-						if (grassBehavior){
-							grassBehavior.ignite();
-						} else {					
-							var destroyableBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQDestroyable");
-							if (destroyableBehavior){
-								destroyableBehavior.ignite();
+			if (!this.alreadyIgnited){
+				if (this.fireTime >= this.FIRE_SPREAD_TIME){
+					for (var i = 0; i < this.inst.SURROUNDING_TILES.length; i++){
+						var xOffset = this.inst.SURROUNDING_TILES[i][0];
+						var yOffset = this.inst.SURROUNDING_TILES[i][1];
+						if (this.inst.tileX + xOffset >= 0 && this.inst.tileX + xOffset < CQ.GRID_SIZE &&
+						  this.inst.tileY + yOffset >= 0 && this.inst.tileY + yOffset < CQ.GRID_SIZE){
+							var grassBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQGrass");
+							if (grassBehavior){
+								grassBehavior.ignite();
+							} else {					
+								var destroyableBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQDestroyable");
+								if (destroyableBehavior){
+									destroyableBehavior.ignite();
+								}
 							}
 						}
 					}
+					this.alreadyIgnited = true;
 				}
 			}
 			if (this.fireTime >= this.FIRE_DEATH_TIME){
@@ -109,6 +113,7 @@ cr.behaviors.CQgrass = function(runtime)
 						}
 					}
 				}
+				this.runtime.DestroyInstance(this.inst);
 			}
 		}
 	};

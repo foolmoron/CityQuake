@@ -116,7 +116,7 @@ var CQ;
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W]],
+			 [W, F, F, F, W, F, W, W, W, W, W, W, W, W, W, W]],
 			 
 			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, 0, G],
@@ -519,9 +519,6 @@ var CQ;
 							tile = 1;
 							size = null;
 						}
-						if (tile == 3){
-							var zzz = 0;
-						}
 						var newInstance = this.runtime.createInstance(
 												this.runtime.types_by_index[this.tileTypeIndices[tile]],
 												this.runtime.running_layout.layers[this.tileTypeLayers[tile]],
@@ -628,6 +625,7 @@ var CQ;
 		
 		// all objects on this layer need their z index updating - lazy assign
 		inst.layer.zindices_stale = true;
+		inst.layer.updateZIndices();
 	}
 	
 	instanceProto.calculateGameplayAreaBounds = function()
@@ -713,6 +711,7 @@ var CQ;
 			if (this.faultIndicator != null){
 				var newFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
 				var newAngleModifier = (newFaultIndicatorPolarTheta - this.faultIndicatorInitialTouchTheta) * this.FAULT_INDICATOR_ADJUSTMENT_RATIO;
+				//console.log("initial="+this.faultIndicatorInitialTouchTheta + " new=" + newFaultIndicatorPolarTheta + " final=" + newAngleModifier);
 				newAngleModifier = cr.clamp(newAngleModifier, -this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2, this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2);				;
 				this.faultIndicator.angle = newAngleModifier + this.faultIndicatorInitialTouchAngle;
 				this.faultIndicator.set_bbox_changed();				

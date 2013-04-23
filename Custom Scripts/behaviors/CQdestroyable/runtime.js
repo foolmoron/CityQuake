@@ -77,7 +77,7 @@ cr.behaviors.CQdestroyable = function(runtime)
 			var sizeY = this.inst.tileSize[1];
 			var baseX = this.inst.x - (CQ.TILE_HEIGHT * (sizeX - 1)) + (CQ.TILE_HEIGHT * (sizeY - 1));
 			var baseY = this.inst.y + (CQ.TILE_HEIGHT/2 * (sizeX - 1)) + (CQ.TILE_HEIGHT/2 * (sizeY - 1));
-			for (var x = 1; x <= sizeX; x++){ // crawl up X side
+			for (var x = 1; x <= sizeY; x++){ //intentionally using sizeY for x index and vice-versa...
 				var dust = this.runtime.createInstance(
 										this.runtime.types_by_index[CQ.typeIndexMap["CQDust"]],
 										this.runtime.running_layout.layers[CQ.LAYER_TOP],
@@ -85,7 +85,7 @@ cr.behaviors.CQdestroyable = function(runtime)
 										baseY - (CQ.TILE_HEIGHT/2 * x));		
 				CQ.moveInstToZIndex(dust, this.inst.zindex);
 			}
-			for (var y = 1; y <= sizeY; y++){ // crawl up X side
+			for (var y = 1; y <= sizeX; y++){ 
 				var dust = this.runtime.createInstance(
 										this.runtime.types_by_index[CQ.typeIndexMap["CQDust"]],
 										this.runtime.running_layout.layers[CQ.LAYER_TOP],
@@ -104,6 +104,8 @@ cr.behaviors.CQdestroyable = function(runtime)
 	
 	behinstProto.ignite = function ()
 	{
+		if (this.inst.health <= 0)
+			return;
 		if (!this.ignited){
 			this.ignited = true;
 			var sizeX = this.inst.tileSize[0];
@@ -123,6 +125,8 @@ cr.behaviors.CQdestroyable = function(runtime)
 	
 	behinstProto.contaminate = function ()
 	{
+		if (this.inst.health <= 0)
+			return;
 		if (!this.contaminated){
 			this.contaminated = true;			
 			var sizeX = this.inst.tileSize[0];

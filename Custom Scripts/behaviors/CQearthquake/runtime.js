@@ -141,7 +141,7 @@ cr.behaviors.CQearthquake = function(runtime)
 			return;
 		}
 		
-		var tangentObj = this.runtime.createInstance(obj, this.runtime.running_layout.layers[CQ.LAYER_BOTTOM], collisionX, collisionY);
+		var tangentObj = this.runtime.createInstance(obj, this.runtime.running_layout.layers[CQ.LAYER_TOP], collisionX, collisionY);
 		var angle = Math.atan2(dy, dx);
 		tangentObj.angle = angle;
 		

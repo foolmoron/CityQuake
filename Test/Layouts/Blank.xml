@@ -79,6 +79,7 @@
                         <behavior-instance type="CQGrass">
                             <properties>
                                 <fire-spread-time>0</fire-spread-time>
+                                <fire-death-time>0</fire-death-time>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
