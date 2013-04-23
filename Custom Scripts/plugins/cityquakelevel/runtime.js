@@ -59,6 +59,9 @@ var CQ;
 		//constants
 		this.TILE_HEIGHT = this.properties[0];	
 		this.EARTHQUAKE_FINAL_HEIGHT_IN_TILES = 5;
+		this.FAULT_INDICATOR_ANIM_SPEED = 7;
+		this.FAULT_INDICATOR_ADJUSTMENT_RATIO = 0.33;
+		this.FAULT_INDICATOR_ADJUSTMENT_WIDTH = 15 * Math.PI / 180;
 		
 		//proto declarations		
 		this.TYPE_INDEX_DIRT;
@@ -98,19 +101,19 @@ var CQ;
 		var R = 10;
 		this.PREMADE_LEVELS = 
 		[
-			[[D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D],
+			[[D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, G],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, S, 0, V, 0, 0, 0, 0, 0, 0, 0, 0, G],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0],
-			 [H, 0, 0, 0, F, 0, F, 0, 0, 0, 0, 0, 0, G, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G],
+			 [H, 0, 0, 0, S, 0, V, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [H, 0, 0, 0, F, 0, F, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W]],
@@ -153,9 +156,24 @@ var CQ;
 			})(this)
 		);
 		
+		this.oldTouchX = -1;
+		this.oldTouchY = -1;
+		this.touchX = -1;
+		this.touchY = -1;
+		this.faultIndicatorInitialTouchX = -1;
+		this.faultIndicatorInitialTouchY = -1;
+		this.faultIndicatorInitialTouchAngle = -1;
+		this.faultIndicatorInitialTouchTheta = -1;
+		
 		this.indicatorOffscreenX = -500;
 		this.indicatorOffscreenY = -500;
 		this.earthquakeIndicator = null;
+				
+		this.TOTAL_FAULT_FREEZE_TIME = 1;
+		this.faultFreezeTime = 0;
+		this.frozen = false;
+		this.faultIndicator = null;
+		this.faultIndicatorBeingAdjusted = false;
 	};
 	
 	instanceProto.getTypeIndex = function (typeName)
@@ -170,7 +188,31 @@ var CQ;
 	
 	instanceProto.tick = function ()
 	{
+		var dt = this.runtime.dt1; //raw dt
+		if (this.frozen && !this.faultIndicatorBeingAdjusted){
+			this.faultFreezeTime += dt;
+			if (this.faultFreezeTime >= this.TOTAL_FAULT_FREEZE_TIME){	
+				this.unfreeze();
+			}
+		}
 	};
+	
+	instanceProto.unfreeze = function()
+	{
+		if (!this.getType("CQFault"))
+			return;
+		this.faultIndicatorBeingAdjusted = false;
+		this.faultFreezeTime = 0;
+		this.frozen = false;
+		this.runtime.timescale = 1;		
+		
+		var newFault = this.runtime.createInstance(this.getType("CQFault"), this.runtime.running_layout.layers[this.LAYER_BOTTOM], this.faultIndicator.x, this.faultIndicator.y);
+		newFault.angle = this.faultIndicator.angle;
+		this.runtime.all_global_vars[1].data += 1;		
+		
+		this.runtime.DestroyInstance(this.faultIndicator);
+		this.faultIndicator = null;
+	}
 	
 	instanceProto.onKeyDown = function (info)
 	{	
@@ -347,8 +389,13 @@ var CQ;
 			"Runway" // 9 */
 		];
 		
-		this.background = this.runtime.types_by_index[this.typeIndexMap["CQBackground"]].instances[0];
+		this.background = this.runtime.types_by_index[this.typeIndexMap["CQBackground"]].instances[0];		
 		
+		this.oldTouchX = -1;
+		this.oldTouchY = -1;
+		this.touchX = -1;
+		this.touchY = -1;
+	
 		//get all global constants from Construst		
 		var globals = this.runtime.all_global_vars;
 		for(var i = 0; i < globals.length; i++){
@@ -359,6 +406,32 @@ var CQ;
 			this.loadLevelRandom();
 		else
 			this.loadLevelWithID(this.levelToLoad);
+			
+		//Initialize earthquake indicator after level so that it can be on top
+		if (this.earthquakeIndicator != null){
+			this.runtime.DestroyInstance(this.earthquakeIndicator);			
+		}
+		this.earthquakeIndicator = this.runtime.createInstance(
+									this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]],
+									this.runtime.running_layout.layers[this.LAYER_TOP],
+									0,
+									0);
+		this.moveInstToTop(this.earthquakeIndicator);
+		//stolen from Sprite.SetScale()
+		this.earthquakeIndicator.opacity = 0;
+		var desiredHeight = this.EARTHQUAKE_FINAL_HEIGHT_IN_TILES * this.TILE_HEIGHT;
+		var s = desiredHeight / this.earthquakeIndicator.curFrame.height;
+		var cur_frame = this.earthquakeIndicator.curFrame;
+		var mirror_factor = (this.earthquakeIndicator.width < 0 ? -1 : 1);
+		var flip_factor = (this.earthquakeIndicator.height < 0 ? -1 : 1);
+		var new_width = cur_frame.width * s * mirror_factor;
+		var new_height = cur_frame.height * s * flip_factor;		
+		if (this.earthquakeIndicator.width !== new_width || this.earthquakeIndicator.height !== new_height)
+		{
+			this.earthquakeIndicator.width = new_width;
+			this.earthquakeIndicator.height = new_height;
+			this.earthquakeIndicator.set_bbox_changed();
+		}
 	};
 	
 	Acts.prototype.LoadLevelWithID = function (levelid)
@@ -445,6 +518,9 @@ var CQ;
 						if (!canBuild){
 							tile = 1;
 							size = null;
+						}
+						if (tile == 3){
+							var zzz = 0;
 						}
 						var newInstance = this.runtime.createInstance(
 												this.runtime.types_by_index[this.tileTypeIndices[tile]],
@@ -586,51 +662,79 @@ var CQ;
 		return ret;
 	}
 	
+	instanceProto.setFaultIndicator = function(obj)
+	{
+		if (this.faultIndicator != null)
+			this.runtime.DestroyInstance(this.faultIndicator);
+		this.faultIndicator = obj;
+		this.runtime.timescale = 0;
+		this.frozen = true;
+		obj.my_timescale = 1;
+	}
+	
 	Acts.prototype.SpawnEarthquake = function (x, y)
 	{
-		if (this.inGameplayArea(x,y)){
-			this.runtime.createInstance(
-				this.runtime.types_by_index[this.typeIndexMap["CQEarthquake"]],
-				this.runtime.running_layout.layers[this.LAYER_BOTTOM],
-				x,
-				y);
-			var BG = this.background.behavior_insts[1];
-			BG.shake(this.TILE_HEIGHT/2, 1);
-		}
-		if (this.earthquakeIndicator != null){
-			this.runtime.DestroyInstance(this.earthquakeIndicator);
-			this.earthquakeIndicator = null;
+		if (!this.frozen){
+			if (this.inGameplayArea(x,y)){
+				this.runtime.createInstance(
+					this.runtime.types_by_index[this.typeIndexMap["CQEarthquake"]],
+					this.runtime.running_layout.layers[this.LAYER_BOTTOM],
+					x,
+					y);
+				var BG = this.background.behavior_insts[1];
+				BG.shake(this.TILE_HEIGHT/2, 1);
+			}
+			this.earthquakeIndicator.opacity = 0;
+		} else {
+			this.unfreeze();
 		}
 	};
 	
 	Acts.prototype.UpdateIndicators = function (x, y)
 	{
-		if (this.runtime.timescale < 1) // no earthquakes when slowmo
-			return;
-		if (this.earthquakeIndicator == null){
-			this.earthquakeIndicator = this.runtime.createInstance(
-										this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]],
-										this.runtime.running_layout.layers[this.LAYER_TOP],
-										x,
-										y);
-			//stolen from Sprite.SetScale()
-			var desiredHeight = this.EARTHQUAKE_FINAL_HEIGHT_IN_TILES * this.TILE_HEIGHT;
-			var s = desiredHeight / this.earthquakeIndicator.curFrame.height;
-			var cur_frame = this.earthquakeIndicator.curFrame;
-			var mirror_factor = (this.earthquakeIndicator.width < 0 ? -1 : 1);
-			var flip_factor = (this.earthquakeIndicator.height < 0 ? -1 : 1);
-			var new_width = cur_frame.width * s * mirror_factor;
-			var new_height = cur_frame.height * s * flip_factor;		
-			if (this.earthquakeIndicator.width !== new_width || this.earthquakeIndicator.height !== new_height)
-			{
-				this.earthquakeIndicator.width = new_width;
-				this.earthquakeIndicator.height = new_height;
-				this.earthquakeIndicator.set_bbox_changed();
-			}			
+		if (this.oldTouchX < 0 || this.oldTouchY < 0){			
+			this.oldTouchX = x;
+			this.oldTouchY = y;
 		}
-		this.earthquakeIndicator.x = x;
-		this.earthquakeIndicator.y = y;
-		this.earthquakeIndicator.opacity = this.inGameplayArea(x,y) ? 0.5: 0.0;
+		this.touchX = x;
+		this.touchY = y;		
+		var moveX = this.touchX - this.oldTouchX;
+		var moveY = this.touchY - this.oldTouchY;
+		var moved = moveX != 0 || moveY != 0;
+		
+		if (!this.frozen){
+			this.earthquakeIndicator.x = x;
+			this.earthquakeIndicator.y = y;
+			this.earthquakeIndicator.set_bbox_changed();
+			this.earthquakeIndicator.opacity = this.inGameplayArea(x,y) ? 0.5: 0.0;
+		}
+		if (moved && this.frozen){
+			this.earthquakeIndicator.opacity = 0.0;		
+			if (this.faultIndicator != null){
+				var newFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
+				var newAngleModifier = (newFaultIndicatorPolarTheta - this.faultIndicatorInitialTouchTheta) * this.FAULT_INDICATOR_ADJUSTMENT_RATIO;
+				newAngleModifier = cr.clamp(newAngleModifier, -this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2, this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2);				;
+				this.faultIndicator.angle = newAngleModifier + this.faultIndicatorInitialTouchAngle;
+				this.faultIndicator.set_bbox_changed();				
+			}
+		}
+		
+		this.oldTouchX = x;
+		this.oldTouchY = y;
+	};	
+	
+	Acts.prototype.StartFaultIndicatorAdjustment = function (x, y)
+	{
+		if (this.faultIndicator != null){
+			this.faultIndicatorInitialTouchX = x;
+			this.faultIndicatorInitialTouchY = y;
+			this.faultIndicatorInitialTouchAngle = this.faultIndicator.angle;
+			this.faultIndicatorInitialTouchTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
+			this.faultIndicator.cur_anim_speed = this.FAULT_INDICATOR_ANIM_SPEED;
+			this.runtime.tickMe(this.faultIndicator);
+			this.faultIndicator.my_timescale = 1;
+			this.faultIndicatorBeingAdjusted = true;
+		}
 	};
 	
 	pluginProto.acts = new Acts();

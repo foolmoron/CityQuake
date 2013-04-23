@@ -48,16 +48,69 @@ cr.behaviors.CQgrass = function(runtime)
 
 	behinstProto.onCreate = function()
 	{
-		// Load properties
-		this.FIRE_SPREAD_TIME = this.properties[0];
+		this.inst.SURROUNDING_TILES = [ 
+		[-1,-1], [0,-1], [1,-1],
+		[-1, 0], 		 [1, 0],
+		[-1, 1], [0, 1], [1, 1]
+		];
+		
+		this.FIRE_SPREAD_TIME = this.properties[0];	
+		this.FIRE_DEATH_TIME = this.properties[1];
+		this.fireTime = 0;
+		
+		this.ignited = false;	
 	};
+	
+	behinstProto.ignite = function ()
+	{
+		if (!this.infected){
+			this.ignited = true;
+			var fire = this.runtime.createInstance(
+											this.runtime.types_by_index[CQ.typeIndexMap["CQFire"]],
+											this.runtime.running_layout.layers[CQ.LAYER_TOP],
+											this.inst.x,
+											this.inst.y - CQ.TILE_HEIGHT / 2);		
+					CQ.moveInstToZIndex(fire, this.inst.zindex + 1);	
+		}
+	}
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
-		
-		// called every tick for you to update this.inst as necessary
-		// dt is the amount of time passed since the last tick, in case it's a movement
+		if (this.ignited){
+			this.fireTime += dt;
+			if (this.fireTime >= this.FIRE_SPREAD_TIME){
+				for (var i = 0; i < this.inst.SURROUNDING_TILES.length; i++){
+					var xOffset = this.inst.SURROUNDING_TILES[i][0];
+					var yOffset = this.inst.SURROUNDING_TILES[i][1];
+					if (this.inst.tileX + xOffset >= 0 && this.inst.tileX + xOffset < CQ.GRID_SIZE &&
+					  this.inst.tileY + yOffset >= 0 && this.inst.tileY + yOffset < CQ.GRID_SIZE){
+						var grassBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQGrass");
+						if (grassBehavior){
+							grassBehavior.ignite();
+						} else {					
+							var destroyableBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQDestroyable");
+							if (destroyableBehavior){
+								destroyableBehavior.ignite();
+							}
+						}
+					}
+				}
+			}
+			if (this.fireTime >= this.FIRE_DEATH_TIME){
+				for (var i = 0; i < this.inst.SURROUNDING_TILES.length; i++){
+					var xOffset = this.inst.SURROUNDING_TILES[i][0];
+					var yOffset = this.inst.SURROUNDING_TILES[i][1];
+					if (this.inst.tileX + xOffset >= 0 && this.inst.tileX + xOffset < CQ.GRID_SIZE &&
+					  this.inst.tileY + yOffset >= 0 && this.inst.tileY + yOffset < CQ.GRID_SIZE){
+						var destroyableBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQDestroyable");
+						if (destroyableBehavior){
+							CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset].health = 0;							
+						}
+					}
+				}
+			}
+		}
 	};
 
 	//////////////////////////////////////

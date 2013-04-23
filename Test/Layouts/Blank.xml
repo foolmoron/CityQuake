@@ -88,10 +88,10 @@
                         <x>-260</x>
                         <y>-317</y>
                         <z>0</z>
-                        <width>196</width>
-                        <height>98</height>
+                        <width>1</width>
+                        <height>1</height>
                         <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
+                        <hotspotX>1</hotspotX>
                         <hotspotY>1</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>

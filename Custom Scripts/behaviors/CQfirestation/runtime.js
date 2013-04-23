@@ -49,10 +49,27 @@ cr.behaviors.CQfirestation = function(runtime)
 	behinstProto.onCreate = function()
 	{
 		// Load properties
-		this.myProperty = this.properties[0];
-		
-		// object is sealed after this call, so make sure any properties you'll ever need are created, e.g.
-		// this.myValue = 0;
+		this.inst.SURROUNDING_TILES = [ 
+		[-1,-1], [0,-1], [1,-1], [2,-1],
+		[-1, 0], 				 [2, 0],
+		[-1, 1], 				 [2, 1],
+		[-1, 2], [0, 2], [1, 2], [2, 2]		
+		];
+		this.inst.onDestroyPhase = function()
+		{
+			for (var i = 0; i < this.SURROUNDING_TILES.length; i++){
+				var xOffset = this.SURROUNDING_TILES[i][0];
+				var yOffset = this.SURROUNDING_TILES[i][1];
+
+				if (this.tileX + xOffset >= 0 && this.tileX + xOffset < CQ.GRID_SIZE &&
+				  this.tileY + yOffset >= 0 && this.tileY + yOffset < CQ.GRID_SIZE){
+					var grassBehavior = CQ.hasBehavior(CQ.objGrid[this.tileX + xOffset][this.tileY + yOffset], "CQGrass");
+					if (grassBehavior){
+						grassBehavior.ignite();
+					}
+				}
+			}
+		}
 	};
 
 	behinstProto.tick = function ()

@@ -82,6 +82,9 @@ AddNumberParam("X", "X position of indicators");
 AddNumberParam("Y", "Y position of indicators");
 AddAction(3, af_none, "Update indicators", "Gameplay", "Update indicators using touch coordinates ({0}, {1})", "Update indicators at current touch position", "UpdateIndicators")
 AddAction(4, af_none, "Initialize", "Initialization", "Initialize level", "Initialize level", "Initialize")
+AddNumberParam("X", "Initial X position of touch");
+AddNumberParam("Y", "Initial Y position of touch");
+AddAction(5, af_none, "Start angle adjustment", "Gameplay", "Start fault indicators angle adjustment at ({0}, {1})", "Start fault indicators angle adjustment", "StartFaultIndicatorAdjustment")
 
 ////////////////////////////////////////
 // Expressions

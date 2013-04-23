@@ -56,6 +56,7 @@ cr.behaviors.CQfault = function(runtime)
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
+		
 		if (this.inst.collisionsEnabled){
 			if (this.inst.framesSinceCreation >= this.inst.NUM_COLLISION_FRAMES)
 				this.inst.collisionsEnabled = false;

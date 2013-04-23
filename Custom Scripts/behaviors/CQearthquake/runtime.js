@@ -145,8 +145,7 @@ cr.behaviors.CQearthquake = function(runtime)
 		var angle = Math.atan2(dy, dx);
 		tangentObj.angle = angle;
 		
-		this.runtime.timescale = 0;
-		tangentObj.my_timescale = 1;
+		CQ.setFaultIndicator(tangentObj);
 	};
 	
 	// ... other actions here ...

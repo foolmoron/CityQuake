@@ -53,6 +53,8 @@ cr.behaviors.CQdestroyable = function(runtime)
 		this.DESTROY_TIME = this.properties[1];
 		this.destroyTime = 0;
 		this.destroyPhase = false;
+		this.ignited = false;
+		this.contaminated = false;
 	};
 
 	behinstProto.tick = function ()
@@ -99,6 +101,44 @@ cr.behaviors.CQdestroyable = function(runtime)
 			CQ.moveInstToZIndex(dust, this.inst.zindex);
 		}
 	};
+	
+	behinstProto.ignite = function ()
+	{
+		if (!this.ignited){
+			this.ignited = true;
+			var sizeX = this.inst.tileSize[0];
+			var sizeY = this.inst.tileSize[1];
+			for (var x = 0; x < sizeX; x++){
+				for (var y = 0; y < sizeY; y++){
+					var fire = this.runtime.createInstance(
+											this.runtime.types_by_index[CQ.typeIndexMap["CQFire"]],
+											this.runtime.running_layout.layers[CQ.LAYER_TOP],
+											this.inst.x - (CQ.TILE_HEIGHT * x) + (CQ.TILE_HEIGHT * y),
+											this.inst.y + (CQ.TILE_HEIGHT/2 * x) + (CQ.TILE_HEIGHT/2 * y) - CQ.TILE_HEIGHT / 2);		
+					CQ.moveInstToZIndex(fire, this.inst.zindex + 1);					
+				}	
+			}
+		}
+	}
+	
+	behinstProto.contaminate = function ()
+	{
+		if (!this.contaminated){
+			this.contaminated = true;			
+			var sizeX = this.inst.tileSize[0];
+			var sizeY = this.inst.tileSize[1];
+			for (var x = 0; x < sizeX; x++){
+				for (var y = 0; y < sizeY; y++){					
+					var waste = this.runtime.createInstance(
+											this.runtime.types_by_index[CQ.typeIndexMap["CQWaste"]],
+											this.runtime.running_layout.layers[CQ.LAYER_TOP],
+											this.inst.x - (CQ.TILE_HEIGHT * x) + (CQ.TILE_HEIGHT * y),
+											this.inst.y + (CQ.TILE_HEIGHT/2 * x) + (CQ.TILE_HEIGHT/2 * y) - CQ.TILE_HEIGHT / 2);		
+					CQ.moveInstToZIndex(waste, this.inst.zindex + 1);					
+				}	
+			}	
+		}
+	}
 	
 	behinstProto.onDestroy = function ()
 	{
