@@ -160,10 +160,6 @@ var CQ;
 		this.oldTouchY = -1;
 		this.touchX = -1;
 		this.touchY = -1;
-		this.faultIndicatorInitialTouchX = -1;
-		this.faultIndicatorInitialTouchY = -1;
-		this.faultIndicatorInitialTouchAngle = -1;
-		this.faultIndicatorInitialTouchTheta = -1;
 		
 		this.indicatorOffscreenX = -500;
 		this.indicatorOffscreenY = -500;
@@ -174,6 +170,11 @@ var CQ;
 		this.frozen = false;
 		this.faultIndicator = null;
 		this.faultIndicatorBeingAdjusted = false;
+		this.faultIndicatorInitialTouchX = -1;
+		this.faultIndicatorInitialTouchY = -1;
+		this.faultIndicatorInitialTouchAngle = -1;
+		this.faultIndicatorInitialTouchTheta = -1;
+		this.faultIndicatorThetaOffset = 0;
 	};
 	
 	instanceProto.getTypeIndex = function (typeName)
@@ -218,20 +219,28 @@ var CQ;
 	{	
 		switch (info.which) {
 			case 13:
-				this.levelToLoad = -1;
-				this.runtime.changelayout = this.runtime.layouts_by_index[0];
+				this.currentLevelID = 0;
+				this.runtime.changelayout = this.getLayoutByName("Level" + this.currentLevelID);
 				break;
 			case 37:
-				this.currentLevelID = (this.currentLevelID == 0) ? this.LEVEL_COUNT - 1 : this.currentLevelID - 1;
-				this.levelToLoad = this.currentLevelID;
-				this.runtime.changelayout = this.runtime.layouts_by_index[0];
+				this.currentLevelID = (this.currentLevelID <= 1) ? this.LEVEL_COUNT : this.currentLevelID - 1;
+				this.runtime.changelayout = this.getLayoutByName("Level" + this.currentLevelID);
 				break;
 			case 39:
-				this.currentLevelID = (this.currentLevelID + 1) % this.LEVEL_COUNT;
-				this.levelToLoad = this.currentLevelID;
-				this.runtime.changelayout = this.runtime.layouts_by_index[0];
+				this.currentLevelID = (this.currentLevelID % this.LEVEL_COUNT) + 1;
+				this.runtime.changelayout = this.getLayoutByName("Level" + this.currentLevelID);
 				break;
 		}
+	};
+	
+	instanceProto.getLayoutByName = function (name)
+	{
+		for(var i = 0; i < this.runtime.layouts_by_index.length; i++){
+			if (this.runtime.layouts_by_index[i].name == name)
+				return this.runtime.layouts_by_index[i];
+		}
+		assert2(null, "layout with name " + name + " not found");
+		return null;
 	};
 
 	instanceProto.onKeyUp = function (info)
@@ -395,6 +404,7 @@ var CQ;
 		this.oldTouchY = -1;
 		this.touchX = -1;
 		this.touchY = -1;
+		this.faultIndicatorThetaOffset = 0;
 	
 		//get all global constants from Construst		
 		var globals = this.runtime.all_global_vars;
@@ -402,10 +412,10 @@ var CQ;
 			this.globalVarMap[globals[i].name] = globals[i];
 		}	
 		
-		if (this.levelToLoad < 0 || this.levelToLoad >= this.LEVEL_COUNT)
-			this.loadLevelRandom();
-		else
-			this.loadLevelWithID(this.levelToLoad);
+		// if (this.levelToLoad < 0 || this.levelToLoad >= this.LEVEL_COUNT)
+			// this.loadLevelRandom();
+		// else
+			// this.loadLevelWithID(this.levelToLoad);
 			
 		//Initialize earthquake indicator after level so that it can be on top
 		if (this.earthquakeIndicator != null){
@@ -441,8 +451,13 @@ var CQ;
 	
 	instanceProto.loadLevelWithID = function(levelid)
 	{
-		this.tileGrid = this.PREMADE_LEVELS[levelid];
-		this.loadLevel(false);	
+		if (levelid <= 0 || levelid > this.LEVEL_COUNT){
+			this.loadLevelRandom();
+			return;
+		} else {
+			this.tileGrid = this.PREMADE_LEVELS[levelid - 1];
+			this.loadLevel(false);	
+		}
 	};
 	
 	Acts.prototype.LoadLevelRandom = function ()
@@ -686,6 +701,9 @@ var CQ;
 		} else {
 			this.unfreeze();
 		}
+		this.oldTouchX = 0;
+		this.oldTouchY = 0;
+		this.faultIndicatorThetaOffset = 0;
 	};
 	
 	Acts.prototype.UpdateIndicators = function (x, y)
@@ -709,12 +727,21 @@ var CQ;
 		if (moved && this.frozen){
 			this.earthquakeIndicator.opacity = 0.0;		
 			if (this.faultIndicator != null){
-				var newFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
+				var onLeftSide = (x - this.faultIndicator.x) < 0;
+				var transitionedUp = (this.oldTouchY - this.faultIndicator.y) > 0 && (y - this.faultIndicator.y) < 0;
+				var transitionedDown = (this.oldTouchY - this.faultIndicator.y) < 0 && (y - this.faultIndicator.y) > 0;
+				if (transitionedUp && onLeftSide){
+					this.faultIndicatorThetaOffset = (this.faultIndicatorThetaOffset != -2*Math.PI) ? 2*Math.PI : 0;
+				} else if (transitionedDown && onLeftSide){
+					this.faultIndicatorThetaOffset = (this.faultIndicatorThetaOffset != 2*Math.PI) ? -2*Math.PI : 0;
+				}
+				
+				var newFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x) + this.faultIndicatorThetaOffset;
 				var newAngleModifier = (newFaultIndicatorPolarTheta - this.faultIndicatorInitialTouchTheta) * this.FAULT_INDICATOR_ADJUSTMENT_RATIO;
-				//console.log("initial="+this.faultIndicatorInitialTouchTheta + " new=" + newFaultIndicatorPolarTheta + " final=" + newAngleModifier);
+				console.log("initial="+this.faultIndicatorInitialTouchTheta + " new=" + newFaultIndicatorPolarTheta + " final=" + newAngleModifier);
 				newAngleModifier = cr.clamp(newAngleModifier, -this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2, this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2);				;
 				this.faultIndicator.angle = newAngleModifier + this.faultIndicatorInitialTouchAngle;
-				this.faultIndicator.set_bbox_changed();				
+				this.faultIndicator.set_bbox_changed();		
 			}
 		}
 		

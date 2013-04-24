@@ -115,12 +115,10 @@ ACESDone();
 // new cr.Property(ept_link,		name,	link_text,		description, "firstonly")		// has no associated value; simply calls "OnPropertyChanged" on click
 
 var property_list = [
-	new cr.Property(ept_integer,		"Isometric Tile Height",	98,	"The height of a single 1x1x0 tile sprite in-game."),
+	new cr.Property(ept_float,		"Isometric Tile Height",	98,	"The height of a single 1x1x0 tile sprite in-game."),
 	new cr.Property(ept_integer,		"Grid Size",	16,	"The height and width of the tile grid of the level."),
-	/* new cr.Property(ept_integer,		"Ground Layer",	1,	"The layer to which flat tiles such as Grass and Water will be added."),
-	new cr.Property(ept_integer,		"Building Layer",	3,	"The layer to which building tiles such as House and Office will be added."), */
-	new cr.Property(ept_integer,		"Top Tile X",	1670,	"The X position of the bottom(origin) of the topmost tile in the level"),
-	new cr.Property(ept_integer,		"Top Tile Y",	880,	"The Y position of the bottom(origin) of the topmost tile in the level"),
+	new cr.Property(ept_float,		"Top Tile X",	1670,	"The X position of the bottom(origin) of the topmost tile in the level"),
+	new cr.Property(ept_float,		"Top Tile Y",	880,	"The Y position of the bottom(origin) of the topmost tile in the level"),
 	];
 	
 // Called by IDE when a new object type is to be created

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Game</name>
+    <events>
+        <variable comment="Debug text that can be set via javascript" constant="0" name="DEBUG" sid="71" static="0" type="text">&quot;//&quot;</variable>
+        <variable constant="0" name="x" sid="72" static="0" type="number">0</variable>
+        <event-block sid="73">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="74" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Initialize" sid="140" type="CityQuakeLevels" />
+                <action id="0" name="Load premade level" sid="75" type="CityQuakeLevels">
+                    <param id="0" name="LevelID">int(LevelIndicator.Text)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="107">
+            <conditions>
+                <condition id="10" name="On Nth touch start" sid="108" type="Touch">
+                    <param id="0" name="Touch number">0</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="109" type="System">
+                    <param id="0" name="First value">timescale</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Start angle adjustment" sid="115" type="CityQuakeLevels">
+                    <param id="0" name="X">CanvasToLayerX(3, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                    <param id="1" name="Y">CanvasToLayerY(3, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="77">
+            <conditions>
+                <condition id="12" name="Has Nth touch" sid="78" type="Touch">
+                    <param id="0" name="Touch number">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="3" name="Update indicators" sid="79" type="CityQuakeLevels">
+                    <param id="0" name="X">CanvasToLayerX(3, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                    <param id="1" name="Y">CanvasToLayerY(3, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="80">
+            <conditions>
+                <condition id="11" name="On Nth touch end" sid="81" type="Touch">
+                    <param id="0" name="Touch number">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="2" name="Spawn earthquake" sid="82" type="CityQuakeLevels">
+                    <param id="0" name="X">CanvasToLayerX(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                    <param id="1" name="Y">CanvasToLayerY(1, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="83">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="84" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="85" type="Debug">
+                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot; &amp; newline &amp; &quot;Faults=&quot;  &amp; x &amp; newline &amp; DEBUG</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="86">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="87" type="Earthquake">
+                    <param id="0" name="Object">Earthquake</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="CQEarthquake" id="0" name="Create Object Between" sid="88" type="Earthquake">
+                    <param id="0" name="Type">FaultIndicator</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
