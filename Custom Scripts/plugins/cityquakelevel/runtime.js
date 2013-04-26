@@ -58,12 +58,13 @@ var CQ;
 		
 		//audio stuff
 		this.audioInstance = null;		
+		this.CQ_TAG = "CQ ";
 		this.BOSSANOVA_NAME = "smoothbossanovabytombor911";
-		this.BOSSANOVA_TAG = "bossanova";
+		this.BOSSANOVA_TAG = CQ + "bossanova";
 		this.EPICITY_NAME = "epicitybyxenogenocide";
-		this.EPICITY_TAG = "epicity";
+		this.EPICITY_TAG = CQ + "epicity";
 		this.EPICITYSLOW_NAME = "epicitybyxenogenocideslowmo";
-		this.EPICITYSLOW_TAG = "epicityslow";
+		this.EPICITYSLOW_TAG = CQ + "epicityslow";
 		this.ALL_TAGS = [this.BOSSANOVA_TAG, this.EPICITY_TAG, this.EPICITYSLOW_TAG];
 		
 		//constants
@@ -107,8 +108,6 @@ var CQ;
 		var S = 6;
 		var V = 7;
 		var F = 8;
-		var A = 9;
-		var R = 10;
 		this.PREMADE_LEVELS = 
 		[
 			[[D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, G],
@@ -144,6 +143,23 @@ var CQ;
 			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
 			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
 			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0]],
+			 
+			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, S, G],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, S, G],
+			 [H, 0, H, H, 0, 0, H, H, H, H, 0, 0, 0, G, G, G],
+			 [H, H, H, H, H, H, H, V, V, G, G, G, 0, 0, G, 0],
+			 [H, 0, H, H, 0, 0, H, V, V, G, 0, G, 0, 0, G, 0],
+			 [0, 0, H, 0, 0, 0, H, H, H, H, 0, G, G, G, G, 0],
+			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, H, H, H, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
+			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0]],		 
 		];
 		this.LEVEL_COUNT = this.PREMADE_LEVELS.length;
 		this.currentLevelID = 0;
