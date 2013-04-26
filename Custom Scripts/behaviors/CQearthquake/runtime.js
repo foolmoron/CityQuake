@@ -52,31 +52,48 @@ cr.behaviors.CQearthquake = function(runtime)
 		this.EXPANSION_TIME = 1; //secs		
 		this.INITIAL_HEIGHT = CQ.TILE_HEIGHT/2;
 		this.FINAL_HEIGHT = CQ.EARTHQUAKE_FINAL_HEIGHT_IN_TILES * CQ.TILE_HEIGHT;
-		this.SECONDS_PER_FRAME = this.EXPANSION_TIME / this.inst.type.animations[0].frames.length;
+		this.NUM_FRAMES = this.inst.type.animations[0].frames.length - 1; //ignore last frame
+		this.SECONDS_PER_FRAME = this.EXPANSION_TIME / this.NUM_FRAMES;
+		this.DYING_TIME = 1; //secs
 	
 		//declarations
 		this.inst.alreadyCollidedWith = [];
 		this.expansionTime = 0;
+		this.dying = false;
+		this.dyingTime = 0;
 	};
 
 	behinstProto.tick = function ()
 	{
 		var dt = this.runtime.getDt(this.inst);
 		
-		this.expansionTime += dt;
-		if (this.expansionTime >= this.EXPANSION_TIME){
-			this.runtime.DestroyInstance(this.inst);
-			return;
+		if (this.dying){
+			this.dyingTime += dt;
+			if (this.dyingTime >= this.DYING_TIME){
+				this.runtime.DestroyInstance(this.inst);
+				return;
+			}			
+			var ratio = this.dyingTime / this.DYING_TIME;
+			this.inst.opacity = 1 - ratio;
+		} else {		
+			this.expansionTime += dt;
+			if (this.expansionTime >= this.EXPANSION_TIME){
+				this.dying = true;
+				this.inst.collisionsEnabled = false;
+				this.inst.changeAnimFrame = this.NUM_FRAMES;
+				this.inst.doChangeAnimFrame();
+				return;
+			}
+			
+			var currentFrame = Math.floor(this.expansionTime / this.SECONDS_PER_FRAME);
+			this.inst.changeAnimFrame = currentFrame;
+			this.inst.doChangeAnimFrame();
+			
+			var ratio = this.expansionTime / this.EXPANSION_TIME;
+			var desiredHeight = this.INITIAL_HEIGHT * (1-ratio) + this.FINAL_HEIGHT * ratio; //linear interp
+			var desiredScale = desiredHeight / this.inst.cur_animation.frames[currentFrame].height;
+			this.setScale(this.inst, desiredScale);
 		}
-		
-		var currentFrame = Math.floor(this.expansionTime / this.SECONDS_PER_FRAME);
-		this.inst.changeAnimFrame = currentFrame;
-		this.inst.doChangeAnimFrame();
-		
-		var ratio = this.expansionTime / this.EXPANSION_TIME;
-		var desiredHeight = this.INITIAL_HEIGHT * (1-ratio) + this.FINAL_HEIGHT * ratio; //linear interp
-		var desiredScale = desiredHeight / this.inst.cur_animation.frames[currentFrame].height;
-		this.setScale(this.inst, desiredScale);
 	};
 	
 	behinstProto.setScale = function (inst, scale)

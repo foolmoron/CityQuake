@@ -56,6 +56,16 @@ var CQ;
 		this.runtime.tickMe(this);
 		CQ = this;
 		
+		//audio stuff
+		this.audioInstance = null;		
+		this.BOSSANOVA_NAME = "smoothbossanovabytombor911";
+		this.BOSSANOVA_TAG = "bossanova";
+		this.EPICITY_NAME = "epicitybyxenogenocide";
+		this.EPICITY_TAG = "epicity";
+		this.EPICITYSLOW_NAME = "epicitybyxenogenocideslowmo";
+		this.EPICITYSLOW_TAG = "epicityslow";
+		this.ALL_TAGS = [this.BOSSANOVA_TAG, this.EPICITY_TAG, this.EPICITYSLOW_TAG];
+		
 		//constants
 		this.TILE_HEIGHT = this.properties[0];	
 		this.EARTHQUAKE_FINAL_HEIGHT_IN_TILES = 5;
@@ -173,6 +183,8 @@ var CQ;
 		this.faultIndicatorInitialAngle = 0;
 		this.oldFaultIndicatorPolarTheta = 0;
 		this.newFaultIndicatorPolarTheta = 0;
+		
+		this.reddenedSky = false;
 	};
 	
 	instanceProto.getTypeIndex = function (typeName)
@@ -211,6 +223,8 @@ var CQ;
 		
 		this.runtime.DestroyInstance(this.faultIndicator);
 		this.faultIndicator = null;
+		this.audioInstance.type.plugin.acts.Stop.call(this.audioInstance, this.EPICITYSLOW_TAG);
+		this.audioInstance.type.plugin.acts.SetPaused.call(this.audioInstance, this.EPICITY_TAG, 1);
 	}
 	
 	instanceProto.onKeyDown = function (info)
@@ -218,18 +232,25 @@ var CQ;
 		switch (info.which) {
 			case 13:
 				this.currentLevelID = 0;
-				this.runtime.changelayout = this.getLayoutByName("Level" + this.currentLevelID);
+				this.switchToNextLayout();
 				break;
 			case 37:
 				this.currentLevelID = (this.currentLevelID <= 1) ? this.LEVEL_COUNT : this.currentLevelID - 1;
-				this.runtime.changelayout = this.getLayoutByName("Level" + this.currentLevelID);
+				this.switchToNextLayout();
 				break;
 			case 39:
 				this.currentLevelID = (this.currentLevelID % this.LEVEL_COUNT) + 1;
-				this.runtime.changelayout = this.getLayoutByName("Level" + this.currentLevelID);
+				this.switchToNextLayout();
 				break;
 		}
 	};
+	
+	instanceProto.switchToNextLayout = function ()
+	{
+		for(var i = 0; i < this.ALL_TAGS.length; i++)			
+			this.audioInstance.type.plugin.acts.Stop.call(this.audioInstance, this.ALL_TAGS[i]);
+		this.runtime.changelayout = this.getLayoutByName("Level" + this.currentLevelID);
+	}
 	
 	instanceProto.getLayoutByName = function (name)
 	{
@@ -424,8 +445,18 @@ var CQ;
 									0,
 									0);
 		this.moveInstToTop(this.earthquakeIndicator);
-		//stolen from Sprite.SetScale()
 		this.earthquakeIndicator.opacity = 0;
+		
+		this.reddenedSky = false;
+		
+		for(var i = 0; i < this.runtime.types_by_index.length; i++){
+			var type = this.runtime.types_by_index[i];
+			if (type.plugin.acts.Play && type.plugin.acts.SetPaused){
+				this.audioInstance = type.instances[0];
+				this.audioInstance.type.plugin.acts.Play.call(this.audioInstance, [this.BOSSANOVA_NAME, 1], 1, 0, this.BOSSANOVA_TAG);
+				break;
+			}
+		}
 	};
 	
 	Acts.prototype.LoadLevelWithID = function (levelid)
@@ -667,6 +698,8 @@ var CQ;
 		this.runtime.timescale = 0;
 		this.frozen = true;
 		obj.my_timescale = 1;
+		this.audioInstance.type.plugin.acts.SetPaused.call(this.audioInstance, this.EPICITY_TAG, 0);
+		this.audioInstance.type.plugin.acts.Play.call(this.audioInstance, [this.EPICITYSLOW_NAME, 1], 1, 0, this.EPICITYSLOW_TAG);
 	}
 	
 	Acts.prototype.SpawnEarthquake = function (x, y)
@@ -679,7 +712,16 @@ var CQ;
 					x,
 					y);
 				var BG = this.background.behavior_insts[1];
-				BG.shake(this.TILE_HEIGHT/2, 1);
+				BG.shake(this.TILE_HEIGHT/2, 1);			
+				if (!this.reddenedSky){
+					if (this.runtime.types_by_index[this.typeIndexMap["CQBlueSky"]].instances.length > 0){
+						this.hasBehavior(this.runtime.types_by_index[this.typeIndexMap["CQBlueSky"]].instances[0], "Fade").doStart();
+						this.runtime.types_by_index[this.typeIndexMap["CQBlueSky"]].instances[0].my_timescale = 1;
+					}
+					this.reddenedSky = true;
+					this.audioInstance.type.plugin.acts.Stop.call(this.audioInstance, this.BOSSANOVA_TAG);
+					this.audioInstance.type.plugin.acts.Play.call(this.audioInstance, [this.EPICITY_NAME, 1], 1, 0, this.EPICITY_TAG);
+				}
 			}
 			this.earthquakeIndicator.opacity = 0;
 			this.hasBehavior(this.earthquakeIndicator, "CQEarthquakeIndicator").reset();
@@ -715,10 +757,10 @@ var CQ;
 				var actualNewFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
 				var newFaultIndicatorPolarTheta = actualNewFaultIndicatorPolarTheta;
 				if (onLeftSide && newFaultIndicatorPolarTheta > 2.5 && this.oldFaultIndicatorPolarTheta < -2.5){ //transitioned down
-					console.log("DOWN=-2PI");
+					//console.log("DOWN=-2PI");
 					newFaultIndicatorPolarTheta -= 2*Math.PI;
 				} else if (onLeftSide && newFaultIndicatorPolarTheta < -2.5 && this.oldFaultIndicatorPolarTheta > 2.5){ //transitioned up
-					console.log("UP=2PI");
+					//console.log("UP=2PI");
 					newFaultIndicatorPolarTheta += 2*Math.PI;
 				}
 				
@@ -727,7 +769,7 @@ var CQ;
 				this.faultIndicator.angle = cr.clamp(newAngle, 
 												this.faultIndicatorInitialAngle - this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2, 
 												this.faultIndicatorInitialAngle + this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2);
-				console.log("old="+this.oldFaultIndicatorPolarTheta + " new=" + newFaultIndicatorPolarTheta + " change=" + changeInPolarTheta + " || initial=" + this.faultIndicatorInitialAngle + " new=" + this.faultIndicator.angle);
+				//console.log("old="+this.oldFaultIndicatorPolarTheta + " new=" + newFaultIndicatorPolarTheta + " change=" + changeInPolarTheta + " || initial=" + this.faultIndicatorInitialAngle + " new=" + this.faultIndicator.angle);
 				this.oldFaultIndicatorPolarTheta = actualNewFaultIndicatorPolarTheta;
 				this.faultIndicator.set_bbox_changed();		
 			}
