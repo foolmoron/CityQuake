@@ -47,10 +47,10 @@
                         <x>730</x>
                         <y>187</y>
                         <z>0</z>
-                        <width>76</width>
-                        <height>40</height>
+                        <width>4.710743904</width>
+                        <height>5.057471275</height>
                         <depth>0</depth>
-                        <hotspotX>0.565789461</hotspotX>
+                        <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
@@ -105,33 +105,6 @@
                         <depth>0</depth>
                         <hotspotX>0.510204077</hotspotX>
                         <hotspotY>1</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="Text" uid="307">
-                    <properties>
-                        <text>CLICK ANYWHERE</text>
-                        <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-96,700,0</font>
-                        <color>0,0,0</color>
-                        <horizontal-alignment>Left</horizontal-alignment>
-                        <vertical-alignment>Top</vertical-alignment>
-                        <hotspot>Top-left</hotspot>
-                        <wrapping>Word</wrapping>
-                        <line-height>0</line-height>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>190</x>
-                        <y>27</y>
-                        <z>0</z>
-                        <width>1569</width>
-                        <height>177</height>
-                        <depth>0</depth>
-                        <hotspotX>0</hotspotX>
-                        <hotspotY>0</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -383,6 +356,31 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="BG" uid="27">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="ScrollTo" />
+                        <behavior-instance type="CQBackground" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>456.821868896</x>
+                        <y>332.885650635</y>
+                        <z>0</z>
+                        <width>905.874755859</width>
+                        <height>682.766357422</height>
+                        <depth>0</depth>
+                        <hotspotX>0.50060606</hotspotX>
+                        <hotspotY>0.500800014</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
@@ -482,7 +480,7 @@
                 </instance>
                 <instance type="Debug" uid="319">
                     <properties>
-                        <text>DEBUG TEXT:</text>
+                        <text>CLICK ON ME SON</text>
                         <initial-visibility>Visible</initial-visibility>
                         <font>Arial Narrow,-64,700,0</font>
                         <color>0,0,0</color>
@@ -495,8 +493,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>78</x>
-                        <y>545.271118164</y>
+                        <x>71.398880005</x>
+                        <y>206.922393799</y>
                         <z>0</z>
                         <width>208.961853027</width>
                         <height>365.728851318</height>
@@ -522,10 +520,10 @@
                         <x>68</x>
                         <y>64</y>
                         <z>0</z>
-                        <width>28</width>
-                        <height>20</height>
+                        <width>7</width>
+                        <height>4.888888836</height>
                         <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
+                        <hotspotX>0.516129017</hotspotX>
                         <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>

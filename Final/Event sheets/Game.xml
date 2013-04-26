@@ -66,7 +66,7 @@
             </conditions>
             <actions>
                 <action id="0" name="Set text" sid="85" type="Debug">
-                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot; &amp; newline &amp; &quot;AngleOffset=&quot;  &amp; x &amp; newline &amp; DEBUG</param>
+                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot; &amp; newline &amp; &quot;Faults=&quot;  &amp; x &amp; newline &amp; DEBUG</param>
                 </action>
             </actions>
         </event-block>

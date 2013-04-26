@@ -170,11 +170,9 @@ var CQ;
 		this.frozen = false;
 		this.faultIndicator = null;
 		this.faultIndicatorBeingAdjusted = false;
-		this.faultIndicatorInitialTouchX = -1;
-		this.faultIndicatorInitialTouchY = -1;
-		this.faultIndicatorInitialTouchAngle = -1;
-		this.faultIndicatorInitialTouchTheta = -1;
-		this.faultIndicatorThetaOffset = 0;
+		this.faultIndicatorInitialAngle = 0;
+		this.oldFaultIndicatorPolarTheta = 0;
+		this.newFaultIndicatorPolarTheta = 0;
 	};
 	
 	instanceProto.getTypeIndex = function (typeName)
@@ -404,7 +402,6 @@ var CQ;
 		this.oldTouchY = -1;
 		this.touchX = -1;
 		this.touchY = -1;
-		this.faultIndicatorThetaOffset = 0;
 	
 		//get all global constants from Construst		
 		var globals = this.runtime.all_global_vars;
@@ -429,19 +426,6 @@ var CQ;
 		this.moveInstToTop(this.earthquakeIndicator);
 		//stolen from Sprite.SetScale()
 		this.earthquakeIndicator.opacity = 0;
-		var desiredHeight = this.EARTHQUAKE_FINAL_HEIGHT_IN_TILES * this.TILE_HEIGHT;
-		var s = desiredHeight / this.earthquakeIndicator.curFrame.height;
-		var cur_frame = this.earthquakeIndicator.curFrame;
-		var mirror_factor = (this.earthquakeIndicator.width < 0 ? -1 : 1);
-		var flip_factor = (this.earthquakeIndicator.height < 0 ? -1 : 1);
-		var new_width = cur_frame.width * s * mirror_factor;
-		var new_height = cur_frame.height * s * flip_factor;		
-		if (this.earthquakeIndicator.width !== new_width || this.earthquakeIndicator.height !== new_height)
-		{
-			this.earthquakeIndicator.width = new_width;
-			this.earthquakeIndicator.height = new_height;
-			this.earthquakeIndicator.set_bbox_changed();
-		}
 	};
 	
 	Acts.prototype.LoadLevelWithID = function (levelid)
@@ -698,12 +682,12 @@ var CQ;
 				BG.shake(this.TILE_HEIGHT/2, 1);
 			}
 			this.earthquakeIndicator.opacity = 0;
+			this.hasBehavior(this.earthquakeIndicator, "CQEarthquakeIndicator").reset();
 		} else {
 			this.unfreeze();
 		}
 		this.oldTouchX = 0;
 		this.oldTouchY = 0;
-		this.faultIndicatorThetaOffset = 0;
 	};
 	
 	Acts.prototype.UpdateIndicators = function (x, y)
@@ -727,20 +711,24 @@ var CQ;
 		if (moved && this.frozen){
 			this.earthquakeIndicator.opacity = 0.0;		
 			if (this.faultIndicator != null){
-				var onLeftSide = (x - this.faultIndicator.x) < 0;
-				var transitionedUp = (this.oldTouchY - this.faultIndicator.y) > 0 && (y - this.faultIndicator.y) < 0;
-				var transitionedDown = (this.oldTouchY - this.faultIndicator.y) < 0 && (y - this.faultIndicator.y) > 0;
-				if (transitionedUp && onLeftSide){
-					this.faultIndicatorThetaOffset = (this.faultIndicatorThetaOffset != -2*Math.PI) ? 2*Math.PI : 0;
-				} else if (transitionedDown && onLeftSide){
-					this.faultIndicatorThetaOffset = (this.faultIndicatorThetaOffset != 2*Math.PI) ? -2*Math.PI : 0;
+				var onLeftSide = (x - this.faultIndicator.x) < 0;				
+				var actualNewFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
+				var newFaultIndicatorPolarTheta = actualNewFaultIndicatorPolarTheta;
+				if (onLeftSide && newFaultIndicatorPolarTheta > 2.5 && this.oldFaultIndicatorPolarTheta < -2.5){ //transitioned down
+					console.log("DOWN=-2PI");
+					newFaultIndicatorPolarTheta -= 2*Math.PI;
+				} else if (onLeftSide && newFaultIndicatorPolarTheta < -2.5 && this.oldFaultIndicatorPolarTheta > 2.5){ //transitioned up
+					console.log("UP=2PI");
+					newFaultIndicatorPolarTheta += 2*Math.PI;
 				}
 				
-				var newFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x) + this.faultIndicatorThetaOffset;
-				var newAngleModifier = (newFaultIndicatorPolarTheta - this.faultIndicatorInitialTouchTheta) * this.FAULT_INDICATOR_ADJUSTMENT_RATIO;
-				console.log("initial="+this.faultIndicatorInitialTouchTheta + " new=" + newFaultIndicatorPolarTheta + " final=" + newAngleModifier);
-				newAngleModifier = cr.clamp(newAngleModifier, -this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2, this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2);				;
-				this.faultIndicator.angle = newAngleModifier + this.faultIndicatorInitialTouchAngle;
+				var changeInPolarTheta = (newFaultIndicatorPolarTheta - this.oldFaultIndicatorPolarTheta) * this.FAULT_INDICATOR_ADJUSTMENT_RATIO;
+				var newAngle = changeInPolarTheta + this.faultIndicator.angle;
+				this.faultIndicator.angle = cr.clamp(newAngle, 
+												this.faultIndicatorInitialAngle - this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2, 
+												this.faultIndicatorInitialAngle + this.FAULT_INDICATOR_ADJUSTMENT_WIDTH/2);
+				console.log("old="+this.oldFaultIndicatorPolarTheta + " new=" + newFaultIndicatorPolarTheta + " change=" + changeInPolarTheta + " || initial=" + this.faultIndicatorInitialAngle + " new=" + this.faultIndicator.angle);
+				this.oldFaultIndicatorPolarTheta = actualNewFaultIndicatorPolarTheta;
 				this.faultIndicator.set_bbox_changed();		
 			}
 		}
@@ -752,10 +740,8 @@ var CQ;
 	Acts.prototype.StartFaultIndicatorAdjustment = function (x, y)
 	{
 		if (this.faultIndicator != null){
-			this.faultIndicatorInitialTouchX = x;
-			this.faultIndicatorInitialTouchY = y;
-			this.faultIndicatorInitialTouchAngle = this.faultIndicator.angle;
-			this.faultIndicatorInitialTouchTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
+			this.faultIndicatorInitialAngle = this.faultIndicator.angle;
+			this.oldFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
 			this.faultIndicator.cur_anim_speed = this.FAULT_INDICATOR_ANIM_SPEED;
 			this.runtime.tickMe(this.faultIndicator);
 			this.faultIndicator.my_timescale = 1;

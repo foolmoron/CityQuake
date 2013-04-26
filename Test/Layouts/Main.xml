@@ -47,11 +47,11 @@
                         <x>502</x>
                         <y>-75</y>
                         <z>0</z>
-                        <width>76</width>
-                        <height>40</height>
+                        <width>121</width>
+                        <height>87</height>
                         <depth>0</depth>
-                        <hotspotX>0.565789461</hotspotX>
-                        <hotspotY>0.5</hotspotY>
+                        <hotspotX>0.495867759</hotspotX>
+                        <hotspotY>0.482758611</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -7543,6 +7543,35 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="Earthquake" uid="343">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="CQEarthquake" />
+                        <behavior-instance type="CQDamaging">
+                            <properties>
+                                <initial-damage>1</initial-damage>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>797</x>
+                        <y>834</y>
+                        <z>0</z>
+                        <width>121</width>
+                        <height>87</height>
+                        <depth>0</depth>
+                        <hotspotX>0.495867759</hotspotX>
+                        <hotspotY>0.482758611</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
@@ -8077,11 +8106,11 @@
                         <x>74</x>
                         <y>-67</y>
                         <z>0</z>
-                        <width>111</width>
-                        <height>78</height>
+                        <width>124</width>
+                        <height>90</height>
                         <depth>0</depth>
-                        <hotspotX>0.504504502</hotspotX>
-                        <hotspotY>0.5</hotspotY>
+                        <hotspotX>0.491935492</hotspotX>
+                        <hotspotY>0.477777779</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
