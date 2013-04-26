@@ -6,14 +6,15 @@
     <author></author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>181</next-sid>
+    <next-sid>199</next-sid>
     <used-plugins>
-        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
@@ -505,11 +506,15 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="Audio" sid="181">
+            <plugin id="Audio" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder expanded="1">
         <layout>Level0.xml</layout>
         <layout>Level1.xml</layout>
+        <layout>Level2.xml</layout>
         <layout>Main.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
@@ -531,8 +536,32 @@
                 <top-tile-y>242.5</top-tile-y>
             </properties>
         </global-instance>
+        <global-instance type="Audio" uid="20">
+            <properties>
+                <timescale-audio>On (sounds only)</timescale-audio>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+                <speed-of-sound>5000</speed-of-sound>
+                <doppler-factor>1</doppler-factor>
+            </properties>
+        </global-instance>
     </global-instances>
     <sounds-folder expanded="1" />
-    <music-folder expanded="1" />
+    <music-folder expanded="1">
+        <file name="EpicityByXenogenocide.m4a" />
+        <file name="EpicityByXenogenocide.ogg" />
+        <file name="EpicityByXenogenocide.wav" />
+        <file name="SmoothBossaNovaByTombor911.m4a" />
+        <file name="SmoothBossaNovaByTombor911.ogg" />
+        <file name="SmoothBossaNovaByTombor911.wav" />
+        <file name="EpicityByXenogenocideSlowmo.m4a" />
+        <file name="EpicityByXenogenocideSlowmo.ogg" />
+        <file name="EpicityByXenogenocideSlowmo.wav" />
+    </music-folder>
     <files-folder expanded="1" />
 </c2project>

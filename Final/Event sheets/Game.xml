@@ -10,6 +10,15 @@
                 <condition id="-2" name="On start of layout" sid="74" type="System" />
             </conditions>
             <actions>
+                <action id="4" name="Preload" sid="192" type="Audio">
+                    <param id="0" name="Audio file">EpicityByXenogenocide</param>
+                </action>
+                <action id="4" name="Preload" sid="189" type="Audio">
+                    <param id="0" name="Audio file">EpicityByXenogenocideSlowmo</param>
+                </action>
+                <action id="4" name="Preload" sid="191" type="Audio">
+                    <param id="0" name="Audio file">SmoothBossaNovaByTombor911</param>
+                </action>
                 <action id="4" name="Initialize" sid="140" type="CityQuakeLevels" />
                 <action id="0" name="Load premade level" sid="75" type="CityQuakeLevels">
                     <param id="0" name="LevelID">int(LevelIndicator.Text)</param>
