@@ -6,17 +6,18 @@
     <author></author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>169</next-sid>
+    <next-sid>181</next-sid>
     <used-plugins>
+        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
-        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
-        <plugin author="Scirra" id="Function" version="1">Function</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
+        <behavior author="foolmoron" id="CQbluesky" version="1">CQ Blue Sky</behavior>
         <behavior author="foolmoron" id="CQdamaging" version="1">CQ Damaging</behavior>
         <behavior author="foolmoron" id="CQdestroyable" version="1">CQ Destroyable</behavior>
         <behavior author="foolmoron" id="CQdirt" version="1">CQ Dirt</behavior>
@@ -164,7 +165,7 @@
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="5" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="23" speed="0">
+                <animation framecount="6" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="23" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5">
                         <collision-poly>
                             <point x="0.140496" y="0.126437" />
@@ -225,6 +226,7 @@
                             <point x="0" y="0.5" />
                         </collision-poly>
                     </frame>
+                    <frame duration="1" hotspotX="0.513333" hotspotY="0.510204" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -256,11 +258,14 @@
         <object-type name="Text" sid="31">
             <plugin id="Text" />
         </object-type>
-        <object-type global="1" name="HUD" sid="32">
+        <object-type name="BlueSky" sid="32">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="ScrollTo" sid="33">
-                    <behavior id="scrollto" />
+                <behavior-type name="CQBlueSky" sid="174">
+                    <behavior id="CQbluesky" />
+                </behavior-type>
+                <behavior-type name="Fade" sid="169">
+                    <behavior id="Fade" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
@@ -492,12 +497,19 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="RedSky" sid="170">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="173" speed="5">
+                    <frame duration="1" hotspotX="0.500606" hotspotY="0.5008" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families />
     <layout-folder expanded="1">
         <layout>Level0.xml</layout>
         <layout>Level1.xml</layout>
-        <layout>Level2.xml</layout>
         <layout>Main.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
