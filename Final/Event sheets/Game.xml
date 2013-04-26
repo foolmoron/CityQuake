@@ -19,6 +19,9 @@
                 <action id="4" name="Preload" sid="191" type="Audio">
                     <param id="0" name="Audio file">SmoothBossaNovaByTombor911</param>
                 </action>
+                <action id="10" name="Set master volume" sid="222" type="Audio">
+                    <param id="0" name="dB">-100</param>
+                </action>
                 <action id="4" name="Initialize" sid="140" type="CityQuakeLevels" />
                 <action id="0" name="Load premade level" sid="75" type="CityQuakeLevels">
                     <param id="0" name="LevelID">int(LevelIndicator.Text)</param>
@@ -78,6 +81,32 @@
                     <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot; &amp; newline &amp; &quot;Faults=&quot;  &amp; x &amp; newline &amp; DEBUG</param>
                 </action>
             </actions>
+            <sub-events>
+                <event-block sid="202">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="203" type="System">
+                            <param id="0" name="First value">Audio.MasterVolume</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0.00001</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="204" type="MuteButton">
+                            <param id="0" name="Text">&quot;Enable Sound&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="205">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="206" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="207" type="MuteButton">
+                            <param id="0" name="Text">&quot;Disable Sound&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="86">
             <conditions>
@@ -90,6 +119,38 @@
                     <param id="0" name="Type">FaultIndicator</param>
                 </action>
             </actions>
+        </event-block>
+        <event-block sid="208">
+            <conditions>
+                <condition id="0" name="On clicked" sid="209" type="MuteButton" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="214">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="238" type="System">
+                            <param id="0" name="First value">Audio.MasterVolume</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0.00001</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="10" name="Set master volume" sid="241" type="Audio">
+                            <param id="0" name="dB">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="217">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="218" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="10" name="Set master volume" sid="239" type="Audio">
+                            <param id="0" name="dB">-100</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
     </events>
 </c2eventsheet>

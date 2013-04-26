@@ -6,15 +6,16 @@
     <author></author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>200</next-sid>
+    <next-sid>243</next-sid>
     <used-plugins>
-        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
-        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Button" version="1">Button</plugin>
+        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
@@ -508,6 +509,9 @@
         </object-type>
         <object-type name="Audio" sid="181">
             <plugin id="Audio" />
+        </object-type>
+        <object-type name="MuteButton" sid="200">
+            <plugin id="Button" />
         </object-type>
     </object-folder>
     <families />

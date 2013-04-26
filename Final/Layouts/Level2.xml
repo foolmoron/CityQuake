@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
     <name>Level2</name>
-    <sid>193</sid>
+    <sid>232</sid>
     <event-sheet>Game</event-sheet>
     <size>
         <width>850</width>
@@ -13,7 +13,7 @@
     </margins>
     <unbounded-scrolling>1</unbounded-scrolling>
     <layers>
-        <layer name="Shakeable" sid="195">
+        <layer name="Shakeable" sid="234">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -27,7 +27,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="BG" uid="21">
+                <instance type="BG" uid="26">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -55,7 +55,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="Bottom" sid="196">
+        <layer name="Bottom" sid="235">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -69,7 +69,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="60FPSForcer" uid="22">
+                <instance type="60FPSForcer" uid="28">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -98,7 +98,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="DirtBG" uid="23">
+                <instance type="DirtBG" uid="29">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -119,7 +119,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Earthquake" uid="24">
+                <instance type="Earthquake" uid="30">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -151,7 +151,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="HUD" sid="197">
+        <layer name="HUD" sid="236">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -165,7 +165,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="RedSky" uid="25">
+                <instance type="RedSky" uid="31">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -186,7 +186,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="BlueSky" uid="29">
+                <instance type="BlueSky" uid="32">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
@@ -219,9 +219,9 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Text" uid="30">
+                <instance type="Text" uid="33">
                     <properties>
-                        <text>PRESS ENTER FOR RANDOM LEFT/RIGHT FOR PREMADE TEST LEVELS</text>
+                        <text>PRESS ENTER FOR RANDOM</text>
                         <initial-visibility>Visible</initial-visibility>
                         <font>Arial,-29,700,0</font>
                         <color>0,0,0</color>
@@ -234,11 +234,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>434</x>
-                        <y>27</y>
+                        <x>416</x>
+                        <y>23</y>
                         <z>0</z>
-                        <width>417</width>
-                        <height>395</height>
+                        <width>463</width>
+                        <height>215</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -246,7 +246,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Text" uid="31">
+                <instance type="Text" uid="34">
                     <properties>
                         <text>CLICK TO DESTROY THINGS</text>
                         <initial-visibility>Visible</initial-visibility>
@@ -273,7 +273,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="LevelIndicator" uid="32">
+                <instance type="LevelIndicator" uid="37">
                     <properties>
                         <text>2</text>
                         <initial-visibility>Visible</initial-visibility>
@@ -300,10 +300,37 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="Text" uid="38">
+                    <properties>
+                        <text>LEFT/RIGHT FOR PREMADE TEST LEVELS</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-29,700,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>418</x>
+                        <y>83</y>
+                        <z>0</z>
+                        <width>463</width>
+                        <height>215</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
-        <layer name="Top" sid="198">
+        <layer name="Top" sid="237">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -317,7 +344,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="Debug" uid="33">
+                <instance type="Debug" uid="39">
                     <properties>
                         <text>Text</text>
                         <initial-visibility>Visible</initial-visibility>
@@ -342,6 +369,30 @@
                         <hotspotY>0</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="MuteButton" uid="40">
+                    <properties>
+                        <type>Button</type>
+                        <text>Enable Sound</text>
+                        <tooltip></tooltip>
+                        <initial-visibility>Visible</initial-visibility>
+                        <enabled>Yes</enabled>
+                        <auto-font-size>Yes</auto-font-size>
+                        <id-optional></id-optional>
+                        <checked>No</checked>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>719</x>
+                        <y>155</y>
+                        <z>0</z>
+                        <width>106</width>
+                        <height>60</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
                     </world>
                 </instance>
             </instances>

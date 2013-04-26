@@ -221,7 +221,7 @@
                 </instance>
                 <instance type="Text" uid="16">
                     <properties>
-                        <text>PRESS ENTER FOR RANDOM LEFT/RIGHT FOR PREMADE TEST LEVELS</text>
+                        <text>PRESS ENTER FOR RANDOM</text>
                         <initial-visibility>Visible</initial-visibility>
                         <font>Arial,-29,700,0</font>
                         <color>0,0,0</color>
@@ -234,11 +234,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>434</x>
-                        <y>27</y>
+                        <x>416</x>
+                        <y>23</y>
                         <z>0</z>
-                        <width>417</width>
-                        <height>395</height>
+                        <width>463</width>
+                        <height>215</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -300,6 +300,33 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="Text" uid="1">
+                    <properties>
+                        <text>LEFT/RIGHT FOR PREMADE TEST LEVELS</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-29,700,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>418</x>
+                        <y>83</y>
+                        <z>0</z>
+                        <width>463</width>
+                        <height>215</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
@@ -342,6 +369,30 @@
                         <hotspotY>0</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="MuteButton" uid="35">
+                    <properties>
+                        <type>Button</type>
+                        <text>Enable Sound</text>
+                        <tooltip></tooltip>
+                        <initial-visibility>Visible</initial-visibility>
+                        <enabled>Yes</enabled>
+                        <auto-font-size>Yes</auto-font-size>
+                        <id-optional></id-optional>
+                        <checked>No</checked>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>719</x>
+                        <y>155</y>
+                        <z>0</z>
+                        <width>106</width>
+                        <height>60</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
                     </world>
                 </instance>
             </instances>
