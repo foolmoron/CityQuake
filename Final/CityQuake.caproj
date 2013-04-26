@@ -6,14 +6,14 @@
     <author></author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>199</next-sid>
+    <next-sid>200</next-sid>
     <used-plugins>
+        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
-        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
     </used-plugins>
     <used-behaviors>
@@ -275,7 +275,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="EarthquakeIndicator" sid="35">
+        <object-type global="1" name="EarthquakeIndicator" sid="35">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="CQEarthquakeIndicator" sid="36">
@@ -283,7 +283,7 @@
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="5" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="37" speed="5">
+                <animation framecount="5" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="37" speed="0">
                     <frame duration="1" hotspotX="0.516129" hotspotY="0.5" />
                     <frame duration="1" hotspotX="0.508772" hotspotY="0.5" />
                     <frame duration="1" hotspotX="0.505882" hotspotY="0.5" />

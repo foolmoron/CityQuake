@@ -429,21 +429,8 @@ var CQ;
 		for(var i = 0; i < globals.length; i++){
 			this.globalVarMap[globals[i].name] = globals[i];
 		}	
-		
-		// if (this.levelToLoad < 0 || this.levelToLoad >= this.LEVEL_COUNT)
-			// this.loadLevelRandom();
-		// else
-			// this.loadLevelWithID(this.levelToLoad);
 			
-		//Initialize earthquake indicator after level so that it can be on top
-		if (this.earthquakeIndicator != null){
-			this.runtime.DestroyInstance(this.earthquakeIndicator);			
-		}
-		this.earthquakeIndicator = this.runtime.createInstance(
-									this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]],
-									this.runtime.running_layout.layers[this.LAYER_TOP],
-									0,
-									0);
+		this.earthquakeIndicator = this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]].instances[0];
 		this.moveInstToTop(this.earthquakeIndicator);
 		this.earthquakeIndicator.opacity = 0;
 		
@@ -590,6 +577,7 @@ var CQ;
 		}
 		
 		this.calculateGameplayAreaBounds();	
+		this.moveInstToTop(this.earthquakeIndicator);
 	};
 	
 	instanceProto.hasBehavior = function(inst, behaviorName)

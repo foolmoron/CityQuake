@@ -13,6 +13,48 @@
     </margins>
     <unbounded-scrolling>0</unbounded-scrolling>
     <layers>
+        <layer name="Shakeable" sid="199">
+            <initially-visible>1</initially-visible>
+            <background-color>255,255,255</background-color>
+            <transparent>1</transparent>
+            <parallax>
+                <x>1</x>
+                <y>1</y>
+            </parallax>
+            <zoom-rate>1</zoom-rate>
+            <opacity>1</opacity>
+            <force-own-texture>0</force-own-texture>
+            <blend-mode>0</blend-mode>
+            <effect-fallback>0</effect-fallback>
+            <instances>
+                <instance type="BG" uid="27">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="ScrollTo" />
+                        <behavior-instance type="CQBackground" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>456.821868896</x>
+                        <y>332.885650635</y>
+                        <z>0</z>
+                        <width>905.874755859</width>
+                        <height>682.766357422</height>
+                        <depth>0</depth>
+                        <hotspotX>0.50060606</hotspotX>
+                        <hotspotY>0.500800014</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+            </instances>
+            <effects />
+        </layer>
         <layer name="Bottom" sid="65">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
@@ -112,7 +154,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="Middle" sid="66">
+        <layer name="HUD" sid="66">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -356,31 +398,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="BG" uid="27">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <behavior-instances>
-                        <behavior-instance type="ScrollTo" />
-                        <behavior-instance type="CQBackground" />
-                    </behavior-instances>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>456.821868896</x>
-                        <y>332.885650635</y>
-                        <z>0</z>
-                        <width>905.874755859</width>
-                        <height>682.766357422</height>
-                        <depth>0</depth>
-                        <hotspotX>0.50060606</hotspotX>
-                        <hotspotY>0.500800014</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
             </instances>
             <effects />
         </layer>
@@ -505,30 +522,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="EarthquakeIndicator" uid="320">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <behavior-instances>
-                        <behavior-instance type="CQEarthquakeIndicator" />
-                    </behavior-instances>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>68</x>
-                        <y>64</y>
-                        <z>0</z>
-                        <width>7</width>
-                        <height>4.888888836</height>
-                        <depth>0</depth>
-                        <hotspotX>0.516129017</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
                 <instance type="Factory" uid="321">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
@@ -640,6 +633,30 @@
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.510204077</hotspotY>
                         <angle>0.698131084</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="EarthquakeIndicator" uid="34">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="CQEarthquakeIndicator" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>107.856063843</x>
+                        <y>-83.637016296</y>
+                        <z>0</z>
+                        <width>31</width>
+                        <height>22</height>
+                        <depth>0</depth>
+                        <hotspotX>0.516129017</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
