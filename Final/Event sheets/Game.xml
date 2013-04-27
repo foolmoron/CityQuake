@@ -4,6 +4,7 @@
     <name>Game</name>
     <events>
         <variable comment="Debug text that can be set via javascript" constant="0" name="DEBUG" sid="71" static="0" type="text">&quot;//&quot;</variable>
+        <variable comment="Level description" constant="0" name="DESCRIPTION" sid="270" static="0" type="text">&quot;Name: &quot;</variable>
         <variable constant="0" name="x" sid="72" static="0" type="number">0</variable>
         <event-block sid="73">
             <conditions>
@@ -79,6 +80,9 @@
             <actions>
                 <action id="0" name="Set text" sid="85" type="Debug">
                     <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot; &amp; newline &amp; &quot;Faults=&quot;  &amp; x &amp; newline &amp; DEBUG</param>
+                </action>
+                <action id="0" name="Set text" sid="269" type="Description">
+                    <param id="0" name="Text">DESCRIPTION</param>
                 </action>
             </actions>
             <sub-events>

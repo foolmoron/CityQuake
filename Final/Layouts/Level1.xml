@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
     <name>Level1</name>
-    <sid>226</sid>
+    <sid>271</sid>
     <event-sheet>Game</event-sheet>
     <size>
         <width>850</width>
@@ -13,7 +13,7 @@
     </margins>
     <unbounded-scrolling>1</unbounded-scrolling>
     <layers>
-        <layer name="Shakeable" sid="228">
+        <layer name="Shakeable" sid="273">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -55,7 +55,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="Bottom" sid="229">
+        <layer name="Bottom" sid="274">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -151,7 +151,7 @@
             </instances>
             <effects />
         </layer>
-        <layer name="HUD" sid="230">
+        <layer name="HUD" sid="275">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -327,10 +327,37 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="Description" uid="24">
+                    <properties>
+                        <text>DESCRIPTION</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-16</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>3</x>
+                        <y>5</y>
+                        <z>0</z>
+                        <width>200</width>
+                        <height>30</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
-        <layer name="Top" sid="231">
+        <layer name="Top" sid="276">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
@@ -344,7 +371,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="Debug" uid="24">
+                <instance type="Debug" uid="25">
                     <properties>
                         <text>Text</text>
                         <initial-visibility>Visible</initial-visibility>
@@ -360,7 +387,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>9</x>
-                        <y>147</y>
+                        <y>163</y>
                         <z>0</z>
                         <width>168</width>
                         <height>154</height>
@@ -371,7 +398,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="MuteButton" uid="25">
+                <instance type="MuteButton" uid="26">
                     <properties>
                         <type>Button</type>
                         <text>Enable Sound</text>

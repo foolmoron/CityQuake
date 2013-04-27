@@ -1,16 +1,17 @@
 import os,sys
 import Image
+import pdb
 
 COLOR_TO_TILE = \
 {\
-(104, 59, 5, 255): 'D',\
-(0, 139, 255, 255): 'W',\
-(5, 174, 26, 255): 'G',\
-(242, 239, 193, 255): 'H',\
-(187, 187, 187, 255): 'O',\
-(202, 67, 67, 255): 'S',\
-(94, 133, 246, 255): 'V',\
-(59, 59, 59, 255): 'F',\
+(104, 59, 5): 'D',\
+(0, 139, 255): 'W',\
+(5, 174, 26): 'G',\
+(242, 239, 193): 'H',\
+(187, 187, 187): 'O',\
+(202, 67, 67): 'S',\
+(94, 133, 246): 'V',\
+(59, 59, 59): 'F',\
 }
 
 NUM_TILES = 16
@@ -43,8 +44,9 @@ def processimage(filename):
                 x = baseX + (tileY * TILE_HEIGHT)
                 y = baseY + (tileY * TILE_HEIGHT/2)
                 char = ''
-                if pixels[x, y] in COLOR_TO_TILE:
-                    line += COLOR_TO_TILE[pixels[x, y]] + ", "
+                color = (pixels[x, y][0], pixels[x, y][1], pixels[x, y][2])
+                if color in COLOR_TO_TILE:
+                    line += COLOR_TO_TILE[color] + ", "
                 else:
                     line += "0, "                    
             if (tileX == NUM_TILES-1):

@@ -109,25 +109,8 @@ var CQ;
 		var V = 7;
 		var F = 8;
 		this.PREMADE_LEVELS = 
-		[
-			[[D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, G],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, S, 0, V, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, F, 0, F, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [W, F, F, F, W, F, W, W, W, W, W, W, W, W, W, W]],
-			 
-			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G],
+		[			 
+			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G], //fooltest1
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, 0, G],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, 0, 0, G],
 			 [H, 0, H, H, 0, 0, H, H, H, H, 0, 0, 0, G, G, G],
@@ -144,22 +127,99 @@ var CQ;
 			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
 			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0]],
 			 
-			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, S, G],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, S, G],
-			 [H, 0, H, H, 0, 0, H, H, H, H, 0, 0, 0, G, G, G],
-			 [H, H, H, H, H, H, H, V, V, G, G, G, 0, 0, G, 0],
-			 [H, 0, H, H, 0, 0, H, V, V, G, 0, G, 0, 0, G, 0],
-			 [0, 0, H, 0, 0, 0, H, H, H, H, 0, G, G, G, G, 0],
-			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, H, H, H, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
-			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0]],		 
+			[[W, W, W, W, W, O, O, G, G, G, G, G, H, D, H, G], //Cobain1
+			 [W, W, W, W, W, O, O, G, G, G, G, G, H, D, H, G],
+			 [W, W, W, W, W, O, O, G, G, S, S, G, H, D, H, G],
+			 [W, W, W, W, W, O, O, G, G, S, S, G, H, D, H, G],
+			 [F, F, W, O, O, O, O, G, H, D, D, D, D, D, D, D],
+			 [F, F, W, O, O, O, O, G, H, D, H, G, H, D, H, G],
+			 [G, G, W, O, O, G, G, G, H, D, H, G, H, D, H, G],
+			 [G, G, W, D, D, D, D, D, D, D, H, G, H, D, H, G],
+			 [G, G, W, G, G, G, G, G, G, G, G, G, H, D, H, G],
+			 [G, G, W, G, G, H, H, H, H, H, H, H, H, H, G, G],
+			 [G, G, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
+			 [G, G, V, V, H, H, H, H, H, H, H, H, H, H, W, H],
+			 [G, G, V, V, G, G, G, G, G, G, G, G, G, H, W, H],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, H, W, H],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, H, W, H],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, G]],
+
+			[[0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0], //Eschire
+			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
+			 [0, G, G, H, H, H, 0, 0, 0, 0, H, H, H, G, G, 0],
+			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
+			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
+			 [0, G, H, H, H, G, H, H, H, H, G, H, H, H, G, 0],
+			 [0, G, 0, 0, 0, H, G, O, O, G, H, 0, 0, 0, G, 0],
+			 [G, G, 0, 0, 0, H, O, G, G, O, H, 0, 0, 0, G, G],
+			 [G, G, 0, 0, 0, H, O, G, G, O, H, 0, 0, 0, G, G],
+			 [0, G, 0, 0, 0, H, G, O, O, G, H, 0, 0, 0, G, 0],
+			 [0, G, H, H, H, G, H, H, H, H, G, H, H, H, G, 0],
+			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
+			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
+			 [0, G, G, H, H, H, 0, 0, 0, 0, H, H, H, G, G, 0],
+			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
+			 [0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0]],
+
+			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, H, G, G, S, S], //Jeffrey1
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, H, H, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, G, G, G],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, G, H],
+			 [W, H, 0, 0, H, H, H, 0, 0, 0, 0, 0, 0, G, G, G],
+			 [W, H, 0, 0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [W, H, 0, 0, H, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [W, W, W, 0, 0, 0, H, O, O, 0, 0, 0, 0, 0, 0, 0],
+			 [0, H, W, W, 0, 0, 0, O, O, H, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, W, 0, 0, 0, 0, H, H, H, H, 0, 0, 0, 0],
+			 [0, 0, 0, W, W, F, 0, 0, 0, H, H, H, 0, 0, 0, 0],
+			 [0, 0, 0, W, W, 0, 0, 0, 0, H, H, H, 0, 0, 0, 0],
+			 [0, 0, 0, W, W, W, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, W, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, W, W, W, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, H, H, W, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+			[[H, H, H, H, H, G, F, G, F, G, F, H, H, H, H, H], //Trembleton
+			 [D, D, D, D, H, G, F, G, F, G, F, H, D, D, D, D],
+			 [H, H, H, D, H, D, D, D, D, D, D, D, D, H, H, H],
+			 [H, G, H, D, H, S, S, O, O, V, V, H, D, H, G, H],
+			 [H, G, H, D, H, S, S, O, O, V, V, H, D, H, G, H],
+			 [H, G, H, D, H, G, G, G, G, G, G, H, D, H, G, H],
+			 [H, G, H, D, H, G, G, W, W, W, G, H, D, H, G, H],
+			 [H, G, H, D, H, G, W, W, W, W, G, H, D, H, G, H],
+			 [H, G, H, D, H, G, W, W, W, W, G, H, D, H, G, H],
+			 [H, G, H, D, H, G, W, W, W, G, G, H, D, H, G, H],
+			 [H, G, H, D, H, G, G, G, G, G, G, H, D, H, G, H],
+			 [H, G, H, D, H, V, V, O, O, S, S, H, D, H, G, H],
+			 [H, G, H, D, H, V, V, O, O, S, S, H, D, H, G, H],
+			 [H, H, H, D, D, D, D, D, D, D, D, H, D, H, H, H],
+			 [D, D, D, D, H, F, G, F, G, F, G, H, D, D, D, D],
+			 [H, H, H, H, H, F, G, F, G, F, G, H, H, H, H, H]],
+
+			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //Wylvane1
+			 [0, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, S, S, S, 0, S],
+			 [0, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [V, V, V, V, V, 0, 0, 0, 0, 0, 0, S, 0, 0, 0, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, 0, S, S],
+			 [V, V, V, V, V, 0, 0, 0, 0, 0, 0, 0, S, S, S, 0],
+			 [V, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, S, S, 0, S, S],
+			 [V, V, V, V, V, 0, V, V, V, V, 0, S, 0, 0, 0, S],
+			 [0, 0, 0, 0, 0, 0, V, 0, 0, V, 0, 0, 0, 0, 0, 0],
+			 [V, V, V, V, V, 0, V, V, V, V, 0, S, S, S, S, S],
+			 [V, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, S],
+			 [V, V, V, V, V, 0, V, V, V, V, 0, S, S, S, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [V, 0, V, 0, 0, 0, 0, 0, V, 0, 0, S, 0, S, S, S],
+			 [V, 0, V, 0, 0, 0, 0, V, 0, 0, 0, S, 0, S, 0, S],
+			 [V, V, V, V, V, 0, V, V, V, V, 0, S, S, S, 0, S]],
+		];
+		this.LEVEL_DESCRIPTIONS = 
+		[
+			"Level name: fooltest1",
+			"Level name: Cobain1",
+			"Level name: Eschire",
+			"Level name: Jeffrey1",
+			"Level name: Trembleton",
+			"Level name: Wylvane1",			
 		];
 		this.LEVEL_COUNT = this.PREMADE_LEVELS.length;
 		this.currentLevelID = 0;
@@ -445,6 +505,9 @@ var CQ;
 		for(var i = 0; i < globals.length; i++){
 			this.globalVarMap[globals[i].name] = globals[i];
 		}	
+		
+		if (this.currentLevelID > 0 && this.currentLevelID <= this.LEVEL_COUNT)
+			this.globalVarMap["DESCRIPTION"].data = this.LEVEL_DESCRIPTIONS[this.currentLevelID - 1];
 			
 		this.earthquakeIndicator = this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]].instances[0];
 		this.moveInstToTop(this.earthquakeIndicator);
