@@ -331,7 +331,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -369,7 +370,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -407,7 +409,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -445,7 +448,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -570,7 +574,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -608,7 +613,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -704,7 +710,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -742,7 +749,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -838,7 +846,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -876,7 +885,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -943,7 +953,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1010,7 +1021,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1048,7 +1060,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1086,7 +1099,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1124,7 +1138,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1307,7 +1322,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1345,7 +1361,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1383,7 +1400,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1595,7 +1613,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1633,7 +1652,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1671,7 +1691,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1825,7 +1846,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -2377,7 +2399,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>3</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>200</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -2668,7 +2691,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>3</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>200</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -2988,7 +3012,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>3</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>200</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -4302,7 +4327,7 @@
             <instances>
                 <instance type="Button" uid="153">
                     <properties>
-                        <left-margin>30</left-margin>
+                        <left-margin>28</left-margin>
                         <right-margin>30</right-margin>
                         <top-margin>30</top-margin>
                         <bottom-margin>30</bottom-margin>
@@ -4333,7 +4358,7 @@
                 </instance>
                 <instance type="Button" uid="154">
                     <properties>
-                        <left-margin>30</left-margin>
+                        <left-margin>28</left-margin>
                         <right-margin>30</right-margin>
                         <top-margin>30</top-margin>
                         <bottom-margin>30</bottom-margin>

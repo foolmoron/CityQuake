@@ -6,7 +6,7 @@
     <author>foolmoron</author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>431</next-sid>
+    <next-sid>474</next-sid>
     <used-plugins>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="NinePatch" version="1">9-patch</plugin>
@@ -14,6 +14,7 @@
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+        <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
         <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
     </used-plugins>
@@ -559,6 +560,91 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="WebStorage" sid="431">
+            <plugin id="WebStorage" />
+        </object-type>
+        <object-type name="BackArrow" sid="442">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="443" speed="5">
+                    <frame duration="1" hotspotX="0.506329" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.227848" y="0.243243" />
+                            <point x="0.493671" y="0.0135135" />
+                            <point x="0.772152" y="0.243243" />
+                            <point x="1" y="0.5" />
+                            <point x="0.772152" y="0.756757" />
+                            <point x="0.493671" y="1" />
+                            <point x="0.227848" y="0.756757" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="RetryArrow" sid="444">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="445" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.15" y="0.15" />
+                            <point x="0.5" y="0" />
+                            <point x="0.95" y="0.05" />
+                            <point x="1" y="0.5" />
+                            <point x="0.8625" y="0.8625" />
+                            <point x="0.5" y="1" />
+                            <point x="0.15" y="0.85" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="NewHigh" sid="458">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="460">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="459" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.510204">
+                        <collision-poly>
+                            <point x="0.142857" y="0.285714" />
+                            <point x="0.5" y="0" />
+                            <point x="0.836735" y="0.326531" />
+                            <point x="0.989796" y="0.979592" />
+                            <point x="0.5" y="0.469388" />
+                            <point x="0.0102041" y="0.979592" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="RetryText" sid="470">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="472">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="471" speed="5">
+                    <frame duration="1" hotspotX="0.502924" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.25731" y="0.611111" />
+                            <point x="0.97076" y="0.0694444" />
+                            <point x="0.923977" y="0.5" />
+                            <point x="0.912281" y="0.791667" />
+                            <point x="0.00584795" y="0.986111" />
+                            <point x="0.888889" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families />
     <layout-folder expanded="1">
@@ -607,6 +693,7 @@
                 <doppler-factor>1</doppler-factor>
             </properties>
         </global-instance>
+        <global-instance type="WebStorage" uid="505" />
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1">

@@ -54,6 +54,22 @@
                 </action>
             </actions>
         </event-block>
+        <event-block sid="446">
+            <conditions>
+                <condition id="0" name="On function" sid="447" type="Function">
+                    <param id="0" name="Name">&quot;RetryLevel&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Stop all music" sid="451" type="CityQuakeLevels" />
+                <action id="6" name="Set next level ID" sid="448" type="CityQuakeLevels">
+                    <param id="0" name="LevelID">CityQuakeLevels.CurrentLevelID</param>
+                </action>
+                <action id="-25" name="Go to layout (by name)" sid="450" type="System">
+                    <param id="0" name="Layout">&quot;Game&quot;</param>
+                </action>
+            </actions>
+        </event-block>
         <event-block sid="401">
             <conditions>
                 <condition id="-1" name="Every tick" sid="402" type="System" />

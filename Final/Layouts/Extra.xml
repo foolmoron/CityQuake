@@ -459,6 +459,7 @@
                             <properties>
                                 <initial-health>1</initial-health>
                                 <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -492,6 +493,7 @@
                             <properties>
                                 <initial-health>3</initial-health>
                                 <destroy-time>1</destroy-time>
+                                <score>300</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -549,6 +551,7 @@
                             <properties>
                                 <initial-health>3</initial-health>
                                 <destroy-time>1</destroy-time>
+                                <score>200</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -579,6 +582,7 @@
                             <properties>
                                 <initial-health>3</initial-health>
                                 <destroy-time>1</destroy-time>
+                                <score>200</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -609,6 +613,7 @@
                             <properties>
                                 <initial-health>3</initial-health>
                                 <destroy-time>1</destroy-time>
+                                <score>200</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>

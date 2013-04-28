@@ -331,7 +331,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -369,7 +370,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -407,7 +409,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -445,7 +448,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -570,7 +574,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -608,7 +613,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -704,7 +710,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -742,7 +749,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -838,7 +846,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -876,7 +885,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -943,7 +953,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1010,7 +1021,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1048,7 +1060,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1086,7 +1099,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1124,7 +1138,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1307,7 +1322,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1345,7 +1361,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1383,7 +1400,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1595,7 +1613,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1633,7 +1652,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1671,7 +1691,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -1825,7 +1846,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>1</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>100</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -2377,7 +2399,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>3</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>200</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -2668,7 +2691,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>3</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>200</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -2988,7 +3012,8 @@
                         <behavior-instance type="CQDestroyable">
                             <properties>
                                 <initial-health>3</initial-health>
-                                <destroy-time>3</destroy-time>
+                                <destroy-time>1</destroy-time>
+                                <score>200</score>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -4310,7 +4335,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>GoToLayout</OnClick>
@@ -4368,7 +4393,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4378,8 +4403,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>91</x>
-                        <y>186</y>
+                        <x>89</x>
+                        <y>187</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4404,8 +4429,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>91</x>
-                        <y>186</y>
+                        <x>89</x>
+                        <y>191</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4426,7 +4451,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4436,8 +4461,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>185</x>
-                        <y>188</y>
+                        <x>183</x>
+                        <y>187</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4462,8 +4487,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>185</x>
-                        <y>188</y>
+                        <x>183</x>
+                        <y>191</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4484,7 +4509,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4494,8 +4519,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>277</x>
-                        <y>190</y>
+                        <x>275</x>
+                        <y>187</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4520,8 +4545,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>277</x>
-                        <y>190</y>
+                        <x>275</x>
+                        <y>191</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4542,7 +4567,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4552,8 +4577,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>369</x>
-                        <y>190</y>
+                        <x>367</x>
+                        <y>187</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4578,8 +4603,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>369</x>
-                        <y>190</y>
+                        <x>367</x>
+                        <y>191</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4600,7 +4625,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4610,8 +4635,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>463</x>
-                        <y>192</y>
+                        <x>461</x>
+                        <y>187</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4636,8 +4661,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>463</x>
-                        <y>192</y>
+                        <x>461</x>
+                        <y>191</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4658,7 +4683,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4668,8 +4693,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>555</x>
-                        <y>194</y>
+                        <x>553</x>
+                        <y>187</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4694,8 +4719,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>555</x>
-                        <y>194</y>
+                        <x>553</x>
+                        <y>191</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4716,7 +4741,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4726,8 +4751,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>91</x>
-                        <y>276</y>
+                        <x>89</x>
+                        <y>277</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4752,8 +4777,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>91</x>
-                        <y>276</y>
+                        <x>89</x>
+                        <y>281</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4774,7 +4799,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4784,8 +4809,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>185</x>
-                        <y>278</y>
+                        <x>183</x>
+                        <y>277</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4810,8 +4835,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>185</x>
-                        <y>278</y>
+                        <x>183</x>
+                        <y>281</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4832,7 +4857,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4842,8 +4867,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>277</x>
-                        <y>280</y>
+                        <x>275</x>
+                        <y>277</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4868,8 +4893,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>277</x>
-                        <y>280</y>
+                        <x>275</x>
+                        <y>281</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4890,7 +4915,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4900,8 +4925,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>369</x>
-                        <y>280</y>
+                        <x>367</x>
+                        <y>277</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4926,8 +4951,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>369</x>
-                        <y>280</y>
+                        <x>367</x>
+                        <y>281</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -4948,7 +4973,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -4958,8 +4983,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>463</x>
-                        <y>282</y>
+                        <x>461</x>
+                        <y>277</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -4984,8 +5009,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>463</x>
-                        <y>282</y>
+                        <x>461</x>
+                        <y>281</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -5006,7 +5031,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -5017,7 +5042,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>91</x>
-                        <y>368</y>
+                        <y>369</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -5043,7 +5068,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>91</x>
-                        <y>368</y>
+                        <y>373</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -5064,7 +5089,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -5075,7 +5100,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>185</x>
-                        <y>370</y>
+                        <y>369</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -5101,7 +5126,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>185</x>
-                        <y>370</y>
+                        <y>373</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -5122,7 +5147,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -5133,7 +5158,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>277</x>
-                        <y>372</y>
+                        <y>369</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -5159,7 +5184,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>277</x>
-                        <y>372</y>
+                        <y>373</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -5180,7 +5205,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -5191,7 +5216,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>369</x>
-                        <y>372</y>
+                        <y>369</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -5217,7 +5242,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>369</x>
-                        <y>372</y>
+                        <y>373</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -5238,7 +5263,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -5296,7 +5321,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -5306,8 +5331,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>557</x>
-                        <y>284</y>
+                        <x>555</x>
+                        <y>277</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -5332,8 +5357,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>557</x>
-                        <y>284</y>
+                        <x>555</x>
+                        <y>281</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -5354,7 +5379,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -5364,8 +5389,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>649</x>
-                        <y>196</y>
+                        <x>647</x>
+                        <y>187</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -5390,8 +5415,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>649</x>
-                        <y>196</y>
+                        <x>647</x>
+                        <y>191</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>
@@ -5412,7 +5437,7 @@
                         <fill>Tile</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Center</hotspot>
-                        <seams>Overlap</seams>
+                        <seams>Exact</seams>
                     </properties>
                     <instance-variables>
                         <OnClick>LoadLevel</OnClick>
@@ -5422,8 +5447,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>741</x>
-                        <y>198</y>
+                        <x>739</x>
+                        <y>187</y>
                         <z>0</z>
                         <width>85</width>
                         <height>85</height>
@@ -5448,8 +5473,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>741</x>
-                        <y>198</y>
+                        <x>739</x>
+                        <y>191</y>
                         <z>0</z>
                         <width>70</width>
                         <height>70</height>

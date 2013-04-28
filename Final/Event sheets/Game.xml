@@ -7,6 +7,7 @@
         <variable comment="Debug text that can be set via javascript" constant="0" name="DEBUG" sid="71" static="0" type="text">&quot;//&quot;</variable>
         <variable comment="Level description" constant="0" name="DESCRIPTION" sid="270" static="0" type="text">&quot;Name: &quot;</variable>
         <variable comment="Level name" constant="0" name="LEVELNAME" sid="394" static="0" type="text">LEVEL NAME</variable>
+        <variable comment="Current high score" constant="0" name="HIGHSCORE" sid="464" static="0" type="number">0</variable>
         <variable constant="0" name="x" sid="72" static="0" type="number">0</variable>
         <event-block sid="73">
             <conditions>
@@ -23,6 +24,14 @@
                     <param id="0" name="Audio file">SmoothBossaNovaByTombor911</param>
                 </action>
                 <action id="4" name="Initialize" sid="140" type="CityQuakeLevels" />
+                <action id="0" name="Set local value" sid="440" type="WebStorage">
+                    <param id="0" name="Key">&quot;levelprogress&quot;</param>
+                    <param id="1" name="Value">CityQuakeLevels.CurrentLevelID &gt; int(WebStorage.SessionValue(&quot;levelprogress&quot;)) ? CityQuakeLevels.CurrentLevelID : WebStorage.SessionValue(&quot;levelprogress&quot;)</param>
+                </action>
+                <action id="-9" name="Set value" sid="465" type="System">
+                    <param id="0" name="Variable">HIGHSCORE</param>
+                    <param id="1" name="Value">WebStorage.LocalValue(&quot;highscore&quot; &amp; str(CityQuakeLevels.CurrentLevelID)) = &quot;&quot; ? 0 : WebStorage.LocalValue(&quot;highscore&quot; &amp; str(CityQuakeLevels.CurrentLevelID))</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="107">
@@ -97,7 +106,7 @@
             </conditions>
             <actions>
                 <action id="0" name="Set text" sid="85" type="Debug">
-                    <param id="0" name="Text">&quot;DEBUG TEXT: &quot; &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot;(&quot; &amp; renderer &amp; &quot;)&quot; &amp; newline &amp; &quot;Faults=&quot;  &amp; x &amp; newline &amp; DEBUG</param>
+                    <param id="0" name="Text">&quot;BUILDINGS: &quot; &amp; CityQuakeLevels.RemainingBuildings &amp; newline &amp; &quot;QUAKES: &quot; &amp; CityQuakeLevels.RemainingEarthquakes &amp; newline &amp; &quot;HIGH: &quot; &amp; HIGHSCORE &amp; newline &amp; &quot;SCORE: &quot; &amp; CityQuakeLevels.Score</param>
                 </action>
                 <action id="0" name="Set text" sid="269" type="Description">
                     <param id="0" name="Text">DESCRIPTION</param>
@@ -117,6 +126,46 @@
                 <action behavior="CQEarthquake" id="0" name="Create Object Between" sid="88" type="Earthquake">
                     <param id="0" name="Type">FaultIndicator</param>
                 </action>
+            </actions>
+        </event-block>
+        <event-block sid="454">
+            <conditions>
+                <condition id="1" name="On win" sid="455" type="CityQuakeLevels" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="466">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="467" type="System">
+                            <param id="0" name="Variable">HIGHSCORE</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">CityQuakeLevels.Score</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="468" type="WebStorage">
+                            <param id="0" name="Key">&quot;highscore&quot; &amp; str(CityQuakeLevels.CurrentLevelID)</param>
+                            <param id="1" name="Value">CityQuakeLevels.Score</param>
+                        </action>
+                        <action behavior="Fade" id="1" name="Start fade" sid="469" type="NewHigh" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="456">
+            <conditions>
+                <condition id="0" name="On lose" sid="457" type="CityQuakeLevels" />
+            </conditions>
+            <actions>
+                <action behavior="Fade" id="1" name="Start fade" sid="473" type="RetryText" />
+            </actions>
+        </event-block>
+        <event-block sid="461">
+            <conditions>
+                <condition behavior="Fade" id="0" name="On fade out finished" sid="462" type="NewHigh" />
+            </conditions>
+            <actions>
+                <action behavior="Fade" id="0" name="Restart fade" sid="463" type="NewHigh" />
             </actions>
         </event-block>
     </events>

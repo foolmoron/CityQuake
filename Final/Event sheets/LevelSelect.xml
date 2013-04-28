@@ -5,5 +5,27 @@
     <events>
         <include>BossaNova</include>
         <include>Buttons</include>
+        <event-block sid="435">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="436" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="437">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="438" type="Button">
+                            <param id="0" name="Instance variable">NumParameter</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="-16" name="Set opacity" sid="439" type="Button">
+                            <param id="0" name="Opacity">Button.NumParameter &gt; int(WebStorage.LocalValue(&quot;levelprogress&quot;)) ? 50 : 100</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
     </events>
 </c2eventsheet>
