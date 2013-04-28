@@ -22,9 +22,6 @@
                 <action id="4" name="Preload" sid="191" type="Audio">
                     <param id="0" name="Audio file">SmoothBossaNovaByTombor911</param>
                 </action>
-                <action id="10" name="Set master volume" sid="222" type="Audio">
-                    <param id="0" name="dB">-100</param>
-                </action>
                 <action id="4" name="Initialize" sid="140" type="CityQuakeLevels" />
             </actions>
         </event-block>

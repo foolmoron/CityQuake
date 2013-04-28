@@ -7,11 +7,7 @@
             <conditions>
                 <condition id="-2" name="On start of layout" sid="425" type="System" />
             </conditions>
-            <actions>
-                <action id="10" name="Set master volume" sid="430" type="Audio">
-                    <param id="0" name="dB">0</param>
-                </action>
-            </actions>
+            <actions />
             <sub-events>
                 <event-block sid="426">
                     <conditions>
