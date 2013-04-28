@@ -85,6 +85,9 @@ AddAction(4, af_none, "Initialize", "Initialization", "Initialize level", "Initi
 AddNumberParam("X", "Initial X position of touch");
 AddNumberParam("Y", "Initial Y position of touch");
 AddAction(5, af_none, "Start angle adjustment", "Gameplay", "Start fault indicators angle adjustment at ({0}, {1})", "Start fault indicators angle adjustment", "StartFaultIndicatorAdjustment")
+AddNumberParam("LevelID", "ID of the level to load when Initialize is called");
+AddAction(6, af_none, "Set next level ID", "Initialization", "Load level #{0} next", "Set next level to load when Initialize is called", "SetNextLevelID")
+AddAction(7, af_none, "Stop all music", "Initialization", "Stop all music", "Stop all music", "StopAllMusic")
 
 ////////////////////////////////////////
 // Expressions

@@ -91,6 +91,7 @@ var CQ;
 		this.tileTypeLayers = [];
 		this.tileTypeSizes = [];
 		this.tileTypeFrames = [];
+		this.nextLevelID = 0;
 		
 		this.background;
 		this.LAYER_BOTTOM = 1;
@@ -110,23 +111,6 @@ var CQ;
 		var F = 8;
 		this.PREMADE_LEVELS = 
 		[			 
-			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G], //fooltest1
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, 0, G],
-			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, 0, 0, G],
-			 [H, 0, H, H, 0, 0, H, H, H, H, 0, 0, 0, G, G, G],
-			 [H, H, H, H, H, H, H, V, 0, G, G, G, 0, 0, G, 0],
-			 [H, 0, H, H, 0, 0, H, 0, 0, G, 0, G, 0, 0, G, 0],
-			 [0, 0, H, 0, 0, 0, H, H, H, H, 0, G, G, G, G, 0],
-			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, H, H, H, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
-			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
-			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0]],
-			 
 			[[W, W, W, W, W, O, O, G, G, G, G, G, H, D, H, G], //Cobain1
 			 [W, W, W, W, W, O, O, G, G, G, G, G, H, D, H, G],
 			 [W, W, W, W, W, O, O, G, G, S, S, G, H, D, H, G],
@@ -144,22 +128,22 @@ var CQ;
 			 [G, G, G, G, G, G, G, G, G, G, G, G, G, H, W, H],
 			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, G]],
 
-			[[0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0], //Eschire
-			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
-			 [0, G, G, H, H, H, 0, 0, 0, 0, H, H, H, G, G, 0],
-			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
-			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
-			 [0, G, H, H, H, G, H, H, H, H, G, H, H, H, G, 0],
-			 [0, G, 0, 0, 0, H, G, O, O, G, H, 0, 0, 0, G, 0],
-			 [G, G, 0, 0, 0, H, O, G, G, O, H, 0, 0, 0, G, G],
-			 [G, G, 0, 0, 0, H, O, G, G, O, H, 0, 0, 0, G, G],
-			 [0, G, 0, 0, 0, H, G, O, O, G, H, 0, 0, 0, G, 0],
-			 [0, G, H, H, H, G, H, H, H, H, G, H, H, H, G, 0],
-			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
-			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
-			 [0, G, G, H, H, H, 0, 0, 0, 0, H, H, H, G, G, 0],
-			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
-			 [0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0]],
+			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G], //fooltest1
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, S, G],
+			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, S, G],
+			 [H, 0, H, H, 0, 0, H, H, H, H, 0, 0, 0, G, G, G],
+			 [H, H, H, H, H, H, H, V, V, G, G, G, 0, 0, G, 0],
+			 [H, 0, H, H, 0, 0, H, V, V, G, 0, G, 0, 0, G, 0],
+			 [0, 0, H, 0, 0, 0, H, H, H, H, 0, G, G, G, G, 0],
+			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, H, H, H, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
+			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0]],
 
 			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, H, G, G, S, S], //Jeffrey1
 			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, H, H, S, S],
@@ -177,6 +161,108 @@ var CQ;
 			 [0, 0, 0, 0, 0, W, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [0, 0, 0, 0, 0, W, W, W, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [0, 0, 0, 0, 0, H, H, W, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+			[[0, G, G, G, V, V, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //ngirl1
+			 [0, S, S, 0, V, V, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			 [0, S, S, 0, 0, 0, 0, H, H, H, H, H, H, V, V, W],
+			 [0, 0, H, 0, 0, 0, 0, S, S, 0, 0, 0, 0, V, V, W],
+			 [0, 0, H, 0, 0, 0, 0, S, S, 0, 0, 0, 0, 0, 0, W],
+			 [0, 0, H, 0, 0, 0, 0, 0, G, 0, 0, 0, 0, 0, 0, W],
+			 [0, 0, H, 0, 0, 0, 0, 0, G, 0, 0, 0, 0, 0, 0, W],
+			 [0, 0, H, F, F, W, 0, 0, G, 0, 0, 0, 0, 0, 0, W],
+			 [0, 0, H, F, F, W, 0, 0, G, 0, 0, 0, H, F, F, W],
+			 [0, 0, 0, 0, 0, W, 0, 0, V, V, 0, 0, H, F, F, W],
+			 [H, V, V, 0, 0, W, 0, 0, V, V, 0, 0, H, 0, 0, 0],
+			 [H, V, V, 0, 0, W, 0, 0, 0, 0, 0, 0, H, 0, 0, 0],
+			 [H, 0, 0, 0, 0, W, 0, 0, 0, 0, 0, S, S, 0, 0, 0],
+			 [S, S, 0, 0, 0, V, V, 0, 0, 0, 0, S, S, 0, 0, 0],
+			 [S, S, 0, 0, 0, V, V, H, H, H, H, H, H, 0, 0, 0],
+			 [H, H, H, H, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+			[[0, 0, 0, 0, 0, 0, 0, 0, 0, H, H, H, H, H, H, H], //ngirl2
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, S, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, S, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, G, G, G, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, G, S, S],
+			 [0, F, W, 0, 0, 0, 0, 0, 0, S, S, S, S, G, S, S],
+			 [0, F, W, 0, 0, 0, 0, 0, H, H, H, S, S, G, S, S],
+			 [0, F, W, W, W, W, W, W, W, W, H, S, S, G, S, S],
+			 [0, F, W, W, W, W, W, W, W, W, H, S, S, G, S, S],
+			 [0, F, W, 0, 0, 0, 0, 0, 0, H, H, S, S, G, S, S],
+			 [0, F, W, 0, 0, 0, 0, 0, 0, S, S, S, S, G, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, G, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, G, G, G, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, S, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, S, S, S],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, H, H, H, H, H, H, H]],
+
+			[[0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0], //Omega1Echshire
+			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
+			 [0, G, G, H, H, H, 0, 0, 0, 0, H, H, H, G, G, 0],
+			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
+			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
+			 [0, G, H, H, H, G, H, H, H, H, G, H, H, H, G, 0],
+			 [0, G, 0, 0, 0, H, G, O, O, G, H, 0, 0, 0, G, 0],
+			 [G, G, 0, 0, 0, H, O, G, G, O, H, 0, 0, 0, G, G],
+			 [G, G, 0, 0, 0, H, O, G, G, O, H, 0, 0, 0, G, G],
+			 [0, G, 0, 0, 0, H, G, O, O, G, H, 0, 0, 0, G, 0],
+			 [0, G, H, H, H, G, H, H, H, H, G, H, H, H, G, 0],
+			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
+			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
+			 [0, G, G, H, H, H, 0, 0, 0, 0, H, H, H, G, G, 0],
+			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
+			 [0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0]],
+
+			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W], //Omega2DeetonaBeach
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, H, H, 0, 0, 0, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, H, 0, 0, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, 0, H, 0, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, 0, H, 0, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, 0, 0, H, 0, 0, 0, 0, W, W, W, W, W, W],
+			 [0, 0, O, H, H, 0, 0, 0, 0, 0, W, W, W, W, W, W],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W],
+			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W]],
+
+			[[D, W, W, W, D, O, D, D, D, D, O, G, S, S, V, V], //SpeedYoshi1
+			 [D, W, W, W, D, G, D, G, G, D, W, G, S, S, V, V],
+			 [D, G, G, G, D, O, D, G, O, D, O, G, S, S, S, S],
+			 [D, G, V, V, D, W, D, G, G, D, W, G, S, S, S, S],
+			 [D, G, V, V, D, O, D, G, O, D, O, G, G, G, G, G],
+			 [D, G, G, G, G, G, D, G, G, D, W, O, W, O, W, O],
+			 [D, W, W, G, G, O, D, G, O, D, D, D, D, D, D, D],
+			 [D, G, G, G, G, W, D, G, G, O, G, O, G, O, G, D],
+			 [D, G, S, S, G, G, D, O, G, G, G, H, H, H, H, D],
+			 [D, G, S, S, G, O, D, O, O, G, G, H, H, H, H, D],
+			 [D, G, G, G, G, W, D, D, D, H, G, G, G, G, 0, D],
+			 [D, O, W, O, W, O, D, W, D, H, G, W, W, G, H, D],
+			 [D, D, D, D, D, D, D, W, D, H, G, W, W, G, H, D],
+			 [G, O, G, O, G, O, D, D, D, H, G, G, G, G, H, D],
+			 [D, D, D, D, D, D, D, D, D, H, H, H, H, H, H, D],
+			 [H, H, H, H, H, H, H, H, D, D, D, D, D, D, D, D]],
+
+			[[F, F, D, D, D, D, D, D, D, D, D, D, D, D, H, G], //SpeedYoshi2
+			 [F, F, D, W, W, O, O, W, O, O, W, O, O, D, H, G],
+			 [S, S, D, W, W, O, O, W, O, O, W, O, O, D, H, G],
+			 [S, S, D, W, W, W, W, W, W, W, W, W, W, D, H, G],
+			 [F, F, D, W, O, O, W, O, O, W, O, O, W, D, H, G],
+			 [F, F, D, W, O, O, W, O, O, W, O, O, W, D, H, G],
+			 [S, S, D, D, D, D, D, D, D, D, D, D, D, D, H, G],
+			 [S, S, D, D, D, D, D, D, D, D, D, D, D, D, H, G],
+			 [F, F, D, W, O, O, W, O, O, W, O, O, W, D, H, G],
+			 [F, F, D, W, O, O, W, O, O, W, O, O, W, D, H, G],
+			 [S, S, D, W, W, W, W, W, W, W, W, W, W, D, H, G],
+			 [S, S, D, W, W, O, O, W, O, O, W, O, O, D, H, G],
+			 [F, F, D, W, W, O, O, W, O, O, W, O, O, D, H, G],
+			 [F, F, D, D, D, D, D, D, D, D, D, D, D, D, H, G],
+			 [S, S, D, H, H, H, H, H, H, H, H, H, H, H, H, G],
+			 [S, S, D, G, G, G, G, G, G, G, G, G, G, G, G, G]],
 
 			[[H, H, H, H, H, G, F, G, F, G, F, H, H, H, H, H], //Trembleton
 			 [D, D, D, D, H, G, F, G, F, G, F, H, D, D, D, D],
@@ -214,12 +300,31 @@ var CQ;
 		];
 		this.LEVEL_DESCRIPTIONS = 
 		[
-			"Level name: fooltest1",
-			"Level name: Cobain1",
-			"Level name: Eschire",
-			"Level name: Jeffrey1",
-			"Level name: Trembleton",
-			"Level name: Wylvane1",			
+			"Level #1: Cobain1",
+			"Level #2: fooltest1",
+			"Level #3: Jeffrey1",
+			"Level #4: ngirl1",
+			"Level #5: ngirl2",
+			"Level #6: Omega1Eschshire",
+			"Level #7: Omega2DeetonaBeach",
+			"Level #8: SpeedYoshi1",
+			"Level #9: SpeedYoshi2",		
+			"Level #10: Trembleton",		
+			"Level #11: Wylvane1",			
+		];
+		this.LEVEL_NAMES = 
+		[
+			"Cobain1",
+			"fooltest1",
+			"Jeffrey1",
+			"ngirl1",
+			"ngirl2",
+			"Eschshire",
+			"DeetonaBeach",
+			"SpeedYoshi1",
+			"SpeedYoshi2",		
+			"Trembleton",		
+			"Wylvane1",			
 		];
 		this.LEVEL_COUNT = this.PREMADE_LEVELS.length;
 		this.currentLevelID = 0;
@@ -273,6 +378,19 @@ var CQ;
 		return this.runtime.types_by_index[this.typeIndexMap[typeName]];
 	}
 	
+	instanceProto.getAudioInstance = function()
+	{			
+		if (this.audioInstance)
+			return this.audioInstance;
+		for(var i = 0; i < this.runtime.types_by_index.length; i++){
+			var type = this.runtime.types_by_index[i];
+			if (type.plugin.acts.Play && type.plugin.acts.SetPaused){ //identify Audio plugin
+				this.audioInstance = type.instances[0];
+				return this.audioInstance;
+			}
+		}
+	}
+	
 	instanceProto.tick = function ()
 	{
 		var dt = this.runtime.dt1; //raw dt
@@ -295,27 +413,29 @@ var CQ;
 		
 		var newFault = this.runtime.createInstance(this.getType("CQFault"), this.runtime.running_layout.layers[this.LAYER_BOTTOM], this.faultIndicator.x, this.faultIndicator.y);
 		newFault.angle = this.faultIndicator.angle;
-		this.runtime.all_global_vars[1].data += 1;		
+		this.globalVarMap["x"].data += 1;		
 		
 		this.runtime.DestroyInstance(this.faultIndicator);
 		this.faultIndicator = null;
-		this.audioInstance.type.plugin.acts.Stop.call(this.audioInstance, this.EPICITYSLOW_TAG);
-		this.audioInstance.type.plugin.acts.SetPaused.call(this.audioInstance, this.EPICITY_TAG, 1);
+		this.getAudioInstance().type.plugin.acts.Stop.call(this.getAudioInstance(), this.EPICITYSLOW_TAG);
+		this.getAudioInstance().type.plugin.acts.SetPaused.call(this.getAudioInstance(), this.EPICITY_TAG, 1);
 	}
 	
 	instanceProto.onKeyDown = function (info)
 	{	
+		if (this.runtime.running_layout.name !== "Game")
+			return;
 		switch (info.which) {
 			case 13:
-				this.currentLevelID = 0;
+				this.nextLevelID = 0;
 				this.switchToNextLayout();
 				break;
 			case 37:
-				this.currentLevelID = (this.currentLevelID <= 1) ? this.LEVEL_COUNT : this.currentLevelID - 1;
+				this.nextLevelID = (this.currentLevelID <= 1) ? this.LEVEL_COUNT : this.currentLevelID - 1;
 				this.switchToNextLayout();
 				break;
 			case 39:
-				this.currentLevelID = (this.currentLevelID % this.LEVEL_COUNT) + 1;
+				this.nextLevelID = (this.currentLevelID % this.LEVEL_COUNT) + 1;
 				this.switchToNextLayout();
 				break;
 		}
@@ -323,9 +443,8 @@ var CQ;
 	
 	instanceProto.switchToNextLayout = function ()
 	{
-		for(var i = 0; i < this.ALL_TAGS.length; i++)			
-			this.audioInstance.type.plugin.acts.Stop.call(this.audioInstance, this.ALL_TAGS[i]);
-		this.runtime.changelayout = this.getLayoutByName("Level" + this.currentLevelID);
+		this.stopAllMusic();
+		this.runtime.changelayout = this.getLayoutByName("Game");
 	}
 	
 	instanceProto.getLayoutByName = function (name)
@@ -506,23 +625,35 @@ var CQ;
 			this.globalVarMap[globals[i].name] = globals[i];
 		}	
 		
-		if (this.currentLevelID > 0 && this.currentLevelID <= this.LEVEL_COUNT)
-			this.globalVarMap["DESCRIPTION"].data = this.LEVEL_DESCRIPTIONS[this.currentLevelID - 1];
 			
 		this.earthquakeIndicator = this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]].instances[0];
+		if (!this.earthquakeIndicator){
+			this.earthquakeIndicator = this.runtime.createInstance(
+												this.runtime.types_by_index[this.typeIndexMap["CQEarthquakeIndicator"]],
+												this.runtime.running_layout.layers[this.LAYER_HUD],
+												-100,
+												-100);
+		}
 		this.moveInstToTop(this.earthquakeIndicator);
 		this.earthquakeIndicator.opacity = 0;
 		
 		this.reddenedSky = false;
 		
-		for(var i = 0; i < this.runtime.types_by_index.length; i++){
-			var type = this.runtime.types_by_index[i];
-			if (type.plugin.acts.Play && type.plugin.acts.SetPaused){
-				this.audioInstance = type.instances[0];
-				this.audioInstance.type.plugin.acts.Play.call(this.audioInstance, [this.BOSSANOVA_NAME, 1], 1, 0, this.BOSSANOVA_TAG);
-				break;
-			}
+		this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.BOSSANOVA_NAME, 1], 1, 0, this.BOSSANOVA_TAG);
+		
+		if (this.nextLevelID > 0 && this.nextLevelID <= this.LEVEL_COUNT)
+			this.currentLevelID = this.nextLevelID;
+		else
+			this.currentLevelID = 0;
+		if (this.currentLevelID > 0 && this.currentLevelID <= this.LEVEL_COUNT){
+			this.globalVarMap["DESCRIPTION"].data = this.LEVEL_DESCRIPTIONS[this.currentLevelID - 1];
+			this.globalVarMap["LEVELNAME"].data = this.LEVEL_NAMES[this.currentLevelID - 1];
 		}
+		else{
+			this.globalVarMap["DESCRIPTION"].data = "Randomized level"
+			this.globalVarMap["LEVELNAME"].data = "RANDOM"
+		}
+		this.loadLevelWithID(this.currentLevelID);
 	};
 	
 	Acts.prototype.LoadLevelWithID = function (levelid)
@@ -765,8 +896,8 @@ var CQ;
 		this.runtime.timescale = 0;
 		this.frozen = true;
 		obj.my_timescale = 1;
-		this.audioInstance.type.plugin.acts.SetPaused.call(this.audioInstance, this.EPICITY_TAG, 0);
-		this.audioInstance.type.plugin.acts.Play.call(this.audioInstance, [this.EPICITYSLOW_NAME, 1], 1, 0, this.EPICITYSLOW_TAG);
+		this.getAudioInstance().type.plugin.acts.SetPaused.call(this.getAudioInstance(), this.EPICITY_TAG, 0);
+		this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.EPICITYSLOW_NAME, 1], 1, 0, this.EPICITYSLOW_TAG);
 	}
 	
 	Acts.prototype.SpawnEarthquake = function (x, y)
@@ -786,8 +917,8 @@ var CQ;
 						this.runtime.types_by_index[this.typeIndexMap["CQBlueSky"]].instances[0].my_timescale = 1;
 					}
 					this.reddenedSky = true;
-					this.audioInstance.type.plugin.acts.Stop.call(this.audioInstance, this.BOSSANOVA_TAG);
-					this.audioInstance.type.plugin.acts.Play.call(this.audioInstance, [this.EPICITY_NAME, 1], 1, 0, this.EPICITY_TAG);
+					this.getAudioInstance().type.plugin.acts.Stop.call(this.getAudioInstance(), this.BOSSANOVA_TAG);
+					this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.EPICITY_NAME, 1], 1, 0, this.EPICITY_TAG);
 				}
 			}
 			this.earthquakeIndicator.opacity = 0;
@@ -857,6 +988,22 @@ var CQ;
 			this.faultIndicatorBeingAdjusted = true;
 		}
 	};
+	
+	Acts.prototype.SetNextLevelID = function (id)
+	{
+		this.nextLevelID = id;
+	};
+	
+	Acts.prototype.StopAllMusic = function ()
+	{
+		this.stopAllMusic();
+	};
+	
+	instanceProto.stopAllMusic = function()
+	{	
+		for(var i = 0; i < this.ALL_TAGS.length; i++)			
+			this.getAudioInstance().type.plugin.acts.Stop.call(this.getAudioInstance(), this.ALL_TAGS[i]);
+	}
 	
 	pluginProto.acts = new Acts();
 	

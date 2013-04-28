@@ -18,22 +18,25 @@ NUM_TILES = 16
 TOP_TILE_X = 127
 TOP_TILE_Y = 130
 TILE_HEIGHT = 8
+
+BASE_TABS = 3
+numLevels = 0
 def processimage(filename):
+    global numLevels
     im = None
-    pixels = None;
+    pixels = None
     try:
         im = Image.open(filename)
     except IOError as e:
         print filename + " is not a valid image file\n"
         print ""
-        return;
+        return
     if im.format == "PNG":
-        print filename
         pixels = im.load()
         w = im.size[0]
         h = im.size[1]
         for tileX in xrange(NUM_TILES):
-            line = ""
+            line = '\t' * BASE_TABS
             if tileX == 0:
                 line += '[['
             else:
@@ -48,22 +51,26 @@ def processimage(filename):
                 if color in COLOR_TO_TILE:
                     line += COLOR_TO_TILE[color] + ", "
                 else:
-                    line += "0, "                    
-            if (tileX == NUM_TILES-1):
+                    line += "0, "        
+            levelname = filename.split("\\")[-1].split(".")[0]
+            if tileX == 0:
+                line = line[:-2] + "], //" + levelname + "\n" 
+            elif tileX == (NUM_TILES-1):
                 line = line[:-2] + "]],\n" 
             else:
                 line = line[:-2] + "],\n"                
-            sys.stdout.write(line);
+            sys.stdout.write(line)
         print ""
+        numLevels += 1
         
 #main
-input=raw_input("Enter image file or directory of image files:");
+input=raw_input("Enter image file or directory of image files:")
 print "\nProcessing images\n"
 if os.path.isdir(input):
     if input[-1]!='\\':
         input += '\\'
     for filename in os.listdir(input):
-        processimage(input + filename);
+        processimage(input + filename)
 elif os.path.isfile(input):
-    processimage(input);
-print "Done!"
+    processimage(input)
+print "Finished processing " + str(numLevels) + " levels!"

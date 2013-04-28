@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Buttons</name>
+    <events>
+        <event-block sid="353">
+            <conditions>
+                <condition id="3" name="On touched object" sid="354" type="Touch">
+                    <param id="0" name="Object">Button</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="359">
+                    <conditions>
+                        <condition id="-10" name="Compare opacity" sid="360" type="Button">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Opacity">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="355" type="Function">
+                            <param id="0" name="Name">Button.OnClick</param>
+                            <param id="1" name="Parameter {n}">Button.NumParameter{###}Button.StringParameter</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="356">
+            <conditions>
+                <condition id="0" name="On function" sid="357" type="Function">
+                    <param id="0" name="Name">&quot;GoToLayout&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="358" type="System">
+                    <param id="0" name="Layout">Function.Param(1)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="369">
+            <conditions>
+                <condition id="0" name="On function" sid="370" type="Function">
+                    <param id="0" name="Name">&quot;LoadLevel&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="6" name="Set next level ID" sid="371" type="CityQuakeLevels">
+                    <param id="0" name="LevelID">Function.Param(0)</param>
+                </action>
+                <action id="-25" name="Go to layout (by name)" sid="372" type="System">
+                    <param id="0" name="Layout">&quot;Game&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="401">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="402" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="406">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="407" type="System">
+                            <param id="0" name="First value">Audio.MasterVolume</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0.00001</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="408" type="SoundIcon">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="409">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="410" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="411" type="SoundIcon">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="412">
+            <conditions>
+                <condition id="3" name="On touched object" sid="413" type="Touch">
+                    <param id="0" name="Object">SoundIcon</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="414">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="415" type="System">
+                            <param id="0" name="First value">Audio.MasterVolume</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0.00001</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="10" name="Set master volume" sid="416" type="Audio">
+                            <param id="0" name="dB">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="417">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="418" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="10" name="Set master volume" sid="419" type="Audio">
+                            <param id="0" name="dB">-100</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>
