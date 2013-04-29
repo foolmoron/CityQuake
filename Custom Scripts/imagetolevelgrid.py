@@ -64,8 +64,9 @@ def processimage(filename):
         numLevels += 1
         
 #main
-input=raw_input("Enter image file or directory of image files:")
-print "\nProcessing images\n"
+#input=raw_input("Enter image file or directory of image files:")
+input = "..\Levels"
+print "\nProcessing images in " + os.getcwd() + "\\" + input + "\n"
 if os.path.isdir(input):
     if input[-1]!='\\':
         input += '\\'

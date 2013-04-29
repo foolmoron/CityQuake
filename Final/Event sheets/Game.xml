@@ -24,13 +24,15 @@
                     <param id="0" name="Audio file">SmoothBossaNovaByTombor911</param>
                 </action>
                 <action id="4" name="Initialize" sid="140" type="CityQuakeLevels" />
-                <action id="0" name="Set local value" sid="440" type="WebStorage">
-                    <param id="0" name="Key">&quot;levelprogress&quot;</param>
-                    <param id="1" name="Value">CityQuakeLevels.CurrentLevelID &gt; int(WebStorage.SessionValue(&quot;levelprogress&quot;)) ? CityQuakeLevels.CurrentLevelID : WebStorage.SessionValue(&quot;levelprogress&quot;)</param>
-                </action>
                 <action id="-9" name="Set value" sid="465" type="System">
                     <param id="0" name="Variable">HIGHSCORE</param>
                     <param id="1" name="Value">WebStorage.LocalValue(&quot;highscore&quot; &amp; str(CityQuakeLevels.CurrentLevelID)) = &quot;&quot; ? 0 : WebStorage.LocalValue(&quot;highscore&quot; &amp; str(CityQuakeLevels.CurrentLevelID))</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="488" type="Button">
+                    <param id="0" name="Opacity">Button.StringParameter = &quot;NextLevelButton&quot; ? ((CityQuakeLevels.CurrentLevelID + 1)  &lt;= int(WebStorage.LocalValue(&quot;levelprogress&quot;)) ? 100 : 50) : 100</param>
+                </action>
+                <action id="0" name="Set text" sid="505" type="HighScore">
+                    <param id="0" name="Text">Function.Call(&quot;ScoreToString&quot;, HIGHSCORE)</param>
                 </action>
             </actions>
         </event-block>
@@ -114,6 +116,9 @@
                 <action id="0" name="Set text" sid="395" type="LevelName">
                     <param id="0" name="Text">LEVELNAME</param>
                 </action>
+                <action id="0" name="Set text" sid="506" type="Score">
+                    <param id="0" name="Text">Function.Call(&quot;ScoreToString&quot;, CityQuakeLevels.Score)</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="86">
@@ -132,7 +137,15 @@
             <conditions>
                 <condition id="1" name="On win" sid="455" type="CityQuakeLevels" />
             </conditions>
-            <actions />
+            <actions>
+                <action id="0" name="Set local value" sid="489" type="WebStorage">
+                    <param id="0" name="Key">&quot;levelprogress&quot;</param>
+                    <param id="1" name="Value">(CityQuakeLevels.CurrentLevelID + 1) &gt; int(WebStorage.SessionValue(&quot;levelprogress&quot;)) ? (CityQuakeLevels.CurrentLevelID + 1) : WebStorage.SessionValue(&quot;levelprogress&quot;)</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="490" type="Button">
+                    <param id="0" name="Opacity">Button.StringParameter = &quot;NextLevelButton&quot; ? ((CityQuakeLevels.CurrentLevelID + 1)  &lt;= int(WebStorage.LocalValue(&quot;levelprogress&quot;)) ? 100 : 50) : 100</param>
+                </action>
+            </actions>
             <sub-events>
                 <event-block sid="466">
                     <conditions>
@@ -166,6 +179,32 @@
             </conditions>
             <actions>
                 <action behavior="Fade" id="0" name="Restart fade" sid="463" type="NewHigh" />
+                <action behavior="Fade" id="0" name="Restart fade" sid="504" type="Score" />
+            </actions>
+        </event-block>
+        <event-block sid="478">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="479" type="Keyboard">
+                    <param id="0" name="Key">82 (R)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="480" type="Function">
+                    <param id="0" name="Name">&quot;RetryLevel&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="507">
+            <conditions>
+                <condition id="0" name="On function" sid="508" type="Function">
+                    <param id="0" name="Name">&quot;ScoreToString&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Set return value" sid="509" type="Function">
+                    <param id="0" name="Value">((Function.Param(0) &gt;= 10000000) ? &quot;&quot; : (Function.Param(0) &gt;= 1000000) ? &quot;0&quot; : (Function.Param(0) &gt;= 100000) ? &quot;00&quot; : (Function.Param(0) &gt;= 10000) ? &quot;000&quot; :  (Function.Param(0) &gt;= 1000) ? &quot;0000&quot; : (Function.Param(0) &gt;= 100) ? &quot;00000&quot; : (Function.Param(0) &gt;= 10) ? &quot;000000&quot; : &quot;0000000&quot; ) &amp; Function.Param(0)</param>
+                </action>
             </actions>
         </event-block>
     </events>

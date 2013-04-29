@@ -6,9 +6,11 @@
     <author>foolmoron</author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>477</next-sid>
+    <next-sid>513</next-sid>
     <used-plugins>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="NinePatch" version="1">9-patch</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
@@ -16,7 +18,6 @@
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
         <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
-        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
@@ -27,6 +28,7 @@
         <behavior author="foolmoron" id="CQdust" version="1">CQ Dust</behavior>
         <behavior author="foolmoron" id="CQearthquake" version="1">CQ Earthquake</behavior>
         <behavior author="foolmoron" id="CQearthquakeind" version="1">CQ Earthquake Indicator</behavior>
+        <behavior author="foolmoron" id="CQepicentericon" version="1">CQ Epicenter Icon</behavior>
         <behavior author="foolmoron" id="CQfactory" version="1">CQ Factory</behavior>
         <behavior author="foolmoron" id="CQfault" version="1">CQ Fault</behavior>
         <behavior author="foolmoron" id="CQfaultind" version="1">CQ Fault Indicator</behavior>
@@ -554,9 +556,6 @@
             </instance-variables>
             <texture />
         </object-type>
-        <object-type name="Text2" sid="380">
-            <plugin id="Text" />
-        </object-type>
         <object-type name="LevelName" sid="381">
             <plugin id="Text" />
             <behaviors>
@@ -624,14 +623,14 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="459" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.510204">
+                    <frame duration="1" hotspotX="0.502674" hotspotY="0.5">
                         <collision-poly>
-                            <point x="0.142857" y="0.285714" />
-                            <point x="0.5" y="0" />
-                            <point x="0.836735" y="0.326531" />
-                            <point x="0.989796" y="0.979592" />
-                            <point x="0.5" y="0.469388" />
-                            <point x="0.0102041" y="0.979592" />
+                            <point x="0.00534759" y="0.0416667" />
+                            <point x="0.994652" y="0.0416667" />
+                            <point x="0.994652" y="0.958333" />
+                            <point x="0.497326" y="1" />
+                            <point x="0.0106952" y="0.916667" />
+                            <point x="0.0213904" y="0.5" />
                         </collision-poly>
                     </frame>
                 </animation>
@@ -646,16 +645,49 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="471" speed="5">
-                    <frame duration="1" hotspotX="0.502924" hotspotY="0.5">
+                    <frame duration="1" hotspotX="0.502857" hotspotY="0.5">
                         <collision-poly>
-                            <point x="0.25731" y="0.611111" />
-                            <point x="0.97076" y="0.0694444" />
-                            <point x="0.923977" y="0.5" />
-                            <point x="0.912281" y="0.791667" />
-                            <point x="0.00584795" y="0.986111" />
-                            <point x="0.888889" y="0.5" />
+                            <point x="0.08" y="0.333333" />
+                            <point x="0.497143" y="0.357143" />
+                            <point x="0.977143" y="0.0952381" />
+                            <point x="0.937143" y="0.5" />
+                            <point x="0.908571" y="0.619048" />
+                            <point x="0.497143" y="0.97619" />
+                            <point x="0.00571429" y="0.97619" />
+                            <point x="0.0228571" y="0.5" />
                         </collision-poly>
                     </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Keyboard" sid="477">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="Score" sid="499">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Fade" sid="503">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="HighScore" sid="500">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="9patch" sid="501">
+            <plugin id="NinePatch" />
+            <texture />
+        </object-type>
+        <object-type name="EpicenterIcon" sid="510">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="CQEpicenterIcon" sid="512">
+                    <behavior id="CQepicentericon" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="511" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -691,6 +723,9 @@
                 <grid-size>16</grid-size>
                 <top-tile-x>431</top-tile-x>
                 <top-tile-y>242.5</top-tile-y>
+                <epicenter-icon-x>360</epicenter-icon-x>
+                <epicenter-icon-y>34</epicenter-icon-y>
+                <epicenter-icon-step>40</epicenter-icon-step>
             </properties>
         </global-instance>
         <global-instance type="Audio" uid="20">
@@ -708,6 +743,7 @@
             </properties>
         </global-instance>
         <global-instance type="WebStorage" uid="505" />
+        <global-instance type="Keyboard" uid="17" />
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1">
