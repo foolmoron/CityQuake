@@ -6,7 +6,7 @@
     <author>foolmoron</author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>513</next-sid>
+    <next-sid>521</next-sid>
     <used-plugins>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
@@ -645,18 +645,7 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="471" speed="5">
-                    <frame duration="1" hotspotX="0.502857" hotspotY="0.5">
-                        <collision-poly>
-                            <point x="0.08" y="0.333333" />
-                            <point x="0.497143" y="0.357143" />
-                            <point x="0.977143" y="0.0952381" />
-                            <point x="0.937143" y="0.5" />
-                            <point x="0.908571" y="0.619048" />
-                            <point x="0.497143" y="0.97619" />
-                            <point x="0.00571429" y="0.97619" />
-                            <point x="0.0228571" y="0.5" />
-                        </collision-poly>
-                    </frame>
+                    <frame duration="1" hotspotX="0.502857" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -690,6 +679,14 @@
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="Winner" sid="513">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Fade" sid="514">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
         </object-type>
     </object-folder>
     <families />

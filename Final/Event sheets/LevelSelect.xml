@@ -20,7 +20,7 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action disabled="1" id="-16" name="Set opacity" sid="439" type="Button">
+                        <action id="-16" name="Set opacity" sid="439" type="Button">
                             <param id="0" name="Opacity">Button.NumParameter &gt; int(WebStorage.LocalValue(&quot;levelprogress&quot;)) ? 50 : 100</param>
                         </action>
                     </actions>
