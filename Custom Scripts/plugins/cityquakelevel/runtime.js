@@ -149,7 +149,7 @@ var CQ;
 			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
 			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0]],
 
-			[[H, G, H, G, H, G, G, V, V, G, G, G, G, G, G, G], //genny1 mesopotamia
+			[[H, G, H, G, H, G, G, V, V, G, G, G, G, G, G, G], //genny1
 			 [G, O, G, H, G, H, G, V, V, G, G, H, G, G, O, G],
 			 [W, W, D, G, G, H, G, H, G, G, G, G, G, G, G, G],
 			 [G, D, W, W, W, D, H, H, G, H, G, G, S, S, G, G],
@@ -165,7 +165,7 @@ var CQ;
 			 [H, G, G, G, G, W, D, G, G, W, G, G, S, S, G, G],
 			 [G, O, G, H, G, G, G, H, H, G, H, G, S, S, O, G],
 			 [G, G, G, G, G, H, G, H, G, H, G, G, H, G, G, G]],
-			 
+
 			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, H, G, G, S, S], //Jeffrey1
 			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, H, H, S, S],
 			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, G, G, G],
@@ -217,22 +217,22 @@ var CQ;
 			 [S, S, 0, 0, 0, V, V, H, H, H, H, H, H, G, W, W],
 			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, W]],
 
-			[[0, 0, 0, 0, 0, 0, 0, 0, 0, H, H, H, H, H, H, H], //ngirl2
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, S, S, S],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, S, S, S],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, G, G, G, S, S],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, G, S, S],
-			 [0, F, W, 0, 0, 0, 0, 0, 0, S, S, S, S, G, S, S],
-			 [0, F, W, 0, 0, 0, 0, 0, H, H, H, S, S, G, S, S],
-			 [0, F, W, W, W, W, W, W, W, W, H, S, S, G, S, S],
-			 [0, F, W, W, W, W, W, W, W, W, H, S, S, G, S, S],
-			 [0, F, W, 0, 0, 0, 0, 0, 0, H, H, S, S, G, S, S],
-			 [0, F, W, 0, 0, 0, 0, 0, 0, S, S, S, S, G, S, S],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, G, S, S],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, G, G, G, S, S],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, S, S, S],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, S, S, S],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, H, H, H, H, H, H, H]],
+			[[G, G, G, G, G, G, G, G, G, H, H, H, H, H, H, H], //ngirl2
+			 [G, G, G, G, G, G, G, G, G, S, S, S, S, S, S, S],
+			 [W, 0, 0, 0, 0, 0, 0, W, G, S, S, S, S, S, S, S],
+			 [W, W, 0, 0, 0, 0, 0, W, G, G, G, G, G, G, S, S],
+			 [W, W, W, 0, 0, 0, 0, W, W, S, S, S, S, G, S, S],
+			 [W, F, W, 0, 0, 0, W, W, W, S, S, S, S, G, S, S],
+			 [W, F, W, 0, 0, W, W, W, H, H, H, S, S, G, S, S],
+			 [W, F, W, W, W, W, W, W, W, W, H, S, S, G, S, S],
+			 [W, F, W, W, W, W, W, W, W, W, H, S, S, G, S, S],
+			 [W, F, W, 0, 0, W, W, W, H, H, H, S, S, G, S, S],
+			 [W, F, W, 0, 0, 0, W, W, W, S, S, S, S, G, S, S],
+			 [W, W, W, 0, 0, 0, 0, W, W, S, S, S, S, G, S, S],
+			 [W, W, 0, 0, 0, 0, 0, W, G, G, G, G, G, G, S, S],
+			 [W, 0, 0, 0, 0, 0, 0, W, G, S, S, S, S, S, S, S],
+			 [G, G, G, G, G, G, G, G, G, S, S, S, S, S, S, S],
+			 [G, G, G, G, G, G, G, G, G, H, H, H, H, H, H, H]],
 
 			[[0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0], //Omega1Echshire
 			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
@@ -251,22 +251,22 @@ var CQ;
 			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
 			 [0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0]],
 
-			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W], //Omega2DeetonaBeach
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, H, H, 0, 0, 0, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, H, 0, 0, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, 0, H, 0, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, 0, H, 0, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, 0, 0, H, 0, 0, 0, 0, W, W, W, W, W, W],
-			 [0, 0, O, H, H, 0, 0, 0, 0, 0, W, W, W, W, W, W],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W]],
+			[[G, G, 0, 0, G, 0, 0, 0, 0, G, W, W, W, W, W, W], //Omega2DeetonaBeach
+			 [G, 0, 0, 0, 0, 0, G, 0, 0, 0, W, W, W, W, W, W],
+			 [G, 0, O, H, H, 0, 0, 0, 0, 0, W, W, W, W, W, W],
+			 [G, 0, O, G, 0, H, 0, 0, 0, 0, W, W, W, W, W, W],
+			 [G, 0, O, 0, 0, 0, H, 0, 0, G, W, W, W, W, W, W],
+			 [G, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [G, 0, O, 0, 0, 0, G, H, 0, 0, W, W, W, W, W, W],
+			 [G, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [G, 0, O, 0, G, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [G, 0, O, 0, 0, 0, 0, H, 0, 0, W, W, W, W, W, W],
+			 [G, 0, O, 0, 0, 0, G, H, 0, 0, W, W, W, W, D, D],
+			 [G, 0, O, 0, 0, 0, H, 0, 0, 0, W, W, W, W, D, G],
+			 [G, 0, O, 0, 0, H, 0, 0, 0, 0, W, W, W, W, D, D],
+			 [G, 0, O, H, H, 0, 0, 0, G, 0, W, W, W, W, W, W],
+			 [G, 0, 0, G, 0, 0, G, 0, 0, 0, W, W, W, W, W, W],
+			 [G, 0, G, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W]],
 
 			[[D, W, W, W, D, D, D, D, D, D, O, G, G, G, V, V], //SpeedYoshi1
 			 [D, W, W, W, D, D, O, H, G, D, W, G, G, G, V, V],
@@ -285,22 +285,39 @@ var CQ;
 			 [W, W, W, W, W, W, W, W, D, H, H, H, H, H, H, D],
 			 [H, H, H, H, H, H, H, H, D, D, D, D, D, D, D, D]],
 
+			[[V, V, V, H, H, H, W, W, W, W, W, G, G, H, G, H], //SpeedYoshi3
+			 [V, V, V, G, G, G, W, W, W, W, W, G, G, S, S, G],
+			 [V, V, V, G, G, D, D, D, D, D, D, G, G, S, S, H],
+			 [H, G, G, G, D, D, D, D, D, D, D, D, G, G, G, G],
+			 [H, G, G, D, D, G, G, G, G, G, G, D, D, G, G, G],
+			 [H, G, D, D, G, G, G, G, G, G, G, G, D, D, G, G],
+			 [W, W, D, D, G, G, O, O, H, H, G, G, D, D, D, D],
+			 [W, W, D, D, G, G, O, H, H, H, G, G, D, D, D, D],
+			 [W, W, D, D, G, G, H, H, H, O, G, G, D, D, W, W],
+			 [W, W, D, D, G, G, H, H, O, O, G, G, D, D, W, W],
+			 [W, W, D, D, G, G, G, G, G, G, G, G, D, D, W, W],
+			 [G, G, G, D, D, G, G, G, G, G, G, D, D, D, W, W],
+			 [G, G, G, G, D, D, D, D, D, D, D, D, D, D, W, W],
+			 [H, S, S, G, G, D, D, D, D, D, D, D, D, D, W, W],
+			 [G, S, S, G, G, G, D, D, W, W, W, W, W, W, W, W],
+			 [H, G, H, G, G, G, D, D, W, W, W, W, W, W, W, W]],
+
 			[[H, H, H, H, H, G, F, G, F, G, F, H, H, H, H, H], //Trembleton
-			 [D, D, D, D, H, G, F, G, F, G, F, H, D, D, D, D],
-			 [H, H, H, D, H, D, D, D, D, D, D, D, D, H, H, H],
-			 [H, G, H, D, H, S, S, O, O, V, V, H, D, H, G, H],
-			 [H, G, H, D, H, S, S, O, O, V, V, H, D, H, G, H],
-			 [H, G, H, D, H, G, G, G, G, G, G, H, D, H, G, H],
-			 [H, G, H, D, H, G, G, W, W, W, G, H, D, H, G, H],
-			 [H, G, H, D, H, G, W, W, W, W, G, H, D, H, G, H],
-			 [H, G, H, D, H, G, W, W, W, W, G, H, D, H, G, H],
-			 [H, G, H, D, H, G, W, W, W, G, G, H, D, H, G, H],
-			 [H, G, H, D, H, G, G, G, G, G, G, H, D, H, G, H],
-			 [H, G, H, D, H, V, V, O, O, S, S, H, D, H, G, H],
-			 [H, G, H, D, H, V, V, O, O, S, S, H, D, H, G, H],
-			 [H, H, H, D, D, D, D, D, D, D, D, H, D, H, H, H],
-			 [D, D, D, D, H, F, G, F, G, F, G, H, D, D, D, D],
-			 [H, H, H, H, H, F, G, F, G, F, G, H, H, H, H, H]],
+			 [G, G, G, G, H, G, F, G, F, G, F, H, G, G, G, G],
+			 [G, G, G, G, H, D, D, D, D, D, D, H, G, G, G, G],
+			 [G, G, G, G, H, S, S, O, O, V, V, H, G, G, G, G],
+			 [G, G, G, G, H, S, S, O, O, V, V, H, G, G, G, G],
+			 [H, H, H, G, H, G, G, G, G, G, G, H, G, G, G, G],
+			 [H, G, H, G, H, G, G, W, W, W, G, H, G, H, H, H],
+			 [H, G, H, G, H, G, W, W, W, W, G, H, G, H, G, H],
+			 [H, H, H, G, H, G, W, W, W, W, G, H, G, H, G, H],
+			 [G, G, G, G, H, G, W, W, W, G, G, H, G, H, H, H],
+			 [G, G, G, G, H, G, G, G, G, G, G, H, G, G, G, G],
+			 [G, G, G, G, H, V, V, O, O, S, S, H, G, G, G, G],
+			 [G, G, G, G, H, V, V, O, O, S, S, H, G, G, G, G],
+			 [G, G, G, G, H, D, D, D, D, D, D, H, G, G, G, G],
+			 [H, H, H, H, H, G, G, G, G, G, G, H, H, H, H, H],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, G, G]],
 
 			[[W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W], //Ytterbium1
 			 [W, W, W, W, W, W, W, H, H, W, G, G, G, G, W, W],
@@ -331,23 +348,25 @@ var CQ;
 			8,
 			8,
 			8,
+			3,
 			8,		
 			8,
 		];
 		this.LEVEL_DESCRIPTIONS = 
 		[
-			"Level #1: Cobain1",
-			"Level #2: fooltest1",
-			"Level #3: genny1 Mesopotamia",
-			"Level #4: Jeffrey1",
-			"Level #5: Mariaville",
-			"Level #6: ngirl1",
-			"Level #7: ngirl2",
-			"Level #8: Omega1 Eschshire",
-			"Level #9: Omega2 Deetona Beach",
-			"Level #10: SpeedYoshi1",		
-			"Level #11: Trembleton",	
-			"Level #12: Ytterbium1 Island Nation",	
+			"#1: Cobain1",
+			"#2: fooltest1",
+			"#3: genny1 Mesopotamia",
+			"#4: Jeffrey1",
+			"#5: Mariaville",
+			"#6: ngirl1",
+			"#7: ngirl2",
+			"#8: Omega1 Eschshire",
+			"#9: Omega2 Deetona Beach",
+			"#10: SpeedYoshi1",		
+			"#11: SpeedYoshi3",		
+			"#12: Trembleton",	
+			"#13: Ytterbium1 Island Nation",	
 		];
 		this.LEVEL_NAMES = 
 		[
@@ -361,6 +380,7 @@ var CQ;
 			"Eschshire",
 			"DeetonaBeach",
 			"SpeedYoshi1",	
+			"SpeedYoshi3",		
 			"Trembleton",	
 			"Island Nation",
 		];
@@ -408,6 +428,8 @@ var CQ;
 		this.levelEarthquakesRemaining = 0;
 		this.levelBuildingsRemaining = 0;
 		this.levelVictory = false;
+		
+		this.EPICENTER_ICONS = new Array(8);
 	};
 	
 	instanceProto.getTypeIndex = function (typeName)
@@ -712,6 +734,20 @@ var CQ;
 		this.levelBuildingsRemaining = 0;
 		this.levelVictory = false;
 		
+		this.EPICENTER_ICONS = new Array(8);
+		var baseX = this.properties[4];
+		var baseY = this.properties[5];
+		var STEP = this.properties[6];
+		for(var i = 0; i < this.EPICENTER_ICONS.length && i < this.levelEarthquakesRemaining; i++){
+			var x = baseX + (i % 4) * STEP;
+			var y = baseY + Math.floor(i / 4) * STEP;
+			this.EPICENTER_ICONS[i] = this.runtime.createInstance(
+												this.runtime.types_by_index[this.typeIndexMap["CQEpicenterIcon"]],
+												this.runtime.running_layout.layers[this.LAYER_HUD],
+												x,
+												y);
+		}
+		
 		this.loadLevelWithID(this.currentLevelID);
 	};
 	
@@ -822,6 +858,14 @@ var CQ;
 						} else {
 							this.levelBuildingsRemaining++;
 							newInstance.topzindex = latestZIndex;
+						}
+						//add grass under houses
+						if (tile == 4){
+							newInstance.grass = this.runtime.createInstance(
+												this.runtime.types_by_index[this.typeIndexMap["CQGrass"]],
+												this.runtime.running_layout.layers[this.LAYER_BOTTOM],
+												xPos,
+												yPos);	
 						}
 						//set extra instance vars					
 						newInstance.tileSize = size ? size : [1,1];
@@ -986,6 +1030,11 @@ var CQ;
 		if (!this.frozen){
 			if (this.levelEarthquakesRemaining > 0 && this.inGameplayArea(x,y)){
 				this.levelEarthquakesRemaining--;
+				if (this.levelEarthquakesRemaining < this.EPICENTER_ICONS.length){
+					this.runtime.DestroyInstance(this.EPICENTER_ICONS[this.levelEarthquakesRemaining]);
+					this.EPICENTER_ICONS[this.levelEarthquakesRemaining] = null;
+				}
+				
 				var earthquake = this.runtime.createInstance(
 					this.runtime.types_by_index[this.typeIndexMap["CQEarthquake"]],
 					this.runtime.running_layout.layers[this.LAYER_BOTTOM],

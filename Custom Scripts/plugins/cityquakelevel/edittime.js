@@ -125,8 +125,11 @@ ACESDone();
 var property_list = [
 	new cr.Property(ept_float,		"Isometric Tile Height",	98,	"The height of a single 1x1x0 tile sprite in-game."),
 	new cr.Property(ept_integer,		"Grid Size",	16,	"The height and width of the tile grid of the level."),
-	new cr.Property(ept_float,		"Top Tile X",	1670,	"The X position of the bottom(origin) of the topmost tile in the level"),
-	new cr.Property(ept_float,		"Top Tile Y",	880,	"The Y position of the bottom(origin) of the topmost tile in the level"),
+	new cr.Property(ept_float,		"Top Tile X",	1670,	"The X position of the bottom(origin) of the topmost tile in the level."),
+	new cr.Property(ept_float,		"Top Tile Y",	880,	"The Y position of the bottom(origin) of the topmost tile in the level."),
+	new cr.Property(ept_float,		"Epicenter Icon X",	360,	"The X position of the middle of the topleftmost epicenter icon in the HUD."),
+	new cr.Property(ept_float,		"Epicenter Icon Y",	34,		"The Y position of the middle of the topleftmost epicenter icon in the HUD."),
+	new cr.Property(ept_float,		"Epicenter Icon Step",	40,		"The spacing between epicenter icons in the HUD."),
 	];
 	
 // Called by IDE when a new object type is to be created

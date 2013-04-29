@@ -73,6 +73,8 @@ cr.behaviors.CQdestroyable = function(runtime)
 			var ratio = this.destroyTime / this.DESTROY_TIME;
 			this.inst.opacity = 1 - ratio;
 			if (ratio >= 1){
+				if (this.inst.grass) // if house
+					this.runtime.DestroyInstance(this.inst.grass);
 				this.runtime.DestroyInstance(this.inst);
 			}
 		}
