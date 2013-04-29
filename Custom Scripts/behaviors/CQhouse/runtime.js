@@ -103,7 +103,7 @@ cr.behaviors.CQhouse = function(runtime)
 				}
 			}
 			if (this.virusTime >= this.VIRUS_DEATH_TIME){
-				this.inst.health = 0;
+				this.inst.hurt(this.inst.health, CQ.SCORE_MODIFIER_SPECIAL);
 			}
 		}
 	};

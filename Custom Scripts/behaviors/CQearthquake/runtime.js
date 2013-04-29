@@ -50,6 +50,7 @@ cr.behaviors.CQearthquake = function(runtime)
 	{
 		//constants
 		this.EXPANSION_TIME = 1; //secs		
+		this.EXTRA_TIME_AT_MAX_SIZE = 0.5; //secs		
 		this.INITIAL_HEIGHT = CQ.TILE_HEIGHT/2;
 		this.FINAL_HEIGHT = CQ.EARTHQUAKE_FINAL_HEIGHT_IN_TILES * CQ.TILE_HEIGHT;
 		this.NUM_FRAMES = this.inst.type.animations[0].frames.length - 1; //ignore last frame
@@ -61,6 +62,7 @@ cr.behaviors.CQearthquake = function(runtime)
 		this.expansionTime = 0;
 		this.dying = false;
 		this.dyingTime = 0;
+		this.inst.OnDestroy = function() { }
 	};
 
 	behinstProto.tick = function ()
@@ -70,6 +72,7 @@ cr.behaviors.CQearthquake = function(runtime)
 		if (this.dying){
 			this.dyingTime += dt;
 			if (this.dyingTime >= this.DYING_TIME){
+				this.inst.OnDestroy();
 				this.runtime.DestroyInstance(this.inst);
 				return;
 			}			
@@ -77,10 +80,14 @@ cr.behaviors.CQearthquake = function(runtime)
 			this.inst.opacity = 1 - ratio;
 		} else {		
 			this.expansionTime += dt;
-			if (this.expansionTime >= this.EXPANSION_TIME){
+			if (this.expansionTime >= (this.EXPANSION_TIME + this.EXTRA_TIME_AT_MAX_SIZE)){
 				this.dying = true;
 				this.inst.collisionsEnabled = false;
 				this.inst.changeAnimFrame = this.NUM_FRAMES;
+				this.inst.doChangeAnimFrame();
+				return;
+			} else if (this.expansionTime >= this.EXPANSION_TIME){
+				this.inst.changeAnimFrame = this.NUM_FRAMES - 1;
 				this.inst.doChangeAnimFrame();
 				return;
 			}

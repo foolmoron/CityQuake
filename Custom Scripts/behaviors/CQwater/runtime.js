@@ -72,7 +72,7 @@ cr.behaviors.CQwater = function(runtime)
 											this.runtime.running_layout.layers[CQ.LAYER_TOP],
 											this.inst.x,
 											this.inst.y - CQ.TILE_HEIGHT / 2);		
-			CQ.moveInstToZIndex(waste, this.inst.zindex + 1);	
+			CQ.moveInstToZIndex(waste, this.inst.topzindex + 1);	
 		}
 	}
 
@@ -110,7 +110,7 @@ cr.behaviors.CQwater = function(runtime)
 					  this.inst.tileY + yOffset >= 0 && this.inst.tileY + yOffset < CQ.GRID_SIZE){
 						var destroyableBehavior = CQ.hasBehavior(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset], "CQDestroyable");
 						if (destroyableBehavior){
-							CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset].health = 0;							
+							CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset].hurt(CQ.objGrid[this.inst.tileX + xOffset][this.inst.tileY + yOffset].health, CQ.SCORE_MODIFIER_SPECIAL);							
 						}
 					}
 				}

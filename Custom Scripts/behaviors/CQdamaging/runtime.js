@@ -59,8 +59,6 @@ cr.behaviors.CQdamaging = function(runtime)
 		var inst = this.inst;
 		var dt = this.runtime.getDt(inst);
 		
-		var debug = this.runtime.all_global_vars[0];
-		var killed = 0;
 		if (inst.collisionsEnabled){
 			var types = this.runtime.types_by_index;
 			for(var i = 0; i < types.length; i++){
@@ -69,21 +67,15 @@ cr.behaviors.CQdamaging = function(runtime)
 						if (this.runtime.testOverlap(inst, types[i].instances[j])){
 							var destroyable = types[i].instances[j];
 							if (inst.alreadyHit.indexOf(destroyable) < 0){
-								destroyable.health -= inst.damage;
+								var isFault = inst.damage > 10;
+								destroyable.hurt(inst.damage, (isFault) ? CQ.SCORE_MODIFIER_FAULT : 1.0)
 								inst.alreadyHit.push(destroyable);
-								
-								if (destroyable.health <= 0)
-									killed++;
 							}
 						}
 					}
 				}
 			}
 		}
-		if (inst.damage > 10 && killed > 0)
-			debug.data = "Fault #" + inst.uid + " killed " + killed + "\npos=(" + inst.x + ", " + inst.y + ")";
-		if (killed > 20)
-			debug.data += "!!!";
 	};
 	
 	function typeHasBehavior(type, behaviorName){

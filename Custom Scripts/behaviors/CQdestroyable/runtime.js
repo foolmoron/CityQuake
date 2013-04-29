@@ -51,10 +51,18 @@ cr.behaviors.CQdestroyable = function(runtime)
 		// Load properties
 		this.inst.health = this.properties[0];
 		this.DESTROY_TIME = this.properties[1];
+		this.inst.SCORE = this.properties[2];
 		this.destroyTime = 0;
 		this.destroyPhase = false;
 		this.ignited = false;
 		this.contaminated = false;
+		this.inst.lastScoreModifier = 1.0;
+		
+		this.inst.hurt = function (damage, scoreModifier)
+		{
+			this.health -= damage;
+			this.lastScoreModifier = scoreModifier;
+		}
 	};
 
 	behinstProto.tick = function ()
@@ -73,6 +81,8 @@ cr.behaviors.CQdestroyable = function(runtime)
 			this.destroyPhase = true;
 			if (this.inst.onDestroyPhase)
 				this.inst.onDestroyPhase();
+			CQ.addScore(this.inst.SCORE, this.inst.lastScoreModifier);
+			CQ.reportBuildingDead(this.inst);
 			var sizeX = this.inst.tileSize[0];
 			var sizeY = this.inst.tileSize[1];
 			var baseX = this.inst.x - (CQ.TILE_HEIGHT * (sizeX - 1)) + (CQ.TILE_HEIGHT * (sizeY - 1));

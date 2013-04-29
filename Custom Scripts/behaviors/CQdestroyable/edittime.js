@@ -89,6 +89,9 @@ ACESDone();
 var property_list = [
 	new cr.Property(ept_float, 	"Initial health",		3.0,		"Initial health value for destroyable."),
 	new cr.Property(ept_float, 	"Destroy time",			3.0,		"Seconds the destroying animation takes place before deleting the object."),
+	new cr.Property(ept_float, 	"Score",				100,		"Unmodified score obtained when destroyed."),
+	new cr.Property(ept_float, 	"Fire Spread Time",		1.0,		"Seconds it takes to spread fire."),
+	new cr.Property(ept_float, 	"Fire Death Time",		3.0,		"Seconds it takes to kill things with fire."),
 	];
 	
 // Called by IDE when a new behavior type is to be created

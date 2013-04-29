@@ -6,7 +6,7 @@
     <author>foolmoron</author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>474</next-sid>
+    <next-sid>477</next-sid>
     <used-plugins>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="NinePatch" version="1">9-patch</plugin>
@@ -336,8 +336,22 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="44" speed="0">
-                    <frame duration="1" hotspotX="0.662162" hotspotY="0.853933" />
-                    <frame duration="1" hotspotX="0.662162" hotspotY="0.853933" />
+                    <frame duration="1" hotspotX="0.662162" hotspotY="0.853933">
+                        <collision-poly>
+                            <point x="0" y="0.876404" />
+                            <point x="0.689189" y="0.578652" />
+                            <point x="1" y="0.730337" />
+                            <point x="0.290541" y="1" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.662162" hotspotY="0.853933">
+                        <collision-poly>
+                            <point x="0" y="0.876404" />
+                            <point x="0.689189" y="0.578652" />
+                            <point x="1" y="0.730337" />
+                            <point x="0.290541" y="1" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
@@ -495,7 +509,7 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="142" speed="5">
-                    <frame duration="1" hotspotX="0.6" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.631579" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>

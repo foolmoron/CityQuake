@@ -72,7 +72,11 @@ var CQ;
 		this.EARTHQUAKE_FINAL_HEIGHT_IN_TILES = 5;
 		this.FAULT_INDICATOR_ANIM_SPEED = 7;
 		this.FAULT_INDICATOR_ADJUSTMENT_RATIO = 0.33;
-		this.FAULT_INDICATOR_ADJUSTMENT_WIDTH = 15 * Math.PI / 180;
+		this.FAULT_INDICATOR_ADJUSTMENT_WIDTH = 30 * Math.PI / 180;
+		
+		this.SCORE_MODIFIER_FAULT = 1.5;
+		this.SCORE_MODIFIER_SPECIAL = 2.0;
+		this.SCORE_BOOST_EXTRA_EARTHQUAKE = 0.05;
 		
 		//proto declarations		
 		this.TYPE_INDEX_DIRT;
@@ -162,22 +166,39 @@ var CQ;
 			 [0, 0, 0, 0, 0, W, W, W, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [0, 0, 0, 0, 0, H, H, W, 0, 0, 0, 0, 0, 0, 0, 0]],
 
-			[[0, G, G, G, V, V, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //ngirl1
-			 [0, S, S, 0, V, V, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [0, S, S, 0, 0, 0, 0, H, H, H, H, H, H, V, V, W],
-			 [0, 0, H, 0, 0, 0, 0, S, S, 0, 0, 0, 0, V, V, W],
-			 [0, 0, H, 0, 0, 0, 0, S, S, 0, 0, 0, 0, 0, 0, W],
-			 [0, 0, H, 0, 0, 0, 0, 0, G, 0, 0, 0, 0, 0, 0, W],
-			 [0, 0, H, 0, 0, 0, 0, 0, G, 0, 0, 0, 0, 0, 0, W],
-			 [0, 0, H, F, F, W, 0, 0, G, 0, 0, 0, 0, 0, 0, W],
-			 [0, 0, H, F, F, W, 0, 0, G, 0, 0, 0, H, F, F, W],
-			 [0, 0, 0, 0, 0, W, 0, 0, V, V, 0, 0, H, F, F, W],
-			 [H, V, V, 0, 0, W, 0, 0, V, V, 0, 0, H, 0, 0, 0],
-			 [H, V, V, 0, 0, W, 0, 0, 0, 0, 0, 0, H, 0, 0, 0],
-			 [H, 0, 0, 0, 0, W, 0, 0, 0, 0, 0, S, S, 0, 0, 0],
-			 [S, S, 0, 0, 0, V, V, 0, 0, 0, 0, S, S, 0, 0, 0],
-			 [S, S, 0, 0, 0, V, V, H, H, H, H, H, H, 0, 0, 0],
-			 [H, H, H, H, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+			[[H, H, D, D, S, S, D, W, G, G, W, D, D, D, D, D], //mariaville
+			 [H, H, D, D, S, S, D, W, S, S, W, D, H, H, H, D],
+			 [G, G, D, D, G, D, D, W, S, S, W, D, D, D, D, D],
+			 [G, H, D, D, G, D, D, W, G, G, W, D, D, D, D, D],
+			 [G, H, G, G, G, D, D, W, G, G, W, D, H, H, H, D],
+			 [G, H, G, G, G, D, D, W, G, H, W, D, D, D, D, D],
+			 [G, G, G, G, G, D, D, W, G, G, W, 0, 0, 0, 0, 0],
+			 [W, W, W, W, W, D, D, W, G, G, W, W, W, W, W, W],
+			 [D, D, D, D, W, W, W, W, G, G, W, G, G, S, S, G],
+			 [G, G, G, D, D, G, G, D, H, G, W, G, G, S, S, G],
+			 [G, H, H, H, H, H, G, D, G, G, W, G, G, G, G, G],
+			 [D, H, G, G, G, H, G, D, G, G, W, H, G, G, H, D],
+			 [D, H, G, D, G, H, D, D, G, G, W, H, G, G, H, D],
+			 [G, H, G, G, G, H, D, D, H, H, W, H, G, G, H, D],
+			 [G, H, H, H, H, H, G, D, H, H, W, H, H, H, H, D],
+			 [G, G, D, D, G, G, G, D, G, G, W, D, D, D, D, D]],
+
+			[[G, G, G, G, V, V, H, H, H, H, H, H, H, H, H, H], //ngirl1
+			 [G, S, S, G, V, V, G, G, G, G, G, G, G, G, G, G],
+			 [G, S, S, G, 0, 0, G, H, H, H, H, H, H, V, V, W],
+			 [G, W, H, G, 0, 0, G, S, S, W, W, W, W, V, V, W],
+			 [G, W, H, G, 0, 0, G, S, S, W, 0, 0, W, W, W, W],
+			 [G, W, H, G, 0, 0, G, G, G, W, 0, 0, 0, 0, 0, W],
+			 [G, W, H, G, W, W, 0, 0, G, W, 0, 0, 0, 0, 0, W],
+			 [G, W, H, F, F, W, 0, 0, G, W, 0, 0, 0, 0, 0, W],
+			 [G, W, H, F, F, W, 0, 0, G, W, 0, 0, H, F, F, W],
+			 [G, W, W, W, W, W, 0, 0, V, V, 0, 0, H, F, F, W],
+			 [G, H, V, V, 0, W, 0, 0, V, V, 0, 0, H, G, W, W],
+			 [G, H, V, V, 0, W, 0, 0, 0, 0, 0, 0, H, G, W, W],
+			 [G, H, 0, 0, 0, W, 0, 0, 0, 0, 0, S, S, G, W, W],
+			 [S, S, 0, 0, 0, V, V, 0, 0, 0, 0, S, S, G, W, W],
+			 [S, S, 0, 0, 0, V, V, H, H, H, H, H, H, G, W, W],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, W]],
 
 			[[0, 0, 0, 0, 0, 0, 0, 0, 0, H, H, H, H, H, H, H], //ngirl2
 			 [0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, S, S, S, S, S],
@@ -230,39 +251,22 @@ var CQ;
 			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W],
 			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W]],
 
-			[[D, W, W, W, D, O, D, D, D, D, O, G, S, S, V, V], //SpeedYoshi1
-			 [D, W, W, W, D, G, D, G, G, D, W, G, S, S, V, V],
-			 [D, G, G, G, D, O, D, G, O, D, O, G, S, S, S, S],
-			 [D, G, V, V, D, W, D, G, G, D, W, G, S, S, S, S],
-			 [D, G, V, V, D, O, D, G, O, D, O, G, G, G, G, G],
+			[[D, W, W, W, D, D, D, D, D, D, O, G, G, G, V, V], //SpeedYoshi1
+			 [D, W, W, W, D, D, O, H, G, D, W, G, G, G, V, V],
+			 [D, G, G, G, D, D, H, H, G, D, O, G, S, S, G, G],
+			 [D, G, V, V, D, D, D, G, G, D, W, G, S, S, G, G],
+			 [D, G, V, V, D, D, D, G, G, D, O, G, G, G, G, G],
 			 [D, G, G, G, G, G, D, G, G, D, W, O, W, O, W, O],
-			 [D, W, W, G, G, O, D, G, O, D, D, D, D, D, D, D],
-			 [D, G, G, G, G, W, D, G, G, O, G, O, G, O, G, D],
-			 [D, G, S, S, G, G, D, O, G, G, G, H, H, H, H, D],
-			 [D, G, S, S, G, O, D, O, O, G, G, H, H, H, H, D],
-			 [D, G, G, G, G, W, D, D, D, H, G, G, G, G, 0, D],
-			 [D, O, W, O, W, O, D, W, D, H, G, W, W, G, H, D],
+			 [D, W, W, W, F, W, D, G, G, D, D, D, D, D, D, D],
+			 [D, G, G, G, F, W, D, G, G, G, D, D, D, D, D, D],
+			 [D, G, S, S, G, W, D, O, G, G, G, H, H, V, V, D],
+			 [D, G, S, S, G, W, D, O, O, G, G, H, H, V, V, D],
+			 [D, G, G, G, G, W, W, W, D, H, G, G, G, G, H, D],
+			 [D, O, O, O, W, W, D, W, D, H, G, W, W, G, H, D],
 			 [D, D, D, D, D, D, D, W, D, H, G, W, W, G, H, D],
-			 [G, O, G, O, G, O, D, D, D, H, G, G, G, G, H, D],
-			 [D, D, D, D, D, D, D, D, D, H, H, H, H, H, H, D],
+			 [G, O, G, O, G, O, D, W, D, H, G, G, G, G, H, D],
+			 [W, W, W, W, W, W, W, W, D, H, H, H, H, H, H, D],
 			 [H, H, H, H, H, H, H, H, D, D, D, D, D, D, D, D]],
-
-			[[F, F, D, D, D, D, D, D, D, D, D, D, D, D, H, G], //SpeedYoshi2
-			 [F, F, D, W, W, O, O, W, O, O, W, O, O, D, H, G],
-			 [S, S, D, W, W, O, O, W, O, O, W, O, O, D, H, G],
-			 [S, S, D, W, W, W, W, W, W, W, W, W, W, D, H, G],
-			 [F, F, D, W, O, O, W, O, O, W, O, O, W, D, H, G],
-			 [F, F, D, W, O, O, W, O, O, W, O, O, W, D, H, G],
-			 [S, S, D, D, D, D, D, D, D, D, D, D, D, D, H, G],
-			 [S, S, D, D, D, D, D, D, D, D, D, D, D, D, H, G],
-			 [F, F, D, W, O, O, W, O, O, W, O, O, W, D, H, G],
-			 [F, F, D, W, O, O, W, O, O, W, O, O, W, D, H, G],
-			 [S, S, D, W, W, W, W, W, W, W, W, W, W, D, H, G],
-			 [S, S, D, W, W, O, O, W, O, O, W, O, O, D, H, G],
-			 [F, F, D, W, W, O, O, W, O, O, W, O, O, D, H, G],
-			 [F, F, D, D, D, D, D, D, D, D, D, D, D, D, H, G],
-			 [S, S, D, H, H, H, H, H, H, H, H, H, H, H, H, G],
-			 [S, S, D, G, G, G, G, G, G, G, G, G, G, G, G, G]],
 
 			[[H, H, H, H, H, G, F, G, F, G, F, H, H, H, H, H], //Trembleton
 			 [D, D, D, D, H, G, F, G, F, G, F, H, D, D, D, D],
@@ -281,50 +285,64 @@ var CQ;
 			 [D, D, D, D, H, F, G, F, G, F, G, H, D, D, D, D],
 			 [H, H, H, H, H, F, G, F, G, F, G, H, H, H, H, H]],
 
-			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //Wylvane1
-			 [0, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, S, S, S, 0, S],
-			 [0, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [V, V, V, V, V, 0, 0, 0, 0, 0, 0, S, 0, 0, 0, S],
-			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, 0, S, S],
-			 [V, V, V, V, V, 0, 0, 0, 0, 0, 0, 0, S, S, S, 0],
-			 [V, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, S, S, 0, S, S],
-			 [V, V, V, V, V, 0, V, V, V, V, 0, S, 0, 0, 0, S],
-			 [0, 0, 0, 0, 0, 0, V, 0, 0, V, 0, 0, 0, 0, 0, 0],
-			 [V, V, V, V, V, 0, V, V, V, V, 0, S, S, S, S, S],
-			 [V, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, S],
-			 [V, V, V, V, V, 0, V, V, V, V, 0, S, S, S, S, S],
-			 [0, 0, 0, 0, 0, 0, 0, V, 0, 0, 0, 0, 0, 0, 0, 0],
-			 [V, 0, V, 0, 0, 0, 0, 0, V, 0, 0, S, 0, S, S, S],
-			 [V, 0, V, 0, 0, 0, 0, V, 0, 0, 0, S, 0, S, 0, S],
-			 [V, V, V, V, V, 0, V, V, V, V, 0, S, S, S, 0, S]],
+			[[W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W], //Ytterbium1
+			 [W, W, W, W, W, W, W, H, H, W, G, G, G, G, W, W],
+			 [W, W, W, W, G, G, W, H, H, W, G, H, H, G, W, W],
+			 [G, O, H, W, H, H, W, D, F, W, W, G, H, H, W, W],
+			 [G, O, H, W, W, H, W, F, D, W, W, W, H, H, W, W],
+			 [W, H, H, W, W, W, W, F, D, W, W, W, W, W, W, W],
+			 [W, W, W, W, W, W, W, D, D, W, W, W, W, W, W, W],
+			 [W, H, W, W, G, H, W, W, W, W, W, W, W, G, G, W],
+			 [W, H, H, W, G, H, H, W, W, W, G, G, G, V, V, W],
+			 [W, H, H, W, W, W, W, W, W, G, G, O, O, V, V, W],
+			 [W, H, O, H, H, H, G, W, W, W, G, O, O, O, G, W],
+			 [W, G, O, O, O, O, G, W, W, S, S, W, O, O, G, W],
+			 [W, W, G, H, H, H, H, G, W, S, S, G, G, G, G, W],
+			 [W, W, W, W, W, W, H, G, W, W, W, W, W, W, W, W],
+			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
+			 [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W]],
+		];
+		this.LEVEL_EARTHQUAKE_LIMITS = 
+		[
+			8,
+			8,
+			8,
+			8,
+			8,
+			8,
+			8,
+			8,
+			8,
+			8,
+			8,		
 		];
 		this.LEVEL_DESCRIPTIONS = 
 		[
 			"Level #1: Cobain1",
 			"Level #2: fooltest1",
 			"Level #3: Jeffrey1",
-			"Level #4: ngirl1",
-			"Level #5: ngirl2",
-			"Level #6: Omega1Eschshire",
-			"Level #7: Omega2DeetonaBeach",
-			"Level #8: SpeedYoshi1",
-			"Level #9: SpeedYoshi2",		
-			"Level #10: Trembleton",		
-			"Level #11: Wylvane1",			
+			"Level #4: mariaville",
+			"Level #5: ngirl1",
+			"Level #6: ngirl2",
+			"Level #7: Omega1 Eschshire",
+			"Level #8: Omega2 Deetona Beach",
+			"Level #9: SpeedYoshi1",		
+			"Level #10: Trembleton",	
+			"Level #11: Ytterbium1 Island Nation",	
 		];
 		this.LEVEL_NAMES = 
 		[
 			"Cobain1",
 			"fooltest1",
 			"Jeffrey1",
+			"mariaville",
 			"ngirl1",
 			"ngirl2",
 			"Eschshire",
 			"DeetonaBeach",
-			"SpeedYoshi1",
-			"SpeedYoshi2",		
-			"Trembleton",		
-			"Wylvane1",			
+			"SpeedYoshi1",	
+			"Trembleton",	
+			"Island Nation",
 		];
 		this.LEVEL_COUNT = this.PREMADE_LEVELS.length;
 		this.currentLevelID = 0;
@@ -366,6 +384,10 @@ var CQ;
 		this.newFaultIndicatorPolarTheta = 0;
 		
 		this.reddenedSky = false;
+		this.levelScore = 0;
+		this.levelEarthquakesRemaining = 0;
+		this.levelBuildingsRemaining = 0;
+		this.levelVictory = false;
 	};
 	
 	instanceProto.getTypeIndex = function (typeName)
@@ -479,12 +501,15 @@ var CQ;
 	// Conditions
 	function Cnds() {};
 
-	/* // the example condition
-	Cnds.prototype.MyCondition = function (myparam)
+	Cnds.prototype.OnLose = function ()
 	{
-		// return true if number is positive
-		return myparam >= 0;
-	}; */
+		return true;
+	};
+	
+	Cnds.prototype.OnWin = function ()
+	{
+		return true;
+	};
 	
 	// ... other conditions here ...
 	
@@ -496,6 +521,7 @@ var CQ;
 	
 	Acts.prototype.Initialize = function ()
 	{				
+		this.runtime.timescale = 1;
 		this.TILE_HEIGHT = this.properties[0];	
 		var types = this.runtime.types_by_index;
 		for(var i = 0; i < types.length; i++){
@@ -637,6 +663,13 @@ var CQ;
 		this.moveInstToTop(this.earthquakeIndicator);
 		this.earthquakeIndicator.opacity = 0;
 		
+		if (this.faultIndicator)
+			this.runtime.DestroyInstance(this.faultIndicator);
+		this.faultIndicator = null;
+		this.faultIndicatorBeingAdjusted = false;
+		this.faultFreezeTime = 0;
+		this.frozen = false;
+		
 		this.reddenedSky = false;
 		
 		this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.BOSSANOVA_NAME, 1], 1, 0, this.BOSSANOVA_TAG);
@@ -648,12 +681,23 @@ var CQ;
 		if (this.currentLevelID > 0 && this.currentLevelID <= this.LEVEL_COUNT){
 			this.globalVarMap["DESCRIPTION"].data = this.LEVEL_DESCRIPTIONS[this.currentLevelID - 1];
 			this.globalVarMap["LEVELNAME"].data = this.LEVEL_NAMES[this.currentLevelID - 1];
+			this.levelEarthquakesRemaining = this.LEVEL_EARTHQUAKE_LIMITS[this.currentLevelID - 1];			
 		}
 		else{
 			this.globalVarMap["DESCRIPTION"].data = "Randomized level"
 			this.globalVarMap["LEVELNAME"].data = "RANDOM"
+			this.levelEarthquakesRemaining = 9999;
 		}
+		this.levelScore = 0;
+		this.levelBuildingsRemaining = 0;
+		this.levelVictory = false;
+		
 		this.loadLevelWithID(this.currentLevelID);
+	};
+	
+	instanceProto.addScore = function(score, modifier)
+	{
+		this.levelScore += score * modifier;
 	};
 	
 	Acts.prototype.LoadLevelWithID = function (levelid)
@@ -708,6 +752,7 @@ var CQ;
 		var vertRow, tmp, xIndex;
 		var xPos = baseX;
 		var yPos = baseY;
+		var latestZIndex = 0;
 		for(vertRow = this.GRID_SIZE - 1; vertRow > -this.GRID_SIZE; vertRow--)
 		{
 			tmp = this.GRID_SIZE - Math.abs(vertRow) - 1;
@@ -750,9 +795,14 @@ var CQ;
 												this.runtime.types_by_index[this.tileTypeIndices[tile]],
 												this.runtime.running_layout.layers[this.tileTypeLayers[tile]],
 												xPos,
-												yPos);
-						if (!this.hasBehavior(newInstance, "CQDestroyable"))
+												yPos);						
+						if (!this.hasBehavior(newInstance, "CQDestroyable")){
 							newInstance.collisionsEnabled = false;
+							latestZIndex = newInstance.zindex;
+						} else {
+							this.levelBuildingsRemaining++;
+							newInstance.topzindex = latestZIndex;
+						}
 						//set extra instance vars					
 						newInstance.tileSize = size ? size : [1,1];
 						newInstance.tileX = i;
@@ -789,6 +839,17 @@ var CQ;
 		this.calculateGameplayAreaBounds();	
 		this.moveInstToTop(this.earthquakeIndicator);
 	};
+	
+	instanceProto.reportBuildingDead = function(inst)
+	{		
+		this.levelBuildingsRemaining--;
+		if (this.levelBuildingsRemaining === 0){		
+			var scoreBoost = (this.levelScore * this.SCORE_BOOST_EXTRA_EARTHQUAKE) * this.levelEarthquakesRemaining;
+			this.levelScore += scoreBoost;
+			this.levelVictory = true;			
+			this.runtime.trigger(cr.plugins_.CQLevels.prototype.cnds.OnWin, this);
+		}
+	}
 	
 	instanceProto.hasBehavior = function(inst, behaviorName)
 	{
@@ -903,12 +964,15 @@ var CQ;
 	Acts.prototype.SpawnEarthquake = function (x, y)
 	{
 		if (!this.frozen){
-			if (this.inGameplayArea(x,y)){
-				this.runtime.createInstance(
+			if (this.levelEarthquakesRemaining > 0 && this.inGameplayArea(x,y)){
+				this.levelEarthquakesRemaining--;
+				var earthquake = this.runtime.createInstance(
 					this.runtime.types_by_index[this.typeIndexMap["CQEarthquake"]],
 					this.runtime.running_layout.layers[this.LAYER_BOTTOM],
 					x,
 					y);
+				if (this.levelEarthquakesRemaining == 0)
+					earthquake.OnDestroy = function() { CQ.checkLoss(); };
 				var BG = this.background.behavior_insts[1];
 				BG.shake(this.TILE_HEIGHT/2, 1);			
 				if (!this.reddenedSky){
@@ -928,6 +992,13 @@ var CQ;
 		}
 		this.oldTouchX = 0;
 		this.oldTouchY = 0;
+	};
+	
+	instanceProto.checkLoss = function()
+	{	
+		if (!this.levelVictory){		
+			this.runtime.trigger(cr.plugins_.CQLevels.prototype.cnds.OnLose, this);
+		}
 	};
 	
 	Acts.prototype.UpdateIndicators = function (x, y)
@@ -1028,6 +1099,26 @@ var CQ;
 	Exps.prototype.NumTileTypes = function (ret)
 	{
 		ret.set_int(this.tileTypeIndices.length);
+	};
+	
+	Exps.prototype.CurrentLevelID = function (ret)
+	{
+		ret.set_int(this.currentLevelID);
+	};
+	
+	Exps.prototype.RemainingBuildings = function (ret)
+	{
+		ret.set_int(this.levelBuildingsRemaining);
+	};
+	
+	Exps.prototype.RemainingEarthquakes = function (ret)
+	{
+		ret.set_int(this.levelEarthquakesRemaining);
+	};
+	
+	Exps.prototype.Score = function (ret)
+	{
+		ret.set_int(this.levelScore);
 	};
 	
 	// ... other expressions here ...

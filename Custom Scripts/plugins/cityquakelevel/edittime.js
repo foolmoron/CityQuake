@@ -56,7 +56,8 @@
 				
 // example				
 // AddNumberParam("Number", "Enter a number to test if positive.");
-// AddCondition(0, cf_none, "Is number positive", "My category", "{0} is positive", "Description for my condition!", "MyCondition");
+AddCondition(0, cf_trigger, "On lose", "Winning", "On game lost", "Triggered when the player uses all earthquakes and there are still buildings standing.", "OnLose");
+AddCondition(1, cf_trigger, "On win", "Winning", "On game won", "Triggered when the player destroys all buildings.", "OnWin");
 
 ////////////////////////////////////////
 // Actions
@@ -102,7 +103,11 @@ AddAction(7, af_none, "Stop all music", "Initialization", "Stop all music", "Sto
 
 // example
 AddExpression(0, ef_return_number, "Number of premade levels", "Data", "NumLevels", "Return the number of premade levels available.");
-AddExpression(0, ef_return_number, "Number of tile types", "Data", "NumTileTypes", "Return the number of different level tile types.");
+AddExpression(1, ef_return_number, "Number of tile types", "Data", "NumTileTypes", "Return the number of different level tile types.");
+AddExpression(2, ef_return_number, "Current level ID", "Data", "CurrentLevelID", "Return the ID of the current level.");
+AddExpression(3, ef_return_number, "Remaining Buildings", "Data", "RemainingBuildings", "Return the number of remaining buildings in the current level.");
+AddExpression(4, ef_return_number, "Remaining Earthquakes", "Data", "RemainingEarthquakes", "Return the number of remaining earthquakes in the current level.");
+AddExpression(5, ef_return_number, "Score", "Data", "Score", "Return the score in the current level.");
 
 ////////////////////////////////////////
 ACESDone();

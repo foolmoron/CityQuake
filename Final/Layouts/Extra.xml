@@ -389,10 +389,10 @@
                         <x>456</x>
                         <y>379</y>
                         <z>0</z>
-                        <width>5</width>
+                        <width>19</width>
                         <height>1750</height>
                         <depth>0</depth>
-                        <hotspotX>0.600000024</hotspotX>
+                        <hotspotX>0.631578922</hotspotX>
                         <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
@@ -460,6 +460,8 @@
                                 <initial-health>1</initial-health>
                                 <destroy-time>1</destroy-time>
                                 <score>100</score>
+                                <fire-spread-time>0</fire-spread-time>
+                                <fire-death-time>0</fire-death-time>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -494,6 +496,8 @@
                                 <initial-health>3</initial-health>
                                 <destroy-time>1</destroy-time>
                                 <score>300</score>
+                                <fire-spread-time>0</fire-spread-time>
+                                <fire-death-time>0</fire-death-time>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -552,6 +556,8 @@
                                 <initial-health>3</initial-health>
                                 <destroy-time>1</destroy-time>
                                 <score>200</score>
+                                <fire-spread-time>0</fire-spread-time>
+                                <fire-death-time>0</fire-death-time>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -583,6 +589,8 @@
                                 <initial-health>3</initial-health>
                                 <destroy-time>1</destroy-time>
                                 <score>200</score>
+                                <fire-spread-time>0</fire-spread-time>
+                                <fire-death-time>0</fire-death-time>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -614,6 +622,8 @@
                                 <initial-health>3</initial-health>
                                 <destroy-time>1</destroy-time>
                                 <score>200</score>
+                                <fire-spread-time>0</fire-spread-time>
+                                <fire-death-time>0</fire-death-time>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
@@ -647,7 +657,7 @@
                         <x>304</x>
                         <y>284</y>
                         <z>0</z>
-                        <width>4</width>
+                        <width>6.666666508</width>
                         <height>1750</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
