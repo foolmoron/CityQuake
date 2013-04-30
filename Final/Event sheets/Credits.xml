@@ -5,5 +5,16 @@
     <events>
         <include>BossaNova</include>
         <include>Buttons</include>
+        <event-block sid="613">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="614" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set web font" sid="652" type="Text">
+                    <param id="0" name="Family name">&quot;earthquake_mfregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;earthquakestylesheet.css&quot;</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

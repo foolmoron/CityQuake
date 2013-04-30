@@ -6,13 +6,8 @@
     <author>foolmoron</author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>598</next-sid>
+    <next-sid>658</next-sid>
     <used-plugins>
-        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
-        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
-        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
-        <plugin author="Scirra" id="Function" version="1">Function</plugin>
-        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="NinePatch" version="1">9-patch</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
@@ -20,6 +15,11 @@
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
@@ -826,5 +826,16 @@
         <file name="EpicityByXenogenocideSlowmo.ogg" />
         <file name="EpicityByXenogenocideSlowmo.wav" />
     </music-folder>
-    <files-folder expanded="1" />
+    <files-folder expanded="1">
+        <file name="earthquakemf-webfont.eot" />
+        <file name="earthquakemf-webfont.svg" />
+        <file name="earthquakemf-webfont.ttf" />
+        <file name="earthquakemf-webfont.woff" />
+        <file name="earthquakestylesheet.css" />
+        <file name="quartzms-webfont.eot" />
+        <file name="quartzms-webfont.svg" />
+        <file name="quartzms-webfont.ttf" />
+        <file name="quartzms-webfont.woff" />
+        <file name="quartzstylesheet.css" />
+    </files-folder>
 </c2project>

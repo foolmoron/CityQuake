@@ -161,15 +161,13 @@ cr.behaviors.CQearthquake = function(runtime)
 		var dToCollisionY = collisionY - quake1.y;
 		var dToCollisionX = collisionX - quake1.x;
 		var distToCollision = Math.sqrt(dToCollisionX * dToCollisionX + dToCollisionY * dToCollisionY);
-		if (distToCollision >= dist){ //one circle within another
-			return;
+		if (distToCollision < dist){ //circle not within another			
+			var tangentObj = this.runtime.createInstance(obj, this.runtime.running_layout.layers[CQ.LAYER_TOP], collisionX, collisionY);
+			var angle = Math.atan2(dy, dx);
+			tangentObj.angle = angle;
+			
+			CQ.setFaultIndicator(tangentObj);
 		}
-		
-		var tangentObj = this.runtime.createInstance(obj, this.runtime.running_layout.layers[CQ.LAYER_TOP], collisionX, collisionY);
-		var angle = Math.atan2(dy, dx);
-		tangentObj.angle = angle;
-		
-		CQ.setFaultIndicator(tangentObj);
 	};
 	
 	// ... other actions here ...

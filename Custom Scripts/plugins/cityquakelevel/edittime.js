@@ -108,6 +108,7 @@ AddExpression(2, ef_return_number, "Current level ID", "Data", "CurrentLevelID",
 AddExpression(3, ef_return_number, "Remaining Buildings", "Data", "RemainingBuildings", "Return the number of remaining buildings in the current level.");
 AddExpression(4, ef_return_number, "Remaining Earthquakes", "Data", "RemainingEarthquakes", "Return the number of remaining earthquakes in the current level.");
 AddExpression(5, ef_return_number, "Score", "Data", "Score", "Return the score in the current level.");
+AddExpression(5, ef_return_string, "Instructions", "Data", "Instructions", "Return the instructions for the current level.");
 
 ////////////////////////////////////////
 ACESDone();

@@ -129,11 +129,11 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Text" uid="181">
+                <instance type="Debug" uid="19">
                     <properties>
-                        <text>Works best in Chrome!            (or anything other than Firefox)</text>
+                        <text>Works best in Chrome!</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-21,700,0</font>
+                        <font>Arial,-19,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Left</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>
@@ -145,10 +145,37 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>262</x>
-                        <y>580</y>
+                        <y>583</y>
                         <z>0</z>
-                        <width>325</width>
-                        <height>62</height>
+                        <width>277</width>
+                        <height>59</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Debug" uid="180">
+                    <properties>
+                        <text>(or anything other than Firefox)</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-19,400,0</font>
+                        <color>255,255,255</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>262</x>
+                        <y>607</y>
+                        <z>0</z>
+                        <width>277</width>
+                        <height>59</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>

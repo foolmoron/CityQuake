@@ -65,7 +65,23 @@ var CQ;
 		this.EPICITY_TAG = CQ + "epicity";
 		this.EPICITYSLOW_NAME = "epicitybyxenogenocideslowmo";
 		this.EPICITYSLOW_TAG = CQ + "epicityslow";
-		this.ALL_TAGS = [this.BOSSANOVA_TAG, this.EPICITY_TAG, this.EPICITYSLOW_TAG];
+		this.QUAKESOUND_NAME = "earthquake";
+		this.QUAKESOUND_TAG = CQ + "earthquake";
+		this.FAULTSOUND_NAME = "fault";
+		this.FAULTSOUND_TAG = CQ + "fault";
+		this.IGNITESOUND_NAME = "fire";
+		this.IGNITESOUND_TAG = CQ + "fire";
+		this.CONTAMINATESOUND_NAME = "toxic";
+		this.CONTAMINATESOUND_TAG = CQ + "toxic";
+		this.INFECTSOUND_NAME = "zombie";
+		this.INFECTSOUND_TAG = CQ + "zombie";
+		
+		this.MUSIC_TAGS = [this.BOSSANOVA_TAG, this.EPICITY_TAG, this.EPICITYSLOW_TAG];
+		this.SOUND_TAGS = [this.QUAKESOUND_TAG, this.FAULTSOUND_TAG, this.IGNITESOUND_TAG, this.CONTAMINATESOUND_TAG, this.INFECTSOUND_TAG];
+		this.ALL_TAGS = this.MUSIC_TAGS.concat(this.SOUND_TAGS);
+		
+		this.MUSIC_VOLUME_OFFSET = 0;
+		this.SOUND_VOLUME_OFFSET = 0;
 		
 		//constants
 		this.TILE_HEIGHT = this.properties[0];	
@@ -115,24 +131,110 @@ var CQ;
 		var F = 8;
 		this.PREMADE_LEVELS = 
 		[			 
-			[[W, W, W, W, W, O, O, G, G, G, G, G, H, D, H, G], //Cobain1
-			 [W, W, W, W, W, O, O, G, G, G, G, G, H, D, H, G],
-			 [W, W, W, W, W, O, O, G, G, S, S, G, H, D, H, G],
-			 [W, W, W, W, W, O, O, G, G, S, S, G, H, D, H, G],
-			 [F, F, W, O, O, O, O, G, H, D, D, D, D, D, D, D],
-			 [F, F, W, O, O, O, O, G, H, D, H, G, H, D, H, G],
-			 [G, G, W, O, O, G, G, G, H, D, H, G, H, D, H, G],
-			 [G, G, W, D, D, D, D, D, D, D, H, G, H, D, H, G],
-			 [G, G, W, G, G, G, G, G, G, G, G, G, H, D, H, G],
-			 [G, G, W, G, G, H, H, H, H, H, H, H, H, H, G, G],
-			 [G, G, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
-			 [G, G, V, V, H, H, H, H, H, H, H, H, H, H, W, H],
-			 [G, G, V, V, G, G, G, G, G, G, G, G, G, H, W, H],
-			 [G, G, G, G, G, G, G, G, G, G, G, G, G, H, W, H],
-			 [G, G, G, G, G, G, G, G, G, G, G, G, G, H, W, H],
-			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, G]],
 
-			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G], //fooltest1
+			[[G, G, G, G, G, G, 0, 0, 0, 0, G, G, G, G, G, G], //01tutorialquakes
+			 [G, G, H, H, G, G, 0, 0, 0, 0, G, G, H, H, G, G],
+			 [G, H, H, H, H, G, 0, 0, 0, 0, G, H, H, H, H, G],
+			 [G, H, H, H, H, G, 0, 0, 0, 0, G, H, H, H, H, G],
+			 [G, G, H, H, G, G, 0, 0, 0, 0, G, G, H, H, G, G],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, G, G],
+			 [0, 0, 0, 0, 0, G, W, W, W, W, G, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, G, W, G, G, W, G, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, G, W, G, G, W, G, 0, 0, 0, 0, 0],
+			 [0, 0, 0, 0, 0, G, W, W, W, W, G, 0, 0, 0, 0, 0],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, G, G],
+			 [G, G, H, H, G, G, 0, 0, 0, 0, G, G, H, H, G, G],
+			 [G, H, H, H, H, G, 0, 0, 0, 0, G, H, H, H, H, G],
+			 [G, H, H, H, H, G, 0, 0, 0, 0, G, H, H, H, H, G],
+			 [G, G, H, H, G, G, 0, 0, 0, 0, G, G, H, H, G, G],
+			 [G, G, G, G, G, G, 0, 0, 0, 0, G, G, G, G, G, G]],
+
+			[[G, G, G, G, G, G, G, G, W, W, G, G, G, G, G, G], //02tutorialfaults
+			 [G, G, G, G, G, G, G, G, W, W, G, G, G, G, G, G],
+			 [G, G, G, G, G, G, G, G, W, W, W, W, W, W, G, G],
+			 [W, W, W, W, G, G, G, G, W, W, W, W, W, W, G, G],
+			 [W, W, W, W, G, G, G, G, G, G, G, G, W, W, W, W],
+			 [G, G, W, W, G, G, G, G, G, G, G, G, W, W, W, W],
+			 [G, G, W, W, G, G, G, G, G, G, G, G, G, G, G, G],
+			 [O, G, W, W, H, H, H, H, H, H, H, H, H, H, G, O],
+			 [O, G, W, W, H, H, H, H, H, H, H, H, H, H, G, O],
+			 [G, G, W, W, G, G, G, G, G, G, G, G, G, G, G, G],
+			 [G, G, W, W, G, G, G, G, G, G, G, G, G, G, G, G],
+			 [G, G, W, W, W, W, W, W, W, W, W, W, W, W, W, G],
+			 [G, G, W, W, W, W, W, W, W, W, W, W, W, W, W, G],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, W, W, G],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, W, W, W],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, W, W, W]],
+
+			[[W, W, W, 0, 0, 0, 0, 0, 0, 0, G, H, H, W, W, W], //03tutoriallargebuildings
+			 [W, W, 0, 0, 0, 0, 0, 0, 0, 0, G, H, H, O, W, W],
+			 [W, W, 0, G, G, G, G, 0, 0, 0, G, G, G, O, H, W],
+			 [0, W, 0, G, 0, 0, G, 0, 0, 0, 0, W, W, W, W, W],
+			 [G, W, G, G, 0, 0, G, 0, 0, 0, 0, W, G, 0, 0, 0],
+			 [0, W, W, 0, 0, G, G, G, G, G, 0, W, G, G, G, 0],
+			 [0, 0, W, 0, 0, G, O, O, O, G, 0, W, 0, 0, G, 0],
+			 [G, G, W, W, W, G, O, D, O, G, 0, W, W, W, G, 0],
+			 [0, G, 0, G, W, G, O, O, O, G, G, G, 0, W, G, 0],
+			 [0, G, G, G, W, G, G, G, G, G, 0, G, G, W, H, H],
+			 [0, 0, 0, 0, W, 0, 0, G, 0, 0, 0, 0, 0, W, H, O],
+			 [0, O, O, 0, W, W, 0, G, G, G, 0, 0, 0, W, H, H],
+			 [0, O, O, 0, 0, W, W, W, 0, G, 0, 0, 0, W, H, H],
+			 [0, 0, 0, 0, G, G, G, W, G, G, 0, 0, 0, W, W, W],
+			 [0, 0, 0, 0, G, 0, W, W, W, 0, 0, 0, 0, W, W, W],
+			 [0, 0, 0, 0, G, W, W, W, W, W, 0, 0, 0, W, W, W]],
+
+			[[W, W, W, W, W, W, D, D, H, H, G, G, W, W, W, W], //04tutorialfire
+			 [W, W, W, W, W, O, D, D, H, H, G, S, S, W, W, W],
+			 [W, W, W, W, H, G, G, D, H, H, G, S, S, G, W, W],
+			 [W, W, W, G, G, G, G, D, D, H, G, G, G, G, G, W],
+			 [O, W, W, G, G, G, G, H, D, D, H, G, G, G, G, W],
+			 [G, W, W, G, G, G, G, G, G, D, D, H, G, G, G, W],
+			 [G, W, W, W, W, G, S, S, G, G, D, D, H, G, G, W],
+			 [G, W, W, W, W, G, S, S, G, G, O, D, H, O, G, W],
+			 [G, G, G, W, W, G, G, G, G, G, G, D, D, H, H, W],
+			 [G, G, G, W, W, G, G, G, G, G, G, G, D, D, W, W],
+			 [G, G, G, W, W, W, W, G, G, G, G, G, G, D, W, W],
+			 [G, S, S, W, W, W, W, O, G, G, G, G, G, W, W, W],
+			 [G, S, S, G, G, G, W, H, G, G, G, G, H, W, W, W],
+			 [D, G, G, G, G, G, W, W, G, G, G, G, G, W, W, W],
+			 [D, D, G, G, G, G, G, W, G, G, G, G, W, W, W, W],
+			 [D, D, D, G, G, G, G, W, W, G, O, H, W, W, W, W]],
+
+			[[G, G, O, W, W, W, D, D, O, W, W, W, W, W, W, O], //05tutorialfactory
+			 [G, G, G, W, W, O, D, D, D, W, W, G, G, F, G, G],
+			 [G, G, F, W, H, G, G, D, D, W, G, G, G, F, G, G],
+			 [G, G, F, G, G, G, G, D, D, W, G, G, G, W, G, G],
+			 [G, G, G, G, G, G, D, D, D, D, G, G, G, W, W, W],
+			 [G, G, G, O, W, W, W, G, G, D, D, G, G, W, W, W],
+			 [G, G, G, W, W, W, W, S, S, G, D, D, G, G, W, W],
+			 [G, G, F, W, W, W, W, S, S, G, G, D, G, F, W, W],
+			 [G, G, F, W, D, D, D, G, G, G, G, D, G, F, W, W],
+			 [G, G, G, G, D, D, D, G, G, G, O, D, G, G, W, W],
+			 [G, G, G, G, G, D, D, D, D, D, D, D, G, G, G, G],
+			 [G, G, G, G, G, W, W, W, W, D, D, G, G, G, W, W],
+			 [G, G, F, W, H, H, H, H, W, G, G, G, G, F, W, W],
+			 [G, G, F, W, H, G, G, H, W, G, G, G, G, F, W, W],
+			 [G, G, G, W, H, H, H, H, W, G, G, G, W, W, W, W],
+			 [G, G, G, W, W, W, W, W, W, G, G, G, W, W, W, W]],
+
+			[[H, H, H, 0, D, D, 0, 0, 0, W, W, W, W, W, W, 0], //06tutorialhospital
+			 [H, O, H, 0, 0, D, D, 0, 0, W, G, G, G, G, G, G],
+			 [H, H, H, 0, 0, G, D, D, 0, W, G, V, V, G, G, G],
+			 [G, G, H, H, H, G, G, D, D, W, G, V, V, G, G, G],
+			 [G, G, H, H, H, H, G, G, D, D, G, H, H, G, G, W],
+			 [G, G, H, H, W, H, H, G, G, D, D, G, H, G, W, W],
+			 [G, G, H, W, W, W, H, H, G, G, D, D, H, H, W, W],
+			 [D, G, H, W, W, W, W, H, G, G, G, D, D, H, W, W],
+			 [D, D, H, H, W, V, V, H, G, G, G, D, D, H, W, W],
+			 [D, D, D, H, H, V, V, H, G, G, G, D, D, H, G, W],
+			 [D, D, D, D, D, D, D, D, D, D, D, D, D, H, G, G],
+			 [D, D, D, D, D, D, D, D, D, D, D, D, D, H, G, G],
+			 [D, D, G, G, H, H, H, H, G, G, G, G, G, H, G, G],
+			 [D, G, G, G, H, V, V, H, G, G, G, G, G, H, H, G],
+			 [G, G, G, G, H, V, V, H, G, G, G, G, G, H, O, H],
+			 [G, G, G, G, H, H, H, H, G, G, G, G, G, G, H, H]],
+
+			[[H, H, H, H, H, 0, 0, 0, 0, 0, 0, H, G, G, G, G], //07foolbasic
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, S, G],
 			 [H, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, G, S, S, G],
 			 [H, 0, H, H, 0, 0, H, H, H, H, 0, 0, 0, G, G, G],
@@ -149,24 +251,7 @@ var CQ;
 			 [0, 0, 0, F, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0],
 			 [0, 0, 0, 0, 0, 0, 0, O, W, 0, 0, 0, 0, 0, 0, 0]],
 
-			[[H, G, H, G, H, G, G, V, V, G, G, G, G, G, G, G], //genny1
-			 [G, O, G, H, G, H, G, V, V, G, G, H, G, G, O, G],
-			 [W, W, D, G, G, H, G, H, G, G, G, G, G, G, G, G],
-			 [G, D, W, W, W, D, H, H, G, H, G, G, S, S, G, G],
-			 [F, G, G, O, D, W, D, W, W, H, H, G, S, S, G, G],
-			 [F, F, H, H, O, O, W, G, D, W, D, G, G, G, G, G],
-			 [G, S, S, H, F, F, G, G, G, G, W, W, G, G, H, G],
-			 [G, S, S, H, H, F, H, O, G, F, F, D, W, G, G, H],
-			 [F, G, G, V, V, H, H, G, O, H, F, G, D, W, G, G],
-			 [F, F, O, V, V, O, F, H, H, H, H, G, G, D, W, W],
-			 [G, H, G, H, G, H, F, F, G, G, H, H, D, W, D, G],
-			 [W, G, W, W, G, G, G, G, G, G, G, D, W, D, G, G],
-			 [D, W, D, D, W, D, W, W, W, D, W, W, W, G, G, H],
-			 [H, G, G, G, G, W, D, G, G, W, G, G, S, S, G, G],
-			 [G, O, G, H, G, G, G, H, H, G, H, G, S, S, O, G],
-			 [G, G, G, G, G, H, G, H, G, H, G, G, H, G, G, G]],
-
-			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, H, G, G, S, S], //Jeffrey1
+			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, H, G, G, S, S], //08Jeffrey1
 			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, H, H, S, S],
 			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, G, G, G],
 			 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, G, G, G, H],
@@ -183,7 +268,41 @@ var CQ;
 			 [0, 0, 0, 0, 0, W, W, W, 0, 0, 0, 0, 0, 0, 0, 0],
 			 [0, 0, 0, 0, 0, H, H, W, 0, 0, 0, 0, 0, 0, 0, 0]],
 
-			[[H, H, D, D, S, S, D, W, G, G, W, D, D, D, D, D], //mariaville
+			[[W, W, W, W, W, O, O, G, G, G, G, G, H, D, H, G], //09Cobain1
+			 [W, W, W, W, W, O, O, G, G, G, G, G, H, D, H, G],
+			 [W, W, W, W, W, O, O, G, G, S, S, G, H, D, H, G],
+			 [W, W, W, W, W, O, O, G, G, S, S, G, H, D, H, G],
+			 [F, F, W, O, O, O, O, G, H, D, D, D, D, D, D, D],
+			 [F, F, W, O, O, O, O, G, H, D, H, G, H, D, H, G],
+			 [G, G, W, O, O, G, G, G, H, D, H, G, H, D, H, G],
+			 [G, G, W, D, D, D, D, D, D, D, H, G, H, D, H, G],
+			 [G, G, W, G, G, G, G, G, G, G, G, G, H, D, H, G],
+			 [G, G, W, G, G, H, H, H, H, H, H, H, H, H, G, G],
+			 [G, G, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
+			 [G, G, V, V, H, H, H, H, H, H, H, H, H, H, W, H],
+			 [G, G, V, V, G, G, G, G, G, G, G, G, G, H, W, H],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, H, W, H],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, H, W, H],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, G]],
+
+			[[H, G, H, G, H, G, G, V, V, G, G, G, G, G, G, G], //10genny1
+			 [G, O, G, H, G, H, G, V, V, G, G, H, G, G, O, G],
+			 [W, W, D, G, G, H, G, H, G, G, G, G, G, G, G, G],
+			 [G, D, W, W, W, D, H, H, G, H, G, G, S, S, G, G],
+			 [F, G, G, O, D, W, D, W, W, H, H, G, S, S, G, G],
+			 [F, F, H, H, O, O, W, G, D, W, D, G, G, G, G, G],
+			 [G, S, S, H, F, F, G, G, G, G, W, W, G, G, H, G],
+			 [G, S, S, H, H, F, H, O, G, F, F, D, W, G, G, H],
+			 [F, G, G, V, V, H, H, G, O, H, F, G, D, W, G, G],
+			 [F, F, O, V, V, O, F, H, H, H, H, G, G, D, W, W],
+			 [G, H, G, H, G, H, F, F, G, G, H, H, D, W, D, G],
+			 [W, G, W, W, G, G, G, G, G, G, G, D, W, D, G, G],
+			 [D, W, D, D, W, D, W, W, W, D, W, W, W, G, G, H],
+			 [H, G, G, G, G, W, D, G, G, W, G, G, S, S, G, G],
+			 [G, O, G, H, G, G, G, H, H, G, H, G, S, S, O, G],
+			 [G, G, G, G, G, H, G, H, G, H, G, G, H, G, G, G]],
+
+			[[H, H, D, D, S, S, D, W, G, G, W, D, D, D, D, D], //11mariaville
 			 [H, H, D, D, S, S, D, W, S, S, W, D, H, H, H, D],
 			 [G, G, D, D, G, D, D, W, S, S, W, D, D, D, D, D],
 			 [G, H, D, D, G, D, D, W, G, G, W, D, D, D, D, D],
@@ -200,24 +319,7 @@ var CQ;
 			 [G, H, H, H, H, H, G, D, H, H, W, H, H, H, H, D],
 			 [G, G, D, D, G, G, G, D, G, G, W, D, D, D, D, D]],
 
-			[[G, G, G, G, V, V, H, H, H, H, H, H, H, H, H, H], //ngirl1
-			 [G, S, S, G, V, V, G, G, G, G, G, G, G, G, G, G],
-			 [G, S, S, G, 0, 0, G, H, H, H, H, H, H, V, V, W],
-			 [G, W, H, G, 0, 0, G, S, S, W, W, W, W, V, V, W],
-			 [G, W, H, G, 0, 0, G, S, S, W, 0, 0, W, W, W, W],
-			 [G, W, H, G, 0, 0, G, G, G, W, 0, 0, 0, 0, 0, W],
-			 [G, W, H, G, W, W, 0, 0, G, W, 0, 0, 0, 0, 0, W],
-			 [G, W, H, F, F, W, 0, 0, G, W, 0, 0, 0, 0, 0, W],
-			 [G, W, H, F, F, W, 0, 0, G, W, 0, 0, H, F, F, W],
-			 [G, W, W, W, W, W, 0, 0, V, V, 0, 0, H, F, F, W],
-			 [G, H, V, V, 0, W, 0, 0, V, V, 0, 0, H, G, W, W],
-			 [G, H, V, V, 0, W, 0, 0, 0, 0, 0, 0, H, G, W, W],
-			 [G, H, 0, 0, 0, W, 0, 0, 0, 0, 0, S, S, G, W, W],
-			 [S, S, 0, 0, 0, V, V, 0, 0, 0, 0, S, S, G, W, W],
-			 [S, S, 0, 0, 0, V, V, H, H, H, H, H, H, G, W, W],
-			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, W]],
-
-			[[G, G, G, G, G, G, G, G, G, H, H, H, H, H, H, H], //ngirl2
+			[[G, G, G, G, G, G, G, G, G, H, H, H, H, H, H, H], //12ngirl2
 			 [G, G, G, G, G, G, G, G, G, S, S, S, S, S, S, S],
 			 [W, 0, 0, 0, 0, 0, 0, W, G, S, S, S, S, S, S, S],
 			 [W, W, 0, 0, 0, 0, 0, W, G, G, G, G, G, G, S, S],
@@ -234,7 +336,7 @@ var CQ;
 			 [G, G, G, G, G, G, G, G, G, S, S, S, S, S, S, S],
 			 [G, G, G, G, G, G, G, G, G, H, H, H, H, H, H, H]],
 
-			[[0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0], //Omega1Echshire
+			[[0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0], //13Omega1Echshire
 			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
 			 [0, G, G, H, H, H, 0, 0, 0, 0, H, H, H, G, G, 0],
 			 [0, G, H, G, G, H, 0, 0, 0, 0, H, G, G, H, G, 0],
@@ -251,7 +353,7 @@ var CQ;
 			 [0, G, G, G, G, G, G, G, G, G, G, G, G, G, G, 0],
 			 [0, 0, 0, 0, 0, 0, 0, G, G, 0, 0, 0, 0, 0, 0, 0]],
 
-			[[G, G, 0, 0, G, 0, 0, 0, 0, G, W, W, W, W, W, W], //Omega2DeetonaBeach
+			[[G, G, 0, 0, G, 0, 0, 0, 0, G, W, W, W, W, W, W], //14Omega2DeetonaBeach
 			 [G, 0, 0, 0, 0, 0, G, 0, 0, 0, W, W, W, W, W, W],
 			 [G, 0, O, H, H, 0, 0, 0, 0, 0, W, W, W, W, W, W],
 			 [G, 0, O, G, 0, H, 0, 0, 0, 0, W, W, W, W, W, W],
@@ -268,24 +370,24 @@ var CQ;
 			 [G, 0, 0, G, 0, 0, G, 0, 0, 0, W, W, W, W, W, W],
 			 [G, 0, G, 0, 0, 0, 0, 0, 0, 0, W, W, W, W, W, W]],
 
-			[[D, W, W, W, D, D, D, D, D, D, O, G, G, G, V, V], //SpeedYoshi1
-			 [D, W, W, W, D, D, O, H, G, D, W, G, G, G, V, V],
-			 [D, G, G, G, D, D, H, H, G, D, O, G, S, S, G, G],
-			 [D, G, V, V, D, D, D, G, G, D, W, G, S, S, G, G],
-			 [D, G, V, V, D, D, D, G, G, D, O, G, G, G, G, G],
-			 [D, G, G, G, G, G, D, G, G, D, W, O, W, O, W, O],
-			 [D, W, W, W, F, W, D, G, G, D, D, D, D, D, D, D],
-			 [D, G, G, G, F, W, D, G, G, G, D, D, D, D, D, D],
-			 [D, G, S, S, G, W, D, O, G, G, G, H, H, V, V, D],
-			 [D, G, S, S, G, W, D, O, O, G, G, H, H, V, V, D],
-			 [D, G, G, G, G, W, W, W, D, H, G, G, G, G, H, D],
-			 [D, O, O, O, W, W, D, W, D, H, G, W, W, G, H, D],
-			 [D, D, D, D, D, D, D, W, D, H, G, W, W, G, H, D],
-			 [G, O, G, O, G, O, D, W, D, H, G, G, G, G, H, D],
-			 [W, W, W, W, W, W, W, W, D, H, H, H, H, H, H, D],
-			 [H, H, H, H, H, H, H, H, D, D, D, D, D, D, D, D]],
+			[[G, G, G, G, V, V, H, H, H, H, H, H, H, H, H, H], //15ngirl1
+			 [G, S, S, G, V, V, G, G, G, G, G, G, G, G, G, G],
+			 [G, S, S, G, 0, 0, G, H, H, H, H, H, H, V, V, W],
+			 [G, W, H, G, 0, 0, G, S, S, W, W, W, W, V, V, W],
+			 [G, W, H, G, 0, 0, G, S, S, W, 0, 0, W, W, W, W],
+			 [G, W, H, G, 0, 0, G, G, G, W, 0, 0, 0, 0, 0, W],
+			 [G, W, H, G, W, W, 0, 0, G, W, 0, 0, 0, 0, 0, W],
+			 [G, W, H, F, F, W, 0, 0, G, W, 0, 0, 0, 0, 0, W],
+			 [G, W, H, F, F, W, 0, 0, G, W, 0, 0, H, F, F, W],
+			 [G, W, W, W, W, W, 0, 0, V, V, 0, 0, H, F, F, W],
+			 [G, H, V, V, 0, W, 0, 0, V, V, 0, 0, H, G, W, W],
+			 [G, H, V, V, 0, W, 0, 0, 0, 0, 0, 0, H, G, W, W],
+			 [G, H, 0, 0, 0, W, 0, 0, 0, 0, 0, S, S, G, W, W],
+			 [S, S, 0, 0, 0, V, V, 0, 0, 0, 0, S, S, G, W, W],
+			 [S, S, 0, 0, 0, V, V, H, H, H, H, H, H, G, W, W],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, W]],
 
-			[[V, V, V, H, H, H, W, W, W, W, W, G, G, H, G, H], //SpeedYoshi3
+			[[V, V, V, H, H, H, W, W, W, W, W, G, G, H, G, H], //16SpeedYoshi3
 			 [V, V, V, G, G, G, W, W, W, W, W, G, G, S, S, G],
 			 [V, V, V, G, G, D, D, D, D, D, D, G, G, S, S, H],
 			 [H, G, G, G, D, D, D, D, D, D, D, D, G, G, G, G],
@@ -302,24 +404,24 @@ var CQ;
 			 [G, S, S, G, G, G, D, D, W, W, W, W, W, W, W, W],
 			 [H, G, H, G, G, G, D, D, W, W, W, W, W, W, W, W]],
 
-			[[H, H, H, H, H, G, F, G, F, G, F, H, H, H, H, H], //Trembleton
-			 [G, G, G, G, H, G, F, G, F, G, F, H, G, G, G, G],
-			 [G, G, G, G, H, D, D, D, D, D, D, H, G, G, G, G],
-			 [G, G, G, G, H, S, S, O, O, V, V, H, G, G, G, G],
-			 [G, G, G, G, H, S, S, O, O, V, V, H, G, G, G, G],
-			 [H, H, H, G, H, G, G, G, G, G, G, H, G, G, G, G],
-			 [H, G, H, G, H, G, G, W, W, W, G, H, G, H, H, H],
-			 [H, G, H, G, H, G, W, W, W, W, G, H, G, H, G, H],
-			 [H, H, H, G, H, G, W, W, W, W, G, H, G, H, G, H],
-			 [G, G, G, G, H, G, W, W, W, G, G, H, G, H, H, H],
-			 [G, G, G, G, H, G, G, G, G, G, G, H, G, G, G, G],
-			 [G, G, G, G, H, V, V, O, O, S, S, H, G, G, G, G],
-			 [G, G, G, G, H, V, V, O, O, S, S, H, G, G, G, G],
-			 [G, G, G, G, H, D, D, D, D, D, D, H, G, G, G, G],
-			 [H, H, H, H, H, G, G, G, G, G, G, H, H, H, H, H],
-			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, G, G]],
+			[[D, W, W, W, D, D, D, D, D, D, O, G, G, G, V, V], //17SpeedYoshi1
+			 [D, W, W, W, D, D, O, H, G, D, W, G, G, G, V, V],
+			 [D, G, G, G, D, D, H, H, G, D, O, G, S, S, G, G],
+			 [D, G, V, V, D, D, D, G, G, D, W, G, S, S, G, G],
+			 [D, G, V, V, D, D, D, G, G, D, O, G, G, G, G, G],
+			 [D, G, G, G, G, G, D, G, G, D, W, O, W, O, W, O],
+			 [D, W, W, W, F, W, D, G, G, D, D, D, D, D, D, D],
+			 [D, G, G, G, F, W, D, G, G, G, D, D, D, D, D, D],
+			 [D, G, S, S, G, W, D, O, G, G, G, H, H, V, V, D],
+			 [D, G, S, S, G, W, D, O, O, G, G, H, H, V, V, D],
+			 [D, G, G, G, G, W, W, W, D, H, G, G, G, G, H, D],
+			 [D, O, O, O, W, W, D, W, D, H, G, W, W, G, H, D],
+			 [D, D, D, D, D, D, D, W, D, H, G, W, W, G, H, D],
+			 [G, O, G, O, G, O, D, W, D, H, G, G, G, G, H, D],
+			 [W, W, W, W, W, W, W, W, D, H, H, H, H, H, H, D],
+			 [H, H, H, H, H, H, H, H, D, D, D, D, D, D, D, D]],
 
-			[[W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W], //Ytterbium1
+			[[W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W], //18Ytterbium1
 			 [W, W, W, W, W, W, W, H, H, W, G, G, G, G, W, W],
 			 [W, W, W, W, G, G, W, H, H, W, G, H, H, G, W, W],
 			 [G, O, H, W, H, H, W, D, F, W, W, G, H, H, W, W],
@@ -338,72 +440,96 @@ var CQ;
 		];
 		this.LEVEL_EARTHQUAKE_LIMITS = 
 		[
+			4,
+			4,
 			8,
-			8,
-			8,
-			8,
-			8,
-			8,
-			8,
-			8,
-			8,
-			8,
+			4,
+			6,
+			
+			6,
+			4,
 			3,
-			8,		
+			4,
 			8,
-		];
-		this.LEVEL_DESCRIPTIONS = 
-		[
-			"#1: Cobain1",
-			"#2: fooltest1",
-			"#3: genny1 Mesopotamia",
-			"#4: Jeffrey1",
-			"#5: Mariaville",
-			"#6: ngirl1",
-			"#7: ngirl2",
-			"#8: Omega1 Eschshire",
-			"#9: Omega2 Deetona Beach",
-			"#10: SpeedYoshi1",		
-			"#11: SpeedYoshi3",		
-			"#12: Trembleton",	
-			"#13: Ytterbium1 Island Nation",	
+			
+			6,			
+			4,
+			8,
+			4,
+			4,
+			
+			3,
+			8,
+			4,
 		];
 		this.LEVEL_NAMES = 
 		[
-			"Cobain1",
-			"fooltest1",
-			"Mesopotamia",
-			"Jeffrey1",
+			"Crushington",
+			"Faultopia",
+			"Lay-Z-Pun City",
+			"HELLsinki",
+			"Detroit",
+			
+			"South Mercy",
+			"Boureng",
+			"Sillydelphia",
+			"Trembleton",
+			"MESSopotamia",
+			
 			"Mariaville",
-			"ngirl1",
-			"ngirl2",
-			"Eschshire",
-			"DeetonaBeach",
-			"SpeedYoshi1",	
-			"SpeedYoshi3",		
-			"Trembleton",	
+			"Smilan",
+			"Echshire",
+			"Deetona Beach",
+			"Loopidoo",
+			
+			"Killford",
+			"St. Andreas",
 			"Island Nation",
+		];
+		this.LEVEL_INSTRUCTIONS = 
+		[
+			"TIP: Touch to place an earthquake and destroy buildings in the radius!",
+			"TIP: When earthquakes collide, a fault line forms. Drag on the screen to aim the fault, and release to destroy everything!",
+			"TIP: Large buildings require multiple earthquakes to take down, or just one fault.",
+			"TIP: Fire stations spread fire to nearby grass. Fire spreads to other grass and destroys any immediately adjacent buildings.",
+			"TIP: Factories contaminate nearby water with toxic waste. Waste is similar to fire, but with water.",
+			
+			"TIP: Hospitals release a virus that spreads nearby houses. Houses spread the virus to other houses as long as they are alive.",
+			"TIP: Buildings are awarded a 50% points bonus when destroyed by faults, and a 100% points bonus when destroyed by special effects.",
+			"TIP: You get a 5% points bonus at the end of the level for each extra earthquake you have remaining. Play strategically to get the best score!\nGood luck!",
+			"",
+			"",
+			
+			"",
+			"",
+			"",
+			"",
+			"",
+			
+			"",
+			"",
+			"",
 		];
 		this.LEVEL_COUNT = this.PREMADE_LEVELS.length;
 		this.currentLevelID = 0;
 		this.levelToLoad = -1;
 		
 		//bind keys to this plugin
-		jQuery(document).keydown(
-			(function (self) {
-				return function(info) {
-					self.onKeyDown(info);
-				};
-			})(this)
-		);
+		// jQuery(document).keydown(
+			// (function (self) {
+				// return function(info) {
+					// self.onKeyDown(info);
+				// };
+			// })(this)
+		// );
 		
-		jQuery(document).keyup(
-			(function (self) {
-				return function(info) {
-					self.onKeyUp(info);
-				};
-			})(this)
-		);
+		// jQuery(document).keyup(
+			// (function (self) {
+				// return function(info) {
+					// self.onKeyUp(info);
+				// };
+			// })(this)
+		// );
 		
 		this.oldTouchX = -1;
 		this.oldTouchY = -1;
@@ -427,9 +553,15 @@ var CQ;
 		this.levelScore = 0;
 		this.levelEarthquakesRemaining = 0;
 		this.levelBuildingsRemaining = 0;
+		this.levelInstructions = "";
 		this.levelVictory = false;
 		
 		this.EPICENTER_ICONS = new Array(8);
+		
+		this.officeSounds = 2;
+		this.fireSounds = 2;
+		this.hospitalSounds = 2;
+		this.factorySounds = 2;
 	};
 	
 	instanceProto.getTypeIndex = function (typeName)
@@ -464,6 +596,10 @@ var CQ;
 				this.unfreeze();
 			}
 		}
+		this.officeSounds = 3;
+		this.fireSounds = 3;
+		this.hospitalSounds = 3;
+		this.factorySounds = 3;
 	};
 	
 	instanceProto.unfreeze = function()
@@ -475,39 +611,47 @@ var CQ;
 		this.frozen = false;
 		this.runtime.timescale = 1;		
 		
-		var newFault = this.runtime.createInstance(this.getType("CQFault"), this.runtime.running_layout.layers[this.LAYER_BOTTOM], this.faultIndicator.x, this.faultIndicator.y);
+		var newFault = this.runtime.createInstance(this.getType("CQFault"), 
+												   this.runtime.running_layout.layers[this.LAYER_BOTTOM], 
+												   this.faultIndicator.x, 
+												   this.faultIndicator.y);
 		newFault.angle = this.faultIndicator.angle;
 		this.globalVarMap["x"].data += 1;		
 		
 		this.runtime.DestroyInstance(this.faultIndicator);
 		this.faultIndicator = null;
+		
+		var BG = this.background.behavior_insts[1];
+		BG.behavior.acts.Shake.call(BG, this.TILE_HEIGHT, 0.5, 0);
+				
 		this.getAudioInstance().type.plugin.acts.Stop.call(this.getAudioInstance(), this.EPICITYSLOW_TAG);
 		this.getAudioInstance().type.plugin.acts.SetPaused.call(this.getAudioInstance(), this.EPICITY_TAG, 1);
+		this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.FAULTSOUND_NAME, 0], 0, this.SOUND_VOLUME_OFFSET, this.FAULTSOUND_TAG);
 	}
 	
-	instanceProto.onKeyDown = function (info)
-	{	
-		if (this.runtime.running_layout.name !== "Game")
-			return;
-		switch (info.which) {
-			case 13:
-				this.nextLevelID = 0;
-				this.switchToNextLayout();
-				break;
-			case 37:
-				this.nextLevelID = (this.currentLevelID <= 1) ? this.LEVEL_COUNT : this.currentLevelID - 1;
-				this.switchToNextLayout();
-				break;
-			case 39:
-				this.nextLevelID = (this.currentLevelID % this.LEVEL_COUNT) + 1;
-				this.switchToNextLayout();
-				break;
-		}
-	};
+	// instanceProto.onKeyDown = function (info)
+	// {	
+		// if (this.runtime.running_layout.name !== "Game")
+			// return;
+		// switch (info.which) {
+			// case 13:
+				// this.nextLevelID = 0;
+				// this.switchToNextLayout();
+				// break;
+			// case 37:
+				// this.nextLevelID = (this.currentLevelID <= 1) ? this.LEVEL_COUNT : this.currentLevelID - 1;
+				// this.switchToNextLayout();
+				// break;
+			// case 39:
+				// this.nextLevelID = (this.currentLevelID % this.LEVEL_COUNT) + 1;
+				// this.switchToNextLayout();
+				// break;
+		// }
+	// };
 	
 	instanceProto.switchToNextLayout = function ()
 	{
-		this.stopAllMusic();
+		this.stopAllAudio();
 		this.runtime.changelayout = this.getLayoutByName("Game");
 	}
 	
@@ -714,21 +858,23 @@ var CQ;
 		
 		this.reddenedSky = false;
 		
-		this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.BOSSANOVA_NAME, 1], 1, 0, this.BOSSANOVA_TAG);
+		this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.BOSSANOVA_NAME, 1], 1, this.MUSIC_VOLUME_OFFSET, this.BOSSANOVA_TAG);
 		
 		if (this.nextLevelID > 0 && this.nextLevelID <= this.LEVEL_COUNT)
 			this.currentLevelID = this.nextLevelID;
 		else
 			this.currentLevelID = 0;
 		if (this.currentLevelID > 0 && this.currentLevelID <= this.LEVEL_COUNT){
-			this.globalVarMap["DESCRIPTION"].data = this.LEVEL_DESCRIPTIONS[this.currentLevelID - 1];
+			this.globalVarMap["DESCRIPTION"].data = "#" + this.currentLevelID + ": " + this.LEVEL_NAMES[this.currentLevelID - 1];
 			this.globalVarMap["LEVELNAME"].data = this.LEVEL_NAMES[this.currentLevelID - 1];
-			this.levelEarthquakesRemaining = this.LEVEL_EARTHQUAKE_LIMITS[this.currentLevelID - 1];			
+			this.levelEarthquakesRemaining = this.LEVEL_EARTHQUAKE_LIMITS[this.currentLevelID - 1];		
+			this.levelInstructions = this.LEVEL_INSTRUCTIONS[this.currentLevelID - 1];		
 		}
 		else{
 			this.globalVarMap["DESCRIPTION"].data = "Randomized level"
 			this.globalVarMap["LEVELNAME"].data = "RANDOM"
 			this.levelEarthquakesRemaining = 9999;
+			this.levelInstructions = "This is just a level filled with random buildings. For pointless destructive fun!";
 		}
 		this.levelScore = 0;
 		this.levelBuildingsRemaining = 0;
@@ -902,14 +1048,37 @@ var CQ;
 		
 		this.calculateGameplayAreaBounds();	
 		this.moveInstToTop(this.earthquakeIndicator);
+		
+		var topLayer = this.runtime.getLayerByName("Top");
+		for(var i = 0; i < topLayer.instances.length; i++){
+			if (this.hasBehavior(topLayer.instances[i], "CQLevelName")){
+				this.moveInstToTop(topLayer.instances[i]);
+				break;
+			}				
+		}
 	};
 	
 	instanceProto.reportBuildingDead = function(inst)
 	{		
 		this.levelBuildingsRemaining--;
+		if (this.hasBehavior(inst, "CQFireStation")){
+			if (this.fireSounds-- > 0)
+				this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.IGNITESOUND_NAME, 0], 0, this.SOUND_VOLUME_OFFSET, this.IGNITESOUND_TAG);
+		} else if (this.hasBehavior(inst, "CQFactory")){
+			if (this.factorySounds-- > 0)
+				this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.CONTAMINATESOUND_NAME, 0], 0, this.SOUND_VOLUME_OFFSET, this.CONTAMINATESOUND_TAG);
+		} else if (this.hasBehavior(inst, "CQHospital")){
+			if (this.hospitalSounds-- > 0)
+				this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.INFECTSOUND_NAME, 0], 0, this.SOUND_VOLUME_OFFSET, this.INFECTSOUND_TAG);
+		} else if (this.hasBehavior(inst, "CQOffice")){
+			if (this.officeSounds-- > 0)
+				this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.FAULTSOUND_NAME, 0], 0, this.SOUND_VOLUME_OFFSET, this.FAULTSOUND_TAG);
+		}
 		if (this.levelBuildingsRemaining === 0){		
-			var scoreBoost = (this.levelScore * this.SCORE_BOOST_EXTRA_EARTHQUAKE) * this.levelEarthquakesRemaining;
-			this.levelScore += scoreBoost;
+			if (this.levelEarthquakesRemaining <= this.EPICENTER_ICONS.length){
+				var scoreBoost = (this.levelScore * this.SCORE_BOOST_EXTRA_EARTHQUAKE) * this.levelEarthquakesRemaining;
+				this.levelScore += scoreBoost;
+			}
 			this.levelVictory = true;			
 			this.runtime.trigger(cr.plugins_.CQLevels.prototype.cnds.OnWin, this);
 		}
@@ -1021,8 +1190,9 @@ var CQ;
 		this.runtime.timescale = 0;
 		this.frozen = true;
 		obj.my_timescale = 1;
+		this.stopAllSounds();
 		this.getAudioInstance().type.plugin.acts.SetPaused.call(this.getAudioInstance(), this.EPICITY_TAG, 0);
-		this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.EPICITYSLOW_NAME, 1], 1, 0, this.EPICITYSLOW_TAG);
+		this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.EPICITYSLOW_NAME, 1], 1, this.MUSIC_VOLUME_OFFSET, this.EPICITYSLOW_TAG);	
 	}
 	
 	Acts.prototype.SpawnEarthquake = function (x, y)
@@ -1043,7 +1213,7 @@ var CQ;
 				if (this.levelEarthquakesRemaining == 0)
 					earthquake.OnDestroy = function() { CQ.checkLoss(); };
 				var BG = this.background.behavior_insts[1];
-				BG.shake(this.TILE_HEIGHT/2, 1);			
+				BG.behavior.acts.Shake.call(BG, this.TILE_HEIGHT/2, 1, 0);
 				if (!this.reddenedSky){
 					if (this.runtime.types_by_index[this.typeIndexMap["CQBlueSky"]].instances.length > 0){
 						this.hasBehavior(this.runtime.types_by_index[this.typeIndexMap["CQBlueSky"]].instances[0], "Fade").doStart();
@@ -1051,8 +1221,9 @@ var CQ;
 					}
 					this.reddenedSky = true;
 					this.getAudioInstance().type.plugin.acts.Stop.call(this.getAudioInstance(), this.BOSSANOVA_TAG);
-					this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.EPICITY_NAME, 1], 1, 0, this.EPICITY_TAG);
+					this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.EPICITY_NAME, 1], 1, this.MUSIC_VOLUME_OFFSET, this.EPICITY_TAG);
 				}
+				this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.QUAKESOUND_NAME, 0], 0, this.SOUND_VOLUME_OFFSET, this.QUAKESOUND_TAG);
 			}
 			this.earthquakeIndicator.opacity = 0;
 			this.hasBehavior(this.earthquakeIndicator, "CQEarthquakeIndicator").reset();
@@ -1091,6 +1262,9 @@ var CQ;
 		if (moved && this.frozen){
 			this.earthquakeIndicator.opacity = 0.0;		
 			if (this.faultIndicator != null){
+				if (!this.faultIndicatorBeingAdjusted){
+					this.startFaultIndicatorAdjustment(x, y);
+				}
 				var onLeftSide = (x - this.faultIndicator.x) < 0;				
 				var actualNewFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
 				var newFaultIndicatorPolarTheta = actualNewFaultIndicatorPolarTheta;
@@ -1119,6 +1293,11 @@ var CQ;
 	
 	Acts.prototype.StartFaultIndicatorAdjustment = function (x, y)
 	{
+		this.startFaultIndicatorAdjustment(x, y);
+	};
+	
+	instanceProto.startFaultIndicatorAdjustment = function(x, y)
+	{
 		if (this.faultIndicator != null){
 			this.faultIndicatorInitialAngle = this.faultIndicator.angle;
 			this.oldFaultIndicatorPolarTheta = Math.atan2(y - this.faultIndicator.y, x - this.faultIndicator.x);
@@ -1127,7 +1306,7 @@ var CQ;
 			this.faultIndicator.my_timescale = 1;
 			this.faultIndicatorBeingAdjusted = true;
 		}
-	};
+	}
 	
 	Acts.prototype.SetNextLevelID = function (id)
 	{
@@ -1136,13 +1315,26 @@ var CQ;
 	
 	Acts.prototype.StopAllMusic = function ()
 	{
-		this.stopAllMusic();
+		this.stopAllAudio();
 	};
 	
-	instanceProto.stopAllMusic = function()
+	instanceProto.stopAllAudio = function()
 	{	
 		for(var i = 0; i < this.ALL_TAGS.length; i++)			
 			this.getAudioInstance().type.plugin.acts.Stop.call(this.getAudioInstance(), this.ALL_TAGS[i]);
+	}
+	
+	instanceProto.stopAllMusic = function()
+	{	
+		for(var i = 0; i < this.MUSIC_TAGS.length; i++)			
+			this.getAudioInstance().type.plugin.acts.Stop.call(this.getAudioInstance(), this.MUSIC_TAGS[i]);
+	}
+	
+	instanceProto.stopAllSounds = function(except)
+	{	
+		for(var i = 0; i < this.SOUND_TAGS.length; i++)		
+			if (this.SOUND_TAGS[i] !== except)
+				this.getAudioInstance().type.plugin.acts.Stop.call(this.getAudioInstance(), this.SOUND_TAGS[i]);
 	}
 	
 	pluginProto.acts = new Acts();
@@ -1188,6 +1380,11 @@ var CQ;
 	Exps.prototype.Score = function (ret)
 	{
 		ret.set_int(this.levelScore);
+	};
+	
+	Exps.prototype.Instructions = function (ret)
+	{
+		ret.set_string(this.levelInstructions);
 	};
 	
 	// ... other expressions here ...

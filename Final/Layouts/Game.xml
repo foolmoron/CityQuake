@@ -280,16 +280,16 @@
                         <vertical-alignment>Top</vertical-alignment>
                         <hotspot>Top-left</hotspot>
                         <wrapping>Word</wrapping>
-                        <line-height>0</line-height>
+                        <line-height>-10</line-height>
                     </properties>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>3</x>
-                        <y>0</y>
+                        <y>5</y>
                         <z>0</z>
                         <width>372</width>
-                        <height>63</height>
+                        <height>36</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -545,7 +545,7 @@
                         <font>Quartz MS,-32,400,0</font>
                         <color>249,179,0</color>
                         <horizontal-alignment>Left</horizontal-alignment>
-                        <vertical-alignment>Center</vertical-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
                         <hotspot>Top-left</hotspot>
                         <wrapping>Word</wrapping>
                         <line-height>0</line-height>
@@ -554,7 +554,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>591</x>
-                        <y>43</y>
+                        <y>64</y>
                         <z>0</z>
                         <width>164</width>
                         <height>61</height>
@@ -572,7 +572,7 @@
                         <font>Quartz MS,-32,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Left</horizontal-alignment>
-                        <vertical-alignment>Center</vertical-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
                         <hotspot>Top-left</hotspot>
                         <wrapping>Word</wrapping>
                         <line-height>0</line-height>
@@ -592,10 +592,10 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>591</x>
-                        <y>-4</y>
+                        <y>15</y>
                         <z>0</z>
                         <width>248</width>
-                        <height>57</height>
+                        <height>44</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -800,7 +800,7 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>439</x>
+                        <x>440</x>
                         <y>175</y>
                         <z>0</z>
                         <width>680</width>

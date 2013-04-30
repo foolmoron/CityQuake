@@ -14,12 +14,6 @@
                 <condition id="-2" name="On start of layout" sid="74" type="System" />
             </conditions>
             <actions>
-                <action id="4" name="Preload" sid="192" type="Audio">
-                    <param id="0" name="Audio file">EpicityByXenogenocide</param>
-                </action>
-                <action id="4" name="Preload" sid="189" type="Audio">
-                    <param id="0" name="Audio file">EpicityByXenogenocideSlowmo</param>
-                </action>
                 <action id="4" name="Preload" sid="522" type="Audio">
                     <param id="0" name="Audio file">earthquake</param>
                 </action>
@@ -48,6 +42,22 @@
                 </action>
                 <action id="0" name="Set text" sid="549" type="Instructions">
                     <param id="0" name="Text">CityQuakeLevels.Instructions</param>
+                </action>
+                <action id="5" name="Set web font" sid="654" type="Description">
+                    <param id="0" name="Family name">&quot;earthquake_mfregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;earthquakestylesheet.css&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="655" type="LevelName">
+                    <param id="0" name="Family name">&quot;earthquake_mfregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;earthquakestylesheet.css&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="656" type="HighScore">
+                    <param id="0" name="Family name">&quot;quartz_msregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;quartzstylesheet.css&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="657" type="Score">
+                    <param id="0" name="Family name">&quot;quartz_msregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;quartzstylesheet.css&quot;</param>
                 </action>
             </actions>
         </event-block>

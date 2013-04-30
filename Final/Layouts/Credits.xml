@@ -5091,7 +5091,7 @@
                     <properties>
                         <text>Back</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-27,400,0</font>
+                        <font>Earthquake MF,-27,400,0</font>
                         <color>0,0,0</color>
                         <horizontal-alignment>Left</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>
@@ -5102,8 +5102,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>147</x>
-                        <y>583</y>
+                        <x>138</x>
+                        <y>581</y>
                         <z>0</z>
                         <width>172.727508545</width>
                         <height>35.454223633</height>

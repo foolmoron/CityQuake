@@ -5,5 +5,45 @@
     <events>
         <include>BossaNova</include>
         <include>Buttons</include>
+        <event-block sid="598">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="599" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Preload" sid="639" type="Audio">
+                    <param id="0" name="Audio file">EpicityByXenogenocide</param>
+                </action>
+                <action id="4" name="Preload" sid="640" type="Audio">
+                    <param id="0" name="Audio file">EpicityByXenogenocideSlowmo</param>
+                </action>
+                <action id="4" name="Preload" sid="641" type="Audio">
+                    <param id="0" name="Audio file">SmoothBossaNovaByTombor911</param>
+                </action>
+                <action id="5" name="Set web font" sid="648" type="Text">
+                    <param id="0" name="Family name">&quot;earthquake_mfregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;earthquakestylesheet.css&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block any="1" sid="610">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="608" type="WebStorage">
+                            <param id="0" name="Key">&quot;levelprogress&quot;</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="609" type="System">
+                            <param id="0" name="First value">WebStorage.LocalValue(&quot;levelprogress&quot;)</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="600" type="WebStorage">
+                            <param id="0" name="Key">&quot;levelprogress&quot;</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
     </events>
 </c2eventsheet>
