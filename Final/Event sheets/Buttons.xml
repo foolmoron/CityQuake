@@ -23,9 +23,33 @@
                             <param id="0" name="Name">Button.OnClick</param>
                             <param id="1" name="Parameter {n}">Button.NumParameter{###}Button.StringParameter</param>
                         </action>
+                        <action id="0" name="Play" sid="524" type="Audio">
+                            <param id="0" name="Audio file">click</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;CQ click&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>
+        </event-block>
+        <event-block sid="553">
+            <conditions>
+                <condition id="3" name="On touched object" sid="554" type="Touch">
+                    <param id="0" name="Object">CreditsIcons</param>
+                </condition>
+                <condition id="-7" name="Compare instance variable" sid="557" type="CreditsIcons">
+                    <param id="0" name="Instance variable">URL</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">&quot;&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="8" name="Open URL in new window" sid="556" type="Browser">
+                    <param id="0" name="URL">CreditsIcons.URL</param>
+                    <param id="1" name="Tag">&quot;NewWindow&quot;</param>
+                </action>
+            </actions>
         </event-block>
         <event-block sid="356">
             <conditions>

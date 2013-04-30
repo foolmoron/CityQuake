@@ -20,8 +20,20 @@
                 <action id="4" name="Preload" sid="189" type="Audio">
                     <param id="0" name="Audio file">EpicityByXenogenocideSlowmo</param>
                 </action>
-                <action id="4" name="Preload" sid="191" type="Audio">
-                    <param id="0" name="Audio file">SmoothBossaNovaByTombor911</param>
+                <action id="4" name="Preload" sid="522" type="Audio">
+                    <param id="0" name="Audio file">earthquake</param>
+                </action>
+                <action id="4" name="Preload" sid="523" type="Audio">
+                    <param id="0" name="Audio file">fault</param>
+                </action>
+                <action id="4" name="Preload" sid="525" type="Audio">
+                    <param id="0" name="Audio file">fire</param>
+                </action>
+                <action id="4" name="Preload" sid="526" type="Audio">
+                    <param id="0" name="Audio file">toxic</param>
+                </action>
+                <action id="4" name="Preload" sid="527" type="Audio">
+                    <param id="0" name="Audio file">zombie</param>
                 </action>
                 <action id="4" name="Initialize" sid="140" type="CityQuakeLevels" />
                 <action id="-9" name="Set value" sid="465" type="System">
@@ -33,6 +45,9 @@
                 </action>
                 <action id="0" name="Set text" sid="505" type="HighScore">
                     <param id="0" name="Text">Function.Call(&quot;ScoreToString&quot;, HIGHSCORE)</param>
+                </action>
+                <action id="0" name="Set text" sid="549" type="Instructions">
+                    <param id="0" name="Text">CityQuakeLevels.Instructions</param>
                 </action>
             </actions>
         </event-block>
@@ -107,7 +122,7 @@
                 <condition id="-1" name="Every tick" sid="84" type="System" />
             </conditions>
             <actions>
-                <action id="0" name="Set text" sid="85" type="Debug">
+                <action disabled="1" id="0" name="Set text" sid="85" type="Debug">
                     <param id="0" name="Text">&quot;BUILDINGS: &quot; &amp; CityQuakeLevels.RemainingBuildings &amp; newline &amp; &quot;QUAKES: &quot; &amp; CityQuakeLevels.RemainingEarthquakes &amp; newline &amp; &quot;HIGH: &quot; &amp; HIGHSCORE &amp; newline &amp; &quot;SCORE: &quot; &amp; CityQuakeLevels.Score</param>
                 </action>
                 <action id="0" name="Set text" sid="269" type="Description">

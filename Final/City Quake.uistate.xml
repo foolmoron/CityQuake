@@ -12,10 +12,9 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <open-tabs>
         <layout>Loader</layout>
         <layout>Title</layout>
-        <layout>LevelSelect</layout>
         <layout>Credits</layout>
+        <layout>LevelSelect</layout>
         <layout active="1">Game</layout>
-        <layout>Extra</layout>
         <event-sheet>Game</event-sheet>
         <event-sheet>Title</event-sheet>
         <event-sheet>Buttons</event-sheet>

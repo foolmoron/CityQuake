@@ -6,18 +6,20 @@
     <author>foolmoron</author>
     <unique-id>1it6a3ss8vrqo</unique-id>
     <saved-with-version>12600</saved-with-version>
-    <next-sid>521</next-sid>
+    <next-sid>598</next-sid>
     <used-plugins>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="NinePatch" version="1">9-patch</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
-        <plugin author="Foolmoron" id="CQLevels" version="1">City Quake Levels</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="foolmoron" id="CQbackground" version="1">CQ Background</behavior>
@@ -37,6 +39,7 @@
         <behavior author="foolmoron" id="CQgrass" version="1">CQ Grass</behavior>
         <behavior author="foolmoron" id="CQhospital" version="1">CQ Hospital</behavior>
         <behavior author="foolmoron" id="CQhouse" version="1">CQ House</behavior>
+        <behavior author="foolmoron" id="CQlevelname" version="1">CQ Level Name</behavior>
         <behavior author="foolmoron" id="CQoffice" version="1">CQ Office</behavior>
         <behavior author="foolmoron" id="CQvirus" version="1">CQ Virus</behavior>
         <behavior author="foolmoron" id="CQwaste" version="1">CQ Waste</behavior>
@@ -76,22 +79,6 @@
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2" speed="5">
                     <frame duration="1" hotspotX="0.510204" hotspotY="1" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type global="1" name="BG" sid="3">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="ScrollTo" sid="4">
-                    <behavior id="scrollto" />
-                </behavior-type>
-                <behavior-type name="CQBackground" sid="5">
-                    <behavior id="CQbackground" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6" speed="5">
-                    <frame duration="1" hotspotX="0.500606" hotspotY="0.5008" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -277,7 +264,17 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="34" speed="5">
-                    <frame duration="1" hotspotX="0.500606" hotspotY="0.5008" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0.5" />
+                            <point x="0.474515" y="0.299353" />
+                            <point x="0.5" y="0.281553" />
+                            <point x="0.53034" y="0.29288" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
@@ -519,7 +516,17 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="173" speed="5">
-                    <frame duration="1" hotspotX="0.500606" hotspotY="0.5008" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0.5" />
+                            <point x="0.474515" y="0.299353" />
+                            <point x="0.5" y="0.283172" />
+                            <point x="0.53034" y="0.29288" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
@@ -561,6 +568,9 @@
             <behaviors>
                 <behavior-type name="Fade" sid="382">
                     <behavior id="Fade" />
+                </behavior-type>
+                <behavior-type name="CQLevelName" sid="597">
+                    <behavior id="CQlevelname" />
                 </behavior-type>
             </behaviors>
         </object-type>
@@ -688,6 +698,48 @@
                 </behavior-type>
             </behaviors>
         </object-type>
+        <object-type name="TitleSprite" sid="528">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="529" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Instructions" sid="548">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="CreditsIcons" sid="550">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable comment="URL to go to when clicked" name="URL" sid="552" type="string" />
+            </instance-variables>
+            <animation-folder expanded="1">
+                <animation framecount="6" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="551" speed="0">
+                    <frame duration="1" hotspotX="0.502538" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.502538" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.502538" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.502538" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.502538" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.502538" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Browser" sid="555">
+            <plugin id="Browser" />
+        </object-type>
+        <object-type name="BG" sid="558">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="CQBackground" sid="559">
+                    <behavior id="CQbackground" />
+                </behavior-type>
+                <behavior-type name="ScrollTo" sid="560">
+                    <behavior id="scrollto" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder expanded="1">
@@ -741,8 +793,28 @@
         </global-instance>
         <global-instance type="WebStorage" uid="505" />
         <global-instance type="Keyboard" uid="17" />
+        <global-instance type="Browser" uid="171" />
     </global-instances>
-    <sounds-folder expanded="1" />
+    <sounds-folder expanded="1">
+        <file name="earthquake.m4a" />
+        <file name="earthquake.ogg" />
+        <file name="earthquake.wav" />
+        <file name="fault.m4a" />
+        <file name="fault.ogg" />
+        <file name="fault.wav" />
+        <file name="click.m4a" />
+        <file name="click.ogg" />
+        <file name="click.wav" />
+        <file name="fire.m4a" />
+        <file name="fire.ogg" />
+        <file name="fire.wav" />
+        <file name="toxic.m4a" />
+        <file name="toxic.ogg" />
+        <file name="toxic.wav" />
+        <file name="zombie.m4a" />
+        <file name="zombie.ogg" />
+        <file name="zombie.wav" />
+    </sounds-folder>
     <music-folder expanded="1">
         <file name="EpicityByXenogenocide.m4a" />
         <file name="EpicityByXenogenocide.ogg" />

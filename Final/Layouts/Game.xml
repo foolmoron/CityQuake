@@ -18,8 +18,8 @@
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
             <parallax>
-                <x>1</x>
-                <y>1</y>
+                <x>0.1</x>
+                <y>0.1</y>
             </parallax>
             <zoom-rate>1</zoom-rate>
             <opacity>1</opacity>
@@ -27,27 +27,26 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="BG" uid="10">
+                <instance type="BG" uid="179">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
+                        <hotspot>Center</hotspot>
                     </properties>
                     <behavior-instances>
-                        <behavior-instance type="ScrollTo" />
                         <behavior-instance type="CQBackground" />
+                        <behavior-instance type="ScrollTo" />
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>425</x>
-                        <y>325</y>
+                        <x>429</x>
+                        <y>336</y>
                         <z>0</z>
-                        <width>850</width>
-                        <height>650</height>
+                        <width>986</width>
+                        <height>746</height>
                         <depth>0</depth>
-                        <hotspotX>0.50060606</hotspotX>
-                        <hotspotY>0.500800014</hotspotY>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -156,8 +155,8 @@
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
             <parallax>
-                <x>0.1</x>
-                <y>0.1</y>
+                <x>0.3</x>
+                <y>0.3</y>
             </parallax>
             <zoom-rate>1</zoom-rate>
             <opacity>1</opacity>
@@ -175,13 +174,13 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>425</x>
-                        <y>325</y>
+                        <y>321.354370117</y>
                         <z>0</z>
-                        <width>851</width>
+                        <width>850</width>
                         <height>651</height>
                         <depth>0</depth>
-                        <hotspotX>0.50060606</hotspotX>
-                        <hotspotY>0.500800014</hotspotY>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -208,14 +207,40 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>425</x>
-                        <y>326</y>
+                        <y>322.354370117</y>
                         <z>0</z>
-                        <width>851</width>
+                        <width>850</width>
                         <height>651</height>
                         <depth>0</depth>
-                        <hotspotX>0.50060606</hotspotX>
-                        <hotspotY>0.500800014</hotspotY>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="9patch" uid="513">
+                    <properties>
+                        <left-margin>8</left-margin>
+                        <right-margin>8</right-margin>
+                        <top-margin>8</top-margin>
+                        <bottom-margin>8</bottom-margin>
+                        <edges>Stretch</edges>
+                        <fill>Stretch</fill>
+                        <initial-visibility>Visible</initial-visibility>
+                        <hotspot>Top-left</hotspot>
+                        <seams>Exact</seams>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>585</x>
+                        <y>58</y>
+                        <z>0</z>
+                        <width>172</width>
+                        <height>42</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
                         <opacity>1</opacity>
                     </world>
                 </instance>
@@ -249,7 +274,7 @@
                     <properties>
                         <text>DESCRIPTION</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Courier New,-27,700,0</font>
+                        <font>Earthquake MF,-27,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Left</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>
@@ -261,10 +286,10 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>3</x>
-                        <y>5</y>
+                        <y>0</y>
                         <z>0</z>
                         <width>372</width>
-                        <height>58</height>
+                        <height>63</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -300,44 +325,6 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="LevelName" uid="495">
-                    <properties>
-                        <text>LEVEL NAME</text>
-                        <initial-visibility>Visible</initial-visibility>
-                        <font>Courier New,-64,700,0</font>
-                        <color>0,0,0</color>
-                        <horizontal-alignment>Center</horizontal-alignment>
-                        <vertical-alignment>Center</vertical-alignment>
-                        <hotspot>Center</hotspot>
-                        <wrapping>Word</wrapping>
-                        <line-height>0</line-height>
-                    </properties>
-                    <behavior-instances>
-                        <behavior-instance type="Fade">
-                            <properties>
-                                <active-at-start>Yes</active-at-start>
-                                <fade-in-time>0</fade-in-time>
-                                <wait-time>0.5</wait-time>
-                                <fade-out-time>0.5</fade-out-time>
-                                <destroy>After fade out</destroy>
-                            </properties>
-                        </behavior-instance>
-                    </behavior-instances>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>439</x>
-                        <y>175</y>
-                        <z>0</z>
-                        <width>680</width>
-                        <height>264</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
@@ -551,33 +538,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Debug" uid="19">
-                    <properties>
-                        <text>Text</text>
-                        <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-21,400,0</font>
-                        <color>0,0,0</color>
-                        <horizontal-alignment>Left</horizontal-alignment>
-                        <vertical-alignment>Top</vertical-alignment>
-                        <hotspot>Top-left</hotspot>
-                        <wrapping>Word</wrapping>
-                        <line-height>0</line-height>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>9</x>
-                        <y>171</y>
-                        <z>0</z>
-                        <width>198</width>
-                        <height>110</height>
-                        <depth>0</depth>
-                        <hotspotX>0</hotspotX>
-                        <hotspotY>0</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
                 <instance type="HighScore" uid="16">
                     <properties>
                         <text>00000000</text>
@@ -585,7 +545,7 @@
                         <font>Quartz MS,-32,400,0</font>
                         <color>249,179,0</color>
                         <horizontal-alignment>Left</horizontal-alignment>
-                        <vertical-alignment>Top</vertical-alignment>
+                        <vertical-alignment>Center</vertical-alignment>
                         <hotspot>Top-left</hotspot>
                         <wrapping>Word</wrapping>
                         <line-height>0</line-height>
@@ -594,40 +554,14 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>591</x>
-                        <y>56</y>
+                        <y>43</y>
                         <z>0</z>
                         <width>164</width>
-                        <height>48</height>
+                        <height>61</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
                         <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="9patch" uid="513">
-                    <properties>
-                        <left-margin>8</left-margin>
-                        <right-margin>8</right-margin>
-                        <top-margin>8</top-margin>
-                        <bottom-margin>8</bottom-margin>
-                        <edges>Stretch</edges>
-                        <fill>Stretch</fill>
-                        <initial-visibility>Visible</initial-visibility>
-                        <hotspot>Top-left</hotspot>
-                        <seams>Exact</seams>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>585</x>
-                        <y>58</y>
-                        <z>0</z>
-                        <width>172</width>
-                        <height>42</height>
-                        <depth>0</depth>
-                        <hotspotX>0</hotspotX>
-                        <hotspotY>0</hotspotY>
                         <opacity>1</opacity>
                     </world>
                 </instance>
@@ -638,7 +572,7 @@
                         <font>Quartz MS,-32,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Left</horizontal-alignment>
-                        <vertical-alignment>Top</vertical-alignment>
+                        <vertical-alignment>Center</vertical-alignment>
                         <hotspot>Top-left</hotspot>
                         <wrapping>Word</wrapping>
                         <line-height>0</line-height>
@@ -658,10 +592,10 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>591</x>
-                        <y>7</y>
+                        <y>-4</y>
                         <z>0</z>
                         <width>248</width>
-                        <height>46</height>
+                        <height>57</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -723,7 +657,7 @@
                     <properties>
                         <text>WINNER</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Courier New,-75,700,0</font>
+                        <font>Earthquake MF,-75,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
@@ -746,10 +680,10 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>248</x>
-                        <y>107</y>
+                        <y>33</y>
                         <z>0</z>
                         <width>394</width>
-                        <height>149</height>
+                        <height>223</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -784,7 +718,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>251</x>
-                        <y>190</y>
+                        <y>185</y>
                         <z>0</z>
                         <width>394</width>
                         <height>56</height>
@@ -793,6 +727,33 @@
                         <hotspotY>0</hotspotY>
                         <angle>0</angle>
                         <opacity>0</opacity>
+                    </world>
+                </instance>
+                <instance type="Instructions" uid="162">
+                    <properties>
+                        <text>Instructions</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Courier New,-19,700,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>12</x>
+                        <y>120</y>
+                        <z>0</z>
+                        <width>272</width>
+                        <height>203</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
                     </world>
                 </instance>
             </instances>
@@ -811,7 +772,47 @@
             <force-own-texture>0</force-own-texture>
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
-            <instances />
+            <instances>
+                <instance type="LevelName" uid="495">
+                    <properties>
+                        <text>LEVEL NAME</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Earthquake MF,-75,400,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <vertical-alignment>Center</vertical-alignment>
+                        <hotspot>Center</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Fade">
+                            <properties>
+                                <active-at-start>Yes</active-at-start>
+                                <fade-in-time>0</fade-in-time>
+                                <wait-time>0.5</wait-time>
+                                <fade-out-time>0.5</fade-out-time>
+                                <destroy>After fade out</destroy>
+                            </properties>
+                        </behavior-instance>
+                        <behavior-instance type="CQLevelName" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>439</x>
+                        <y>175</y>
+                        <z>0</z>
+                        <width>680</width>
+                        <height>264</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+            </instances>
             <effects />
         </layer>
     </layers>
