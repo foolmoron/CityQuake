@@ -34,9 +34,6 @@
                     <param id="0" name="Variable">HIGHSCORE</param>
                     <param id="1" name="Value">WebStorage.LocalValue(&quot;highscore&quot; &amp; str(CityQuakeLevels.CurrentLevelID)) = &quot;&quot; ? 0 : WebStorage.LocalValue(&quot;highscore&quot; &amp; str(CityQuakeLevels.CurrentLevelID))</param>
                 </action>
-                <action id="-16" name="Set opacity" sid="488" type="Button">
-                    <param id="0" name="Opacity">Button.StringParameter = &quot;NextLevelButton&quot; ? ((CityQuakeLevels.CurrentLevelID + 1)  &lt;= int(WebStorage.LocalValue(&quot;levelprogress&quot;)) ? 100 : 50) : 100</param>
-                </action>
                 <action id="0" name="Set text" sid="505" type="HighScore">
                     <param id="0" name="Text">Function.Call(&quot;ScoreToString&quot;, HIGHSCORE)</param>
                 </action>
@@ -60,6 +57,39 @@
                     <param id="1" name="CSS URL">&quot;quartzstylesheet.css&quot;</param>
                 </action>
             </actions>
+            <sub-events>
+                <event-block sid="663">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="664" type="Button">
+                            <param id="0" name="Instance variable">StringParameter</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;NextLevelButton&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="665">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="666" type="System">
+                                    <param id="0" name="First value">CityQuakeLevels.CurrentLevelID</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="667" type="System">
+                                    <param id="0" name="First value">CityQuakeLevels.CurrentLevelID</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">CityQuakeLevels.NumLevels</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Set opacity" sid="669" type="Button">
+                                    <param id="0" name="Opacity">Button.StringParameter = &quot;NextLevelButton&quot; ? ((CityQuakeLevels.CurrentLevelID + 1)  &lt;= int(WebStorage.LocalValue(&quot;levelprogress&quot;)) ? 100 : 50) : 100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="107">
             <conditions>
@@ -163,13 +193,6 @@
                 <condition id="1" name="On win" sid="455" type="CityQuakeLevels" />
             </conditions>
             <actions>
-                <action id="0" name="Set local value" sid="489" type="WebStorage">
-                    <param id="0" name="Key">&quot;levelprogress&quot;</param>
-                    <param id="1" name="Value">(CityQuakeLevels.CurrentLevelID + 1) &gt; int(WebStorage.SessionValue(&quot;levelprogress&quot;)) ? (CityQuakeLevels.CurrentLevelID + 1) : WebStorage.SessionValue(&quot;levelprogress&quot;)</param>
-                </action>
-                <action id="-16" name="Set opacity" sid="490" type="Button">
-                    <param id="0" name="Opacity">Button.StringParameter = &quot;NextLevelButton&quot; ? ((CityQuakeLevels.CurrentLevelID + 1)  &lt;= int(WebStorage.LocalValue(&quot;levelprogress&quot;)) ? 100 : 50) : 100</param>
-                </action>
                 <action behavior="Fade" id="1" name="Start fade" sid="519" type="Winner" />
                 <action id="-9" name="Destroy" sid="520" type="RetryText" />
             </actions>
@@ -189,6 +212,41 @@
                         </action>
                         <action behavior="Fade" id="1" name="Start fade" sid="469" type="NewHigh" />
                     </actions>
+                </event-block>
+                <event-block sid="658">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="659" type="Button">
+                            <param id="0" name="Instance variable">StringParameter</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;NextLevelButton&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="660">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="661" type="System">
+                                    <param id="0" name="First value">CityQuakeLevels.CurrentLevelID</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="662" type="System">
+                                    <param id="0" name="First value">CityQuakeLevels.CurrentLevelID</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">CityQuakeLevels.NumLevels</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set local value" sid="489" type="WebStorage">
+                                    <param id="0" name="Key">&quot;levelprogress&quot;</param>
+                                    <param id="1" name="Value">(CityQuakeLevels.CurrentLevelID + 1) &gt; int(WebStorage.SessionValue(&quot;levelprogress&quot;)) ? (CityQuakeLevels.CurrentLevelID + 1) : WebStorage.SessionValue(&quot;levelprogress&quot;)</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="490" type="Button">
+                                    <param id="0" name="Opacity">Button.StringParameter = &quot;NextLevelButton&quot; ? ((CityQuakeLevels.CurrentLevelID + 1)  &lt;= int(WebStorage.LocalValue(&quot;levelprogress&quot;)) ? 100 : 50) : 100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-block>

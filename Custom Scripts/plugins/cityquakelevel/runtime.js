@@ -154,17 +154,17 @@ var CQ;
 			 [G, G, G, G, G, G, G, G, W, W, W, W, W, W, G, G],
 			 [W, W, W, W, G, G, G, G, W, W, W, W, W, W, G, G],
 			 [W, W, W, W, G, G, G, G, G, G, G, G, W, W, W, W],
-			 [G, G, W, W, G, G, G, G, G, G, G, G, W, W, W, W],
+			 [G, G, W, W, G, G, G, H, H, G, G, G, W, W, W, W],
+			 [G, G, W, W, G, G, G, H, H, G, G, G, G, G, G, G],
+			 [O, D, W, W, D, D, D, D, D, D, D, D, D, D, D, O],
+			 [O, D, W, W, D, D, D, D, D, D, D, D, D, D, D, O],
 			 [G, G, W, W, G, G, G, G, G, G, G, G, G, G, G, G],
-			 [O, G, W, W, H, H, H, H, H, H, H, H, H, H, G, O],
-			 [O, G, W, W, H, H, H, H, H, H, H, H, H, H, G, O],
-			 [G, G, W, W, G, G, G, G, G, G, G, G, G, G, G, G],
-			 [G, G, W, W, G, G, G, G, G, G, G, G, G, G, G, G],
-			 [G, G, W, W, W, W, W, W, W, W, W, W, W, W, W, G],
-			 [G, G, W, W, W, W, W, W, W, W, W, W, W, W, W, G],
-			 [G, G, G, G, G, G, G, G, G, G, G, G, G, W, W, G],
-			 [G, G, G, G, G, G, G, G, G, G, G, G, G, W, W, W],
-			 [G, G, G, G, G, G, G, G, G, G, G, G, G, W, W, W]],
+			 [G, G, W, W, G, G, G, G, G, H, H, G, G, G, G, G],
+			 [G, G, W, W, G, G, G, G, G, H, H, G, G, G, G, G],
+			 [G, G, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
+			 [G, G, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, W],
+			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, W]],
 
 			[[W, W, W, 0, 0, 0, 0, 0, 0, 0, G, H, H, W, W, W], //03tutoriallargebuildings
 			 [W, W, 0, 0, 0, 0, 0, 0, 0, 0, G, H, H, O, W, W],
@@ -387,22 +387,22 @@ var CQ;
 			 [S, S, 0, 0, 0, V, V, H, H, H, H, H, H, G, W, W],
 			 [G, G, G, G, G, G, G, G, G, G, G, G, G, G, W, W]],
 
-			[[V, V, V, H, H, H, W, W, W, W, W, G, G, H, G, H], //16SpeedYoshi3
-			 [V, V, V, G, G, G, W, W, W, W, W, G, G, S, S, G],
-			 [V, V, V, G, G, D, D, D, D, D, D, G, G, S, S, H],
-			 [H, G, G, G, D, D, D, D, D, D, D, D, G, G, G, G],
-			 [H, G, G, D, D, G, G, G, G, G, G, D, D, G, G, G],
-			 [H, G, D, D, G, G, G, G, G, G, G, G, D, D, G, G],
-			 [W, W, D, D, G, G, O, O, H, H, G, G, D, D, D, D],
-			 [W, W, D, D, G, G, O, H, H, H, G, G, D, D, D, D],
-			 [W, W, D, D, G, G, H, H, H, O, G, G, D, D, W, W],
-			 [W, W, D, D, G, G, H, H, O, O, G, G, D, D, W, W],
-			 [W, W, D, D, G, G, G, G, G, G, G, G, D, D, W, W],
-			 [G, G, G, D, D, G, G, G, G, G, G, D, D, D, W, W],
-			 [G, G, G, G, D, D, D, D, D, D, D, D, D, D, W, W],
-			 [H, S, S, G, G, D, D, D, D, D, D, D, D, D, W, W],
-			 [G, S, S, G, G, G, D, D, W, W, W, W, W, W, W, W],
-			 [H, G, H, G, G, G, D, D, W, W, W, W, W, W, W, W]],
+			[[V, V, H, H, H, H, W, W, W, W, W, G, D, H, G, H], //16SpeedYoshi3
+			 [V, V, H, G, G, G, W, W, W, W, W, G, D, S, S, G],
+			 [H, H, O, G, G, G, G, G, G, G, G, G, D, S, S, H],
+			 [H, G, G, D, G, G, G, G, G, G, G, G, O, D, D, D],
+			 [H, G, G, G, D, G, G, H, G, G, G, D, G, G, G, G],
+			 [H, G, G, G, G, D, H, H, H, G, D, G, G, G, G, G],
+			 [W, W, G, G, G, H, D, H, G, D, G, G, G, G, G, G],
+			 [W, W, G, G, H, H, H, D, D, G, H, G, G, G, G, G],
+			 [W, W, G, G, G, H, G, D, D, H, H, H, G, G, W, W],
+			 [W, W, G, G, G, G, D, G, G, D, H, G, G, G, W, W],
+			 [W, W, G, G, G, D, G, G, G, G, D, G, G, G, W, W],
+			 [G, G, G, G, D, G, G, G, G, G, G, D, G, G, W, W],
+			 [D, D, D, O, G, G, G, G, G, G, G, G, D, G, W, W],
+			 [H, S, S, D, G, G, G, G, G, G, G, G, G, D, W, W],
+			 [G, S, S, D, G, G, G, G, W, W, W, W, W, W, D, W],
+			 [H, G, H, D, G, G, G, G, W, W, W, W, W, W, W, D]],
 
 			[[D, W, W, W, D, D, D, D, D, D, O, G, G, G, V, V], //17SpeedYoshi1
 			 [D, W, W, W, D, D, O, H, G, D, W, G, G, G, V, V],
@@ -458,7 +458,7 @@ var CQ;
 			4,
 			4,
 			
-			3,
+			4,
 			8,
 			4,
 		];
@@ -489,7 +489,7 @@ var CQ;
 		this.LEVEL_INSTRUCTIONS = 
 		[
 			"TIP: Touch to place an earthquake and destroy buildings in the radius!",
-			"TIP: When earthquakes collide, a fault line forms. Drag on the screen to aim the fault, and release to destroy everything!",
+			"TIP: Quickly place earthquakes side by side to create a fault. Immediately touch and drag on the screen to aim the fault.",
 			"TIP: Large buildings require multiple earthquakes to take down, or just one fault.",
 			"TIP: Fire stations spread fire to nearby grass. Fire spreads to other grass and destroys any immediately adjacent buildings.",
 			"TIP: Factories contaminate nearby water with toxic waste. Waste is similar to fire, but with water.",
@@ -515,21 +515,21 @@ var CQ;
 		this.levelToLoad = -1;
 		
 		//bind keys to this plugin
-		// jQuery(document).keydown(
-			// (function (self) {
-				// return function(info) {
-					// self.onKeyDown(info);
-				// };
-			// })(this)
-		// );
+		jQuery(document).keydown(
+			(function (self) {
+				return function(info) {
+					self.onKeyDown(info);
+				};
+			})(this)
+		);
 		
-		// jQuery(document).keyup(
-			// (function (self) {
-				// return function(info) {
-					// self.onKeyUp(info);
-				// };
-			// })(this)
-		// );
+		jQuery(document).keyup(
+			(function (self) {
+				return function(info) {
+					self.onKeyUp(info);
+				};
+			})(this)
+		);
 		
 		this.oldTouchX = -1;
 		this.oldTouchY = -1;
@@ -629,25 +629,25 @@ var CQ;
 		this.getAudioInstance().type.plugin.acts.Play.call(this.getAudioInstance(), [this.FAULTSOUND_NAME, 0], 0, this.SOUND_VOLUME_OFFSET, this.FAULTSOUND_TAG);
 	}
 	
-	// instanceProto.onKeyDown = function (info)
-	// {	
-		// if (this.runtime.running_layout.name !== "Game")
-			// return;
-		// switch (info.which) {
-			// case 13:
-				// this.nextLevelID = 0;
-				// this.switchToNextLayout();
-				// break;
-			// case 37:
-				// this.nextLevelID = (this.currentLevelID <= 1) ? this.LEVEL_COUNT : this.currentLevelID - 1;
-				// this.switchToNextLayout();
-				// break;
-			// case 39:
-				// this.nextLevelID = (this.currentLevelID % this.LEVEL_COUNT) + 1;
-				// this.switchToNextLayout();
-				// break;
-		// }
-	// };
+	instanceProto.onKeyDown = function (info)
+	{	
+		if (this.runtime.running_layout.name !== "Game")
+			return;
+		switch (info.which) {
+			case 13:
+				this.nextLevelID = 0;
+				this.switchToNextLayout();
+				break;
+			case 37:
+				this.nextLevelID = (this.currentLevelID <= 1) ? this.LEVEL_COUNT : this.currentLevelID - 1;
+				this.switchToNextLayout();
+				break;
+			case 39:
+				this.nextLevelID = (this.currentLevelID % this.LEVEL_COUNT) + 1;
+				this.switchToNextLayout();
+				break;
+		}
+	};
 	
 	instanceProto.switchToNextLayout = function ()
 	{

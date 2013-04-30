@@ -5035,6 +5035,30 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
+                <instance type="CreditsIcons" uid="173">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-frame>4</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <instance-variables>
+                        <URL>http://yan.thecomicseries.com/</URL>
+                    </instance-variables>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>326</x>
+                        <y>425</y>
+                        <z>0</z>
+                        <width>191.878173828</width>
+                        <height>32</height>
+                        <depth>0</depth>
+                        <hotspotX>0.486772478</hotspotX>
+                        <hotspotY>1.3125</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
                 <instance type="SoundIcon" uid="920">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
@@ -5315,7 +5339,7 @@
                         <x>69</x>
                         <y>382</y>
                         <z>0</z>
-                        <width>395</width>
+                        <width>155</width>
                         <height>34</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
@@ -5339,35 +5363,11 @@
                         <x>495</x>
                         <y>334</y>
                         <z>0</z>
-                        <width>60</width>
-                        <height>60</height>
+                        <width>58.172588348</width>
+                        <height>27.299999237</height>
                         <depth>0</depth>
-                        <hotspotX>0.502538085</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="CreditsIcons" uid="173">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-frame>4</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <instance-variables>
-                        <URL>http://yan.thecomicseries.com/</URL>
-                    </instance-variables>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>326</x>
-                        <y>425</y>
-                        <z>0</z>
-                        <width>200</width>
-                        <height>200</height>
-                        <depth>0</depth>
-                        <hotspotX>0.502538085</hotspotX>
-                        <hotspotY>0.5</hotspotY>
+                        <hotspotX>0.497382194</hotspotX>
+                        <hotspotY>0.549450576</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -5390,7 +5390,7 @@
                         <x>69</x>
                         <y>414</y>
                         <z>0</z>
-                        <width>391</width>
+                        <width>139</width>
                         <height>34</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>

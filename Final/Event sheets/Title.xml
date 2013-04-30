@@ -24,26 +24,6 @@
                     <param id="1" name="CSS URL">&quot;earthquakestylesheet.css&quot;</param>
                 </action>
             </actions>
-            <sub-events>
-                <event-block any="1" sid="610">
-                    <conditions>
-                        <condition id="3" inverted="1" name="Local key exists" sid="608" type="WebStorage">
-                            <param id="0" name="Key">&quot;levelprogress&quot;</param>
-                        </condition>
-                        <condition id="-8" name="Compare two values" sid="609" type="System">
-                            <param id="0" name="First value">WebStorage.LocalValue(&quot;levelprogress&quot;)</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Second value">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Set local value" sid="600" type="WebStorage">
-                            <param id="0" name="Key">&quot;levelprogress&quot;</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
         </event-block>
     </events>
 </c2eventsheet>
