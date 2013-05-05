@@ -489,7 +489,7 @@ var CQ;
 		this.LEVEL_INSTRUCTIONS = 
 		[
 			"TIP: Touch to place an earthquake and destroy buildings in the radius!",
-			"TIP: Quickly place earthquakes side by side to create a fault. Immediately touch and drag on the screen to aim the fault.",
+			"TIP: Quickly place earthquakes side by side to create a fault. CLICK and DRAG the yellow line to adjust the angle\nof the fault.",
 			"TIP: Large buildings require multiple earthquakes to take down, or just one fault.",
 			"TIP: Fire stations spread fire to nearby grass. Fire spreads to other grass and destroys any immediately adjacent buildings.",
 			"TIP: Factories contaminate nearby water with toxic waste. Waste is similar to fire, but with water.",
