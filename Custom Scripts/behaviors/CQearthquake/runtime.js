@@ -50,7 +50,7 @@ cr.behaviors.CQearthquake = function(runtime)
 	{
 		//constants
 		this.EXPANSION_TIME = 1; //secs		
-		this.EXTRA_TIME_AT_MAX_SIZE = 0.5; //secs		
+		this.EXTRA_TIME_AT_MAX_SIZE = 1; //secs		
 		this.INITIAL_HEIGHT = CQ.TILE_HEIGHT/2;
 		this.FINAL_HEIGHT = CQ.EARTHQUAKE_FINAL_HEIGHT_IN_TILES * CQ.TILE_HEIGHT;
 		this.NUM_FRAMES = this.inst.type.animations[0].frames.length - 1; //ignore last frame

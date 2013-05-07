@@ -88,7 +88,7 @@ var CQ;
 		this.EARTHQUAKE_FINAL_HEIGHT_IN_TILES = 5;
 		this.FAULT_INDICATOR_ANIM_SPEED = 7;
 		this.FAULT_INDICATOR_ADJUSTMENT_RATIO = 0.33;
-		this.FAULT_INDICATOR_ADJUSTMENT_WIDTH = 30 * Math.PI / 180;
+		this.FAULT_INDICATOR_ADJUSTMENT_WIDTH = 45 * Math.PI / 180;
 		
 		this.SCORE_MODIFIER_FAULT = 1.5;
 		this.SCORE_MODIFIER_SPECIAL = 2.0;
@@ -515,21 +515,21 @@ var CQ;
 		this.levelToLoad = -1;
 		
 		//bind keys to this plugin
-		jQuery(document).keydown(
-			(function (self) {
-				return function(info) {
-					self.onKeyDown(info);
-				};
-			})(this)
-		);
+		// jQuery(document).keydown(
+			// (function (self) {
+				// return function(info) {
+					// self.onKeyDown(info);
+				// };
+			// })(this)
+		// );
 		
-		jQuery(document).keyup(
-			(function (self) {
-				return function(info) {
-					self.onKeyUp(info);
-				};
-			})(this)
-		);
+		// jQuery(document).keyup(
+			// (function (self) {
+				// return function(info) {
+					// self.onKeyUp(info);
+				// };
+			// })(this)
+		// );
 		
 		this.oldTouchX = -1;
 		this.oldTouchY = -1;
@@ -562,6 +562,8 @@ var CQ;
 		this.fireSounds = 2;
 		this.hospitalSounds = 2;
 		this.factorySounds = 2;
+		
+		this.doCheckLoss = false;
 	};
 	
 	instanceProto.getTypeIndex = function (typeName)
@@ -600,6 +602,9 @@ var CQ;
 		this.fireSounds = 3;
 		this.hospitalSounds = 3;
 		this.factorySounds = 3;
+		
+		if (this.doCheckLoss)
+			this.checkLoss();
 	};
 	
 	instanceProto.unfreeze = function()
@@ -707,6 +712,7 @@ var CQ;
 	
 	Acts.prototype.Initialize = function ()
 	{				
+		this.doCheckLoss = true;
 		this.runtime.timescale = 1;
 		this.TILE_HEIGHT = this.properties[0];	
 		var types = this.runtime.types_by_index;
@@ -1236,7 +1242,12 @@ var CQ;
 	
 	instanceProto.checkLoss = function()
 	{	
-		if (!this.levelVictory){		
+		if (!this.levelVictory){
+			if (this.levelEarthquakesRemaining == 0 &&
+				this.runtime.types_by_index[this.typeIndexMap["CQEarthquake"]].instances.length == 0 &&
+				this.runtime.types_by_index[this.typeIndexMap["CQVirus"]].instances.length == 0 &&
+				this.runtime.types_by_index[this.typeIndexMap["CQWaste"]].instances.length == 0 &&
+				this.runtime.types_by_index[this.typeIndexMap["CQFire"]].instances.length == 0)
 			this.runtime.trigger(cr.plugins_.CQLevels.prototype.cnds.OnLose, this);
 		}
 	};
